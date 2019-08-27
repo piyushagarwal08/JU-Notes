@@ -189,9 +189,9 @@ int getdata(float,int)   //5
     2. Non Primitive -> user defined data structure
 * Primitive Data Types
     1. Numeric 
-        Int, Float or Double
-    2. Char
-    3. Boolean
+        * Integer (Int, Float or Double)   
+        * Character (char)
+    2. Boolean
 * Non Primitive
     array,stack,queue
 * Types of Size
@@ -199,9 +199,103 @@ int getdata(float,int)   //5
     (1) byte
     (2) short
     (4) int
+    (8) long
+    (2) char
     (4) float
     (8) double
     64 - bit system
     (8) float
     (16) double
+    (1) boolean  ```till jdk 1.3```
+    (1 byte) boolean  ```after 1.3 jdk```
 * Short is important and char is also used in short
+
+# DATE: 27 August 2019
+
+* ## ```  Narrowing of Data Type is not Allowed JAVA ```
+## What is narrowing of Data Type?
+* b < S < I < L < F < D   these are data types
+* this narrowing is not allowed in java
+
+## Why we can store more data in ```char``` as compared to ```short```
+* In short or integer type data type , the storage size is 15 bit due to presence of signed bit 
+* In char data type , the storage size is 16 bit as there is no signbit
+* 2 byte = 16 bit
+
+## Variable
+* Name of a memory location
+* Each variable has a datatype
+* 4 rules to define a variable are:
+    1. the variable name should not start with a numeric digit
+    2. variable name should not contain any whitespace
+    3. variable name should not contain any ```language keywords``` or ```primitive words```
+    4. We can not use special character except ```_```
+
+## Types of variables in JAVA
+* There are 3 types of variable
+    1. Local Variable
+    2. Instance Variable
+    3. Static Variable
+* <u> Local Variable </u> ~>  Variable defined inside a method and accessef inside that method only
+* <u> Instance Variable </u> ~> Value is object specific , value not shared with other instances , Declared inside class but outside the body of method
+* <u> Static Variable </u> ~> Declared with static keywords , Shared among all instances , Memory allocated once at compile time, Should be initialized first that is each object will be able to change value of class variables and values will be modified for each object
+
+```java
+class Demo 
+{
+    int a = 50; // instance variable
+    static int b = 100; // static variable
+    void func()
+    {
+        int x = 90; //local variable
+    }
+}
+```
+
+## Array
+* Collection of homogenous items stored under one name
+* size is fixed
+* it can be used as a object
+* Syntax
+```java
+// pre declaration of array
+int[] a1 = new int[5];  // type name[] = new type[size]
+
+// post declaration of array
+int a1[] = [1,2,3,4,5]; // array as referenced variable = size
+
+int []a, b, c[];  // pre declaration gets associated with all variables till semi-column in its right side
+// here a is 1d array , b is 1 d array and c is 2d array
+```
+* no of columns can be variate in JAVA
+* To find the length or size of array that is no of elements in array, we use the function ```variable-name.length```
+* For 2D array, ```variable-name.length``` will return no of rows and ```variable-name[i].length``` will return no of elements in ```ith ``` row
+* For 3D array, ```variable-name.length``` will return no of 2D array in 3D array
+```java
+int [][]a[]= new int[6][4][2]  // 3D array
+/*
+| [ [ ] ] | [ [ ] ] | [ [ ] ] |
+*/
+
+``` 
+
+### <u> Variable Length of Array </u>
+    ```
+    |0|1|2|3|4
+    |0|1|
+    |0|1|2|
+    |0|2|3|4|5|6|
+    |0|
+    ```
+
+
+## Variable Declaration
+* 2D Array
+```java
+int a[][] = new int[5][4];
+int []a[];
+int [][]a , b[]; // 3d array
+```
+
+
+
