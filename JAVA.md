@@ -34,7 +34,6 @@
     * For example , a ```print``` statement replaces with ```display``` function to print something on ```windows``` console  in C++
     * In Java , after compiling the file created is ```.class``` and not ```.exe``` 
     * The ```.class``` file contains ```byte code``` and is read by ```interpreter``` at run time
-r
     * JAVA program runs inside JVM
     * Uses run time environment of its own
 
@@ -297,5 +296,155 @@ int []a[];
 int [][]a , b[]; // 3d array
 ```
 
+# Date: 29th August 2019
 
+## Expression
+* built using values,variables, operators and method calls
+* (a*2) is an expression and b+ (a*2); is a statement
+* Expression is a clause, and the statement is the complete sentence since it forms the complete unit of execution
+* expression produces intermediate result
 
+## Types of expression:
+* produce a value
+* assign a variable
+* those that have no result but have a side effect because an expression can include a wide range of elements such as method invocations or increment operators that modify the state.
+
+## Operators
+* symbols that operates on one or more arguments to produce results
+* Arguments here are operands
+    ```
+    result = a+b
+    ```
+
+## Types of operators
+1. Assignment operator
+    * lvalue = rvalue -> rvalue is assigned to lvalue
+2. Arithmatic operator
+3. Relational Operator
+    * ```==``` and ```!=``` are object reference operators
+4. Logical Operator ```AND (&&)  OR(||)   NOT(!)```
+5. Logical Operator bit level
+    ```
+    AND &
+    OR |
+    XOR ^
+    NOT ~
+    ```
+    ```java
+    int a= 10; // 00001010 = 10
+    int b = 12; // 00001100 = 12
+   ```
+   * logical bit wise opeator checks first condition before proceding further
+   * logical operator checks all conditions before taking any conditions
+   * Number is represented into 32 bit(Theoretically)
+   ```
+   result = a & b
+   * result is negative then the answer will be 2's complement
+   ```
+6. Shift Operators
+    * Shift Operators(bit level)
+    * Shift Left  ```<<``` Fill with zeros
+    * Shift Right ```>>``` Based on Sign
+        * if number is positive then it will be filled with ```0```
+        * if number is negative then it will be filled with ```1```
+    * Shift Right ```>>>``` Fill with zeros
+    ```
+    a = 0011
+    a << 2 
+    0011 ~> 001100
+
+    a >> 2
+    0011 ~> 0000
+
+    b = -4
+    b >> 2
+    111111111111111111111111100 ~> 11111111111111111
+    0100 ~> 0001
+    -4 ~> -1 (twos complement)
+
+    a >>> 2
+    0011 ~> 0000
+    3 ~> 0
+    ```
+
+## Control Structures
+* Block of program to change the execution of program based on logic and values
+* 3 types of control structures are:
+1. Conditionals
+    1. IF
+    ```java
+    if (condition)
+    {
+        //codes
+    }
+    //codes after if
+    ```
+    2. if else
+    ```java
+    if (condition) {
+
+    }
+    else if {
+
+    }
+    ```
+    3. nested if else
+    4. switch
+    ```java
+    switch (condition)
+    {
+        case 1 : //code
+        case 2 : //code
+    }
+    ```
+
+2. loop
+    1. For
+    ```java
+    for(initialization;testExpression;update)
+    {
+        //code inside for loop's body   
+        // to run it for infinite just testExpression == True
+    }
+    ```
+
+    2. While loop
+    ```java
+    int i = 0;
+    while(condition)
+    {
+        statement
+        condition update
+    }
+    ```
+    3. Do While
+        * It executes atleast once
+
+3. Jump Statements
+* unconditionally transfer the program control to another part of program
+    1. Continue
+    2. Break
+    3. Return ~> it immediately quit the current method and return to the calling method
+
+## Basic Syntax
+```java
+class class-name-user-defined{
+    // access-specifier method-static void main(String[] args)
+    public static void main(String[] args){
+        ... ..      ...
+        n=3;
+        result = square(n);
+        ... .. ...
+    }
+    private static int square(int i){
+        // return statement
+    }
+    
+}
+// static method ~> we dont need any object to call the function/method
+// String[] is a variable length array which stores the input from cmd
+// args is just a variable name which can be user-changeable
+```
+* file name should be similar to class name but its not compulsory
+* at compile time we need ```file-name.java```
+* at run time we need ```class-name.class```
