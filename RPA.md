@@ -12,6 +12,8 @@
 * Write Line-> used to write lines
 * Open Application -> used to open an application
 * Type Into -> used to write something inside the application
+* To generate new random values we can use the function ```new Random().Next(range)```
+
 
 ## Properties
 * Present on right hand side tab
@@ -95,3 +97,8 @@
     9. ToInt
     10. ToString
 
+## Data Manuplation
+* <u> Scalar Variables </u> ~> Holds a single value of a fixed type, for example Characters , Booleans , Numbers, Date Times
+* <u> Collections </u> ~> Like Arrays, Lists and Queues or Strings, Dictionaries
+* <u> Tables </u> ~> A Table is siilar to an array of dictionaries where values are accessible by row index and column names
+* <u> Generic Value </u> ~> It can represent basic types of data, including text,number and date/times.
