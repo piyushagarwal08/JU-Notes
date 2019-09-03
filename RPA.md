@@ -102,3 +102,10 @@
 * <u> Collections </u> ~> Like Arrays, Lists and Queues or Strings, Dictionaries
 * <u> Tables </u> ~> A Table is siilar to an array of dictionaries where values are accessible by row index and column names
 * <u> Generic Value </u> ~> It can represent basic types of data, including text,number and date/times.
+
+
+## Get Password
+* By default ```UiPath``` is not able to type in a string into a password element
+* For that purpose, we use ```Get Password``` activity to create or convert a ```string``` to ```password``` type varaible\
+    ```qwerty12345 to ********```
+* After creating a password type variable simply use ```Type Into``` activity to perform the task
