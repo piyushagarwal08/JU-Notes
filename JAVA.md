@@ -448,3 +448,33 @@ class class-name-user-defined{
 * file name should be similar to class name but its not compulsory
 * at compile time we need ```file-name.java```
 * at run time we need ```class-name.class```
+
+                <-----------------The End of Unit 1---------------------->
+
+# Date 3rd September 2019
+* To run any code
+    1. Save the file with code
+    2. Open cmd and run ```javac file-name.java```
+    3. it will create a ```.class``` file
+    4. to execute ```java file-name```
+* Default package always associated with java code is ```java.lang```
+* Any word starting with ```Capital Letter``` is a ```Class```
+* All methods are iitiated with ```small letters```
+* To take input we use class ```java.util.*```
+    ```java
+        Scanner sc=new Scanner(System.in); // object of the same class
+        System.out.print("enter the value of a: ");
+        a = sc.nextInt();  // Camel Notation used in java
+        // nextInt works same as scanf of C 
+    ```
+* ```random``` class produces ```17 decimal place``` digit
+* Static method can only call other Static methods
+
+## For Each Loop
+* Syntax
+```
+for(data-type variable:iterable-structure)
+
+for(int i:a[])
+    further code
+```
