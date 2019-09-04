@@ -478,3 +478,27 @@ for(data-type variable:iterable-structure)
 for(int i:a[])
     further code
 ```
+
+# Date 4th September 2019
+
+
+## String
+* <u> String </u>  ~> An array of characters is called String
+* ```String``` is also a ```class``` in java which can be used by making objects
+    ```
+    String s = 'Deepak';
+    ```
+* String objects are immutable
+* While creating the first object of any String always ```2 objects``` are created
+* The two objects created are ```Heap``` and ```Constant```
+* when creating further objects of similar String, the compiler checks the constant object for availablity , and if available then link to its reference else create another ```Heap```
+* The Heap object is used to process or compute the String with other commands and Constant for Similar String checking
+
+## Shallow Comparsion
+* It is a functionality of java where Strings are compared with each other based on their referecnce variable and not on their actual value
+* To compare two strings we use the function ```string-variable-name.equals(another-string-variable-name)```
+* To compare two strings without ```CaseSensitive``` we use function ```String1.equalsIgnoreCase(String-2)```
+* To convert String to ```Lower Case``` use the function ```toLowerCase()```
+* To convert String to ```Upper Case``` use the function ```toUpperCase()```
+* To find the charater in a string with ```index``` position use the function ```string-name.charAt(index-position)```
+* Constructor can be made ```private``` using ```Single Turn Pattern```
