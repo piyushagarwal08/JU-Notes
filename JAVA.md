@@ -502,3 +502,52 @@ for(int i:a[])
 * To convert String to ```Upper Case``` use the function ```toUpperCase()```
 * To find the charater in a string with ```index``` position use the function ```string-name.charAt(index-position)```
 * Constructor can be made ```private``` using ```Single Turn Pattern```
+
+
+# Date : 5th September 2019
+
+## Inheritance
+* To inherit one class in another , we use the function ```extends```
+* All the classes being inherited by a ```Derived``` class are written seperated by ```,```
+    ```java
+    // created a base class
+    class Super  // Java has a inbuild keyword super 
+    {
+        int a = 0;
+        public void show()
+        {
+            System.out.println("A="+a);
+        }
+    }
+
+    // created a derived class
+    class Sub extends Super 
+    {
+        int b = 0;
+        public void display()
+        {
+            System.out.println("B="+b);
+        }
+    }
+    ```
+* if we do not define a specific ```constructor``` in a class then ```compiler``` creates a constructor for the same ```class``` so that a user is able to make ```object``` of the ```class```
+
+* We have three types of constructor
+    1. Default ~> to initialise the variable with default data types
+    2. Parameterised COnstructor ~> Initialse the variables of the class defined by user at run time
+    3. Copy Constructor ~> Previously existing objects are used to create new objects
+* Constructor of Super Class can not be called in the derived class just by using its name
+* To call the constructor ```Base``` class inside the ```Derived``` class we use the function ```super();```
+* If we are using ```super``` keyword then it must be the ```FIRST``` executable keyword in the ```Sub``` or ```Derived``` class created by the ```user```
+* If you define same variable as ```argument to a function``` and to be assigned, we can use keyword to differentiate the varaiables
+    ```java
+    class Sub extends Super 
+    {
+        int b = 9;
+        public Sub(int b)
+        {
+            super(); // it calls the constructor of the Base Class
+            this.b=b;
+        }
+    }
+    ```

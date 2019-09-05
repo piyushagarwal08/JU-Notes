@@ -109,3 +109,12 @@
 * For that purpose, we use ```Get Password``` activity to create or convert a ```string``` to ```password``` type varaible\
     ```qwerty12345 to ********```
 * After creating a password type variable simply use ```Type Into``` activity to perform the task
+
+
+## Recording
+* Single time ```ESC``` pause the recording
+* Double Time ```Esc``` Stop the recording
+* To use some kind of ```hot-keys``` , do the following
+    1. Press ```Esc``` once ~> To pause the recording
+    2. In ```Type``` option use the ```send Hotkey``` option to use any shortcut
+* In ```web``` recording , it will work similarly as ```selenium``` waiting time
