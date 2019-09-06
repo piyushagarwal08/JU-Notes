@@ -551,3 +551,88 @@ for(int i:a[])
         }
     }
     ```
+
+# Date : 6th September 2019
+
+## Overloading
+* Same name with different names or arguments
+
+## Overriding
+* Same name with same number and name of arguments
+
+```java
+class Super
+{
+    int a;
+    public Super(int a) // constructor
+    {
+        this.a = a;  // instance variable
+    }
+    public void show()
+    {
+        System.out.println("A=" + a);
+    }
+}
+class Sub extends Super
+{
+    int b;
+    public Sub(int b)
+    {
+        Super(b*2);
+        this.b = b;
+    }
+    public void display()
+    {
+        System.out.println("B="+b);
+    }
+}
+class Day4Demo
+{
+    public static void main(String args[])
+    {
+        Sub obj = new Sub(10);
+        obj.display();
+    }
+}
+```
+* ```this``` it differentiates instance variable with arguments
+* In Inheriatnce(overriding) , the top variable(variable of base class) can store the Sub/Derived class object or variable where as Sub/Derived class can not do so
+```java
+Sub obj = new Super(10); // not possible
+// where as
+Super obj = new Sub(20); // is possible
+```
+
+## Method Overloading
+```java
+class Add
+{
+    int a , b;
+    float c;
+    public void getAB(int a,int b,float c)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    public void Sum(int a , int b)
+    {
+        System.out.println("Sum ="+(a+c));
+    }
+    public void Sum(int a, float c)
+    {
+        System.out.println("Sum = " + (a+c));
+    }
+}
+class DayOverriding
+{
+    public static void main(String args[])
+    {
+        Add obj = new Add();
+        obj.Sum(2,3);    
+        obj.Sum(2,2.5); // By default double
+    }
+    // Sum =5
+    // Sum = 4.5
+}
+```
