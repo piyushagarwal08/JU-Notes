@@ -13,7 +13,7 @@
 * Open Application -> used to open an application
 * Type Into -> used to write something inside the application
 * To generate new random values we can use the function ```new Random().Next(range)```
-
+* To close any application, we can use the ```close application``` activity.
 
 ## Properties
 * Present on right hand side tab
@@ -111,16 +111,6 @@
     ```qwerty12345 to ********```
 * After creating a password type variable simply use ```Type Into``` activity to perform the task
 
-
-## Recording
-* Single time ```ESC``` pause the recording
-* Double Time ```Esc``` Stop the recording
-* To use some kind of ```hot-keys``` , do the following
-    1. Press ```Esc``` once ~> To pause the recording
-    2. In ```Type``` option use the ```send Hotkey``` option to use any shortcut
-* In ```web``` recording , it will work similarly as ```selenium``` waiting time
-
-
 ## Array and Lists & Dictionary
 * TO define an array type variable, with variable type``` Array of T``` or ```String[]``` and default array can also be written
 * To define an list we set the variable data type as ```List<String>``` and with default value as ```new List(of String) from ['v1','v2']```
@@ -166,3 +156,84 @@ Ans. ```Input = 1 and Output = 2```
 Ans. ```fullAddress.Contains(streetName)```
 9. How can the index integer variable be displayed inside a Message Box activity?
 Ans. ```“Current index is: “ + index.ToString```
+
+
+## Recording
+* Single time ```ESC``` pause the recording
+* Double Time ```Esc``` Stop the recording
+* To use some kind of ```hot-keys``` , do the following
+    1. Press ```Esc``` once ~> To pause the recording
+    2. In ```Type``` option use the ```send Hotkey``` option to use any shortcut
+* ```F2``` pauses the recording for 3 seconds
+* ```Right-click``` exit the recording
+* In ```web``` recording , it will work similarly as ```selenium``` waiting time
+* UiPath has 4 types of Recording:
+    1. Basic
+    2. Desktop
+    3. Web
+    4. Citrix
+* Citrix is used for automating stuff with virtual machines
+* The recorder is able to record:
+    1. left clicks on buttons,checkboxes and other clickable items
+    2. Typing into editable fields
+* Some non-recordable things to remember are:
+    ```These are Manual Recording```
+    1. Keyboard Shortcuts
+    2. Modifier Keys
+    3. Right click
+    4. Mouse hover
+    5. etc
+* Desktop recorder is different from basic just because it provides a container based workflow that is different actions in same application are separated by different containers
+* ```Indicate on Screen``` is a good function that can be used to change the snapshot used for automation
+* ```Text``` function in recorder has ```copy``` function, that can be used to copy some text and store in a ```variable``` which is created itself
+
+### Basic Recording
+* generates a full selector for each activity and no container, the resulted automation is slower than one that uses containers and is suitable for single activities.
+* Actions are self-contained
+* Simpler Workflow
+* Can cause interference
+
+## Desktop
+* suitable for all types of desktop apps and multiple actions; it is faster than the Basic recorder, and generates a container (with the selector of the top-level window) in which activities are enclosed, and partial selectors for each activity.
+* Actions are contained inside an AttachWindow component
+* No interference issues
+* More Complex workflow
+
+## Web Recoring
+* designed for recording in web apps and browsers, generates containers and uses the Simulate Type/Click input method by default.
+
+## Citrix 
+* used to record virtualized environments (VNC, virtual machines, Citrix, etc.) or SAP, permits only image, text and keyboard automation, and requires explicit positioning.
+* The Citrix Recording toolbar enables you to:
+    1. Click an image or text
+    2. Simulate keystrokes or hotkeys
+    3. Select and copy text from a window
+    4. Scrape UI elements
+    5. Look for elements or wait for them to vanish
+    6. Find an image or wait for it to vanish
+    7. Activate a window
+
+## Manual Recording
+* Various types of single actions that can not be automated by simple recording are done using manual recordings
+* Various Types of Single Actions are:
+    1. ```Start and Stop an App or Browser``` ~>These single actions enable you to open an app or browser, as well as close them, by pointing and clicking them. 
+    2. ```Click``` ~> These types of actions enable you to record clicks on the desktop or a running application, select an option from a drop-down list or combo box, and select a check box or a radio button
+    3. ```Type``` ~> These single actions include those that require input from the keyboard, such as keyboard shortcuts and key presses. To achieve this, two pop-up windows are used to retrieve your keyboard input.
+    4. ```Copy``` ~> These actions enable you to copy a selected text from an opened application or web browser, so that you can use it later in the project. Screen scraping is also available under the Copy menu, as it enables you to extract images and text from an app or browser.
+    5. ```Mouse Element``` ~> These types of actions enable you to simulate mouse movements that cannot be recorded but give you access to more functionalities, such as right-clicking, hovering or double-clicking. 
+    6. ```Find Element``` ~> These types of single actions enable you to identify specific UI elements or pause the automation until a particular window closes or an UI element is no longer displayed. The find relative element action is useful with apps that do not allow direct interaction with UI elements, such as Citrix. 
+    7. ```Window Element``` ~> Window element actions enable you to close windows. Studio does this by hooking in the operating system to make sure the application is closed. 
+    8. ```Text``` ~> Text single actions enable you to select or hover over text to make tooltips visible for scraping, right-click to make the context menu visible, copy and paste text and many others.
+    9. ```Image``` ~> Image single actions enable you to wait for a specified image to disappear, to find a specific image in an app or website, right-click or hover over an image and others. This type of manual recording can be useful with UI elements that are saved as graphics, as they cannot be highlighted as normal fields or text
+
+## Lesson 4 Quiz
+1. How can you delay the Automatic Recording?
+Ans. ```By hitting the F2 key```
+2. Can you combine automatic recording with step-by-step recording in the same recording sequence?
+Ans. ```Yes```
+3. Which recording wizard would you use to automate Virtual Machine actions? 
+Ans. ```Citrix Recording```
+4. When is it recommended to use Desktop recording?
+Ans. ```When you automate more steps in the same window```
+5. Which container will Basic Recording generate?
+Ans. ```No container```

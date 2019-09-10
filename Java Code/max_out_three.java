@@ -24,6 +24,7 @@ class max
         {
             System.out.print(c+" is maximum");
         }
+        sc.close();
         
     }
 }
