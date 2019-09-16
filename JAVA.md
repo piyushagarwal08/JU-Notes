@@ -195,18 +195,19 @@ int getdata(float,int)   //5
     array,stack,queue
 * Types of Size
     32 - bit System
-    (1) byte
-    (2) short
-    (4) int
-    (8) long
-    (2) char
-    (4) float
-    (8) double
+    1. (1) byte
+    2. (2) short
+    3. (4) int
+    4. (8) long
+    5. (2) char
+    6. (4) float
+    7. (8) double
+   
     64 - bit system
-    (8) float
-    (16) double
-    (1) boolean  ```till jdk 1.3```
-    (1 byte) boolean  ```after 1.3 jdk```
+    1. (8) float
+    2. (16) double
+    3. (1) boolean  ```till jdk 1.3```
+    4. (1 byte) boolean  ```after 1.3 jdk```
 * Short is important and char is also used in short
 
 # DATE: 27 August 2019
@@ -235,7 +236,7 @@ int getdata(float,int)   //5
     1. Local Variable
     2. Instance Variable
     3. Static Variable
-* <u> Local Variable </u> ~>  Variable defined inside a method and accessef inside that method only
+* <u> Local Variable </u> ~>  Variable defined inside a method and accessed inside that method only
 * <u> Instance Variable </u> ~> Value is object specific , value not shared with other instances , Declared inside class but outside the body of method
 * <u> Static Variable </u> ~> Declared with static keywords , Shared among all instances , Memory allocated once at compile time, Should be initialized first that is each object will be able to change value of class variables and values will be modified for each object
 
