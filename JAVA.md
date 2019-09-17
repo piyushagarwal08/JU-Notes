@@ -637,3 +637,119 @@ class DayOverriding
     // Sum = 4.5
 }
 ```
+---
+# Date: 17th September 2019
+# Unit 2 Types of Java Classes
+
+## Content
+1. Abstract Class
+2. Static Class
+3. Inner Class
+4. Package
+5. Interface
+6. Wrapper Class,Access Control
+7. Super,this,final keywords
+
+## Abstract Class
+* A class which is declared with the abstract keyword is known as an abstract class in Java. It can have abstract and non-abstract methods
+* <b>Abstract</b> is a process of hiding the implementation
+* It shows only essential things to user and hides the internal details
+* Ways to achieve abstaction
+    1. Abstract Class (0 to 100%)  ~> depends on developer
+    2. Interface ( only 100%)
+* Implementation
+    1. must be declared with ```abstract``` keyword
+    2. may have abstract method and non abstract method
+    3. must have ```Atleast One``` abstract method and vice~versa
+    4. it need to be ```extended``` means need to implement inherited
+        * the abstract class will be the super class and need to be inherited in some class
+    5. it cannot be ```instantiated```, means we can not create object of abstract class
+
+## Abstract Method
+* a method without definition is known as abstract method
+* it must be declared with abstract keyword
+* It must be override in sub class otherwise subclass will become abstract
+* Syntax: ```abstract void function-name();```
+
+```java
+//abstract return_type Method_Name(ARGS)
+
+abstract void fun(int,int);
+
+abstract class Demo{
+    int a,b;
+    abstract void fun(int,int);
+    void getdata(){
+        a=10;
+        b=20;
+    }
+}
+```
+
+## Interface
+* Interface is a process to achieve abstraction
+* interface is the just a blueprint of a class
+* it has ```static``` and ```final``` variable ~> value will be constant for all objects
+* it has only ```abstract``` method
+* interface always be implemented
+* it cannot be instantiated just like the abstract class
+* It is not a class itself but tells the structure of the class
+* Interface must be ```implemented``` where as class must be ```extended``` for ```abstraction```
+* interface is a collection of abstract methods and constants
+* Can not create ```object``` of ```interface```
+* All methods declare in an interface are public abstract by default
+* Till ```JDK 1.7``` , Non abstract methods are not allowed in interface
+* From ```JDK 1.8```, we can define ```non-abstract methods``` inside ```interface``` as well
+* Everything defined inside interface is public by default
+
+```java
+// A function with definition but do nothing can be stated as
+void func-name()
+{
+
+}
+```
+
+```java
+class A{
+    //declaration and definition
+}
+interface A{
+    //declaration only
+    // all methods will be abstract
+    // 
+}
+```
+```java
+interface name_interface{
+    //declare variables
+    //declare methods
+}
+interface Animal()
+{
+    int legs=4;
+    void fun();
+}
+```
+
+## Relation between Class and Interface
+* Class extends Class
+* Class implements Interface
+* Interface extends Interface
+
+## Multiple Inheritance in java by interfcae
+```
+        (interface)         (interface)
+                |                 |
+implements      |_________________|          
+                        |
+                      (Class)
+
+        (interface)         (interface)
+                |                   |
+                |___________________| (extends)
+                        |
+                     (Class)
+```
+
+## Difference             
