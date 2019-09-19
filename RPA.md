@@ -237,3 +237,13 @@ Ans. ```Citrix Recording```
 Ans. ```When you automate more steps in the same window```
 5. Which container will Basic Recording generate?
 Ans. ```No container```
+
+## Data Scraping
+* Data Scraping is a function which can be used to Record any kind of data which is available in ```link``` form 
+* For any kind of link to be extracted as data, you need to specify atleast two links together
+* Then click on ```next``` and provide the ```column names``` of each column or data type you wish to scrap data and want in ```csv``` or ```excel``` file
+* To extract more data of different type , click on ```Extract correlated data``` and follow the above steps only
+* The maximum number of fields represent the number of entries you wish to scrap over the webpage
+* After this, click on ```finish``` and click on the ```next``` button over the ```webpage``` from which you are scraping the data
+* The above task will make sure that the page will be click next as soon data from single page is extracted successfully
+* Data Scrapper is also able to extract a ```tabular data``` as well very easily, as it extracts the table itself on just single click

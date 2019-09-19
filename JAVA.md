@@ -752,4 +752,170 @@ implements      |_________________|
                      (Class)
 ```
 
-## Difference             
+## Difference    
+<img src="ClassVsInterface.png"></img>
+
+# Date 19th September 2019
+
+## Package
+* A java package is a group of similar types of classes , interfaces ad sub-packages
+* Package in java can be categorized in two form, built-in package and user-defined package
+* ```Abstroict window Toolkit``` is ```AWT```
+* There are many buil in packages such as java,lang,awt.javax,swing,net,io,util,sql etc
+
+## Syntax for using Package
+```java
+package Name_Package;
+import.....;
+class......{
+    statement...
+}
+// package must be the first line inside the source code file 
+```
+* Name_Package is the full path of directory separated by ```.```
+* E.g., ```Desktop.Ju-Notes.JavaCode```
+
+## Syntax for compile the package program
+```
+javac -d directory javafilename
+javac -d . Demo.java  # example 1
+```
+* Package is used for classes in which main class function is not included
+
+## Access Control
+* It is of 2 types
+1. Access Modifiers ~> Defines the accessibility limitations
+    * Default
+    * Private
+    * Protected
+    * Public
+2. Non-Access Modifiers ~> it defines the functionality but not the accessibility
+    * Static
+    * Abstract
+    * Final
+    * Synchronized
+* Modifiers provide some kind of feature or limitation to an data structure like class or object or methods
+
+<table>
+<tr>
+<td>
+Access MOdifier
+</td>
+<td>
+within class
+</td>
+<td>
+within package
+</td>
+<td>
+outside package by subclass only
+</td>
+<td>
+outside package
+</td>
+</tr>
+
+<tr>
+<td>
+Private
+</td>
+<td>
+Y
+</td>
+<td>
+N
+</td>
+<td>
+N
+</td>
+<td>
+N
+</td>
+</tr>
+
+<tr>
+<td>
+Default
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+<td>
+N
+</td>
+<td>
+N
+</td>
+</tr>
+
+<tr>
+<td>
+Protected
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+<td>
+N
+</td>
+</tr>
+
+<tr>
+<td>
+Public
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+<td>
+Y
+</td>
+</tr>
+</table>
+
+
+## Java Inner Classes
+* Java ```inner class``` or ```nested class``` is a class which is declared inside the class or interface
+* We use inner classes to ```logically group``` classes and interfaces in one place so that it can be more readable and maintainable, that is keeping data which is dependable upon each other can kept together
+* It can access all the members of ```outer class``` including ```private data members and methods```
+* It is a part of nested class
+* Non static nested classes are known as inner classes
+
+## Advantages of Inner Classes
+* It can access all the members (data members and methods) of outer class including private
+
+## Types of nested class
+1. Non static nested class
+    * Member inner class ~> normal inner class
+    * Anonymous class ~> name is defined by compiler at the runtime, a class without name
+    * Local Inner class ~> class which is defined inside a method
+2. Static class
+    * Static nested class
+
+### Anonumous Class
+```java
+Demo1 d = new Demo1(
+    new TestDemo(){    // starting of syntax of anonymous class
+    void data()
+    {
+        ...
+    }
+}
+);
+// TestDemo is abstract class
+```
