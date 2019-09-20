@@ -247,3 +247,40 @@ Ans. ```No container```
 * After this, click on ```finish``` and click on the ```next``` button over the ```webpage``` from which you are scraping the data
 * The above task will make sure that the page will be click next as soon data from single page is extracted successfully
 * Data Scrapper is also able to extract a ```tabular data``` as well very easily, as it extracts the table itself on just single click
+
+
+## Input Methods
+1. Default (Generally used,hotkeys can be used)
+2. Window Messages(Can work in background,hotkeys can be used)
+3. Simulate Type (Fastest,used or prefered with Virtual Machines,hotkeys can not be used)
+
+## Output Screen Scraping
+1. Full Text ~> High speed and accuracy, can work in background and able to extract the hidden text
+2. Native ~> Get text by position with high speed but unable to work in background
+3. OCR ~> uses google and microsoft OCR and works great with citrix automation
+
+
+## UI Activities Properties
+* There are multiple activities that can be used to automate apps or web-apps and you can find them in the Activities panel, under the UI Automation category. 
+1. ContinueOnError – specifies if the automation should continue, even if the activity throws an error. This field only supports boolean values (True, False). The default value in this field is False.
+2. DelayAfter – adds a pause after the activity, in milliseconds.
+3. DelayBefore – adds a pause before the activity, in milliseconds.
+4. TimeoutMS – specifies the amount of time (in milliseconds) to wait for a specified element to be found before an error is thrown. The default value is 30000 milliseconds (30 seconds).
+5. WaitForReady - Before performing the actions, wait for the target to become ready. The following options are available:
+    * None - Does not wait for anything except the target UI element to exist before executing the action
+    * Interactive/Complete - Waits all of the UI elements in the target app to exist before actually executing the action.
+
+## Lesson 5 Quiz
+1. Which is the best option for scraping tables from a web page?  
+Ans. Data scraping wizard
+2. What is the Data Scraping wizard for?(Select all that apply.)  
+Ans. [Extracting whole tables from the web or other applications,Extracting correlated data from the web or other applications]
+3. By using the Full Text scraping method, the robot is able to:  
+Ans. [Get editable text.,Get hidden information.,Get the entire visible text.]
+4. Which of the text extraction methods can return the hidden text from a UI element?  
+Ans. FullText
+5. Which of the following text scraping methods preserve the text position?  
+Ans. [OCR,Native]
+
+## Selectors
+* Selectors are the way we identify User Interface elements on the screen. They are a xml string which contain some properties that uniquely define the specified element. 
