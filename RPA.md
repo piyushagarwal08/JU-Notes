@@ -284,3 +284,55 @@ Ans. [OCR,Native]
 
 ## Selectors
 * Selectors are the way we identify User Interface elements on the screen. They are a xml string which contain some properties that uniquely define the specified element. 
+* These are of 2 types:
+    1. Full Selectors ~> Used in general automation
+    2. Partial Selectors ~> Comes in use when containerisation automation is done
+* A selector has the following structure:
+    ```<node_1/><node_2/>...<node_N/>```
+
+## WildCards
+* There are basically 2 types of wildcards in UiPath that are:
+    1. ```*``` ~> Replace any number of characters
+    2. ```?``` ~> Replace exactly one character
+
+## Highlight
+* It is an activity that is used to simple ```Highligh``` an UI Element as the name suggestes
+
+## UIExplorer
+* It is Automation Tool which is used to easily manage or edit the Selectors 
+* To add some variable inside the selector the following way should be followed
+    ```
+    <wind some-selectors-code "+ variable name +" further selector code>
+    ```
+* It is used to be able to automate and manage dynamic selectors faced during web automation
+
+## Anchor Base Activity
+* This activity is used to find ```elements``` with unreliable selectors
+* It uses the position of elements on screen
+* ```Find Element``` this column is used to indicate the reliable field in the element we wish to search for our automation such as the name of the field
+* ```Activity Field``` is used to declare the task to be done once the indicated element or field is finded by ```Anchor Base Activity```
+
+## Relative Selector
+* It works in background and relies on the internal structure of application
+
+## Properties
+* Various properties of selectors are:
+    1. <u>Validate</u> ~>The button shows the status of the selector by checking the validity of the selector definition and the visibility of the target element on the screen.
+    2. <u>Indicate Element</u> ~>Indicate a new UI element to replace the previous one.
+    3. <u>Repair</u> ~> Enables you to re-indicate the same target UI element and repair the selector. This operation does not completely replace the previous selector. The button is available only when the selector is invalid.
+    4. <u>Highlight</u> ~> Brings the target element in the foreground. The highlight stays on until the option is disabled with a click. The button is enabled only if the selector is valid.
+    5. <u>Edit Attributes</u> ~> Contains all the application components needed to identify the target application (a window, a button etc.). This section is editable.
+    6. <u>Edit Selector</u> ~> Holds the actual selector. This section is editable.
+    7. <u>Open in UI Explorer</u> ~> Launches the UI Explorer. The option is enabled only for valid selectors.
+
+## Lesson 6 Quiz
+1. Can variables be used to build dynamic selectors?
+Ans. ```Yes```
+2. How can you see the full list of attributes of Ui elements?
+Ans. ```By using the UiExplorer tool.```
+3. What is a Selector?
+Ans. ```The “path” to the UI element, starting from the root, all the way to target element.```
+4. Which of the following is true regarding the Anchor Base activity?
+Ans. ```Use the screen position of the anchor and the target element.```
+5. What are the supported wildcard characters for selectors in UiPath Studio? 
+Ans. ``` * and ? ```

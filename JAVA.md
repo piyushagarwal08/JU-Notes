@@ -262,7 +262,7 @@ class Demo
 int[] a1 = new int[5];  // type name[] = new type[size]
 
 // post declaration of array
-int a1[] = [1,2,3,4,5]; // array as referenced variable = size
+int a1[] = {1,2,3,4,5}; // array as referenced variable = size
 
 int []a, b, c[];  // pre declaration gets associated with all variables till semi-column in its right side
 // here a is 1d array , b is 1 d array and c is 2d array
