@@ -908,7 +908,23 @@ Y
     * Static nested class
 
 ### Anonumous Class
+* Name is decided by compiler
+* Used in Artificial Programs
 ```java
+// Anonymous inner class
+abstract class Demo{
+    public void show();
+}
+class testDemo{
+    Demo p=new Demo(){ // Anonymous class... name will be decided by compiler at run time
+        public void show(){
+            S.o.p("Hello Demo");
+        }
+    };
+    p.show();
+}//end test demo
+
+// another example
 Demo1 d = new Demo1(
     new TestDemo(){    // starting of syntax of anonymous class
     void data()
@@ -919,3 +935,68 @@ Demo1 d = new Demo1(
 );
 // TestDemo is abstract class
 ```
+
+## Local Inner Class
+```java
+class Demo{
+    public void display(){
+        class inner{
+            public void show(){
+                SOP("Local inner ");
+            }
+        
+        }//local class ends
+        inner obj=new inner()l
+        obj.show();
+    }//display ends here
+}
+```
+
+## Static Inner Class
+* can access static data members of outer class including private only
+```java
+class outer{
+    static int a = 10;
+    int b = 20; // not accessible
+    static class inner{
+        public void show(){
+            s.o.p("value od a="+a);
+        }//show ends
+    }//inner class ends
+}//outer class ends
+```
+
+## Final
+* it can be applied to variable, method and class
+* if we make a variable as final, then it become the constant. That means values of that variable can't be changed
+* If we make a method as final then it can't be overridden . That means overriding of final methods are not allowed
+* If we make a class as final then it can't be inherited
+
+## Super
+* The super keyword in Java is a reference variable which is used to refer ommediate parent class object
+* super can be used to refer immediate parent class instance variable
+* super can be used to invoke immediate parent class method
+* super is used to invoke constructor of ```Super``` or ```base``` class
+
+## This
+* this can be used to refer current class instance variable
+* this can be used to invoke ```current``` class method (implicitly)
+* this() can be used to invoke current class constructor
+* this can be passed as an argument in the method call
+
+```java
+class Demo{
+    Demo(int a){
+        x = a;
+    }
+    Demo(int a, int b){
+        y=b;
+        this(a)
+    }
+    Demo(int a, int b,int c){
+        z = c;
+        this(a,b)
+    }
+}
+```
+
