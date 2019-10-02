@@ -109,3 +109,25 @@ e.g [ENTER]
   * Check auto login and scheduler task
   * Finally Apply
  
+## Workflow Designer
+* Helps to maintain the libraries of the bots
+* every workflow can have only single start button
+* To Create a ```WorkFlow```
+  1. Click on Workflow
+  2. Click New Workflow
+  3. Drag and Drop ```Start``` activity
+  4. ```Run Task``` -> this activity selects the pre build bots or tasks
+    * ```Repeat``` -> recursive action
+    * ```speed``` -> the way to complete the task, in real time , at backend etc
+    * ```Variable``` -> to set dynamic variables for our task such as login credentials
+* Its a kind of UML Diagram which can be designed as well as executed at the same moment
+
+## Properties
+* ```View Logs``` -> this option is used to check the log file
+* ```TimeOut``` -> any bot can be given a timeout after which even if the application wouldn't have completed execution, it will be terminated
+* ```Notification``` -> once email settings are done, one can use it to send mails with email trigger
+* ```HotKey``` -> shortcut can be set to run some bot
+
+## SCHEDULE
+* It can be used to schedule a particular bot and for it t, the machine password is mandatory to be specified
+
