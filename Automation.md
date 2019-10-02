@@ -53,6 +53,7 @@
   2. Runtime Client -> bot execution, required once the bot is deployed to control room
 * v-10.5, 8GB of RAM is required, CLient only would require 4gb RAM
 * current version-: 11.3.3
+* Latest Version of AAE Client requires around 16GB RAM
 * Control room is equipped with lots of tools and activities, its different in version 11 then 10
 * AA community is applicable only for 1 month
 * License in AA are customized thus can be developed based on requirements and charges will be applicable as per the needs
@@ -66,5 +67,45 @@
   2. Unattended -> no human interaction required
   
 # Time to Create
+* KeyStrokes -> insert data in some other application
+* Select Window shows the list of all applications opened on your system
+* to perform certain hotkey actions just choose options from given list
+e.g [ENTER]
+* the commands can be reordered by move up or move down option
+* Open Program/Files -> to open application,just type its name
+* To upload your bot to main control room , just right click on bot file and click upload
+* Community edition software does not have access to control room(users can not be created, licenss can not be managed)
+* ```atmx``` standard bot file extension
+* Repository Manager -> it allows the control room admin to run or schedule the uploaded bots
+* To create a user:
+  1. Actions Tab
+  2. Create User Tab
+  3. Set the details and all details are editable
+* Various Roles available
+  1. Admin -> can never login to the client and make bot, License Allocation:None
+  2. AnalyticsConsumer -> work on BotInsight platform, utilize the reports
+  3. AnalyticsExpert -> work on BotInsight platform, process the reports
+  4. Basic -> mandatory, as it allows to login , for both runner and developer client
+  5. IQBotServices  -> Cognitive platform
+  6. IQBotValidator -> Cognitive platform
+* Automation Anywhere works on R back policy, custom bots can be created to restrict or determine the permissions allowed for a user
+* Control Room Recognizes the ```BOTS``` based on their machine id
+* Operation Room -> Shows the task that are currently in progress
+* Audit Trail -> Its the log file which stores the data regarding each and every activity, success / failures , reasons etc.
+* Roles and Permission -> These can be set in control room and custom roles can be created as well
+* App Management -> To integrate the system with other applications
+* Outgoing Mail Server Application -> to send mails with reference to working or progress of any bots can be set
+* On Installation of Control Room , two categories or options are available:
+  1. Express Mode -> the master key gets set with machine
+  2. Manual Mode -> master key is need to be given at every login instance
+* Secure Recording -> It is required to be ```enabled``` so that the recorder would not record snapshots and take only Abstract information
+* Help / Support -> it can be customized as per the need
 
-  
+## To Set Auto Login
+* Click on Tools
+* Click Options
+* In Login Settings
+  * Set Username and Password
+  * Check auto login and scheduler task
+  * Finally Apply
+ 
