@@ -131,3 +131,21 @@ e.g [ENTER]
 ## SCHEDULE
 * It can be used to schedule a particular bot and for it t, the machine password is mandatory to be specified
 
+# Practical
+# Recorders
+* There are 3 types of Recorders:
+  1. Smart Recorder
+  2. Screen Recorder
+  3. Web Recorder
+  
+## Smart Recorder
+* It captures the coordinates
+* It captures the image in background
+* It captures the object
+
+## Screen Recorder
+* Captures mouse movements,clicks and keystrokes
+
+## Web Recorder
+* Based or made for internet related tasks, IE supportable 100% and only
+* It provides encoding feature of different languages
