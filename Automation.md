@@ -1,6 +1,9 @@
 # Automation Anywhere
 ## Date: 2nd October 2019
 
+# Control Room: http://lab8pc-31:8080/controlroom/
+Username: Piyush_Agarwal
+Password: student@123
 ## Agenda
 1. Intro
 2. Automation anywhere architechture
@@ -149,3 +152,53 @@ e.g [ENTER]
 ## Web Recorder
 * Based or made for internet related tasks, IE supportable 100% and only
 * It provides encoding feature of different languages
+
+# 3rd October
+## DataBase
+* Microsft Access -> Microsoft Jet 4.0 OLE DB Provider
+* Connect -> this is command used to connect MS access with AA
+* Prompt -> Used to prompt user to get an input for True/False or Yes/No which can be stored in a variable
+* It has 4 types of commands:
+  * Prompt for Value
+  * Prompt for File
+  * Promp for Folder
+  * Prompt for Yes/No
+* In prompt, there is option for ```Select Window``` in that use ```Don't write in Any Window``` to make sure what screen will be seen in background while prompt is there
+* SQL Commands are not supposed to end with semi-column ```;```
+* The input given by user is ```Generic``` by default
+
+    
+
+
+## Variable Manager
+* Create custom variables
+* Value Type -> start with 'v' letter for variable name
+* Array Type -> start with 'arr' letter for array name
+* List Type -> start with 'list' word for list name
+* New variables can be created by just using the ```Add``` button
+
+## Read From CSV/Text
+* It is an activity which can be used to read data from CSV or Text File
+* ```Delimeter``` -> used to differentiate data
+* By default Read CSV file activity iterates over line by line
+* ```$Counter$``` is an inbuilt function which can be used to iterate and show no of iterations done
+
+## Error Handling
+* Isolates errors that occur when running tasks
+* To Continue the task even if some error occurs , it is used
+* Various Error Handling Options are:
+  1. Take Snapshot -> save a pic of error
+  2. Run Task -> run any other task
+  3. Log Data Into File -> create an log file for errors
+  4. Send Email -> To send an email regarding the error
+  5. Variable Assignment
+  6. Set task status
+  
+* In error Handling ..if any task fails to accomplish, we can set it to do any of the above tasks
+* There are 2 System Variables made to be used for error handling 
+   * Error Description
+   * Error Line Number
+* <b>Variable Watch Table </b> -> it is used to check the variables changing if...```Dynamically```
+* <b> Toggle Break Point </b> -> It is use to freeze the executing script and run a step of the process by self click only
+* <b> Step Over </b> -> It is clicked to run the next step of process when the code is freezed
+* Enabling ```Error Debugging``` mode gives you access to remove errors using its inbuilt features
