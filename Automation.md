@@ -1,9 +1,6 @@
 # Automation Anywhere
 ## Date: 2nd October 2019
 
-# Control Room: http://lab8pc-31:8080/controlroom/
-Username: Piyush_Agarwal
-Password: student@123
 ## Agenda
 1. Intro
 2. Automation anywhere architechture
