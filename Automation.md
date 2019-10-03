@@ -202,3 +202,30 @@ e.g [ENTER]
 * <b> Toggle Break Point </b> -> It is use to freeze the executing script and run a step of the process by self click only
 * <b> Step Over </b> -> It is clicked to run the next step of process when the code is freezed
 * Enabling ```Error Debugging``` mode gives you access to remove errors using its inbuilt features
+
+
+## PDF Integration
+* It allows you to copy text from pdf
+* to merge or split two or more pdfs
+* to encrypt or make pdf password protected and to decrypt as well
+
+## Encryption
+* It is of 2 types:
+  1. Symmetric  -> same lock and unlock key
+  2. Assymmetric -> differnt lock and unlock key
+* In AA, we have 3 activities with us
+  1. Encrypt Files -> easily set passphrase and encrypt with any given algorithm
+  2. Decrypt Files
+  3. Create keys
+* Various Symmetric Algorithms available are:
+  1. Idea
+  2. TripleDES
+  3. CAST5
+  4. Blowfish
+  5. AES128
+  6. AES192
+  7. AES256
+  8. Twofish256
+* ```Create keys``` is used to create the public and private keys 
+* The file extension of keys should be ```.snk```
+* The files Encrypted with ```Public keys``` can only be saved with ```Private Keys```
