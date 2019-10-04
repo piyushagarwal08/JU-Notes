@@ -237,7 +237,7 @@ e.g [ENTER]
 * It is dedicated to Static pages
 
 ## Email Automation
-* Connect to email server
+* Connect to email server (imap.gmail.com) port: 993
 * monitor email activities
 * download attachments to proper folder
 * Extract emails and data based conditions
@@ -250,3 +250,6 @@ e.g [ENTER]
 * Insert port number
 * specify which mails to read
 * Specify message format
+
+* Use ```Get All Messages``` activity to access all the mails
+* it can fetch eith ```all``` or ```unread``` or ```read``` mails
