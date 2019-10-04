@@ -253,3 +253,42 @@ e.g [ENTER]
 
 * Use ```Get All Messages``` activity to access all the mails
 * it can fetch eith ```all``` or ```unread``` or ```read``` mails
+
+
+## System Variables
+* It contains all pre-built system variables 
+* the variables such as:
+  1. Date/Time
+  2. Loop
+  3. Excel
+  4. Email 
+  5. Trigger
+  6. PDF
+  7. System
+
+## Metabots
+* using metabots we can clone a certain application on local machine and can be used for re - use with similar environment
+* It is used when certain pages, fields are dynamic in nature and tend to have changes with field positions
+* There are 2 types of metabots
+  1. Asset -> Screen Capturing and calibration with actual screen and captured screen ( the acceptance should be more than 80 %)
+  2. Logic -> Capture the fields and insert data
+  
+## XML
+* Processig XML information generated from web services and cloud computing applications
+* Supports sessions,node editing, based on a tree structure of an XML document
+* To find any ```Tag``` data in ```AA``` use ```Get Node``` activity
+* Format to write node name is ```//node-name``` ... example ```\\IP```
+* ```Save Session Data``` -> used to save the processed file as another file
+* Functions like ```sum``` can be used
+
+## Certification Process
+* Practice 40Hr 
+* We have to face 40 Questions at test1 (MCQ Type) Passing Marks: 75% above
+* Use case will be given at round 2 , develop a bot with proper format
+* need to submit both bot file and output file
+* The formats should be checked before submitting files
+* Criterias:
+  1. components used
+  2. Best Practices
+* Complete E-learning tutorial
+
