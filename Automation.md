@@ -226,3 +226,27 @@ e.g [ENTER]
 * ```Create keys``` is used to create the public and private keys 
 * The file extension of keys should be ```.snk```
 * The files Encrypted with ```Public keys``` can only be saved with ```Private Keys```
+
+# 4th October 2019
+## Smart Recorder
+* It can work with object,image or even coordinates
+* ```control``` is keyword to refer to control panel
+* It can be used to easily automate ```Coursera``` with less chances of ```Re-Captcha``` detection
+
+## Screen Recorder
+* It is dedicated to Static pages
+
+## Email Automation
+* Connect to email server
+* monitor email activities
+* download attachments to proper folder
+* Extract emails and data based conditions
+
+* To get all messages, Requires
+1. HostName
+2. UserName
+3. Password
+* Select Server type
+* Insert port number
+* specify which mails to read
+* Specify message format
