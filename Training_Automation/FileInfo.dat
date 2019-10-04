@@ -91,4 +91,25 @@
       <Property Name="Status">Complete</Property>
     </Properties>
   </Entity>
+  <Entity Name="Smart_Recorder_Control_Panel.atmx">
+    <Properties>
+      <Property Name="LastRunTime">10/04/2019 09:46:58</Property>
+      <Property Name="RunDuration">00:00:12</Property>
+      <Property Name="Status">Complete</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="Email_Reader.atmx">
+    <Properties>
+      <Property Name="LastRunTime">10/04/2019 12:00:13</Property>
+      <Property Name="RunDuration">00:01:51</Property>
+      <Property Name="Status">Failed</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="XML_learn.atmx">
+    <Properties>
+      <Property Name="LastRunTime">10/04/2019 12:54:54</Property>
+      <Property Name="RunDuration">00:00:03</Property>
+      <Property Name="Status">Complete</Property>
+    </Properties>
+  </Entity>
 </Entities>
