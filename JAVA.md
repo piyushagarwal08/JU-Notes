@@ -999,4 +999,72 @@ class Demo{
     }
 }
 ```
+---
 
+# Date : 9th October 2019
+# Unit 3 Exception Handling
+
+## Types of Errors:
+1. Compile Time Error -> Some kind of ```Syntax error```
+2. Run Time Error -> Not run due to ```environment error``` 
+3. Logical Error -> Compiled and run but Error in some code input due to which we are not getting desired output
+
+* ```Exception``` are the cause by which our programs get terminated or giving some wrong output
+* If we get such error at ```compile time``` then Exception is known as ```Compile time``` exception in our program
+* If we get  such error at ```execution time``` of the program then such errors are known as ```Run time``` exceptions
+
+## Types of Exception
+* ```Check``` and ```Uncheck``` exceptions are with respective to the ```compilers``` point of view
+1. Compile Time Exception
+    * These are also known as ```checked exceptions```
+    * Examples
+        * I/O Exceptions
+        * SQL Exceptions
+
+2. Run Time Exception
+    * These are also known as ```unchecked exceptions```
+    * Examples
+        * Arithmatic Exception (due to some calculation mistake)
+        * Array Index Out of Bound Exception
+
+## Handling Exception
+* There are two ways to handle ```exception```
+    1. ```Throw```
+        * All exceptions will be handled by compiler only
+        * Program always gets successfully compiled
+        ```java
+        Class ABC{
+            P.S.V.M(String args[]) throw {
+                ......
+                ...... // Exception occur
+                ......
+            }
+        }
+        ```
+        * Does not compile when error occurs due to package missing issues
+        * We can define the particular ```name of package``` for which error may occur
+        e.g., ```IOException```
+        * or just define the main class ```Exception```
+
+    2. ```Try , Catch , FInally```
+        ```java
+        try {
+            //Exception Code... the line of code in which we are expecting some exception to be generated
+        }
+        catch (Exception e) {
+            // corrective measure of exception occurring in upper block that is in try block
+        }
+        finally {
+            // it is executed always whether we are having error or not
+        }
+        
+        ```
+        * If we are defining ```try``` block then atleast one ```catch``` block is necessary to be defined
+        * finally block is not necessary to be defined , its upto the developer
+        * It is of 3 types:
+            1. Try_catch with single catch
+            2. Try_catch woth multiple catch
+            3. Try_catch with nested try_catch
+        
+## User Defined Exception
+* Generating a self customized exception and terminating the program as per our need
