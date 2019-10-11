@@ -336,3 +336,23 @@ Ans. ```The “path” to the UI element, starting from the root, all the way to
 Ans. ```Use the screen position of the anchor and the target element.```
 5. What are the supported wildcard characters for selectors in UiPath Studio? 
 Ans. ``` * and ? ```
+
+
+## Image and Text Automation
+### <u>Mouse Activities</u>
+* Using ```click image``` we can click on almost anything that is button,checkbox,textfield etc
+* ```Click Text``` uses oCR to scan the screen of Virtual Machine... where as ```click image``` faster and more reliable ut fails only if background color changes
+* This is done using ```Citrix Recording```, it is preferred to be used when we are working on an image of a system that could be referred as the ```AWS instance``` or a ```Virtual Box```
+* In this , the main function of recording is ```click image``` and the recording to be done manually only
+* ```click image``` -> this functin or activity is used as dragging and selecting an area with respect to which we can decide where to click 
+* ```click Text``` it does the same way as ```click image``` but in a different manner, it takes an OCR of the image and tries to find the element with same ```name``` as provided and ```click``` with respect to its position
+
+## <u>Keyboard Actions</u>
+* If sometimes, the ``` mouse actions``` fails to find the element , we can use the keyboard actions and automate the workflow using the ```keyboard shortcuts``` such as ```tab```,```ctrl+v``` etc.
+
+### Select and Copy
+* this activity is used to copy the ```selectable``` fields inside an virtual environment
+* it works similarly as , selecting the field we wish to copy
+
+### Scrap Relative
+* This activity is used to copy data from ```non-clickable``` area which is done or preferred to be done using ```Google OCR``` and it can be set to find element with respect to some ```relative position```
