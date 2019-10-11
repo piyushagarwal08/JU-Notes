@@ -342,7 +342,7 @@ Ans. ``` * and ? ```
 ### <u>Mouse Activities</u>
 * Using ```click image``` we can click on almost anything that is button,checkbox,textfield etc
 * ```Click Text``` uses oCR to scan the screen of Virtual Machine... where as ```click image``` faster and more reliable ut fails only if background color changes
-* This is done using ```Citrix Recording```, it is preferred to be used when we are working on an image of a system that could be referred as the ```AWS instance``` or a ```Virtual Box```
+* This is done using ```Image Recording```, it is preferred to be used when we are working on an image of a system that could be referred as the ```AWS instance``` or a ```Virtual Box```
 * In this , the main function of recording is ```click image``` and the recording to be done manually only
 * ```click image``` -> this functin or activity is used as dragging and selecting an area with respect to which we can decide where to click 
 * ```click Text``` it does the same way as ```click image``` but in a different manner, it takes an OCR of the image and tries to find the element with same ```name``` as provided and ```click``` with respect to its position
@@ -356,3 +356,28 @@ Ans. ``` * and ? ```
 
 ### Scrap Relative
 * This activity is used to copy data from ```non-clickable``` area which is done or preferred to be done using ```Google OCR``` and it can be set to find element with respect to some ```relative position```
+
+## Lesson 7 Quiz Time
+1. Creating automations in a Citrix environment is challenging because:
+Ans. ```You need to interact with the app using Image Recognition or OCR.```
+2. Is Reset Clipping Region mandatory to be executed at the end of a scrape relative sequence?
+Ans. ```No, for the next actions we can use other Clipping Regions.```
+3. What activities can be used to interact with applications in a Citrix environment?
+Ans . ```Type into, Click Image, Click Text```
+4. How can you scrape a field on a Citrix Environment when the value in that field changes each transaction?
+Ans. ```Find a static element nearby and use Scrape Relative```
+5. Click Image and Click OCR Text are not 100% reliable in Citrix environments. What method can be used instead (when applicable) to have safer actions?
+Ans. ```Setting focus on a reliable element and then navigating around the app using keyboard (up/down arrows, tab, etc) or using keyboard shortcuts.```
+(Failed in above attempt)
+6. Having an app in a Citrix environment with multiple text-boxes that look the same (size/style), how can you identify one of them to type into?
+Ans. ```By clicking relative to an unique text/image next to the textbox., You can’t identify it if it doesn’t have something unique next to it (text/image).```
+7. Is it possible to click a button with Click Image Activity if the target is not visible on the screen?
+Ans. ```No, you could click a button which is not visible only using selectors```
+8. Consider having an application in Citrix Environment that has a button named ‘Accept’ and also a label that contains the Accept word. How can Click Text be customized in order to access the correct button?
+Ans. ```By using the Occurrence property.```
+9. How can you improve accuracy when scraping with OCR a region that contains only digits?
+Ans. ```Use Google OCR with “Numbers Only”```
+(Passed in above attempt)
+
+
+## Advanced Citrix Automation
