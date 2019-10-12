@@ -412,4 +412,43 @@ Ans. ```By sending keyboard commands/hotkeys```
 (Passed)
 
 
+# Excel Automation
+* ```Excel application scope``` ~> it is a container based activity and is used to do all workflows regarding the Excel file
+* ```Visible``` ~> It is an inbuilt activity which if we checked tells ```UiPath``` to work on file using ```MSOffice``` and if not then all tasks are performed internally
+* While using Direct access only single process can work where as while using MSOffice multiple can be done at the same time
+* A range can be specified by defining the cells separated by ```:```.
+    ```A1:C5```
+* ```Build Data Table``` ~> this activity is used to create more data tables with very easy and simple GUI
+* ```Append Range``` ~> It is used to append more data to same file
+* Data tables are ```zero-indexed``` same as a ```list in python```
+* ```sort data table``` ~> This activity is used to sort some tabular data based on a certain column
+* ```Select Range``` ~> This activity is used to select a range of cells over which further actions like ```copy/delete/paste``` can be performed
+* ```Join Data Table``` ~> This activity is used to perform the ```JOIN``` operation
+    * The ```Join Operation``` is of 4 types:
+        1. inner join
+        2. left join
+        3. full join
+* The table join ```criteria``` can be defined using either ```column data type``` or simple by ```column name``` written inside ```double-quotes```
+* the conditions can be set as more then one or either on one using ```AND``` and ```OR``` logical operators
+* ```Output Data Table``` ~> This activity is used to convert a ```data table ``` type variable to ```String```
+* ```Read Cell``` ~> used to read a specific cell from an excel file
+* ```Write Cell``` ~> used to write  in a specific cell from an excel file
+* All numeric data read by ```Read Range``` function from Excel is interpreted as an ```Double``` data type
+* ```Get row item``` ~> this activity is used to fetch the values of a specific column from a certain row
+* ```Add data row``` ~> this activity is used to add a new row in an ```Excel file``` using an ```array of data``` which is defined using ```circular or curly``` brackets as ```(var1,var2) or {var1,var2}```
+* ``` inputsTable.Rows.Count``` ~> it can be used to count the total number of rows
+* Use of ```Workbooks``` is prefferable over ```Excel files``` as they do not require Excel to be ```installed```
+
+## Lesson 9 Quiz Time
+1. What happens if the AddHeaders option is checked for Read Range Activity? 
+Ans. ```The first row from the specified range is considered to be the column names```
+2. In order to loop through all the rows of a data table, which activity should be used?
+Ans. ```For Each row```
+3. What activity can you use to create a DataTable from an input string?
+Ans. ```Generate Data Table```
+4. What happens if you try to use a Write Range activity to a .xlsx file that does not exist?
+Ans. ```It will create that file for you and write the data in it.```
+5. Can Excel related activities be used without having the Excel Application installed? 
+Ans. ```Yes, but only for xlsx files```
+(Passed)
 
