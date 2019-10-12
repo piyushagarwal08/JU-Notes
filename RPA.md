@@ -381,3 +381,35 @@ Ans. ```Use Google OCR with “Numbers Only”```
 
 
 ## Advanced Citrix Automation
+
+### Find Image
+* This activity is used to ```pause``` the state of program until an certain ```Element``` is not found or loaded completely
+* As output it gives the ```element``` which is defined to be found
+
+### Highlight
+* it is used to detect/show/highlight a certain element over screen
+* Highlighting a certian element can be done using
+    1. Clipping Region
+    2. Selector
+    3. Element
+* Highlight Time ~> The timeout or the amount of time for which to ```highlight``` a certain element is calculated in ```microseconds``` that is ```2000 == 2 sec```
+* In highlight the color can be defined as well for customized workflow
+
+### Working with opening applications
+* A better practice to open a certain ```app``` or ```application``` is to set ```shortcuts``` and open the app using ```send hotkey``` activity
+
+## Lesson 8 Quiz Time
+1. What can be done when the Windows Remote Connection doesn’t allow sending hotkeys?
+Ans. ```It should work if the Windows Remote Connection is in ‘full-screen’ mode.```
+2. How can the robot pass a variable argument when opening an application in Citrix (eg: a web address for a browser)?
+Ans. ```In the command prompt, type in the path to the application and the argument```
+3. Which of the following activities can be used to select an item in drop down list, in Citrix?(Select all that apply.)
+Ans. ```Click Image , Click OCR Text```
+4. What happens if Find Image doesn’t actually find the desired image?
+Ans. ```An exception is thrown..```
+5. What is the EASIEST navigation method to be used in a form within Citrix?
+Ans. ```By sending keyboard commands/hotkeys```
+(Passed)
+
+
+
