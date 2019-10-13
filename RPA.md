@@ -311,6 +311,7 @@ Ans. [OCR,Native]
 * It uses the position of elements on screen
 * ```Find Element``` this column is used to indicate the reliable field in the element we wish to search for our automation such as the name of the field
 * ```Activity Field``` is used to declare the task to be done once the indicated element or field is finded by ```Anchor Base Activity```
+* ```Anchor Position``` ~> it is the property of this activity which can be used to define the position where the required element to search for
 
 ## Relative Selector
 * It works in background and relies on the internal structure of application
@@ -398,6 +399,11 @@ Ans. ```Use Google OCR with “Numbers Only”```
 ### Working with opening applications
 * A better practice to open a certain ```app``` or ```application``` is to set ```shortcuts``` and open the app using ```send hotkey``` activity
 
+### Pick Activity
+* This activity is a container based activity which further accomodates ```Pick branches```
+* This activity is used to set a certain activity to be completed in different possible conditions or scenarios 
+* Basically we provide a same action like ```opening a folder``` to be automate but in more then one possible condition of ```screen``` or ```background```
+
 ## Lesson 8 Quiz Time
 1. What can be done when the Windows Remote Connection doesn’t allow sending hotkeys?
 Ans. ```It should work if the Windows Remote Connection is in ‘full-screen’ mode.```
@@ -452,3 +458,28 @@ Ans. ```It will create that file for you and write the data in it.```
 Ans. ```Yes, but only for xlsx files```
 (Passed)
 
+
+## PDF Automation
+* ```Read PDF``` ~> This activity is used to read text from a PDF
+* ```Read PDF with OCR``` ~> It goes by the name and is able to read the ```Image Text``` present in the PDF
+* While using OCR to read PDF's , we have got 3 options
+    1. Google OCR
+    2. Microsoft OCR
+    3. Abby's OCR ~> Maintains the structure of text present in PDF
+* PDF activities are categorised into 2 parts:
+    1. Processing large chunks of data
+    2. Working on specific part of the file
+* Anchor base method is more reliable then others since it can handle structural changes
+* While trying to read text it is preferable to use ```Read PDF``` rather then ```Read PDF with OCR``` as OCR is more prone to errors
+* In properties of PDF, the range of PDF pages can be set in the following format ```"1-4"```
+## Lesson 10 Quiz Time
+1. Will the Read PDF with OCR activity open the PDF document on the screen in order to read it?Will the Read PDF with OCR activity open the PDF document on the screen in order to read it?
+Ans. ```No```
+2. What is the easiest way to get the invoice number from a native PDF file? 
+Ans. ```Open the PDF file with Adobe Acrobat Reader and scrape only the relevant information.```
+3. Which of the following activities requires the PDF file to be opened with Acrobat Reader in order to read it?
+Ans. ```Get Text```
+4. How can a robot read only the first page of a PDF file, using the PDF activities? 
+Ans. ```Set the Range property to: “1”```
+5. If the PDF contains both images and native text, what activity should you use to read all the text from it?
+Ans. ```Read PDF with OCR```
