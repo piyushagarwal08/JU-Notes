@@ -472,6 +472,7 @@ Ans. ```Yes, but only for xlsx files```
 * Anchor base method is more reliable then others since it can handle structural changes
 * While trying to read text it is preferable to use ```Read PDF``` rather then ```Read PDF with OCR``` as OCR is more prone to errors
 * In properties of PDF, the range of PDF pages can be set in the following format ```"1-4"```
+
 ## Lesson 10 Quiz Time
 1. Will the Read PDF with OCR activity open the PDF document on the screen in order to read it?Will the Read PDF with OCR activity open the PDF document on the screen in order to read it?
 Ans. ```No```
@@ -483,3 +484,25 @@ Ans. ```Get Text```
 Ans. ```Set the Range property to: “1”```
 5. If the PDF contains both images and native text, what activity should you use to read all the text from it?
 Ans. ```Read PDF with OCR```
+
+# Email Automation
+* Various activities supported in ```email automation``` are:
+    1. SMTP ~> used to send mails
+    2. POP3 ~> used to recieve mails supported by various domains
+    3. IMAP ~> supports reading messages as well as marking them read or shifting to different folders
+    4. Exchange ~> Microsoft supported activity for all kinds of email activities
+    5. Outlook ~> automate the pre installed outlook software
+* Four activities present to check mail are :
+    1. POP3
+    2. Outlook
+    3. IMAP
+    4. Exchange
+* The data type of messages is ```System.net.mail.message```
+* ```Save Attachments``` activity is used to save attachments from a mail, it requires two arguments a ```mail type instance``` and path to save folder
+* ```mail.Headers('Date')``` provides the Date Timestamp for any mail
+* to filter mails fetched by UiPath set a filter in the properties menu such as
+    ```"[RecievedTime] > '14/10/2019 09:41 AM'"``` or ```"[RecievedTime] > Now.AddDays(-1).ToString('MM/dd/yyyy hh:mm tt')"```
+* ```Take Screenshot``` is the activity used to take a screen shot at run time which is to be saved in a certain location using ```save image``` activity
+* The ```attachment``` section of the ```Send Mail``` activity requires a file path to be sent 
+* To make something like message Dynamic in ```sending messages``` we can use format type same as ```python``` just replace the content to be changed dynamically with ```{0}``` and provide the argument in ```body section``` of send mail activity
+
