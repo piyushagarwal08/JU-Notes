@@ -1068,3 +1068,89 @@ class Demo{
         
 ## User Defined Exception
 * Generating a self customized exception and terminating the program as per our need
+
+
+# UNIT 4 Input/Output Stream
+* I/O stream can be implemented by two ways:
+    1. Sequence of bytes
+    2. Sequence of characters 
+* Stream can be defined as flow of data
+* To work with any Stream, follow the steps:
+    1. Import the specific stream package
+    2. Create the object of concern I/O Stream
+    3. Determine The input (make source using CLA or at compile time) and output points for work to be performed
+* Object is supermost class of Java,for both pre-defined and user-defined classes
+* Every Stream should be closed ```.close()``` before exiting the program
+
+## Byte Stream
+* Each class has an Input and Output Stream
+* Available Classes are  of 7 types:
+    1. Input (SYstem.in)
+    2. Output (System.out)
+    3. Filter Stream
+    4. Buffered Stream ~> Tends to save the inputs to input stream and output to output stream which makes it faster at the moment of execution
+    5. Data Stream ~> Used in networking tasks , A socket is generated between 2 systems trying to communicate with each other
+        ``` |A|~~~> (Socket)~~~>|B|```
+    6. Print Stream
+    7. File stream ~> Specifically used for ```File Handling```
+* to send some errors we can use ```System.err```
+
+## Character Stream
+* Reader and Writer
+* It is again of 4 types
+    1. Input Stream Reader
+    2. Output Stream Writer
+    3. Buffered Stream Reader/Writer
+    4. File Reader/Writer
+
+## Input Streamm class
+* Java.io is an abstract class for all input stream
+* Basic ```read()``` method read a single unsigned byte of data and returns the integer value of the unsigned byte
+* ```read()``` returns ```-1``` at the EOF
+* Every input stream should be closed before exiting the program
+
+## Reading Multiple Bytes
+* I/O is slow in comparison to memory access, limiting the number of reads and writes is essential
+* The basic read() method only reads in a byte at a time
+* The following two overloading read() methods read in multiple bytes into an array of bytes
+    1. public int read(byte b[])
+    2. public int read(byte b[], int offset=2)
+
+## Reading from File Input Streams
+```java
+import java.io.*;
+class FileInputStreamDemo{
+    public static void main(String args[]){ //CLA - command line arguments
+        try {
+            //Create a file input stream
+            FileInputStream fis= new FileInputStream("Path" args[0]);
+            //read 12 byte from file
+            int i;
+            while(i=fis.read() != -1) // at EOF byte is -1 which indicates the end of file
+            {
+                System.out.println(i);
+            }//close file output
+            fis.close()
+        }catch(Exception e){ System.out.println("Exception:"+e)}
+    }
+}
+```
+* An example of Buffered Input Stream, it will increase the Execution Speed of the Program
+```java
+import java.io.*;
+class FileInputStreamDemo{
+    public static void main(String args[]){ //CLA - command line arguments
+        try {
+            //Create a file input stream
+            FileInputStream fis= new FileInputStream("Path" args[0]);
+            //read 12 byte from file
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            int i;
+            while(i=bis.read() != -1) // at EOF byte is -1 which indicates the end of file
+            {
+                System.out.println(i);
+            }//close file output
+            fis.close()
+        }catch(Exception e){ System.out.println("Exception:"+e)}
+    }
+}
