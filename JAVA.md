@@ -1074,6 +1074,7 @@ class Demo{
 * I/O stream can be implemented by two ways:
     1. Sequence of bytes
     2. Sequence of characters 
+* ```File handling is performed using IO Stream```
 * Stream can be defined as flow of data
 * To work with any Stream, follow the steps:
     1. Import the specific stream package
@@ -1081,6 +1082,11 @@ class Demo{
     3. Determine The input (make source using CLA or at compile time) and output points for work to be performed
 * Object is supermost class of Java,for both pre-defined and user-defined classes
 * Every Stream should be closed ```.close()``` before exiting the program
+
+## Stream
+* A stream is a sequence of data and is composed of bytes
+* Default Stream: System.out,System.in,System.err, all are connected to console only
+
 
 ## Byte Stream
 * Each class has an Input and Output Stream
@@ -1117,6 +1123,12 @@ class Demo{
     2. public int read(byte b[], int offset=2)
 
 ## Reading from File Input Streams
+* It obtains input bytes from a file.It is used for reading byte oriented Data
+* To print certain character after reading using ```Input Stream``` then it will be required to change into character using ```char()``` method.
+* To typecast a certain variable the syntax is like ```(char)variable_name```
+* during file handling,when ```file.read()``` reaches ```EOF``` it returns ```-1```
+* ```fil.read()``` ~> it does the work of fetching character as well as iteration of next byte/character
+
 ```java
 import java.io.*;
 class FileInputStreamDemo{
@@ -1150,7 +1162,62 @@ class FileInputStreamDemo{
             {
                 System.out.println(i);
             }//close file output
+            bis.close()
             fis.close()
         }catch(Exception e){ System.out.println("Exception:"+e)}
     }
 }
+```
+## Output Stream Class Methods
+* public void write(int)throws IO Exception ~> is used to write a byte to the current output stream
+* public void write(byte[])throws IOException ~> is used to write an array of byte to current output stream
+* public void flush()throws IOException ~> flush or remove the current output stream
+* public void close()throws IOException ~> close the current output stream
+
+* FileOutputStream~> it is an output stream used for writing data to a file
+```java
+public class FileOutputStream extends OutputStream
+```
+* Methods in FileOutputStream are:
+    1. protected void finalize()
+    2. void write(byte[] ary)
+    3. void write(byte[] ary,int off,int len)
+    4. void write(int b)
+    and many more
+```java
+import java.io.FileOutputStream;
+public class FileOutputStreamExample{
+    public static void main(String args[]){
+        try{
+            FileOutputStream fout = new FileOutputStream("path of file");
+            // to connect it with a buffer
+            //BufferedOutputStream bout = new BufferedOutputStream(fout);
+            fout.write(97); // instead we will use bout.write(97); and bout.flush();
+            // flush() is used to forcefully write if some error occurs due to network issues
+            fout.close(); 
+            System.out.println("Success");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
+```
+```java
+import java.io.FileOutputStream;
+public class FileOutputStreamExample{
+    public static void main(String args[]){
+        try{
+            FileOutputStream fout = new FileOutputStream("path of file");
+            String s = "Pykid";
+            byte b[] = s.getBytes();  //converting string into byte array
+            fout.write(b);
+            fout.close();
+            System.out.println("Success");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
+```
