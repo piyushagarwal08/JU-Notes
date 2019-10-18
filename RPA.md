@@ -506,3 +506,24 @@ Ans. ```Read PDF with OCR```
 * The ```attachment``` section of the ```Send Mail``` activity requires a file path to be sent 
 * To make something like message Dynamic in ```sending messages``` we can use format type same as ```python``` just replace the content to be changed dynamically with ```{0}``` and provide the argument in ```body section``` of send mail activity
 
+## Quiz Time Lesson 11
+1. What activity can you use to send an email without entering the username and password of the email account?
+Ans. ```Send Outlook Mail Message```
+2. What activities can you use to send an email message?
+Ans. ```Send Outlook Mail Message. and Send SMTP Mail Message.```
+3. What is the supported variable type in the Output property field of all Get Mail activities (POP3, IMAP, Outlook, Exchange)? 
+Ans. ```List (MailMessage)```
+4. If you are using the For Each activity to loop through a list of MailMessage variables, what should you set the TypeArgument property to?
+Ans. ```System.Net.Mail.MailMessage```
+5. The Send Outlook Mail Message activity will work without having Microsoft Outlook installed:
+Ans. ```False```
+6. Which of the following properties are found in the Get Outlook Mail Messages activity? 
+Ans. ```MailFolder```
+7. Which of the following activities will allow you to only retrieve only unread messages?  (Select all that apply.)
+Ans. ```Get OUTLOOK Mail Message and Get IMAP Mail Message```
+8. If you want to get only filtered MailMessage variables, what activity should you use?
+Ans. ```Get Outlook mail messages```
+9. Which Visual Basic property within the MailMessage class will you use to get the Date of an email? 
+Ans. ```Headers(“Date”)```
+(Passed)
+
