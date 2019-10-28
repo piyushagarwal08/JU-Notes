@@ -527,3 +527,64 @@ Ans. ```Get Outlook mail messages```
 Ans. ```Headers(“Date”)```
 (Passed)
 
+
+## Debugging And Exception Handling
+* Slow Steps ~> This is the tool provided with ```Debugging Toolkit``` , it highlights each activity executing 
+* In Options ~> Highligh Element activity , ```highlights``` the ```UiElement``` being interacted with a ```Red Color```
+* Breakpoint ~> It is set an activity where we feel some error migth occur and then we have 3 options to continue our program execution
+    1. Continue
+    2. Step Over
+    3. Step Into
+* In ```Input Activities``` we have an option ```Simulate check``` in their properties which tend to send the input using ```Background Processes``` without using the ```mouse or keyboard```
+* ```Timeout``` property makes the ```activities``` wait for an element to appear or the activity to execute before giving an error
+* ```Element Exists``` ~> This activity returns a ```boolean``` value that is ```True``` or ```False``` for an Element to be present on sceen or not
+* ```Log Message``` ~> this activity can be used to set or give some message in output tab given in right side Properties panel... that is seen while execution
+* ```Find Element``` ~> Stops the workflow until an element is found
+* ```Wait Element Vanish``` ~> Waits for an element to disappear before continuing
+
+### Try Catch Finally
+* ```Try Catch``` activity ~> it works same as in programming , if any activity fails in ```Try``` block then ```catch``` block will run followed by ```finally``` block
+* ```System.Exception``` ~> It catches all types of errors
+* To select all activities, it is easy by just dragging the cursor on all
+* Once the type of Exception is selected in ```catch``` block.. followed by ```enter``` collapses the ```try``` block and we can start addig activities to work when error occurs
+* ```rethrow``` activity ~> is used in ```catch``` block to show an error popup
+* ```exception.message``` this is a ```primitive``` variable which contains the error message that might have occured
+
+### Logging Levels
+* There are 6 log levels in UiPath:
+    1. Verbose
+    2. Trace 
+    3. Information
+    4. Warning
+    5. Error
+    6. Critical
+* Each log level has its own significance
+*  Verbose < Trace < Information < Warning < Error < Critical 
+* <b>Creating user-defined log fields that have the same name as a default log field causes the logging process to become corrupted and may cause issues in the workflow you are running.</b>
+* Various Default Log Fields are:
+    1. Message - The log message.
+    2. Level - Defines the log severity.
+    3. Timestamp - The exact date and time the action was performed.
+    4. FileName - The name of the .xaml file being executed.
+    5. jobId - The key of the job running the process.
+    6. processName - The name of the process that triggered the logging.
+    7. processVersion - The version number of the process.
+    8. windowsIdentity - The name of the user that performed the action that was logged.
+    9. robotName - The name of the robot (as defined in Orchestrator).
+
+* for type conversion to integer we can use ```CInt``` as ```CInt(variable)```
+* You can separate individual components of your automation into different workflow files and then call them using ```Invoke Workflow.```
+
+## Quiz Time Lesson 12
+1. If you need to know if a UI Element is available on the screen or not, what activity should you use?
+Ans. ```Element Exists```
+2. What does the Locals panel display when you are working in Debug mode?
+Ans. ```The current values of your variables.```
+3. How many Catches can you have in a Try/Catch block?
+Ans. ```There is no limit on the number of catches.```
+4. What activity can be used in a Citrix environment to check whether a UI element is displayed or not?
+Ans. ```Image Exists```
+5. The Finally block of a Try/Catch activity is executed when:
+Ans. ```Every time, regardless if an exception occurred or not.```
+(Passed)
+
