@@ -643,6 +643,7 @@ Ans. ```GetCustomerNumber.xaml```
 # RPA Developer Foundation Training - Final Test
 (Passed Successfully)
 
+-----
 # Level 2 Orchestrator Training
 <a href='https://cdn2.dcbstatic.com/files/u/i/uipath_docebosaas_com/1572411600/MyKk8x1tGHs0mwWm_M1sNw/item/e815437971b14c9b896d9f5064e968915d0d1e0e.pdf'> Link TO Version Details Of Different Orchestrators</a>
 
@@ -660,6 +661,7 @@ Ans. ```GetCustomerNumber.xaml```
 * It gets the ```asset``` value from the Orchestrator and this activity works only when the ```workflow``` is published to Orchestrator
 * ```Asset``` is basically just a variable which can be defined in the Orchestrator and used by the workflow
 * It can be specified for multiple robots or individual that is using same ```asset variable``` for multiple bots with ```different values```
+* In properties panel, name of asset should be written as string that is if the name is ```Name``` then in properties write it as ```"Name"```
 * Assets are of 4 Data Types:
     1. Credentials
     2. Text
@@ -670,6 +672,14 @@ Ans. ```GetCustomerNumber.xaml```
 * Credentials type requires 2 input values (Username and Password) in ```Studio``` as well as Orchestrator
 * Basically when ```Credential Asset``` is made with two values which are ```Username``` and ```Password```
 * Then they are fetched and used at run time in Studio using ```Get Credential``` activity
+* To use the pass acquired from the ```Get Credentials``` we would need to use ```Type Secure Text``` activity
+
+## Type Secure text
+* This activity is used to decrypt the ```.NET``` secured string from encrypted password to normal decrypted text
+
+## Queue
+*  the transaction items in a queue are processed in chronological order
+* The items inside Queues can be processed by multiple Robots.
 
 ## Add Queue Item
 * This activity is used to send values or add the items to Queue in Orchestrator
@@ -678,6 +688,8 @@ e.g., ```datetime.Now.addHours(24)```
 * ```PostPone``` ~> This property is used to postpone the activity upon reaching ```Deadline``` by some ```time``` like ```datetime.Now.addHours(2)```
 * Multiple robots can be assigned to process the same Queue
 * ```Reference``` property can be set to an item to identify it uniquely in Orchestrator
+* ```ItemInformation``` ~> this property is used to define the values to be added in the Queue present in Orchestrator
+
 
 ## Get Transaction Item
 * This activity is used to fetch values or items from the ```Queue``` made in Orchestrator
@@ -690,3 +702,52 @@ e.g., ```datetime.Now.addHours(24)```
 
 ## Set Transaction Progress
 * It is used to set some Value for the progress column in Orchestrator regarding the Processes in Queues
+
+## Complete Documentation can be found at 
+<a href = 'https://docs.uipath.com/orchestrator/'> <b> Orchestrator </b></a>
+
+## Terminating and stopping a process
+* Pressing Stop requires you to use the Should Stop activity in Studio while developing the process. The activity returns a boolean value. It informs  whether the Stop button has been pressed in Orchestrator by the time the Control Flow reached the Should Stop activity. This is similar to a Save Game function in a computer game.
+* Pressing Kill is the equivalent of stopping a process from the Studio. Orchestrator will connect to your Robot and send a stop command to the process.
+
+## Trigger
+* Trigger is like  Scheduling a process that is having Orchestrator press Play for you at a time which you specify.
+
+## Steps to Use Orchestrator
+1. Create your workflow that you wish to deploy over Orchestrator
+2. Open the Following url <a href='https://cloud.uipath.com'>Cloud Uipath</a>
+3. In ```Service``` section , select the ```StudentDefault``` service (UiPath Orchestrator will be opened)
+4. Create a machine
+    1. Click on Machine in Left panel under ```MANAGEMENT``` section
+    2. Click on ```+``` icon followed by ```Standard Machine```
+    3. In Name write the Name of your Laptop(you can get that from next step) and Description as you like
+    4. Click on Provision
+5. Open UiPath Robot on your local Machine 
+    1. Click on ```Settings``` icon
+    2. Select ```Orchestrator Settings``` option
+    3. Enter the Machine Key(you can get that by clicking on ```edit``` on Machine made in previous step)
+    4. In Orchestrator Url type the cloud-orchestrator-url
+    5. Click on Connect(Local System gets connected to Orchestrator at cloud)
+6. Now to Add your Robot
+    1. In ```UiPath Studio``` , click on ```Publish``` button given in Design Panel(just click ok)
+    2. Select ```Machine Name``` given in previous step
+    3. In Username, type the name configured with your ```UiPath Studio```
+    4. Click create
+7. Set Environment
+    1. In Robots tab, Click on environments
+    2. add a new environment
+    3. Click on ```manage``` in properties of environment
+    4. Select your ```robot``` and click on ```Update```
+8. Set The Process
+    1. Go to ```Process``` Tab
+    2. Click on ```+``` icon
+    3. Select the ```Package Name``` and ```Environment```
+    4. Click on Create
+9. Finally you are ready to run/execute your bot
+    1. Go to ```Jobs```
+    2. Click on Start Button
+    3. Select The Process made in previous step
+    4. Select your ```Robot```
+    5. Click Start and all done
+
+----
