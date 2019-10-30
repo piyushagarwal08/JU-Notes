@@ -425,6 +425,7 @@ Ans. ```By sending keyboard commands/hotkeys```
 * A range can be specified by defining the cells separated by ```:```.
     ```A1:C5```
 * ```Build Data Table``` ~> this activity is used to create more data tables with very easy and simple GUI
+* ```Add Data Row``` ~> this activity is used to add another row(data) inside the build data table activity or table made from it
 * ```Append Range``` ~> It is used to append more data to same file
 * Data tables are ```zero-indexed``` same as a ```list in python```
 * ```sort data table``` ~> This activity is used to sort some tabular data based on a certain column
@@ -459,7 +460,7 @@ Ans. ```Yes, but only for xlsx files```
 (Passed)
 
 
-## PDF Automation
+# PDF Automation
 * ```Read PDF``` ~> This activity is used to read text from a PDF
 * ```Read PDF with OCR``` ~> It goes by the name and is able to read the ```Image Text``` present in the PDF
 * While using OCR to read PDF's , we have got 3 options
@@ -528,7 +529,7 @@ Ans. ```Headers(“Date”)```
 (Passed)
 
 
-## Debugging And Exception Handling
+# Debugging And Exception Handling
 * Slow Steps ~> This is the tool provided with ```Debugging Toolkit``` , it highlights each activity executing 
 * In Options ~> Highligh Element activity , ```highlights``` the ```UiElement``` being interacted with a ```Red Color```
 * Breakpoint ~> It is set an activity where we feel some error migth occur and then we have 3 options to continue our program execution
@@ -542,7 +543,7 @@ Ans. ```Headers(“Date”)```
 * ```Find Element``` ~> Stops the workflow until an element is found
 * ```Wait Element Vanish``` ~> Waits for an element to disappear before continuing
 
-### Try Catch Finally
+## Try Catch Finally
 * ```Try Catch``` activity ~> it works same as in programming , if any activity fails in ```Try``` block then ```catch``` block will run followed by ```finally``` block
 * ```System.Exception``` ~> It catches all types of errors
 * To select all activities, it is easy by just dragging the cursor on all
@@ -550,7 +551,7 @@ Ans. ```Headers(“Date”)```
 * ```rethrow``` activity ~> is used in ```catch``` block to show an error popup
 * ```exception.message``` this is a ```primitive``` variable which contains the error message that might have occured
 
-### Logging Levels
+## Logging Levels
 * There are 6 log levels in UiPath:
     1. Verbose
     2. Trace 
@@ -588,3 +589,104 @@ Ans. ```Image Exists```
 Ans. ```Every time, regardless if an exception occurred or not.```
 (Passed)
 
+
+# Project Organization
+* Following the best practices makes our project:
+    1. Reliable ~> Solid Robust workflows that can handle errors
+    2. Efficient ~> Shorter development time and smooth execution in production environment
+    3. Maintainable ~> Easy to update when changes are required
+    4. Extensible ~> New Usecases can be added
+
+## Best Practice
+* Pick an appropriate layout for each workflow
+    1. main WF -> flowchart/ state machine
+    2. bussiness logic -> flowchart
+    3. Ui Interactions(woring in same order) -> Sequence
+    4. Avoid nested If else and use flowchart instead
+* Break the whole process into smaller workflows
+    1. Develop and test pieces independently
+    2. reuse workflows across projects
+    3. collaborate working on separate files
+* Use Exception Handling
+    1. Put problematic workflows inside Try_Catch
+    2. Put externally invoked Workflows
+    3. Implement recover sequence
+* Make your workflows readable 
+    1. Give descriptive names to activities
+    2. leave explanatory notes and comments using ```comment``` activity
+    3. log real time execution process
+* Keep it clean
+    close applications,windows and web pages not being used
+
+## Invoke Method
+* UiPath offers an activity same as ```import``` in python that is ```Invoke Method``` activity
+* In this activity , we can execute any workflow and even pass arguments and import arguments
+* Arguments just work as values which are provided for variables and these arguments or values of variables, can be either given as input or can be extracted as an output for another activity
+* ```Direction``` column in variables define the redirection of values which can be ```In``` or ```Out``` or both ```In/Out```
+* ```Deserialize JSON``` activity ~> It is used to parse a ```json``` file and can be used to read or extract data from it
+* to convert a variable... we can do it like ```convert.ToInt32(variable-name)```
+
+## Quiz Time Lesson 13
+1. What is the recommended layout for sequential activities?
+Ans. ```Sequence```
+2. What type of arguments can you use in a workflow?
+Ans. ```In/Out Out  In ```
+3. Is notifying the user via a Message Box activity a good way to keep track of a workflow’s execution progress ?
+Ans. ```No```
+4. What is the recommended layout for a sequence of UI interactions?
+Ans. ```Sequence```
+5. Which of the following is a good example of a workflow name?
+Ans. ```GetCustomerNumber.xaml```
+(Passed)
+
+
+# RPA Developer Foundation Training - Final Test
+(Passed Successfully)
+
+# Level 2 Orchestrator Training
+<a href='https://cdn2.dcbstatic.com/files/u/i/uipath_docebosaas_com/1572411600/MyKk8x1tGHs0mwWm_M1sNw/item/e815437971b14c9b896d9f5064e968915d0d1e0e.pdf'> Link TO Version Details Of Different Orchestrators</a>
+
+* ```UiPath Orchestrator``` is a web based application
+* It Enables efficient resource management
+* It allows Workload allocation, Scheduling and monitoring of robots
+* Streamlines the teamwork
+
+## Should Stop
+* This activity is used in workflow to stop a executing process from ```Orchestrator```
+* It return a ```Boolean Value``` which can be used by ```Decision Flow```
+
+## Asset
+* In UiPath Studio we have an activity called ```Get Asset```
+* It gets the ```asset``` value from the Orchestrator and this activity works only when the ```workflow``` is published to Orchestrator
+* ```Asset``` is basically just a variable which can be defined in the Orchestrator and used by the workflow
+* It can be specified for multiple robots or individual that is using same ```asset variable``` for multiple bots with ```different values```
+* Assets are of 4 Data Types:
+    1. Credentials
+    2. Text
+    3. Boolean 
+    4. Integer
+
+## Get Credentials
+* Credentials type requires 2 input values (Username and Password) in ```Studio``` as well as Orchestrator
+* Basically when ```Credential Asset``` is made with two values which are ```Username``` and ```Password```
+* Then they are fetched and used at run time in Studio using ```Get Credential``` activity
+
+## Add Queue Item
+* This activity is used to send values or add the items to Queue in Orchestrator
+* ```DeadLine``` ~> This property is used to set a sepecific time limit within which the queue item is supposed or required to be processed
+e.g., ```datetime.Now.addHours(24)```
+* ```PostPone``` ~> This property is used to postpone the activity upon reaching ```Deadline``` by some ```time``` like ```datetime.Now.addHours(2)```
+* Multiple robots can be assigned to process the same Queue
+* ```Reference``` property can be set to an item to identify it uniquely in Orchestrator
+
+## Get Transaction Item
+* This activity is used to fetch values or items from the ```Queue``` made in Orchestrator
+* When this activity is set into loop it iterates over and fetch all the items in the Queue
+* ```transaction.SpecificContent("Column-name").toString```
+
+## Set Transaction Status
+* It is used to set status of the processed item from the Queue
+* If the Status is not set by the ```Robot``` then it is set to ```Abandon``` automatically after 24 hour
+
+## Set Transaction Progress
+* It is used to set some Value for the progress column in Orchestrator regarding the Processes in Queues
