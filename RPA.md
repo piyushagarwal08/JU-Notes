@@ -751,3 +751,93 @@ e.g., ```datetime.Now.addHours(24)```
     5. Click Start and all done
 
 ----
+
+# Level 3 Advance Training
+
+# UiPath Robotic Enterprise Framework
+* This Framework is a Template provided by UiPath for ```transactional``` activities or workflow
+* <b> Transactional Activities</b>~> Basically every project can be divided into 4 states
+    1. Initial State ~> Start/Open all applications
+    2. Get Transactional Information ~> Take Input or Fetch from Queue/Excel all the Data need to be processed or used for processing
+    3. Process Transaction ~> Process all the information(calculation,Decision taking,Data Conversion etc)
+    4. End Process ~> Close all the applications which are not required
+* It can be accessed through ```START``` panel of ```UiPath``` Studio in the ```Template``` Section
+* REFramework consists of few pre-build workflows which are used to simplify the Automation Task in a proper manner that are:
+    1. InitAllSettings ~> Processes / Reads the config file containing essential details
+    2. InitAllApplications ~> Start the Initial State and Open all neccessary applications
+    3. GetAppCredential ~> In terms of Login , gain user credentials with proper security
+    4. GetTransactionData ~> Get Transactional Information from User/Queues/Excel Files etc
+    5. SetTransactionStatus ~> Set the status for information being used(Processed/retried/abandon/NeedToBeProccessed etc)
+    6. KillAllProcess ~> To Stop the Process completely on recieving ```STOP``` signal
+    7. CloseAllApplications ~> Close the applications in Workflow as soon as their work is completed
+    8. TakeScreenshot ~> During Exception Occurrence, Used to Take Screenshot and store in ```Exceptions_Screenshots``` folder,to help developer
+* RefFramework is based on the principle that data is stored in the form of a ```Queue``` that is ```FIFO```
+* Building productive Robots require:
+    1. Proper Exception Handling(try_Catch)
+    2. Recovery Abilities(ReStart or Recover from Possible failures)
+    3. Effective Logging(Secure the Status of Each part of workflow)
+    4. Reporting Functionalities(logs and screenshots)
+    5. High Maintainability
+    6. Extensibility(Easy to modify)
+    7. Reusability
+    8. Ease of Development
+* The Framework files can be downloaded from the following ```Github``` Repository link <a href='https://github.com/UiPath/ReFrameWork'>FrameWork</a>
+* ```Request Credential``` ~> This is an activity used to get ```credentials``` from user same as ```input dialog```
+* This Framework mainly  works on State machine activity which includes 
+    1. Main State Machine
+    2. Exceptions Handling
+    3. Recovery Methods
+    4. States
+        1. InitState(Config file,InitAllApplications) ~> Initialization(Open Application,login to website,startup required values etc)
+        2. Get Transaction Data(TransactionItem,TransactionNumber)
+        3. Process Transaction
+        4. End State
+    5. SetTransactionStatus
+    6. GetAppCredentials
+
+## InitAllSettings
+* In The Reframework, it is the Initial ```xaml``` file to be used
+* It contains a Config workbook with 3 sheets
+    1. Settings ~> We can store any configuration related to the business process such as Urls,filepaths,credentials and any process specific piece of information
+    2. Constants ~> It stores the technical settings that are useful for Developers, it contains information like number of delays , retries, timeouts,image accuracy settings, static log parts
+    3. Assets
+* In Settings Sheet , there are 3 columns
+    1. Name ~> Always contains a string which is the key in the Dictionary
+    2. Value ~> Holds the dictionary value
+    3. Description ~> Holds the detailed account of each setting
+
+## Exceptions
+* There are 2 kinds of Exception that are:
+    1. Business Exception ~> In Case of issues in data , invalid data,missing information in data.
+        Transaction status is ```set as failed``` and transaction is ```not re-tried```
+    2. System/Application Exception ~> In case application not available(UI Element not available or unknown error)
+        Transaction is ```re-tried```
+
+## Working of REFramework
+Note: 
+* In case Exception occurs anywhere we set ```SystemError``` to ```exception``` with data type ```Exeption```
+* At Every Phase of This Framework , logging is done for better development experience and Easy Debuggig
+1. We always initiate the workflow with ```main.xml``` file
+    * It contains a Flowchart with following Transactions
+        1. Init
+        2. Get Transaction Data
+        3. Process Transaction
+        4. End Process
+2. Starting With ```Init``` transaction, It contains a Try_Catch_Finally block of activity
+    * Assign a ```SystemError``` variable to nothing which used for Exception Verification
+    * For first Time,by default reads the config file present at ```Folder/Data/config.xlsx``` to acquire basic pre-set settings/values and kills all initally running processes as defined in ```KillAllProcesss.xaml```
+    * Run ```InitAllApplications.xaml``` to open all required application upon which we have to work
+3. Upon Failure of above process we move to ```EndProcess Transaction``` else
+    * Move to ```Get Transaction Data``` transaction
+    * It checks for ```StopSignal``` that is recieved from ```Cloud Console```
+    * Starts to access/fetch data from Queue in Orchestrator using ```Get Transaction Item``` which gives an Queue as output
+    * If some Error occurs,logs are set and ```TransactionItem``` is set to ```Nothing```
+4. If no data/TransactionItem is fetched from above Transaction, The workflow moves towards ```End Process``` transaction else
+    * Move to ```Process Transaction``` 
+    *  In this, we initiate the main ```Processing``` workflow ```xaml``` file that uses the input and complete the task
+    * If Some Error is Faced the workflow sets the ```Bussiness Exception``` and ```System Exception``` to initiate the Recovery Process
+    * Most of the time, Upon recieving Error, its best to stop the processing
+    * After Completion of the activities.. a ```Finally``` block is used to always set the ```transaction status``` of each Transaction Item
+5. Upon Reaching the ```End Process``` transaction
+    * It intially try to normally ```Close``` all applications and upon not being able to do so
+    * It uses ```KillAllProcess``` to forcefully to its work
