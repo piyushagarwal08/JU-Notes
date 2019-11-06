@@ -1221,3 +1221,58 @@ public class FileOutputStreamExample{
     }
 }
 ```
+## Object Serialization and De-Serialization
+(Will be taught later)
+
+# Date: 6th November 2019
+# Unit 5 Multi Threading
+
+## Content
+* Thread Life Cycle
+* Multi Threading Advantage and issue
+* Threading Synchronization
+* Introduction to AWT Programming(Abstract Windowing Toolkit used for designing GUI)
+* Layout, COmponenet and Event Handling
+* Applet PRogramming
+* Swing Component(All components in AWT and swing are same)
+
+## Notes
+* AWT components(Presentation and not working) are dependable on OS Platform where as Swing isn't
+* Naming Difference in AWT and Swing is there ( JLabel(Swing) ~> Label (AWT) )
+* Layout ~> Decision Taking as to where the component is to be added
+* Component ~> Everything visible in a GUI is a component
+* Container ~> It contains components. e.g., Frame/Window
+* Panel ~> Used when we have some limitation, in panel components are added and Panel is used as an component is Frame
+* Event Handling ~> Controls the working of our GUI either click or drag or type everything
+* Applet is an java program that is implemented in HTML Code(will be studied later)
+* A process needs to perform ```Context Switching``` to communicate with other processes which is not required with threads
+* Each process has an seperate address in memory
+* If in a program no threads are defined then it means it has ```1 internal thread``` running in it
+
+## MultiThreading
+* Thread is a ```smallest unit of process``` or lightweight sub-process
+* ```Multi threading``` is a process of executing multiple threads simultaneously
+* Multiprocessing and Multi Tasking is used to achieve multitasking
+* Threads used a ```shared memory area``` that is the same ```address space```
+* It is mostly used in Games and animation
+
+## Advantage of MultiThreading
+* It doesn't block the user because threads are independent and you can perform multiple operations at same time
+* saves time as many operations can be performed together
+* Threads are ```Independent``` , so it doesn't affect other threads if an exception occurs in a single thread
+
+## Thread Class and Methods
+* start() ~> To start a thread
+* run() ~> to do an action of thread
+* getName() ~> gives name of thread
+* setName() ~> changes name of thread
+* getId ~> return id of thread
+* isAlive() ~> tests if thread is alive
+* yield() ~> pause current running thread temporarily and allow other threads to run
+
+## Life Cycle of Thread
+* There are four states of a thread life cycle
+    1. New ~> Thread is just created
+    2. Runnable ~> Thread is ready to execute (after start() method is called )
+    3. Running ~> Thread is executing (after run() method is called)
+    4. Terminated ~> Thread is completed or aborted
