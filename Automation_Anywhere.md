@@ -156,3 +156,21 @@
 * Navigational flows ~> Pre configured use cases of an application and Leverage visual captures and APIs and Screen and DLLs form the Assets
 
 
+* STP ~> Number of documents that are processed end-to-end without human intervention
+
+
+1. c
+2. b
+3. a
+4. d
+5. control room
+6. b transactional
+7. c
+8. a
+9. d
+10. a
+11. a but it guess b
+12. a(marked) but i guess d
+13. b
+14. b
+15. a
