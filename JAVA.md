@@ -1276,3 +1276,85 @@ public class FileOutputStreamExample{
     2. Runnable ~> Thread is ready to execute (after start() method is called )
     3. Running ~> Thread is executing (after run() method is called)
     4. Terminated ~> Thread is completed or aborted
+
+
+# Date 19/11/2019
+
+## AWT
+* Java AWT(Abstract Window Toolkit) is an API to develop GUI or Window-based applications in java
+* Java AWT components are platform-dependent
+* WT is heavyweight i.e, its components are using the resources of OS
+* The java.awt package provides classes for AWT api such as TextField , Label,TextArea,RadioButton, CheckBox , CHoice ,List etc
+
+## Container
+* The Container is a component in AWT that can contain another components like buttons, textfields etc. The classes that extends COntainer class are known as container such as Frame , Dialog and Panel
+* Panel is never visible unless a component is added to it and The panel is fixed to a specific layout
+* Useful Methods of COntainer Class are:
+    1. public void add(Component c) ~> Inserts a component on this component
+    2. public void setSize(int width,int height) ~> sets the size(width, Height) of the component
+    3. public void setLayout(LayoutManager m) ~> defines the layout manager for the component
+    4. public void setVisible(boolean status ) ~> changes the visibility of the component,by default false
+* By default layout is Flow Layout
+
+```java
+import java.awt.*;
+class DemoAWT extends Frame{
+
+    DemoAWT(){
+        Button b=new Button("Click me");
+        b.setBounds(x1,y1,x2,y2); //setting button position
+        add(b); //adding button into frame
+        setSize(300,300); //frame size is 300x300;
+        setLayout(null); //no layout manager
+        setVisible(true); // now frame will be visible, by default not visible
+    }
+    public static vod main(String args[]){
+        DemoAWT obj=new DemoAWT();
+    }
+}
+```
+
+## Event Handling
+* Changing the state of an object is known as an event
+* Event Classes ~> Listner Interface(Action Perform)
+    1. ActionEvent ~> ActionListner
+    2. MouseEvent ~> MouseListner and MouseMotionListner
+    3. MouseWheelEvent ~> MouseWheelListner
+    4. KeyEvent ~> KeyListner
+
+* We can define the definition of a button with its declaration only by using ```anonymous class```
+
+
+## Layout Manager
+* The Layout Manager are used to arrange components in a particular manner.Layout Manager is an interface that is implemented by all the classes of layout manager
+* BorderLayout ~> Used to arrange the components in five regions where each region may contain one component only.
+    1. NORTH ~> public static final int NORTH
+    2. SOUTH ~> public static final int SOUTH
+    3. EAST ~> public static final int EAST
+    4. WEST ~> public static final int WEST
+    5. CENTER ~> public static final int CENTER
+* If Single Component is added, it takes the space of all other regions as well
+
+
+## Java Grid Layout
+* The GridLayout is used to arrange the components in rectangular grid.One component is displayed in each rectangle
+* Constructors of GridLayout CLass
+    1. GridLayout() : creates a grid layout with one column per component in a row
+    2. GridLayout(int rows, int columns) : creates a grid layout with the given rows and columns but no gaps between the components
+    3. GridLayout(int rows,int columns,int hgap, int vgap) : creates a grid layout with the guven rows and columns alongwidth given horizontal and vertical gaps
+
+
+## Applet
+* Applet is a special type of program that is embedded in the webpage to generate the dynamic content.It runs inside the browser and works at a client side
+
+### Advantages
+1. It works at client side so less response time
+2. Secured
+3. It can be executed by browser running under many platforms, inlcuding Linux,Windows , Mac OS etc
+
+### Drawbacks
+* Plugin is required at client browser to execute applet
+
+## Card Layout
+* Applied when components are required to be structured over one another
+* Makes the above component disable or invisible making the below component active or visible
