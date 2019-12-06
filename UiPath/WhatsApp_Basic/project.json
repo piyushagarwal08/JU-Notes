@@ -1,0 +1,42 @@
+{
+  "name": "WhatsApp_Basic",
+  "description": "This is Development model for Whatsapp bulk message project",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.6.3]",
+    "UiPath.Mail.Activities": "[1.6.0]",
+    "UiPath.Python.Activities": "[1.0.7053.27728]",
+    "UiPath.System.Activities": "[19.8.0]",
+    "UiPath.UIAutomation.Activities": "[19.8.0-ce]",
+    "UiPath.WebAPI.Activities": "[1.4.4]"
+  },
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.9.2.0",
+  "projectVersion": "1.0.1",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfos": []
+  },
+  "arguments": {
+    "input": [],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic"
+}

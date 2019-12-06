@@ -1,0 +1,621 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "CsvHelper/2.13.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40-client/_._": {}
+        },
+        "runtime": {
+          "lib/net40-client/CsvHelper.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR.Client/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http",
+          "System.Net.Http.WebRequest"
+        ],
+        "compile": {
+          "lib/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Client.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime/2.3.20": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "frameworkAssemblies": [
+          "System.Net",
+          "System.Net.Http",
+          "System.Net.Http.WebRequest",
+          "System.Runtime",
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/Microsoft.Rest.ClientRuntime.dll": {}
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "UiPath.CefSharpBundle/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net452/_._": {}
+        },
+        "runtime": {
+          "lib/net452/CefSharp.Core.dll": {},
+          "lib/net452/CefSharp.Wpf.dll": {},
+          "lib/net452/CefSharp.dll": {}
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "UiPath.FormActivityLibrary/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2",
+          "UiPath.CefSharpBundle": "1.0.1"
+        },
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/UiPath.Form.ActivityLibrary.dll": {},
+          "lib/net461/UiPath.Form.Host.Local.dll": {},
+          "lib/net461/UiPath.Form.dll": {},
+          "lib/net461/UiPath.OutOfProcessUi.Common.dll": {},
+          "lib/net461/UiPath.OutOfProcessUi.Host.WCF.exe": {}
+        }
+      },
+      "UiPath.Persistence.Activities/1.0.0-ce": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "2.3.20",
+          "Newtonsoft.Json": "11.0.2",
+          "UiPath.FormActivityLibrary": "1.0.0"
+        },
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/UiPath.Orchestrator.Service.dll": {},
+          "lib/net461/UiPath.Persistence.Activities.Design.dll": {},
+          "lib/net461/UiPath.Persistence.Activities.dll": {},
+          "lib/net461/UiPath.Persistence.Orchestrator.Client.dll": {}
+        }
+      },
+      "UiPath.System.Activities/19.8.0": {
+        "type": "package",
+        "dependencies": {
+          "CsvHelper": "2.13.5",
+          "Microsoft.AspNet.SignalR.Client": "2.4.0",
+          "Microsoft.Extensions.FileSystemGlobbing": "2.2.0",
+          "Microsoft.Rest.ClientRuntime": "2.3.20",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/ActiproSoftware.Docking.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Ribbon.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Shared.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.SyntaxEditor.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Text.Addons.DotNet.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Text.LLParser.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Text.Wpf.dll": {},
+          "lib/net461/ActiproSoftware.Wizard.Wpf.dll": {},
+          "lib/net461/CustomInputForm.exe": {},
+          "lib/net461/UiPath.OrchestratorClient.dll": {},
+          "lib/net461/UiPath.System.Activities.Design.dll": {},
+          "lib/net461/UiPath.System.Activities.dll": {}
+        },
+        "resource": {
+          "lib/net461/de/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net461/de/UiPath.System.Activities.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net461/fr/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net461/fr/UiPath.System.Activities.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net461/ja/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net461/ja/UiPath.System.Activities.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net461/ko/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net461/ko/UiPath.System.Activities.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net461/pt-BR/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net461/pt-BR/UiPath.System.Activities.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net461/ru/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net461/ru/UiPath.System.Activities.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net461/zh-CN/UiPath.System.Activities.Design.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/net461/zh-CN/UiPath.System.Activities.resources.dll": {
+            "locale": "zh-CN"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CsvHelper/2.13.5": {
+      "sha512": "fC8DPi/YTcZ8uXFiAeuT9EpsR2TE5cSJ2jg/4tht/Oen6az/djebpYoCQEtI33RfNrSZ533SedOknlWtUTX3fw==",
+      "type": "package",
+      "path": "csvhelper/2.13.5",
+      "files": [
+        ".nupkg.metadata",
+        "csvhelper.2.13.5.nupkg.sha512",
+        "csvhelper.nuspec",
+        "lib/net20/CsvHelper.dll",
+        "lib/net20/CsvHelper.pdb",
+        "lib/net20/CsvHelper.xml",
+        "lib/net35-client/CsvHelper.dll",
+        "lib/net35-client/CsvHelper.pdb",
+        "lib/net35-client/CsvHelper.xml",
+        "lib/net40-client/CsvHelper.dll",
+        "lib/net40-client/CsvHelper.pdb",
+        "lib/net40-client/CsvHelper.xml",
+        "lib/portable-net40+sl5+win8+wpa+wp8/CsvHelper.dll",
+        "lib/portable-net40+sl5+win8+wpa+wp8/CsvHelper.pdb",
+        "lib/portable-net40+sl5+win8+wpa+wp8/CsvHelper.xml"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.Client/2.4.0": {
+      "sha512": "xGoQq9dEsBU49U1Whl0To2JyRQePmo8ayYS8VNruLlQaX+fQBzYyLJeMlW9r7mlt8Vc9JP+083m9pKrfYpdDbg==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr.client/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.xml",
+        "microsoft.aspnet.signalr.client.2.4.0.nupkg.sha512",
+        "microsoft.aspnet.signalr.client.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/2.2.0": {
+      "sha512": "ZSsHZp3PyW6vk37tDEdypjgGlNtpJ0EixBMOfUod2Thx7GtwfFSAQXUQx8a8BN8vfWKGGMbp7jPWdoHx/At4wQ==",
+      "type": "package",
+      "path": "microsoft.extensions.filesystemglobbing/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "microsoft.extensions.filesystemglobbing.2.2.0.nupkg.sha512",
+        "microsoft.extensions.filesystemglobbing.nuspec"
+      ]
+    },
+    "Microsoft.Rest.ClientRuntime/2.3.20": {
+      "sha512": "bw/H1nO4JdnhTagPHWIFQwtlQ6rb2jqw5RTrqPsPqzrjhJxc7P6MyNGdf4pgHQdzdpBSNOfZTEQifoUkxmzYXQ==",
+      "type": "package",
+      "path": "microsoft.rest.clientruntime/2.3.20",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/Microsoft.Rest.ClientRuntime.dll",
+        "lib/net452/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/net452/Microsoft.Rest.ClientRuntime.xml",
+        "lib/net461/Microsoft.Rest.ClientRuntime.dll",
+        "lib/net461/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/net461/Microsoft.Rest.ClientRuntime.xml",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.xml",
+        "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.dll",
+        "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/netstandard2.0/Microsoft.Rest.ClientRuntime.xml",
+        "microsoft.rest.clientruntime.2.3.20.nupkg.sha512",
+        "microsoft.rest.clientruntime.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "type": "package",
+      "path": "newtonsoft.json/11.0.2",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "UiPath.CefSharpBundle/1.0.1": {
+      "sha512": "gGaKl9ZghgT+zvSAmbHfl9/n2x7tKHEBRPlbhrDyGN8kLF5qhZq2cX0RV39GF49/3+UBK4n05TLK8JQtW7QplQ==",
+      "type": "package",
+      "path": "uipath.cefsharpbundle/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/UiPath.CefSharpBundle.targets",
+        "lib/net452/CefSharp.BrowserSubprocess.Core.dll",
+        "lib/net452/CefSharp.BrowserSubprocess.exe",
+        "lib/net452/CefSharp.Core.dll",
+        "lib/net452/CefSharp.Core.xml",
+        "lib/net452/CefSharp.Wpf.XML",
+        "lib/net452/CefSharp.Wpf.dll",
+        "lib/net452/CefSharp.XML",
+        "lib/net452/CefSharp.dll",
+        "lib/net452/UiPath.CEFSharpBundle.dll",
+        "lib/net452/cef.pak",
+        "lib/net452/cef_100_percent.pak",
+        "lib/net452/cef_200_percent.pak",
+        "lib/net452/cef_extensions.pak",
+        "lib/net452/chrome_elf.dll",
+        "lib/net452/d3dcompiler_47.dll",
+        "lib/net452/icudtl.dat",
+        "lib/net452/libEGL.dll",
+        "lib/net452/libGLESv2.dll",
+        "lib/net452/libcef.dll",
+        "lib/net452/locales/am.pak",
+        "lib/net452/locales/ar.pak",
+        "lib/net452/locales/bg.pak",
+        "lib/net452/locales/bn.pak",
+        "lib/net452/locales/ca.pak",
+        "lib/net452/locales/cs.pak",
+        "lib/net452/locales/da.pak",
+        "lib/net452/locales/de.pak",
+        "lib/net452/locales/el.pak",
+        "lib/net452/locales/en-GB.pak",
+        "lib/net452/locales/en-US.pak",
+        "lib/net452/locales/es-419.pak",
+        "lib/net452/locales/es.pak",
+        "lib/net452/locales/et.pak",
+        "lib/net452/locales/fa.pak",
+        "lib/net452/locales/fi.pak",
+        "lib/net452/locales/fil.pak",
+        "lib/net452/locales/fr.pak",
+        "lib/net452/locales/gu.pak",
+        "lib/net452/locales/he.pak",
+        "lib/net452/locales/hi.pak",
+        "lib/net452/locales/hr.pak",
+        "lib/net452/locales/hu.pak",
+        "lib/net452/locales/id.pak",
+        "lib/net452/locales/it.pak",
+        "lib/net452/locales/ja.pak",
+        "lib/net452/locales/kn.pak",
+        "lib/net452/locales/ko.pak",
+        "lib/net452/locales/lt.pak",
+        "lib/net452/locales/lv.pak",
+        "lib/net452/locales/ml.pak",
+        "lib/net452/locales/mr.pak",
+        "lib/net452/locales/ms.pak",
+        "lib/net452/locales/nb.pak",
+        "lib/net452/locales/nl.pak",
+        "lib/net452/locales/pl.pak",
+        "lib/net452/locales/pt-BR.pak",
+        "lib/net452/locales/pt-PT.pak",
+        "lib/net452/locales/ro.pak",
+        "lib/net452/locales/ru.pak",
+        "lib/net452/locales/sk.pak",
+        "lib/net452/locales/sl.pak",
+        "lib/net452/locales/sr.pak",
+        "lib/net452/locales/sv.pak",
+        "lib/net452/locales/sw.pak",
+        "lib/net452/locales/ta.pak",
+        "lib/net452/locales/te.pak",
+        "lib/net452/locales/th.pak",
+        "lib/net452/locales/tr.pak",
+        "lib/net452/locales/uk.pak",
+        "lib/net452/locales/vi.pak",
+        "lib/net452/locales/zh-CN.pak",
+        "lib/net452/locales/zh-TW.pak",
+        "lib/net452/msvcp140.dll",
+        "lib/net452/natives_blob.bin",
+        "lib/net452/snapshot_blob.bin",
+        "lib/net452/swiftshader/libEGL.dll",
+        "lib/net452/swiftshader/libGLESv2.dll",
+        "lib/net452/v8_context_snapshot.bin",
+        "lib/net452/vcruntime140.dll",
+        "license.txt",
+        "uipath.cefsharpbundle.1.0.1.nupkg.sha512",
+        "uipath.cefsharpbundle.nuspec"
+      ]
+    },
+    "UiPath.FormActivityLibrary/1.0.0": {
+      "sha512": "2RlV/+Y7VuvX7/XJv6yXlu77mvJ/y5/c09zEaSBwJGflRZvHUmYpe60lzRPBDAlNYs5H+nI3dyqAzyUm4NsJeg==",
+      "type": "package",
+      "path": "uipath.formactivitylibrary/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Resources/UIPATH_Logo.png",
+        "content/UI/Designer/assets/icons/default/AddTemplate.png",
+        "content/UI/Designer/assets/icons/default/Preview.png",
+        "content/UI/Designer/assets/icons/default/Remove.png",
+        "content/UI/Designer/assets/icons/default/Reset.png",
+        "content/UI/Designer/assets/icons/default/Save.png",
+        "content/UI/Designer/assets/icons/default/SaveAs.png",
+        "content/UI/Designer/assets/icons/default/Theme.png",
+        "content/UI/Designer/assets/icons/selected/AddTemplate.png",
+        "content/UI/Designer/assets/icons/selected/ExitPreview.png",
+        "content/UI/Designer/assets/icons/selected/Preview.png",
+        "content/UI/Designer/assets/icons/selected/Remove.png",
+        "content/UI/Designer/assets/icons/selected/Save.png",
+        "content/UI/Designer/assets/icons/selected/SaveAs.png",
+        "content/UI/Designer/assets/icons/selected/Theme.png",
+        "content/UI/Designer/assets/images/loader.gif",
+        "content/UI/Designer/assets/themeicons/addtheme.png",
+        "content/UI/Designer/assets/themeicons/cerulean.png",
+        "content/UI/Designer/assets/themeicons/cosmo.png",
+        "content/UI/Designer/assets/themeicons/cyborg.png",
+        "content/UI/Designer/assets/themeicons/darkly.png",
+        "content/UI/Designer/assets/themeicons/flatly.png",
+        "content/UI/Designer/assets/themeicons/journal.png",
+        "content/UI/Designer/assets/themeicons/lumen.png",
+        "content/UI/Designer/assets/themeicons/paper.png",
+        "content/UI/Designer/assets/themeicons/readable.png",
+        "content/UI/Designer/assets/themeicons/sandstone.png",
+        "content/UI/Designer/assets/themeicons/simplex.png",
+        "content/UI/Designer/assets/themeicons/slate.png",
+        "content/UI/Designer/assets/themeicons/spacelab.png",
+        "content/UI/Designer/assets/themeicons/superhero.png",
+        "content/UI/Designer/assets/themeicons/uipath.png",
+        "content/UI/Designer/assets/themeicons/united.png",
+        "content/UI/Designer/assets/themeicons/yeti.png",
+        "content/UI/Designer/css/bootstrap.min.css",
+        "content/UI/Designer/css/styles.css",
+        "content/UI/Designer/css/themes/cerulean.bootstrap.min.css",
+        "content/UI/Designer/css/themes/cosmo.bootstrap.min.css",
+        "content/UI/Designer/css/themes/cyborg.bootstrap.min.css",
+        "content/UI/Designer/css/themes/darkly.bootstrap.min.css",
+        "content/UI/Designer/css/themes/flatly.bootstrap.min.css",
+        "content/UI/Designer/css/themes/journal.bootstrap.min.css",
+        "content/UI/Designer/css/themes/lumen.bootstrap.min.css",
+        "content/UI/Designer/css/themes/paper.bootstrap.min.css",
+        "content/UI/Designer/css/themes/readable.bootstrap.min.css",
+        "content/UI/Designer/css/themes/sandstone.bootstrap.min.css",
+        "content/UI/Designer/css/themes/simplex.bootstrap.min.css",
+        "content/UI/Designer/css/themes/slate.bootstrap.min.css",
+        "content/UI/Designer/css/themes/spacelab.bootstrap.min.css",
+        "content/UI/Designer/css/themes/superhero.bootstrap.min.css",
+        "content/UI/Designer/css/themes/uipath.bootstrap.min.css",
+        "content/UI/Designer/css/themes/uipath.custom.css",
+        "content/UI/Designer/css/themes/united.bootstrap.min.css",
+        "content/UI/Designer/css/themes/yeti.bootstrap.min.css",
+        "content/UI/Designer/index.html",
+        "content/UI/Designer/js/bootstrap.min.js",
+        "content/UI/Designer/js/es2015-polyfills.js",
+        "content/UI/Designer/js/jquery-3.4.0.min.js",
+        "content/UI/Designer/js/main.js",
+        "content/UI/Designer/js/polyfills.js",
+        "content/UI/Designer/js/runtime.js",
+        "content/UI/Formio/FormDisplay.html",
+        "content/UI/Formio/css/bootstrap.min.css",
+        "content/UI/Formio/css/callout_styles.css",
+        "content/UI/Formio/css/custom.css",
+        "content/UI/Formio/css/customformstyle.css",
+        "content/UI/Formio/css/formio.full.min.css",
+        "content/UI/Formio/jquery/jquery-1.7.1.min.js",
+        "content/UI/Formio/js/formio.full.min.js",
+        "content/UI/Formio/js/uipath-formio-ext.js",
+        "content/UI/Formio/js/uipath_apply_theme.js",
+        "content/UI/Formio/js/uipath_render.js",
+        "content/UI/Templates/FORMS/CRM Support Ticket Form.json",
+        "content/UI/Templates/FORMS/Contact Information.json",
+        "content/UI/Templates/FORMS/Credit Card Order Form.json",
+        "content/UI/Templates/FORMS/Feedback Form.json",
+        "content/UI/Templates/FORMS/IT Service Ticket.json",
+        "content/UI/Templates/FORMS/Supplier Invoice Submission Form.json",
+        "content/UI/Templates/FORMS/version.txt",
+        "lib/net461/UiPath.Form.ActivityLibrary.dll",
+        "lib/net461/UiPath.Form.Host.Local.dll",
+        "lib/net461/UiPath.Form.dll",
+        "lib/net461/UiPath.OutOfProcessUi.Common.dll",
+        "lib/net461/UiPath.OutOfProcessUi.Host.WCF.exe",
+        "uipath.formactivitylibrary.1.0.0.nupkg.sha512",
+        "uipath.formactivitylibrary.nuspec"
+      ]
+    },
+    "UiPath.Persistence.Activities/1.0.0-ce": {
+      "sha512": "gFdlaMffEiYI6CHSKiSo18fPlUYiqM6xZ+PJT7B5DTxj8I7ylqqtcoGj5Yd69EvRfB4mrRpYErIosjNV4XdcOg==",
+      "type": "package",
+      "path": "uipath.persistence.activities/1.0.0-ce",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/ReleaseNotes.txt",
+        "lib/net461/UiPath.Orchestrator.Service.dll",
+        "lib/net461/UiPath.Persistence.Activities.Design.dll",
+        "lib/net461/UiPath.Persistence.Activities.dll",
+        "lib/net461/UiPath.Persistence.Orchestrator.Client.dll",
+        "uipath.persistence.activities.1.0.0-ce.nupkg.sha512",
+        "uipath.persistence.activities.nuspec"
+      ]
+    },
+    "UiPath.System.Activities/19.8.0": {
+      "sha512": "9kTdw5VkjDJg5p5j0Q5JgUopE+3jg2gEWPv67IbNwJ+wQ0hbzj704bEs4tddknkLf7FLh6JXu3oaaIzKmEisYw==",
+      "type": "package",
+      "path": "uipath.system.activities/19.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/ActiproSoftware.Docking.Wpf.dll",
+        "lib/net461/ActiproSoftware.Ribbon.Wpf.dll",
+        "lib/net461/ActiproSoftware.Shared.Wpf.dll",
+        "lib/net461/ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll",
+        "lib/net461/ActiproSoftware.SyntaxEditor.Wpf.dll",
+        "lib/net461/ActiproSoftware.Text.Addons.DotNet.Wpf.dll",
+        "lib/net461/ActiproSoftware.Text.LLParser.Wpf.dll",
+        "lib/net461/ActiproSoftware.Text.Wpf.dll",
+        "lib/net461/ActiproSoftware.Wizard.Wpf.dll",
+        "lib/net461/CustomInputForm.exe",
+        "lib/net461/UiPath.OrchestratorClient.dll",
+        "lib/net461/UiPath.System.Activities.Design.dll",
+        "lib/net461/UiPath.System.Activities.dll",
+        "lib/net461/de/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/de/UiPath.System.Activities.resources.dll",
+        "lib/net461/fr/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/fr/UiPath.System.Activities.resources.dll",
+        "lib/net461/ja/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/ja/UiPath.System.Activities.resources.dll",
+        "lib/net461/ko/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/ko/UiPath.System.Activities.resources.dll",
+        "lib/net461/pt-BR/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/pt-BR/UiPath.System.Activities.resources.dll",
+        "lib/net461/ru/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/ru/UiPath.System.Activities.resources.dll",
+        "lib/net461/zh-CN/UiPath.System.Activities.Design.resources.dll",
+        "lib/net461/zh-CN/UiPath.System.Activities.resources.dll",
+        "uipath.system.activities.19.8.0.nupkg.sha512",
+        "uipath.system.activities.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [],
+    ".NETFramework,Version=v4.6.1": [
+      "UiPath.Persistence.Activities >= 1.0.0-ce <= 1.0.0-ce",
+      "UiPath.System.Activities >= 19.8.0 <= 19.8.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\piyus\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "OrchestrationProcess",
+      "projectName": "OrchestrationProcess",
+      "projectPath": "C:\\Users\\piyus\\Documents\\UiPath\\OrchestrationProcess\\.local",
+      "packagesPath": "C:\\Users\\piyus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\piyus\\Documents\\UiPath\\OrchestrationProcess\\.local"
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "UiPath.Persistence.Activities": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.0-ce, 1.0.0-ce]"
+          },
+          "UiPath.System.Activities": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[19.8.0, 19.8.0]"
+          }
+        }
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Runtime.CompilerServices.Unsafe 4.5.2' from source 'C:\\Users\\piyus\\AppData\\Local\\UiPath\\app-19.9.2\\Packages': This package is signed but not by a trusted signer.",
+      "libraryId": "System.Runtime.CompilerServices.Unsafe"
+    }
+  ]
+}

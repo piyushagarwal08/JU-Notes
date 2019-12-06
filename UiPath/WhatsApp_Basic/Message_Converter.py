@@ -1,0 +1,8 @@
+f = open("Message.txt",'r+')
+data = f.read()
+print(data)
+data=data.replace('\n','[d(shift)][k(enter)]')
+f.close()
+f = open("Message.txt","w")
+f.write(data)
+f.close()

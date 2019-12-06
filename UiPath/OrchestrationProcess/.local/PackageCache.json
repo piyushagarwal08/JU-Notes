@@ -1,0 +1,172 @@
+{
+  "Packages": [
+    {
+      "Package": {
+        "Id": "UiPath.Persistence.Activities",
+        "Version": "1.0.0-ce"
+      },
+      "Assemblies": [
+        "C:\\Users\\piyus\\.nuget\\packages\\microsoft.rest.clientruntime/2.3.20\\lib/net461/Microsoft.Rest.ClientRuntime.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\system.runtime.compilerservices.unsafe/4.5.2\\lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/CefSharp.BrowserSubprocess.Core.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/CefSharp.Core.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/CefSharp.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/CefSharp.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/chrome_elf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/d3dcompiler_47.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/libcef.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/libEGL.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/libGLESv2.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/msvcp140.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/UiPath.CEFSharpBundle.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/vcruntime140.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/swiftshader/libEGL.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.cefsharpbundle/1.0.1\\lib/net452/swiftshader/libGLESv2.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.formactivitylibrary/1.0.0\\lib/net461/UiPath.Form.ActivityLibrary.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.formactivitylibrary/1.0.0\\lib/net461/UiPath.Form.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.formactivitylibrary/1.0.0\\lib/net461/UiPath.Form.Host.Local.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.formactivitylibrary/1.0.0\\lib/net461/UiPath.OutOfProcessUi.Common.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.persistence.activities/1.0.0-ce\\lib/net461/UiPath.Orchestrator.Service.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.persistence.activities/1.0.0-ce\\lib/net461/UiPath.Persistence.Activities.Design.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.persistence.activities/1.0.0-ce\\lib/net461/UiPath.Persistence.Activities.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.persistence.activities/1.0.0-ce\\lib/net461/UiPath.Persistence.Orchestrator.Client.dll"
+      ]
+    },
+    {
+      "Package": {
+        "Id": "UiPath.System.Activities",
+        "Version": "19.8.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\piyus\\.nuget\\packages\\csvhelper/2.13.5\\lib/net40-client/CsvHelper.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\microsoft.aspnet.signalr.client/2.4.0\\lib/net45/Microsoft.AspNet.SignalR.Client.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\microsoft.extensions.filesystemglobbing/2.2.0\\lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\microsoft.rest.clientruntime/2.3.20\\lib/net461/Microsoft.Rest.ClientRuntime.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Docking.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Ribbon.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Shared.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.SyntaxEditor.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Text.Addons.DotNet.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Text.LLParser.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Text.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/ActiproSoftware.Wizard.Wpf.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/UiPath.OrchestratorClient.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/UiPath.System.Activities.Design.dll",
+        "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities/19.8.0\\lib/net461/UiPath.System.Activities.dll"
+      ]
+    }
+  ],
+  "Conflicts": [],
+  "ResolvedDependencies": {
+    "CsvHelper": {
+      "Id": "CsvHelper",
+      "Version": "2.13.5",
+      "Dependencies": []
+    },
+    "Microsoft.AspNet.SignalR.Client": {
+      "Id": "Microsoft.AspNet.SignalR.Client",
+      "Version": "2.4.0",
+      "Dependencies": [
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[6.0.4, )"
+        }
+      ]
+    },
+    "Microsoft.Extensions.FileSystemGlobbing": {
+      "Id": "Microsoft.Extensions.FileSystemGlobbing",
+      "Version": "2.2.0",
+      "Dependencies": []
+    },
+    "Microsoft.Rest.ClientRuntime": {
+      "Id": "Microsoft.Rest.ClientRuntime",
+      "Version": "2.3.20",
+      "Dependencies": [
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[10.0.3, )"
+        }
+      ]
+    },
+    "Newtonsoft.Json": {
+      "Id": "Newtonsoft.Json",
+      "Version": "11.0.2",
+      "Dependencies": []
+    },
+    "System.Runtime.CompilerServices.Unsafe": {
+      "Id": "System.Runtime.CompilerServices.Unsafe",
+      "Version": "4.5.2",
+      "Dependencies": []
+    },
+    "UiPath.CefSharpBundle": {
+      "Id": "UiPath.CefSharpBundle",
+      "Version": "1.0.1",
+      "Dependencies": []
+    },
+    "UiPath.FormActivityLibrary": {
+      "Id": "UiPath.FormActivityLibrary",
+      "Version": "1.0.0",
+      "Dependencies": [
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[11.0.2, )"
+        },
+        {
+          "Item1": "System.Runtime.CompilerServices.Unsafe",
+          "Item2": "[4.5.2, )"
+        },
+        {
+          "Item1": "UiPath.CefSharpBundle",
+          "Item2": "[1.0.1, )"
+        }
+      ]
+    },
+    "UiPath.Persistence.Activities": {
+      "Id": "UiPath.Persistence.Activities",
+      "Version": "1.0.0-ce",
+      "Dependencies": [
+        {
+          "Item1": "UiPath.FormActivityLibrary",
+          "Item2": "[1.0.0, )"
+        },
+        {
+          "Item1": "Microsoft.Rest.ClientRuntime",
+          "Item2": "[2.3.20, )"
+        },
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[11.0.2, )"
+        }
+      ]
+    },
+    "UiPath.System.Activities": {
+      "Id": "UiPath.System.Activities",
+      "Version": "19.8.0",
+      "Dependencies": [
+        {
+          "Item1": "CsvHelper",
+          "Item2": "[2.13.5, )"
+        },
+        {
+          "Item1": "Microsoft.AspNet.SignalR.Client",
+          "Item2": "[2.4.0, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.FileSystemGlobbing",
+          "Item2": "[2.2.0, )"
+        },
+        {
+          "Item1": "Microsoft.Rest.ClientRuntime",
+          "Item2": "[2.3.20, )"
+        },
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[11.0.2, )"
+        }
+      ]
+    }
+  }
+}

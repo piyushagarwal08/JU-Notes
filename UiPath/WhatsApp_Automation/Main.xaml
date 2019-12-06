@@ -1,0 +1,449 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="693.6,696.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="23">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="673.6,636.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="WebWhatsapp" />
+      <Variable x:TypeArguments="ui:Browser" Name="firefox" />
+      <Variable x:TypeArguments="x:String" Name="message" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Contacts" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">20,2.4</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">80,40 110,40 110,30 220,30</av:PointCollection>
+        <x:Double x:Key="Width">640</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID0</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID0">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">220,3.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">320,56.4 320,83.6</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Firefox" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[firefox]" Url="https://web.whatsapp.com/">
+        <ui:OpenBrowser.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </ActivityAction>
+        </ui:OpenBrowser.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:OpenBrowser>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">220,83.6</av:Point>
+              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">320,136.4 319.8,136.4 319.8,166.4</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ImageFound DisplayName="Image Exists 'firefox.exe  WhatsApp'" Found="[WebWhatsapp]" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAkwAAACaCAYAAABbnBfYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAACzASURBVHhe7Z39kxbVlcf3//MHi0qKqpgQg1OgEIWdRAwFC2GnRsxATZwlZFYFMi6IKLMgEN5fFkUUVHRRw6oJhkiKmmxRWlPwQyr7y9n70rf73tvnvnQ//QzPM3x/+BRMv9y+95xzz/l2P/3yT3//x/8RAAAAAAAIA8EEAAAAAJAAggkAAAAAIAEEEwAAAABAAggmAAAAAIAEEEwAAAAAAAkgmAAAAAAAEkAwAQAAAAAkgGACAAAAAEgAwQQAAAAAkACCCQAAAAAgAQQTAAAAAEACCCYAAAAAgAQQTAAMPXN09dRRmn3rDF2d49YDAMAD5H/eFflJ5KhT1+gOt35IgGACYOj5hKb/eTk98oPnaPpjbj0AADxAjm0T+UnkqH+eoQ+59UNCe8H0/hs0NvFrGnvpFH3JrY9x72v6/W6xr9z/xTfo7f9ltgEAZALBBAAYYB56wdTaALfp8NbVet9l62n6o/vMNgCAfCCYAAADDARTGwPcp6u719Ojcr8frKZNx24z2wAAmgHBBAAYYCCYmhpAiKWZjbTEiKUjX9M8ux0AoBkQTAAsOv7nPE0/v4GWbj/Orx8mIJiaGeCW2H6pEksr6Mnd1yCWAOgMCCYAFh2mxm6FYBoUFkQw3br4Ej25TIuln0yeo1vMNgCAtkAwAbDogGAaOPoumOY/minE0nJaKhwPsQRA10AwAbDogGAaOPoqmOZvHqNNI1osPTo6Q1fv8dsBAHoBggmARQcE08DRP8H0zXGIJQAWBAgmABYdEEwDR38E071rND26Qq8f2UaHv/HWN+I+ffXeQZravIEeW160qVhB31u5gdZNH6RLN9u+y+k7+vj4DI2tf5aWPm7alaykpWs209juk/Txt9x+db48sUu9iHPHiT+56+59TZcOvELrnn2Gvlf8NKlY9hQ99uw4TR14n77qUkz++Qz9Vr4QdOI/6HTrz2R8QYd/K9uYon1XufUW9/5GH57br/zzo5GVlg0Fj6+mH8kx7r2Qbce//+NPdPQleexddPSP3Po4QT/Y/PEU7ZA2ev2KtVzE2YX9KhZUnEn/PLWBfvu+tV8rrtB/KH+8QZe8dXevn6TpbZvpCc9uS0aepbXbZujI9e+c7cMEBFMo9oRfnli/k/a918OTqt9+SRcP67njzktxgrT8GdH+izR9uFls874LzX89Ryd6mT8LPTcTzM99Qkd2/0b0Z62Xj2Su0zFx8NKXdJfZt853dOPSUR1fK58qXuVSIMen8tvRZrnTzBvvZcXzN9+nfdPjtMo7jorjqSb5OTBXvv1U2OVFWrtmdfGUtUbG2arnm8wTn37WFoGcIyK+NjJzZMnIWlq1+RXac+4TumNizLwM2rBhVG+/6pfucoOTv3i6yzE+le38vG/8fvELq20IpoABhFh6eV1hQCGWZnsIuPmbF2nKtKUQSfKptfQjgROAy56hn+/9IDORaO5eP0gbVtptyAKp23aS1ePraOJkurB8uPs5tf2K3Z8Uy+7Tp0emaKRsS05C3f6PnvIm/soxmr7Y1TuprtLUKt3uuoNzzPoM3t9FP5Z9Wz5FJ4MFQwqMGfq5bUNnjH4REj7a/U7GPWy9XS2p+4Hh4xlaIftkztzu/YFeH3umSvZCUJgY2HTM27cxx2mTalecOJhl37xD05vc42mbeXEt4n1k+zH6NFm06za7e2W/5RvLL05RW0GPjR3KaN9GnGQctuNaUs1LP7bl/Bk/8ocsYVbznbTThuIlt6otYyc3th59egedbHRSJmN3F6125nmgbTE391xpW1QykV8+mFrvHleIAd0fPybSMXn3+hEaX+MXMeMfX4zlxpjAzJsy59+m87u3FE8/67b4/Pwz2nomJ7/5c0Xm0En6SWkXK46dIr2aRl9r9uR1P2uLnCOX947TMja+/L5b8W5qai6xK09CZO6zc1rQdsL/U6cbnRjM3zxNE058hfLLSlo9XeR8CCbOAN29xXv+owM0Wvykt2TNFO1jzqzu3v6A3ty+rkjQ+a8ruHVmRzEJRcHYtIuOXPubt999unPjvFXU0i/ZdJO9SCQ79Qs6l6zZRtPHP6C/+FdY5JWZ47uqoiYm5paOXuT5+d6Nus11++lzZn2c+3Ry+yq1//cnLzDrJWJ80+adWsKGz+0U/rlRnSmVSDu+S/u2V8Vg6ZZUgV5owWRidgX9ZOIIvXe7Ko53vzhP53v+icstAvOfH6JfyLgW/n5anoXd8GNPHlfazMS1iKF1exM/abs2K+NbipUD79INP/bUmW9ViLIfxnCEpUi08uz+6l+ZYvId/eXqSZr65dpqbu5Mi2XHd+VP+rKge2erEjF/Pjs7U+aIR1a9RG9nJf37dPU1U+QDbav+W6Kjn18k+OYcbX26yAGFvz6bqx9rfu6G8NlOelrki7BgEgLj4Av0WOHXYO4RyNx5ZLoq6o+OvkTnU6LTEUxVrufzc5FDS8E7SpOXUja050r1kmMpWqeOW1diClT+n/hZEY8rxAliXv7sZ22RFwxmzJil2Jo+6eSUkm//Su8dn6FNIsbKXGU+UGvYYfL4tLvc8M6X9XYlVkyFbCfj6dTusTJWcnPA3Su/Kx/i0vFVb1uPzdQ2kVenLtAdCCbfAJVIyD+jCGAly9W70+q+esfTatp6Lj4py6f2pEBJvjzTejP5ss00c4PbRmMn+w9n5D55RcKdYPFjZDN3iNYpe2ykPU3bu3eOxpfLfUdpiv05yraJ8HPG1TeJvKKnhILYLz45F1YwyYn8fRlnM/16N5hVBOZO0RZpg5Hn6fXP0wW4EvbCZkK8hvtn2ezMAVoj9pEF8Gzi6m71BGt63jgnQyNbMq+6yCs51StFUkWn8t05mlkvkq0QKpOpK6/WvZI/nr7Kb2NR5orHN9J0cgz2mHfQ6SxB1gCr70u3HMz82fo7uhvYzs6Do5lXReSVlsni9onkvaaWYDr52ubMHGfZcNUuusxuY6jmyuy5HWos6RMsOx89T2+mbkPoY22xb0XJmX+a+8Kfge3EsZXd1Ikds56j7IM4kZ04lrxyVOWAFbTmtS/YbQz2tj+ZzLgqJU+wtkjfr6YtE+N6LBBM0gBW0Arj9PbJk9v0+mYddCteyS1i4viv6GQbvapy7zJNqp+rVtGGI7l9vE2zY8UVl+3ngv0pk/32HaJgNTgjkYgg36kKnphoW96iO9w2jZijN7doG+YUEZs7//m89mPAjndOTJYJpKmfqwkXs/9CCqb9tGdd/tlVO0wReIG2Tork0fCevltHXhCCTu4fErASY7NVtHRE+D37GPfp7Z36PolU3OmTAHGMFldbqqLzHO2M7Gt898NVo+JY+fGlRa/smxh3LIl/I04kVPzF++Fgzc2f7o0XlGZ8Qi8XxbWT+Pt4b7YwrWEJt2jONfPmyVH6sThWdr/nRPvqJExeHYvZ3cwV0b7I0/kPC5n4T8z7ftYWkXOPTWhh2NlDTo0FUzWfvz92LDumyhwTuwWjnAcN36VoiUgFBNMMnS8TYovJ6lEmv+xL7AXllZE1NHmJWS8wCfnRzYeaJagb++mnanzj9HrgDMa0rW3yu8YTZv7SS/q+oTZXhRjmz0wVdkyd1dl8oQSE9OMv/pO7/6m6Pyo/4bjcOjiuC2+wXwsomEZW09Jlwqc9PZSQwhQBSROhbqiSfFiwVwUj60zYJiO2/z73Fv0iKXRj5Akzew7Fr6j5iBOhJ+V+K2jLCW69ZI4Ob9UnPj/eeblR7JZz6UmRk5j1bfhcXaERbTbNcyzVCVKTQmlT5p/YVRozbyQNr7i9vXON2u/RiVPseo01Vxpebb8j8orab3Qv/TezXm3Tx9oyX1wRe6TLfNJUMBn/NO6Dyfvh+17LeG1R25y4eegF03JZdLQxnvj3D3oSS+mCHcdMyh+KhFhbn/ypKcacKFp6jKGAqpL9Kho/0+wMXFMFbfwsKZNyvKtEAWXWc5jADpxplIUjejN4gnvv0DZV3EJ2WkDBJIhdNewGqwi0uqfMsnvwCoolmBofQ5w5rpH7hotBb/fEFXxzkEaVHcInBNUcan7ScHpSi6EnhJDn1pfCMOdnmxpGkIVt1Ih7F2iruqLTNld4lKK3l5Ot27Rvo2wjciXNmjeNr7YJQaFieI0ouNx6RTVXGs/LPx6gNWrfF2iWnSN9rC2ibfUTsljf6VXIRoKpuve06a8KklJwbj7EnNCYE+W28VrVTwimNS/QJnPJrddXCJigb5XUBCcmtQpef8B57FVhJmyjKy4V/z2zXo0xdCN0meyXizMvZn0OXwoVr9pgg7Y5l6eLy7OZycdsH5pwpijxSSMfk3x4Wy6kYEr9RNAFVRFY81rkVQdRRIGNnuFWgqm52L5Ps2N6X/5m4j+JYqDXt37qUlElzZAdyjnEzd8E5dwJFBezvu1P3scmdI5r78OKdld/w3SVN8qiGbJ/OW8200zTV36UgkbUCG69wsyVBid5JWaOBPJGP2tLT2I8QiPBZMbf5oKA4NO99KQ8Fle/Lr1EP5TrerjCWsYofpITBrB+A+/l99v5Iy/oNlskTEV5haTu9KuvPKvaDj/5lcCMN9C3MtmPHWt/xaKDwHQw9kjd2yEpr0iFzlLNlYg2yczDJB/28vlCCqYWib8xpgg8Szs/4tbnkLrCaWzWzjeHt+q2WTFw7xht6MhW5qQj9LOM8V0rQR4tLpUobCt4TN9a5w+Lrk48NL2PrcQUzWWTdIxbb+ZNq/xk5kGOYIr8PBwknjf6WVu6PtEtaSKYPvodPRHoXx7G9vV5nrpYkIWtF7j1Q0JHN32LgPxob/lek7aiyYia9okkNCmrpNL6LNlMmIDDswp1irKQx5JKE/IvQ5c3e4cSSoeFMz7OBRRMPVwNzCenUKQxooYfV282i7bdcyK2SCTNnuaQaZuN3/TPjkmaFK8on9HLo7IvsfutmtDhiUwZq4E4SuTAOOGCXN+mzVyJnzT0r7ZUVx+fnPnMWd4zDWKuFIStRVs4h0RPqHJJzP1hoTPBJJdVT0G1e/LDOKZ3/KA2wdAB/RRMHRVXm/hv0wZz02hEWHUq5sw4ufsNFlAwLcjk7can8XH1UTB1meiM3QP3sXQimNh+Gh90QM+C6RRtUTmyna/qmLF10Z6Jo8DV0E4EU6yfvcyVKsdzPy33r7YYAdzFS249GggmM3d6x/dPR+ODYOINUD1C3PDxQ4EJavstt+34V5r51G67mkz2G2/b8Rs6YfXZMKiCqXrCKXJDqPkNPnYzd18EE5c8IZg4FpVgCtii/4LJfhN9S/7lQPAprDxisd+GLtuLi47FIJj6WVsGQjDZbxRvya9O2213NL4u88gDpHPBJH/+qt6k2+w1A9HE3RN9DOqCTgRTp6LEUD09EXqCI3Wzt6Ivgom7PG98tQCCqet7Dlh6KQIV8bnRm80WXDAFft7rv2DqSqT0Qtd96bI9E0eBn/cWgWDqKT+z9LG2tBFMPV8B9elofBBMMQN4L7JMvlFbY26G7D6oqyd9BlowdX3TtyH6hKB5ZDrxSHLWUy6ZRNvqrfg3EkydJxeOXoqAIfem73Y2ixYTEztdJLpEW/0TTIknqBaUrgVTl2NLtDXEgql/tWUwBFPqKdH2QDDZ9EkwSaxX4me+tdckzPjLzdphikLnN+YVdCGY8u43aoN5j0b9kVPziHP6cWtz78V6etm5JN2CqDA0E7TdU2XmBszFJZhS7wHqo2BKPTnVgFR8908wGft0daN1L3Tdlw5vIi8/qRR4Sm2IBdNQ1pYGgqncln3yuDfM+HDTd18Fk+Ce/Z20jE8qmMfN+2DU8pFmEXytH/uPYCZk+9cK3BeBmVHsW2L65z4aam72znkhWVfv47HOhlhb9XKTYXUlZvAEUw+vFTD9Tb64sg+Cqbzq0PtLG1Mvl+yfYMoU0guE6UvwJZsN6ew1BamXSw6xYFqI2tLTK2U4mgim8sQmlCPa0/MreQR4D1OuYrS/JfP4Rno5Jpp6+WhsCnNVo5e3VEcoBVPb9nt6E3kG3I3d5bK8R8bLs7SevneXFl6tz9hKGw6iYGr/FmDzpu2w3fspmCoh3+YNwhVp4dVPwVRe3erlbeUdUfaloxdXzouxKzHQY3tJ4TXMgmkhassDfXGluQrd0dvjbYyQbn2rCN70nS+YJNaLLeNvA7c+GismbbdXgszPUitEoW7zPaw4pWBq2X75rZ6+JfTq1QHm7damEGcXwhsH1Jfw2xZmxfu7kt+savsiuPINyoJBFEytvhuW9RmNfgomYVeRMNVDHMvF3G1ZEMr3fEWKej8FU/W06KgQbB0XlKZY3+brpLhZMbLpWMurv5Z9gidswyyYFqS2PMhPo1QP7zT+VmoK6zNbreK1/HSPAIIpzwDznx+iX5RvA3+JzgdEU/URw4yf8BpSipJeP+HCUAmmFu1/c4w2FAHZOuFlYIqWvlJhJnmTM6774iy0ly9yV99cynoir8kZm/VVeclACiYhVpt9nNr6Unp0nvVXMNl+a/Vl/bKgx1+g2lfB1HPsdkn1MeJuPr7ba26zbBO7ejzUgqm/taX8qHiXH981V3Zy7V2e0ObdM9wEI8Yeafzx3erj4Xr/NrEzOCyYYJLYL7YMJ63bNDumLw0/+vQOOtkg+O5eP0JbxvaG+2MV1aUbDjRw/H366sIMjU6FC2yZ7LduU0klOylbP1m2/dJ4NuWZgpjUZ/Vl5MY/r82doi2F8F269Rh9lW3D23Ry8mc6qSQnXfUh4ryv1t+m8/8m7C+S1aT8V+w3eIJpnDapr+XnJ7PqnWbP0c5ogu+3YBJ8vLeYu0L0vfIB3eW24bDuY0zFd38Fk6A8MWn6jrjv6OPDk7RhpkW/Qty7TJPFVYlmuSjEJ/RykUceHf0dXf6W24bDeg3M8hdoNpZvh1ww9bW2WMKgadtByu/fCXtkxYd1gjWyhWYaiML5mxdpesPOsN2dvJ970vQdXX5FPi2/mrZMFD9DQzA1M0BVBCKG/+Y4bVlZBN/KMdrz7t+iRXP+5vu0b/s6WpLRH/sTLkvW7KS3vviO3c5w9/pJmtr0jC70kQJbJftr5SsVHn16kt68Hm5//uZp2vp0x5Msgb5PYQUtHZH/trvE6tpwKjpGiZ6Mxc3/I8/T65+nj1meDf5gJa2efic8Qb/9lN6ckEJMC5GsovtABJM88xf/V0lnNY3uvhgRmyLR7DXvMhPbvpa6KrUAgklw69gkPVaIpsc2zdDZm3E/qiJj4jtyVdnQd8EkcMewn96ei41BnCi9d5DG16xs368ITefR3S/O0/SmMXo55GMvb05fSLzOpZw7og/L1tPkxYSQH3rBJOhjbWlq//m5T+hN0fZ4sL9mTCtozd7Pa23N32NiV5ygvLxOx+sjj6+jid9/GT+5ETFwZHqsmBNxu1cXPMTcGTtIH0dEuRzbvjFZN8XJydQFutNSLwwaCy6YVBI6kiOaztFEkaikg743Ok6/2j1Ls29doIuXTol/j9K+3b+hdaNP6QkvyEoSgvmPDtDPi8CWBXnZ+gma2nuUZk+8SxfPiX9F23umJ2jtKnP8dEJzk/1tOr/TvIfKav+caP+E+PeNGRpbv1ZPQtn2ul3JYtIZ5h4iSQ83icqfWDeUNtT+UWO0/DO79xVa9+zqcpxSFP4+UWQrxNnSzMZq3+XraZPy/1E6ekK2P0vT2zbTMlVwhKia0aJioAWT+Nv5aVqMad3UDO1765Sw2YUi7sbpyeWFXZc9QxsO/iEZzwslmCS3Lu4qi7yO7Rdp+g3ha2vu7Nv9Iq39aTUvl27Yn3XFYyEEk+TWmZ00Ysaw7Cl6cvNv9BjM/JSxNWX5QRaIDIHYBnceraSlzxbzyLGnnecSPv7mHZoyBVOwZNVmGlPzpooxnX9G6Xuq+AlGttCeK3GxplgMgknSx9ri2l+0/VNjfzcvbrTyf6y/1QWGlTSy+RXaU/jvV5uFiAvlL3lV15zkC2QMbJzeL45txYDXBymuxg9/mrxy7Mx/NXeKPhmc2LJOdiGYejGA/WLLyH0d976ms3u3VcmNRQflxOFP6E6Ty9ry7GrqXwplHUImsG2052xCpQvqyV7/jFcJMwYRpJv2xq409IPq566eb1As/FMVFh4pDMYPvN9inGkbLlk17iSyQRdMapmMPXPWyiIK9HM7k1ccKhZOMCnU3DFiNYz0zdTxdBI2LJRgksirnnuej/lAIArC4+uFH67Fr0L0jJxHu8cz7CnzXI495U+IO50TPpbH19Jz0yejVwocFotgkvSztij7T2XlxXT+lz+ZmitANqJvk2eZ7Q06Bp6O1R/BkpENog/n6Ub2T7h67kz/0hJbNaQI9S4wPPSCaUH5jv5yVSrj/TQ18WsamzBnhB/QH6OX1DO49zf6TCp/qdpV21oxH730Kf2lQRCFk/19unPjXTpa9l23f/rqX7MLSaeU9zHFvhreFDNGeYVEjlGgzmgu0Hs3uyg2nA3F2dKNPheyTogUgW//Su+d02ez0mbqLPfEu/RZrzG9YJh5Ka/IaL+bMXx8O1fsPWAKH8gzbhW36oqfnJ9/blgku8DPc78urza1tefd2x/QaTEeE2N6fGLuXH9A+Wfg6GNtKfOWNz/a5EUTp8KXav/seKj3odeYMszP/XnI81dzhkQwDT49nR0vIO6Tcvw2oEt6OWsGAAAwKEAwdcRwCCbzc1wfXm4GAkAwAQDAYgCCqSOGQjCZG747esMwyAGCCQAAFgMQTB0x+ILpPp3crt9B0unbaEECCCYAAFgMQDB1xMALJvMW2K6/dwQSQDABAMBiAIKpIwZbMFVvuO3tA6qgORBMAACwGIBg6ojBFUzm9fSiaI9M0jFcXVpgIJgAAGAxAMHUEYMjmD6j2R36XSLqbbXmjbZ9+OAkyAGCCQAAFgMQTB0xOIKpeuNtyeMbaSr1nSjQJyCYAABgMQDB1BF3Pjqj3sJ6/KM5dv3CMUdXTxVvrZVv9T3X9LX+oFu+pP9Sb+d9l/7ArgcAADAMQDABAAAAACSAYAIAAAAASADBBAAAAACQAIIJAAAAACABBBMAAAAAQAIIJgAAAACABBBMAAAAAAAJIJgAAAAAABJAMAEAAAAAJIBgAgAAAABIAMEEAAAAAJAAggkAAAAAIAEEEwAAAABAAggmAAAAAIAEEEwAAAAAAAkgmAAAAAAAEkAwAQAAAAAkgGACAAAAAEgAwQQAAAAAkACCCQAAAAAgAQQTAAAAAEACCCYAAAAAgAQQTAAAAAAACSCYAAAAAAASQDABAAAAACSAYAIAAAAASADBBAAAAACQAIIJAAAAACDBAxJMt+jM7Ov06tu3mHUAgOZgTgEwmOi5uePEdWbdYHHlhOjn7GX6ilkH2gima2dpx8zrdOgas+4f1+mQWMcbvAgatW7AknsxpmEIaAB4IJjAw0BRY2IMXB6HYFostLjCVAQs5/yvL9OrKmjP0hV/XbGfTujdJvev3j7ak5NlkLw6K9pg+w06QcXGUTrzNbOuETqOeMH+MDOEgkmdqGDOgR5QMdRFXukni1wwdZbbB59WP8mFjKqEixJMTEFzrkwNkmCSBVg6G4W4r0Aw9RkIJvAQAsHUKRBMcVoJJi2MfAOZoDhrXUny9zHJcXAEk72vCpYhCOqhBIKpz0AwgYcQCKZOgWCK0+6mb2UgPzlXhaxudD9grOReXHlKXZlityn64a6vHKdFmrWuFghekQlMvkpU6TFWbXrJ3gocZQNr2+wCXxuv15/UekEp/Dz7uP5q4AOBb0u3rQLGH4euFb73lpf71/apj8fg21ThJCHfP4F+WoQThG7L3r8WT6z/Ofv5bXlzRbYVSqbZMdXMn7yv3G3y4qjAj8vQeBR1P0mc42f0j6W2n2W7pJ8rv7i+5mMyGQ82pR+9+VDYKed4cf8LarnB7k99HsZjO7cPfmxr/PZqMRPwk7NNDmrMeX3l/e+h2pN2q2LUtnPSB4L62K9r25dzgrdZ6SN/7qTmQqO5Z8HsV58nTP4u1zPrBNW4KhuW5PZtQGknmDjHloFm/m8HsR8glqGtNnSg2fvJ7dwkVN+mWOZNBr2dlzBOeBOmTGJmWWTyzx4V23IJyFpWtPeqWG4HtO4LP7lsuO2+evts2T89WZmxe/uUk9q2STE5qu1yfWDa88fp2alo319WHq9ma7MsPF4e7SN7HwV3/KL96CStxapG28GMmfG1oOYPZjwaP66Kv0VM1bf1KOyWjql8f3Ixw9kvL464Y+jxRe0uUW25NpXk9q9GLJ6y/Fz02ztOLf7LZW57V07Ux1JiYtHex4xJ3j9p2ap+vMK3MT8w46v6U+xv+0P055Adj17+zOpDrr2KsZfbxPxk9smF9WvRL6ev/ByuUbT3qld3snwgCNpN9qe0v+5fPZYZPxXHcLYVy8wx2869+n6m7wJvjG4/mfaVP30f6GPYtqnFwRDSUjD5iaYwtjG0PyGKIKwMyk0+SSiQbPQ27mQTffHaUv3JCRpuP28ZF1war7+RgODadWCSSH0914d62+rvWmLwJ2OmDwL9cv2f4Teu/you/H6mqPvfjIU9fi32fJgk5S8L9tPbLuhD3z7671R8Koo20zGV6U/Wfhp2TifjyG+/IGl3AWvX/P7ViMZThp9DfvH9mjM2H9aPxfH9Pmcez/Y/l8sqwjYNovpgHTNkW39cft8LHN9F/dQQxjZhWwRi1Ua1x9gqwwc1m5X4cRXqR+bcKgmsD/S1Qu9Xj4fi+ME40tTsGxx3HWUvf34NEa0Fk+sUbejKca7j6wHsb+8uDyUspX4L7H25CaInaDfBFp6AXn8jgaP7E04SWetDgez1ORSUzuTO9EHwuPYxkxNUwNnG+DU0LhZmskcnbCrpMLb32otNcmffYjz1ROT3Id2nksjY3H5nzinlq0Ccef3PiqNQe0FbWHD7NuhfaH0onlJ+ZmPLWm5s686jTGrH0rBteeMM+cEZj7Ibv10ZA8E5UmDasHD6wI7ZtY3qE7edars4fsJPjbDbVctC80CT9F2tPU2OD4Jj9+dgcP5zczXiM7WemSte/NQI7ScI2Uctlz4ric0jGxN7Fl34/QHRXjDZTmcMVgWPHyySUFDzgeUGTT3Y4pM04CR7HYfV3+yJEAkce2L56ySpiRxd702s0OR228jzQX2i2OhjpsamCNrG+Lhqz13vo7d3koE3fpd6vNTwEozrbz8mXZyxe+1U+H1gxhAiO6by/Bn1ldf/nDjS7Unf8UTHyCTuJv3jicRT1M+SkF9s/8XjIUjAj+6cLHD6WRxPjYfDslWxX215gT2XnTgp96u35fSBHbMb2zn5wt6vvrwhtbnv9seHtbcNE5O5Pgi37dsv1Ed3u+hcELSde7F2/TGUx7B8X9s/FttiX3ucSfsPOD0IpmrwVzgHmEC+Zk88gw6MVMDwxq0Hm3Jg1AlmclZ9jDlOO7raNty+N45A4EhSfexpvZc0VP+Z5OaOOc8HadsK2CTjEbGNQds9PNE12pfONtG24wnUUNmsbpeQPSXKPuXYmb5Zy6s2Q9sxZMdUnj+jvlLHqvqVFUc5vg/B7dugfym4eIr5Odd/sXgIEvCjY0tDph/CFD4PzQllY9cOtfadPgS2Ubi2ycoXHpyfslFjscfJ+bWCtbdNIP5yfBAeu2+/UB+97WJzQZJaHyKyn2OfwHxzc57Zzou1ml80SfsPOD0JJmO4Q2wwFcnnBOecvIBhjasc4e6bNUkdp7qTnN+2ChQ9Tib5+AFV/J2cCByBAMtZ79spNLnd7ZpM2ki/JL4dOBz7hwj1yYYrahF/5vRforYTcWr+tdbVEkSJ79dAP1Sb9nJuDAGyYyrTnxFf+ePMiqMc34dgbN2kf2kYm0T8HPaL69fm/RAE4t+fu9W2VT9aHS8RY6pNdVw/jqz1OX3wY1v9nTHfHEKxmwFzPNamisD8tGHjItMHobEX/vTnam1u+dtF5kLW+hDB/bR94nO76LttC7WdN27WFl77Q0hPgskYNHR2oAKXNVBogriBpIPUNnphcIGzLztp3OC2A77erg/XD38cjPNLe/h9qS/j4LbLe0qOOZ4/Gc3ysr95Pij/9pOFGGv1lE1lIycOhF+qv5lk5awXsBPUx+9fgYoBr/2ivfoYOYr+eU8saXgbaH9wy2x/cDGrl8XHWZAdU7n+DPvKX5YXR1xfJGKMzL4OAX/n9q9GVjzF/BzyS7FPadtQPHhzxEb1xbdR3ZbVtnY/9PFr21njrT1lpuxljuf7wo0J7T+r72XMpfpQLBOkbCPbLPNFwk+1/sRwxmng+lr0y7ehj2qPO3baB/zYzTKB5YN6jOduJ7CO2XbucfvpZYJyjMWYmf64Y9TbObmn8Km9rN7+8NGbYCqdXE8EEmPcUBIPLbcdVBpZIZ3EOMcOtqIv7n4S4+Bi24TTdN91W+r/cns1maw2/aBUQSL3KQKthJuAPFVAFnj9rK1n2lZjZyaMWl62l+8DSdieFr59vG3svqvj1rb3EkMIez+7n1aib9RegelfaJ+aDdgYsmNRIm3gx6z+O6tv2THVzJ9129fncF4caepxWW+Pw7apY4+M/tXIjKewn0N+8f2nqcUDY6uS0o/ucs6WJo7dfvhx5e4Xt78fOwKnr17bsl22D1wMZtrGjteEn/S+fnwHUG1xscHYK+Yfg2ovdOy4D/htZN+KZd7xXRuFt6vby+1fF3NPIn1Qi0cvp0o/6+OF+1DGgtdvtv0ho0fB9HCggiHHyYGkCIaDbD8vJIipzhlIPw8tIZEJwOIDgikDCKaHAf5M+YGDmOqYAfXzsBK8wgPA4gOCKQMIpsWP8nHuzwALCWKqUwbWz4OOjEP/pyIVmxCf4OEBgikDCKbFiy6g8jf2AS2iiKlOGHg/Dzz+/Usa/BQHHiYgmAAAAAAAEkAwAQAAAAAkgGACAAAAAEgAwQQAAAAAkACCCQAAAAAgAQQTAAAAAEACCCYAAAAAgAQQTACARUX2e9MAAKABEEwAgEXFwy6Yoh+vLT6Iyr6d235zd/H/vBdTMh+lLSiPg0+ogEUABBMAi5yHTUAM33g7/oBtIYq49so3nnNf7rdFTRvBxLVpgGACiwAIJgAWORBMg07XX/wPfWDYvhJUvwIVvTIVJUMwAbAIgGACYJEDwTTodC2YCgHj28BcNTrBXe3pRfRAMIGHAwgmkEnirNVJlnpbcx+D//OAPpO14c5qi3bLbUSCv8b/TFD+zFDA3p+RQa1fXsFJrbcLn9snrzhZH9R12+TP7v3jsoW1+BmmQrT/obZXbTnzs4jub8QPtn+Lwmu36/YpXEDVWCy7qb/ldmX/Q1c4dJvKt/5YveNUgsmLQ6Y/XKzW4kcdT/bLi8ma/yV+e6HxaGoxJXH66c8Dfz2P9qfn63Icuo/OOP2f4PCTHAA1IJhAJkySVfjJktlOJEsnEXMFwSk+RdGxt7OKtJ3EdcGxilKxXb2fMUxRsoubWHbC9Knoj9NHbp9iO+/4oT66Y+HswCwrxIJtAyPO3GVny+JUCYhqfY1QgfQKHXcs06dqzEW/mQLKCqbZo15McOg2XxXbsnFhLTN9TMZFrd/Vds4xiu3cgh+O0ajvWXRbNdtzfWFjkaHY125T9aVoy/eD72du/zBhf5f47QMwhEAwgUx0onaKi8JLlirRNkyMKplWRSVY4IvCVSbxQFLXBTNVpCpS2wf7U7MJU0Qlfj+Lv2u29ItKoMg4xS6jsIX771IrorVlgcIucG3YUDBl+apokxuHZyfdl4TdjACrxbOA9UM6zjj7heeNDW9X1R4nQjJ8XveB249k37OOYSiOJbZ3SccyAMMEBBPIJJT4+cScKoI6YXPJ1W/Pwkviqo2MAhoncjxrfajguYWGL3w126lxMP3zxhcqmHax8wsfR9BOPjW7eeNR6wPHcvoetqlfmGuFOkjED5lx4dgq5AOF56/QuB17hXyfii8Jt2+oPUlOm55t/fEy/nJs69lUj1W0Z1Ftn9GfWmwBMHxAMIFMvCJSwiXLYlmRWJ2kbxKvXdCYwpNTGFVBKI5RJzc5R46Xsd4t+KEi57URKtZMEePHJtEFPEdwZAsmv5/KL5VQiIozru+5gilR+DW6zZy4yBJM0QIet0OJ3UbRB95XgugYmbjxxuQStq+D1b+6TSx7cseKHt8noz9RewMwHEAwgUxCBSueLHWRMvt5hcjgJNPANpLMwtiM0Ljy1vdPMOWJiRwbNLGTvW3t+CHhIMnsu2uvvDFqIn7w7Bkar1pu+h/ygcLzV2jcTNzmCQwfbt9Ye/E5V2HGcZ3d3vjiim0Xg+fPOBn9gWACiwAIJpBJICkWiTWWLKui6BUie72VTP2iatAFz0riHSXh0PHS6/3xhIqct12oWHtFyinwITJsEBIQLKZv6olEr91IEfX7yttM28FerraLFdqSIv6YcfjHDo3X3Y6PRYVvU/U34wdnu1wRw8HFTaS9iB9cTBtn+bgsxnWI80H2MSQZY8+IUwAGHQgmkI0uOHYSLRKlWFYmS5FoDzlFyC5MxfZ2MVOJVLZhJdMiWTsJ2CwT1I/vFTO7D2q/VKKuF3LVds5Tcs4yrvBVy5sKJv64AmEz+xhKdHjt2U/JNStWelzqaTT/uIJ6DAgKH3LLbEGi++mOp7Fg8trkjpMnmATMvsYH9WOkBJP529tXcEUIltq+DsXYAqLFXV7ERJbNKn+x/TdtMX2ux2KMQP9tPFvpfuXGJACDAQQTaERZ9BQy4XnJ0iR5CzcZV0laIffzCw/XjiyAgSTu9klSFYdQ8axTFWSD2+/6+nqB0GOrFxm9vGxPjYMpFuz4mONGhAy/jd1GRpEKFH5/fQXfpt8nOS7lK6tvTQWT7JPvb9/eIZ/r/njCgYnXmv/UeDMEk4RpL2hHG9umjj28+SLIas9g+sPOARMXubEYomgn5kfPVtoXGbEIwAABwQSGB5XEmyVZWVwbFRgQFggPlEow8esBAKC/QDCBoYG9QhBFnp0PWuEfdDKuFjwQIJgAAA8WCCYweFw7Wy+MxU8WeT8RgNZ4P50MDhBMAIAHCwQTGDyY+0Bwv0OfKQTp4NoZggkA8GCBYAIAAAAASADBBAAAAACQAIIJAAAAACABBBMAAAAAQAIIJgAAAACABBBMAAAAAAAJIJgAAAAAABJAMAEAAAAAJIBgAgAAAABIAMEEAAAAAJAAggkAAAAAIAEEEwAAAABAAggmAAAAAIAEEEwAAAAAAAkgmAAAAAAAEkAwAQAAAAAkgGACAAAAAEgAwQQAAAAAkACCCQAAAAAgAQQTAAAAAEACCCYAAAAAgAQQTAAAAAAACSCYAAAAAAASQDABAAAAACSAYAIAAAAAiPJ/9P+YM4MAqZcbmQAAAABJRU5ErkJggg==" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ImageFound>
+          <FlowStep.Next>
+            <FlowDecision x:Name="__ReferenceID2" Condition="[WebWhatsapp]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">260.4,166.4</av:Point>
+                  <av:Size x:Key="ShapeSize">79.2,87.2</av:Size>
+                  <av:PointCollection x:Key="TrueConnector">260.4,210 230.4,210 230.4,300 350,300</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">339.6,210 369.6,210 369.6,200.2 440,200.2</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <FlowDecision.True>
+                <FlowStep x:Name="__ReferenceID3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">350,265.6</av:Point>
+                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">450,334.4 450,380.44 360,380.44</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Fetch details" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ReadTextFile Content="[message]" DisplayName="Read Text File" FileName="C:\Users\piyus\Desktop\Message.txt" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ReadTextFile>
+                    <ui:Replace sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[message]" IsBuilderTabModified="False" Pattern="\n" RegexOption="IgnoreCase, Compiled" Replacement="%[d(shift)][k(enter)]" Result="[message]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:Replace>
+                    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[Contacts]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="C:\Users\piyus\Desktop\Email.xls" />
+                  </Sequence>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">160,346.04</av:Point>
+                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">260,414.84 260,429</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="chat is open" sap:VirtualizedContainerService.HintSize="616,1855.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="ui:GenericValue" Name="offset" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="574.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[offset]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="ui:GenericValue">[0]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[Contacts]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="574.4,1662.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,1513.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:Boolean" Name="Press" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target Element="{x:Null}" InformativeScreenshot="04a40d1c3f7e9905c841641f2c21cd7a" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='1' parentid='pane-side' tag='DIV' /&gt;">
+                                      <ui:Target.ClippingRegion>
+                                        <ui:Region Rectangle="72, 14, 240, 46" />
+                                      </ui:Target.ClippingRegion>
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:Click>
+                                <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'DIV'" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[&quot;wa.me/91&quot;+row(&quot;Numbers&quot;).ToString+ &quot;[k(enter)]&quot;]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9e136b7a450e2fbfe405ed3144d24830" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;footer&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='2' isleaf='1' parentid='main' tag='DIV' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                                <Delay Duration="00:00:08" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                                <ui:Click ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click 'A  http://wa.me/9186964...'" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition OffsetX="80" OffsetY="12" Position="TopLeft" />
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="496e1261a870b8becec3211fda5e8bab" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;&lt;webctrl aaname='wa.me/918696481030' idx='6' tag='A' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:ImageFound ContinueOnError="{x:Null}" DisplayName="Image Exists 'firefox.exe  WhatsApp'" Found="[Press]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="ImageFound_2" Result="{x:Null}">
+                                  <ui:ImageFound.Image>
+                                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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yf9aXWTrx/vinqck9PRa1l/bSOhOSGZNYnXPLYks1lEmtpgs/XP7TejaFx1eHK9yTUvcoc52/t5/XxkPAMB044TupKRc/r33cEL3UtJd6nClSsBXSujV3/3moiboXESiFX+f7BOc/AS8v4QexQReFKWPZkL3lL9L732BBABo3T6hAwCAJyOhAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChAwAwARI6AAATIKEDADABEjoAABMgoQMAMAESOgAAEyChA8CB/OLzj0/f/uV3T9/66d3p7//jnyhnlnc/fC/M4R6R0AHgID7+4lMS+TOVPSZ1EjoAHIT/dKklJ8r5xc/l3pDQAeAg/uGDf1aTE+X84r/TsTckdAA4CC0xUS4ve0NCB4CD0JIS5fKyNyR0ADgILSlRLi97Q0IHgIPQkhLl8rI3JHQAOAgtKVEuL3tDQgeAg9CSEuXysjckdAA4CC0pUS4ve0NCB4CD0JIS5fKyNyR0ADgILSlRLi97Q0IHgIPQkhLl8rI3JHQAOAgtKVEuL3tDQgeAg9CSEuXysjckdAA4CC0pUS4ve0NCB4CD0JIS5fKyNyR0ADgILSlRLi97Q0IHgIPQktJNym9/nXpU+PKD07vKvT/4XH/v3c/+EB775LP3quvXLHtDQgeAg9CS0nXLe6fHL31P/nB6/LB+LyRu581vlesyoacvCG6ZzH3ZGxI6AByElpSuWWLS/vXpB8p7vsRP3XWybxL6hx+cPnGXbp3MfdkbEjoAHISWlK5WUiKWn8Drkj7Bf/6j5Vqd0H90euMHUrx/y7I3JHQAOAgtKV2rxE/f9qfzXOR9a0JPyV75+/Rblb0hoQPAQWhJ6VpF/btwrYS/H1+/7Z6fe/T/HfiC4Jplb0joAHAQWlK6VnlSQk/28PfmZdkbEjoAHISWlK5Vzkvo7bfcf5D+N7X+38Fft+wNCR0ADkJLStcqZ/0depH4yy8E4qf19n95u1XZGxI6AByElpSuVs74V+7lt9brT/b2/8d+i7I3JHQAOAgtKV2zxE/Y9qd07VN8ndB9Sf/r2g7+gdzekNAB4CC0pHTdsvWT4ozrVUJ3JX3ab65fuewNCR0ADkJLSjcp2s9yN35YjJrQfVnquN0n9b0hoQPAQWhJiXJ52RsSOgAchJaUKJeXvSGhA8BBaEmJcnnZGxI6AByElpQol5e9IaEDwEFoSYlyedkbEjoAHISWlCiXl70hoQPAQWhJiXJ52RsSOgAchJaUKJeXvSGhA8BBaEmJcnnZGxI6AByElpQol5e9IaEDwEFoSYlyedkbEjoAHISWlCiXl70hoQPAQXzrp3dqYqKcX/xc7g0JHQAO4t0P31OTE+X88o+/+Jc0q/tBQgeAg/j4i0/V5EQ5r/hP5//+x/9Ms7ofJHQAOJBffP7x6du//K6aqCj94hO5n7sf/e/P02zuCwkdAIAJkNABAJgACR0AgAmQ0AEAmAAJHQCACZDQAQCYAAkdAIAJkNABAJgACR0AgAmQ0AEAmAAJHQCACZDQAQCYAAkdAIAJkNABAJgACR0AgAmQ0AEAmAAJHQCACZDQAQCYAAkdAIAJkNABAJgACR0AgAmQ0AEAmAAJHQCACZDQAQCYAAkdAIAJkNABAJgACR0AgAmQ0AEAmMBbX375RfojAAB4jb766qvTW//90X+llwAA4DX6zW/+5/TWBz//2ekjl9T/9re/pcsAAOA18Ln7d7/9zemDn//s9P/zDEhV/M1KEwAAAABJRU5ErkJggg==" />
+                                  </ui:ImageFound.Image>
+                                  <ui:ImageFound.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:ImageFound.Target>
+                                </ui:ImageFound>
+                                <If Condition="[Press]" sap:VirtualizedContainerService.HintSize="483.2,256.8" sap2010:WorkflowViewState.IdRef="If_1">
+                                  <If.Then>
+                                    <ui:Click ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="28889c7a90bf2eef83e99360d0e95ec6" Selector="&lt;html app='firefox.exe' title='WhatsApp' /&gt;&lt;webctrl aaname='OK' parentid='app' tag='DIV' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                  </If.Then>
+                                </If>
+                                <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                                <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'DIV'" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[message+ &quot;[u(shift)]&quot;]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9e136b7a450e2fbfe405ed3144d24830" Selector="&lt;html app='firefox.exe' title='*WhatsApp*' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;footer&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='2' isleaf='1' parentid='main' tag='DIV' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="40f925ad3aba451f508848d22b10bb38" Selector="&lt;html app='firefox.exe' title='*WhatsApp*' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;footer&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;span' parentid='main' tag='SPAN' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="ui:GenericValue">[offset]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="ui:GenericValue">[offset+35]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                        </ui:ForEachRow>
+                      </Sequence>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">160,429</av:Point>
+                              <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">260,451.4 250,451.4 250,469</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Delay Duration="00:00:08" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delay_2">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Delay>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID6">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">150,469</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">350,480.2 380,480.2 380,480 400,480</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:CloseTab Browser="[firefox]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_1">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:CloseTab>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">400,453.6</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Messages Sent Successfully&quot;]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:MessageBox>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowDecision.True>
+              <FlowDecision.False>
+                <FlowStep x:Name="__ReferenceID7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">440,189</av:Point>
+                      <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">540,189 540,30 420,30</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CloseTab Browser="[firefox]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CloseTab>
+                  <FlowStep.Next>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+  </Flowchart>
+</Activity>

@@ -841,3 +841,11 @@ Note:
 5. Upon Reaching the ```End Process``` transaction
     * It intially try to normally ```Close``` all applications and upon not being able to do so
     * It uses ```KillAllProcess``` to forcefully to its work
+
+
+# UiPath Security Training
+
+## Layers in Orchestrator
+1. Presentation Layer
+2. Service Layer
+3. Persistence Layer ~> Build using SQL and elastic search

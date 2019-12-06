@@ -1,0 +1,33 @@
+{
+  "name": "OrchestrationProcess",
+  "description": "Orchestration Process",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Persistence.Activities": "[1.0.0-ce]",
+    "UiPath.System.Activities": "[19.8.0]"
+  },
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.9.2.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": false,
+    "supportsPersistence": true,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    }
+  },
+  "expressionLanguage": "VisualBasic"
+}
