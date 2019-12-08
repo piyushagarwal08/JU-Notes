@@ -846,6 +846,105 @@ Note:
 # UiPath Security Training
 
 ## Layers in Orchestrator
-1. Presentation Layer
-2. Service Layer
+1. Presentation Layer(accessed via browser)
+    * Communication between clients (browser,robots) and Orchestrator is encrypted using the secure https channel 
+    * user session is saved in a session cookie(with a configured expiration time)
+    * the password complexity is configurable
+    * account automatic locking after a configurable number of failed attempts
+    * Protection against CSRF token
+2. Service Layer(containing the business logic)
+    * Role-based access control(RBAC)
+    * no data sent outside customers network
+    * logging - default actions are logged for auditing, and so are the  users actions
+    * the section containing the encryption key in the configuration files can be encrypted
 3. Persistence Layer ~> Build using SQL and elastic search
+    * encrypted communication with SQL server
+    * each password is encrypted with a different encryption key
+    * login attempts are logged - result ,IP Address, timestamp , browser info
+    * user roles can be defined for data stored in SQL server to prevent unauthorized access
+
+## Potential Risks associated with RPA Projects are:
+1. Robots having access to Credentials normally used by human workers
+2. Robots having access to privileged information such as personal data of commpany staff, financial data
+3. Unauthorized modifications of automation workflows in the development or testing phase
+4. Unauthorized modification of automation workflows or runtime parameters in the production environment
+
+## Features
+Features are the characteristics that are embedded in the product or solution and implemented in order to enhance the security and mitigate risks
+
+## Guidelines
+Best Practices to be used while setting up RPA workflows
+
+## Code Review
+* It aims to ensure that the process that will run on the live data is safe and no security breaches are possible
+* Checks whether the credentials are used only where needed and are not passed outside the trusted environment
+* Prevent sending sensitive data outside the trusted scope
+
+## Notes
+* We can keep track of RPA projects with multiple developers in working by keeping the source code files(XAML files) in  ```Source Code Control System```
+* To Store Credentials in UiPath we use:
+    1. Orchestrator Credential Assets ~> encrypted using ```AES 256``` and stored on the ```SQL server base``` but should be configured with ```value per robot``` to prevent unauthorized access
+    2. Windows Credential Manager ~> works as a local machine storage and should be used only in case Orchestrator in not accessible
+
+## Protect Sensitive Data
+1. Configuring a trusted Channel : VPN Connections,secure FTP sesions, HTTPS websites
+2. Data encryption, when using untrusted channels
+3. Usage of limited access environments, such as restricted shared folders or restricted Sharepoint domains
+
+## Environment Isolation
+* During RPA Projects the ```Developer Team``` and ```Production Team``` should work in different environments
+* Development Environment
+    1. The RPA Developers and their robots interact only with systems that have sandbox environments
+    2. the robots should not be able to connect to the UAT and production orchestartor
+* Productin Environment
+    1. The robots permanently monitored for malicious tempering of packages and the execution of correct version of the package
+    2. access to the robots in the production should be restricted to the trusted individuals
+
+## Multitenancy
+* It is a feature of Orchestrator that allows complete seperation of Data among tenants, providing a dedicated share of the instance including its data,configuration, user and role management up unitl license management
+* In simple terms, using Single Orchestrator Instance an organisation can have, multiple role based users each having having seperate:
+    1. Robots
+    2. processes
+    3. Assets
+    4. Queues
+    5. Data
+    6. Configuration
+    7. Users
+    8. Roles
+
+## Protecting data in Transit and at Rest using
+1. Transport Level Security 1.2 Protocol
+2. Advanced Encryption Standard on 256-bit cipher
+3. Secure Hash Algorithm 2
+
+## Quiz Time
+1. What are the main differences between guidelines and security features?
+Ans. ```Guidelines are recommended general best practices, while security features are already implemented in the product```
+2. User access to the Orchestrator web app is protected using the following features:
+Ans. ```a) communication between client and Orchestrator is encrypted with HTTPS; b) Password complexity is configurable; c) the account is locked after a configurable number of unsuccessful attempts```
+3. Is Storing Credentials a feature or a guideline?
+Ans. ```Feature```
+4. Authenticating the users on the Orchestrator platform can be done with:
+Ans. ```Google accounts with OpenAuthentication 2.0,Local username and password,Active Directory username,using Windows Authentication, Azure Active Directory authentication```
+5. A valid SSL certificate is required to install Orchestrator.
+Ans. ```True```
+6. Is Package Securing a feature or a guideline?
+Ans. ```Feature```
+7. With the Account Lockout security feature you can prevent additional logins for a period of time after a number of failed attempts.
+Ans. ```True```
+8. The Audit page on the Orchestrator platform allows you to filter by:
+Ans. ```Component and Action```
+9. What is the common practice to keep the different versions of each XAML file in an RPA project?
+Ans. ``` Source Code Control System```
+10. Packages uploaded into Orchestrator (either manually or published from Studio) are automatically uploaded by Orchestrator to all robots that can execute these packages.
+Ans. ```False```
+11. Orchestrator offers the functionality to create any number of custom roles.
+Ans. ```True```
+12. In an organization with Development, Testing and Production environments, an RPA Developer should not have access to the Production Environment
+Ans. ```true```
+13. CyberArk can be integrated with the Orchestarator in order to retrieve the robot credentials from CyberArk instead of SQL Server DB.
+Ans. ```True```
+14. Is Isolating Environments a feature or a guideline?
+Ans. ```Guideline```
+15. Security risks can appear in:
+Ans. ```Both development and production phases```
