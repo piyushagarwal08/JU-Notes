@@ -3,6 +3,10 @@
 
 
 ## Notes:
+* Global Exceptional Handler ~> The job of RPA Developers becomes easier by using this feature, since the handler only needs to be defined once per each automation project and, unlike the Try Catch blocks, does not need to be attached to each activity. It will execute every time an activity fails to execute.
+* Repo Browser ~> It allows you to browse through, open, and save shared automation projects stored in TFS and SVN repositories.
+* WebHook ~> Regardless of how complex the app network that was integrated with Orchestrator is, information can be sent to a variety of tools such as dynamic case management, business process management or even customer relationship management programs.
+* Development Robot Decoupling feature ~> a “floating” robot can be used between multiple machines by the Administrators in a Development environment without having to associate it with a certain machine. In addition, Standard Attended robots can also be converted to “floating” robots. and only Administrators can access this robot
 * VB - > Visual Basic
 * To create a variable click on activity dialog box and then create 
 * Single activity can have multiple input boxes
@@ -948,3 +952,90 @@ Ans. ```True```
 Ans. ```Guideline```
 15. Security risks can appear in:
 Ans. ```Both development and production phases```
+
+
+# UiPath Licensing Training
+
+## License for Studio
+1. Named User ~> Single specific User, enables each user to access the software at any time ,on any machine
+2. Concurrent User ~> Useful in  BPO scenarios,indicates how many users can access the software simultaneously
+3. Concurrent Runtime ~> Indicates the number of robots that can be simultaneously connected to Orchestrator , regardless of the user or machine
+4. Server License ~> is required to install orchestrator instace
+
+## Notes
+* All the licenses for all the robots can be easily managed by Orchestrator
+* Named and Concurrent User License can not coexist in single orchestrator instance
+* All the platform license must have same anniversary date
+
+## Host Licensing
+* It provides full control of all the licenses belonging to an organization
+* Allows centralised license management and distribution
+
+## StandAlone License
+* Used when Orchestrator is not used
+1. Named User License
+2. Node Locked License ~> completely similar to ```Concurrent User license```
+
+<img src="Licenses.jpg">
+
+## License Activation
+* To Activate any license in machine follow the following steps:
+1. Open CMD as administrator
+2. CD to Uipath studio folder
+3. run command ```regutil activate /email_address /license_code```
+4. To check if license activated successfully run command ```regutil.exe get-info```, it shows complete information about license
+5. To export the information to a file, run command ```regutil export-info /out_file=Path-to-store```
+
+## QuizTime
+1. What Robot type is used to test an automation workflow?
+Ans. ```NonProduction```
+2. A Node Locked License...
+Ans. ```Can be activated and used on a single machine,allows multiple users to work successively on a machine using the same software instance, is available for unattended robots```
+3. A developement robot
+Ans. ```Activates studio,enables workflow execution on local machine,ensures the ability to connect the local studio instance to orchestrator```
+4. A Concurrent User License is dedicated to a single specific user.
+Ans. ```False```
+5. Which license types are available for Attended Robots and Studio?
+Ans. ```Named User and Concurrent User```
+6. Which UiPath Platform licenses can be managed through Orchestrator?
+Ans. ```Concurrent User,Named User, Concurrent Runtime```
+7. Concurrent User licenses are usually suitable in BPO scenarios, for companies whose employees work in shifts. 
+Ans. ```True```
+8. Named User and Concurrent User licenses can coexist within a single Orchestrator tenant.
+Ans. ```False```
+9. All the platform licenses (managed through Orchestrator) must have the same anniversary date.
+Ans. ```True```
+10. For Unattended Robots, the only available Standalone License option is
+Ans. ```Node Locked```
+11. The number of Concurrent Runtime licenses indicates...
+Ans. ```The number of robots that can be simultaneously connected to Orchestrator , regardless of the user or machine```
+12. What is the required license type in a scenario where employees must be able to execute processes whenever needed?
+Ans. ```Named User```
+
+
+# SAP Automation
+* When automating SAP,start with recording the actions, most of the time it will work fine
+* To Interact with unrecognised elements you can use ClickText & ClickImage and keyboard shortcuts to reach difficult buttons or menu items
+* For ```Elusive UI Elements``` , simulate human activities that is what human will do activate it
+* For tabular data you have to use loops , although that is hardly SAP specific
+* To Read an tabular data of unknown length, read each row in an infinite loop until an operation fails
+* To work on checkboxes and special elements , use the ```getAttributes``` activity, it shows a bunch of hidden information that can prove to be very useful
+
+## QuizTime
+1. Can SAP client be automated if it is web hosted?
+Ans. ```It's a trap. SAP is not available on web```
+2. In a situation where a data table cannot be scraped by using Data Scraping but each cell is accessible by selectors, how can the robot extract all the cells from a column with a large number of rows?
+Ans. ```By generating a selector for the first cell and configuringits TableRow property to iterate through all the rows```
+3. If you want to record a Click activity on an ephemeral element that appears only after focusing on a text-box relative to it, can that be done?
+Ans. ```Yes, press F2 and in the 3 second pause put the focus on the text-box.```
+4. In a SAP application, you would like the robot to click on a specific folder in a folder hierarchy. The panel containing the hierarchy doesn’t allow more granular selectors inside of it, thus no selector can be created for a specific folder. What can be used?
+Ans. ```A Click Image activity, A Click Text activity with Native as scraping method.```
+5. Some UI Elements are not selectable in SAP client, but some of them are. Which might be the problem?
+Ans. ```The scripting is enabled only on the client side```
+6. Which is the easiest method in order to extract a table from SAP that has the scripting enabled on both sides?
+Ans. ```Using the Data Scraping wizard```
+7. How can the robot identify if a checkbox is checked or not?
+Ans. ```By using get Attribute activity```
+8. Consider having to click a button which cannot be accessed by using a selector. What other options can be used?
+Ans. ```Click relative to an element that can be identified by a selector,Use a Click Image activity set to click the image of that button, See if clicking the button can be replaced with sending a combination of keys.```
+
