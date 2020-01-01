@@ -702,7 +702,6 @@ This role allows the user to tag the variables of the bots on client machine and
     4. Publish System generated and customized dashboard, and
     5. Compare customized Dashboards in the configure section
 
-
 2. <u>Analytics Consumers</u>
 * This role allows the user to have access only to Published Dashboard and analyse the data in Bot Insight
 * A User with this role can:
@@ -716,6 +715,27 @@ This role allows the user to tag the variables of the bots on client machine and
     2. Identify new opportunities from business insights,
     3. Quickly prototype, measure and showcase new RPA candidates (that is Bots), and
     4. Scale up automations and improve business process efficiency.
+
+
+# Operational Analytics
+* The information about 
+    1. which bots are scheduled to run
+    2. which bots failed to run
+    3. which of the bots use the most system resources, and
+    4. what percentage of bots are in progress,paused,unknown and completed
+* Operations manager and practitioners can constantly monitor the efficiency and effectiveness of their digital workforce, and easily quantify processe's operational performance on demand
+* It is free and integrated within the Web Control Room
+* The operational related information about the bot can be accessed from the :
+1. <u>Bots Page</u>
+It provides a graphically summarized view of all the deployed bots in the Control Room
+It consists of widgets such as:
+    * <b>Bot Hearbeat</b> ~> Widget that provides a statistical representation of the relationship between the failure score of a bot and the respective bot
+    * <b>MVP Bots</b> ~> Widget that displays bots based on their maximum processing time and the number of times they are run
+    * <b>Bot Status</b> ~> Widget that tracks the task progression based on the status: Deploy Failed,Stopped , Started, Failed, Completed
+    * <b>Top Failure Reasons</b> ~> Widget that categorizes the errors that your bots may encounter into varios groups and shows the count of each group
+2. <u>Audit Page</u>
+The Audit page allows a Control Room user with View Dashboards permission to view a snapshot of audit information as processed in the Control Room.
+It allows you to monitor various events such as the highest percentage of a particular activity being performed based on either user name or host machine type, and a visual representation of the failure log
 
 
 # Assesment (Recorders)
@@ -783,3 +803,17 @@ Ans. ```Add Screen,Record Screens ```
 7. Which view displays captured application screen shots and allows screen shots to be recorded?
 Ans. ```Assets View```
 (Score 100 %)
+
+# Assesment (Bot Insight)
+1. To enable a Task bot to generate an operational dashboard, the following steps should be completed in order within a Bot Creator client:
+Ans. ```1. Enable Analytics 2. Tag Variables 3. Run Bot 4. Analyze the Default Dashboard```
+2. Saima is using Bot Insight and wants to analyze the data in it. Which role should she use?
+Ans. ```Analytics Consumers```
+3. When Analytics is enabled for a Task bot, the values of variables marked as "Tagged for Analytics" can be viewed by clicking on the Analyze tab in the Workbench to view _________________
+Ans. ```Auto-generated Dashboards```
+4. Which role allows the user to create copies of the dashboard in the Bot Insight environment?
+Ans. ```Analytics Expert```
+5. Bhavisha is using Bot Insight and wants to confirm the data types in the Data Profile tab. Which role should she be assigned?
+Ans. ```Analytics Expert```
+(Score 100%)
+
