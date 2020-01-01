@@ -61,6 +61,9 @@
 * Bots can be scheduled to be execute at certain time only
 * autologin feature -> it allows the machine to unlock the software, login the client and do the automated tasks
 * Ram usage can be found using variable ```RamUsage``` and CPU usage using ```CPUUsage```.
+* ```Secured Recording``` ~> It is set disabled by default and can be set active from the control room,While its active no sensitive data is captured during the recording
+* A BOT is developed to ```Shrink Deployment Time```, ```Reduced Operational Costs``` and ```Amplify ROI from RPA```
+
 
 # Runtime Client
 * It is classified into 2 catgories:
@@ -552,6 +555,169 @@ e.g [ENTER]
     5. Use the file as a variable
 
 
+## IF/Else Command
+1. Window Exists/Window does not exist ~> It checks or verifies that a specific application is open, checks whether an error has occurred and checks whether a file download has completed or not
+2. Script Successful/Unsuccessful ~> Integrates third-party scripts(VB,JavaScript) with automation taskbot/metabot logic,Determines if the script ran successfully after the runs and issues a return code and it also integrates scripts with the automation TaskBot/MetaBot logic for scripts already developed
+3. File Date ~> Checks the date and time that a file was created or last modified, Specifies a date range using ```between``` or ```before``` keywords and uses a number of days or a time schedule in the ```hh:mm:ss``` format.
+4. Image Recognition ~> Checks whether an image exists within another image, Recognizes image stored in files or captured from a window when the TaskBot/Metabot Logic runs , It specifies a minimum ```percentage match``` for the image captured and It enables to perform click action on the captured image if found within larger image
+5. Windows Control ~> Checks whether a specific control exists in an active window such as command buttons, list box items, text boxes or menu tabs
+
+
+## Manage Windows Control Command
+* Controls are UI elements that enable user interaction with an application
+* Generally includes Buttons,Text-Boxes,ComboBoxes,List box items,Menu tabs, checkboxes and tables
+* This command is useful in:
+    1. Performing actions on the controls
+    2. Assigning captured properties to variables and
+    3. Recording actions that are performed simultaneously
+* it can be used to 
+    1. Get Name Text
+    2. Get Value Text
+    3. Click on Link
+    4. Get Name of All Children
+    5. Get Value of All Children
+    6. Left Click
+    7. Right Click
+    8. Double Click
+
+
+## File/Folder Command
+* The File and Folder commands provide an easy way to operate files and folders
+* Various Sub-commands includes
+    1. Create
+    2. Open
+    3. Copy
+    4. Delete
+    5. Rename
+    6. Organize
+    7. Move
+* Few advanced operations are also possible based on ```Size``` and ```Date created or modified```
+
+
+## Object Cloning command
+* Used to capture an object,its co-ordinates and images from desktop and web-based application
+* Capture objects within windows that use technologies such as Flex,Silverlight,Java and Html etc.
+* ```Re-Capture Image``` ~> Used to recapture the image in case of any discrepancy in captured co-ordinates or image
+* Select object in ```object``` mode and if it doesn't work then only go for ```coordinates``` or ```image``` mode.
+
+
+## Insert KeyStrokes Command
+* It supports German,French,Italian and Spanish language
+
+
+# MetaBots
+* Metabots are the Automation building blocks which are the Reusable application blueprints of an application
+* Metabot is application resilient, which means anytime an application ```Updates``` or ```Changes```, the user can make minimal edits to the Bot itself and those changes will automatically be applied to any process
+utilizing that bot
+* The Automation blue prints can be constructed using the elements present in metabots such as
+    1. Visual Captures ~> GUI components,screensof an application
+    2. Application API's ~> which are interfaces that allow low level operations of an application by circumventing GUI(most common is DLL)
+    3. Navigation Flows ~> Pre-configured use cases of an application and leverage visual captures and API's
+* Benefits of MEtabots
+    1. Accelerated automation ROI
+    2. Eliminates navigational errors
+    3. No live access requirement
+    4. Easy calibration
+* With Metabot Designer we can ```Create,Manage,Conceptualize bots``` and upload the metabots to the ```control room``` for use by other enterprise client users and edit metabots created by other users
+* Visual Captures are referred as ```Screens```
+* Screens and DLLs form the Assets using which you can define and pre-configure any use in case of a target application to create a navigational flow, known as Logic
+* If Version Control is enabled for controlled edits of Metabots, a BotCreator can Check Out the MetaBot for editing and view Version History
+* The MetaBot tab opens each MetaBot in its own tab. This tab is dedicated to the Assets and Logic for that particular MetaBot
+* The Add Folders option organizes your MetaBot using ```Folders```.This enables you to easily manage all your screens and DLLs that are to be uploaded or have been uploaded
+* Various Options that can be used in ```Asset``` view are:
+    1. The ```Add Screen``` Option captures a single screen for an executable application, that is running
+    2. If your Screens are set at lower resolutions such as ```1024x768``` , the ```Add Folder``` and ```Add Screen``` options can be accessed from the ```Edit``` menu
+    3. The ```Record Screen``` option captures multiple screens of the related application or webpage at one go. And Every Screen or Menu Item or Pop-up or Context Menu that you interact with during the recording gets caotured
+    4. The ```Add DLL``` option adds the ```Application Programming Interface``` or ```DLL``` within your MetaBot.Remember though, you cannot include ```special characters``` in DLL names
+    5. The ```Configure```option edits properties for the ```recorded``` or ```added``` screens such as Name,Path,Value etc. Thus improving the reliability of your automation
+    6. The ```Calibrate``` option instantly compares an existing screen with a newer screen of an application to identify any changes when the application has been updated with improvements and newer features
+    7. The ```Delete``` option removes the MetaBots that are no longer required.
+* If an application has multiple ```exe's```, you are required to create a separate MetaBot for each
+* Various Options that can be used in ```Logic``` view are:
+    1. The ```Add Folder``` option is similar to that under Assets. It organizes your Logic using ```Folders```
+    2. The ```Add Logic``` option allows to create the ```navigational flows``` in the Logic Editor
+    3. The ```Record Logic``` option records the logic flow and automatically saves ```Screens``` in Assets.
+    4. The ```Edit``` option makes changes to an existing navigational flow
+    5. The ```Delete``` option deletes the ```obsolete Logic```
+* We Can use the ```MetaBot Workbench``` to create simple,manageable and independent naviagtional flow to be integrated into other automation TaskBots/MetaBot logics.
+* BotCreator user with MetaBots Repository access permissions can create,record,upload and delete MetaBots
+* Notes:
+    1. MetaBots are highly re-usable; create once, use everywhere. They can be leveraged by any automation task.
+    2. Enterprises can leverage MetaBot library to standardize org-wide automation in a rapid manner.
+    3. MetaBots ensures systematic, accelerated automation ROI.
+    4. MetaBots help to eliminate common navigational errors in complex automation tasks.
+    5. MetaBots help to automate without requiring access to live application.
+    6. MetaBots can be easily calibrated to newer versions of applications to ensure compatibility.
+* Deleting a MetaBot from the MetaBot Designer doesn’t delete it from Control Room.
+
+## Making an MetaBot
+* On creating on ```New MetaBot```, New MetaBot Application opens and lists all applications currently opened in system and gives us two options for MetaBot Type
+    1. Application Specific ~> Create automation using Screens from single application
+    2. All Applications ~> Create automation using combination of Screens from different applications
+* Click on ```Add Screen```, an Open Screens window opens that shows all instance of currently open screens of the selected application
+* We have 2 methods to capture type for Screen Objects that are ```Standard``` and ```OCR```
+* Select ```Standard``` when using technology such as ```MSAA,html``` etc
+* Select ```OCR``` when capturing objects from application images which are exposed over applications such as ```Citrix``` or ```RDP```
+
+
+# Bot Insight
+* Bot Insight ~> Captured data ~> Aggregated Volumes ~> Transaction Throughput ~> Failure Rates ~> Trends,Events and Changes
+* Bot Insight provides ```Operational Intelligence```,```Historical Information```,```works 24/7``` and ```Health and Performance``` of Bots
+* Operational Managers and Practitioners can constantly monitor the efficiency and effectiveness of the digital workforce 
+* Includes APIs that allows IT Professionals and Centralized IT groups to eagerly ```extract``` , ```load``` and ```transform``` RPA data into their databases.
+* It is packed with ```Quick Tagging```,```Tailored Dashboards```,```Interactive Analysis``` and ```Central Management```
+* It helps Any organizations Operational management to ```derive revenue```,```increase customer satisfaction```, ```reduced costs```,```error margins``` and
+* Positively impact the companies by leveraging Operation and Business Insights
+
+## Business Analytics
+* Business Analytics can be performed using Automation Anywhere's Bot Insight product,which is a web-based application
+* Transactional Analytics enables you to quantify business value added by Bots and identify new opportunities from business insights.This analysis is used by operational business executives
+
+## How it Works?
+1. Tag the data variables
+2. Click on log for analysis ooption in variables
+3. After tagging and logging the data,click the Analyze tab.This will auto-build the task Dashboard template in Bot Insight site's Configure tab
+4. Once the Dashboard is generated,you need to Save and Publish the Dashboard in order to see the Cumulative data
+5. Then,upload the bot to the Control Room for execution
+6. After publishing Dashboard and uploading task to Control Room,execute the bot on a Bot runner device in Control Room
+7. The data will be analyzed if task execution happens locally in the Bot runner client or from Control Room.
+
+## Types of Roles
+1. <u>Analytics Experts</u> 
+This role allows the user to tag the variables of the bots on client machine and customize ,create copies of the dashboard in the Bot Insight environment
+* Can view 2 tabs ```Dashboard``` and ```Data Profile```
+    1. Dashboard ~> It provides a customizable reports that can be published to be viewed by Analytics Consumers .The Data filter slider at the bottom can be used to interactively analyse the data over a chosen timeframe for the entire dashboard
+    2. Data Profile ~> It allows you to inspect the data profile against each variable that was marked for Analytics within the task.It provides complete description of the tagged variable along with the statistical information
+* An Analytics Expert can use the various options provided by the tool to customize the chart widget.The options include:
+    1. Filters that allows you to sift the data plotted on the chart
+    2. Sort and Limit that allows you to sort and restrict the data displayed
+    3. Color Settings that allows you to change the color palette of the chart
+    4. Export that allows you to export the information displayed on the chart to different formats
+    5. Chart Style that allows you to change the chart type,if it is not appealing enough and needs to be changed
+    6. Time Bar that allows you to change the time line attribute against which the information is displayed
+* An Analytics Expert can also:
+    1. Share the generated dashboard or reports via email
+    2. Bookmark the customized dashboard
+    3. Save the modified system generated dashboard
+    4. Publish System generated and customized dashboard, and
+    5. Compare customized Dashboards in the configure section
+
+
+2. <u>Analytics Consumers</u>
+* This role allows the user to have access only to Published Dashboard and analyse the data in Bot Insight
+* A User with this role can:
+    1. Share reports via email
+    2. Bookmark the dashboards and
+    3. Compare dashboards
+
+3. <u>Admin</u> ~> This role allows the user to assign the other to roles to a new user
+* With Business Analytics, you can:
+    1. Quantify business value added by Bots,
+    2. Identify new opportunities from business insights,
+    3. Quickly prototype, measure and showcase new RPA candidates (that is Bots), and
+    4. Scale up automations and improve business process efficiency.
+
+
 # Assesment (Recorders)
 1. While building a task using Screen Recorder, which of the following points should be kept in mind?
 Ans. ```Use the same screen resolution for task recording and execution,Use the same operating system for task recording and execution```
@@ -567,3 +733,53 @@ Ans. ```Smart Recorder```
 Ans. ```Screen Recorder```
 7. Which of the following web-based technologies does Smart Recorder capture?
 Ans. ```HTML```
+
+# Assessment (BOT)
+1. When using the Log Data into File option of the Error Handling command, what happens when you press the F2 key while your cursor is in the Log File (filename) field.
+Ans. ```It will insert a variable```
+2. Which of the following commands allows you to specify a time to wait for the condition to be true before taking another action?
+Ans. ```If/Else command```
+3. Suraj wants to copy data from a website and verify that the data he copied matches a specific text string. Which If/Else Condition option should he select?
+Ans. ```Variable```
+4. Nancy is using the Error Handling command to log information to a file when an error occurs. She wants to record the time and date when the error occurred. Which option should she select in the Log to file section of the Error Handling command?
+Ans. ```Add Timestamp```
+5. In the Image Recognition command, which of the following values of Match Percentage ensures all the pixels match between the two images captured using Image Recognition command?
+Ans. ```100```
+6. The Insert Keystrokes command is the best match for which of these business use cases:
+Ans. ```Data entry```
+7. A STAGED error condition occurs when _________________?
+Ans. ```The Queue is in run mode and associated with a bot```
+8. In order to verify if a specific application is open on the Windows desktop, which If/Else condition option should you select?
+Ans. ```Window exist```
+9. Dona is trying to insert work items in a TaskBot but is failing every time. What could be the reason?
+Ans. ```Must be a participant in a Queue```
+10. Bob wants to change the name of a folder to the current date. Which command should he select for this task?
+Ans. ```Files/Folders - Rename Folder```
+11. Steffi, a new programmer wants to use the Insert Keystrokes command to automate an application. However, she is unable to locate the application title in the command window. What should her first troubleshooting step be?
+Ans. ```Verify the application window is open```
+12. Emily is working on an automation project and wants to use Error Handling to capture information should an error occur. Which option should she select to capture a picture of the bot runner desktop?
+Ans. ```Select the Take Snapshot option```
+13. Janet is creating a task to manage folders on her laptop. She wants the process to create a new folder where she will copy some filtered data files. Which command group will help her automate the process of creating a new folder?
+Ans. ```Files/Folder command```
+14. Jack is working on a task that is using the Error Handling command to capture errors and log the error data to a file. Now, he wants to specify a value to a variable to set a task status. Which Error Handling option should he use?
+Ans. ```Variable Assignment```
+15. When using the Image Recognition command, click the _______ button to check if the target image is identified in the source window. 
+Ans. ```Quick Test```
+(Score 93%)
+
+# Assesment (MetaBot)
+1. Alexa is working on MetaBot Designer and wants to capture multiple screens of the webpage on one go. Which view should she use?
+Ans. ```Assets view```
+2. What is the primary benefit of using MetaBots?
+Ans. ```Can reduce operational costs```
+3. When using a Metabot to automate a process that multiple Tasks use, updating the function of the Metabot will...
+Ans. ```Update the functionality for all the Tasks```
+4. Which option allows a Metabot to access an external library of functions?
+Ans. ```Add DLL```
+5. What three elements can comprise a Metabot?
+Ans. ```Other then license```
+6. Metabot screen shots can be captured using which two commands?
+Ans. ```Add Screen,Record Screens ```
+7. Which view displays captured application screen shots and allows screen shots to be recorded?
+Ans. ```Assets View```
+(Score 100 %)
