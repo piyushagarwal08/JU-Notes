@@ -738,6 +738,166 @@ The Audit page allows a Control Room user with View Dashboards permission to vie
 It allows you to monitor various events such as the highest percentage of a particular activity being performed based on either user name or host machine type, and a visual representation of the failure log
 
 
+# Web Control Room
+1. <u>Dashboard</u>
+* It provides a bird's-eye view of the entire automation to the Control Room administrator with an graphical insight.It represents the RPA infrastructure in the form of meaningful visuals and charts.This leads to informed decisions and coorective actions.
+* The Control Rooms built in interactive dashboard can be customized to show critical data upfront with customizable widgets with flexibility to drill it down by applying specific filters.It contains:
+
+    1. Home ~> Displays information of total active users,status of the executed bots, total number of bots scheduled, and total number of queues and BOt velocity  
+    2. Bots ~> displays a graphically summarized view of all the deployed bots in the CR and provides operational analytics on BOTS in your RPA platform
+    3. Devices ~> displays the Bot Runner machine;s relevant data and where Bots are deployed and lets you view the stability of your RPA environment at a glance
+    4. Audit ~> allows you to monitor various events such as the hoghest percentage of an activity being performed based on username or host machine type and a visual representation of the failure log
+    5. Workload ~> allows you view workload status of the device pools,queues and workitems in the workload executive and operation managers dashboard
+    6. Insights ~> It helps automation experts and consumer to interactively analyse test data and enhance widget 
+
+2. <u>Activity</u>
+* Used to monitor all tasks that are running or have been deployed to clients or have been scheduled to run as per the plan
+* It consists of 3 sub-modules:
+    1. In-progress ~> Gives a live status of all the on going activities in the Control Room
+    2. Scheduled ~> displays a list of activities that have been scheduled for a later time
+    3. Historical ~> It chronologically lists all the activities that have occured, and those that have finished running
+
+3. <u>Bot Repository</u>
+* It displays all the bots uploaded from the AAE client application
+* It consists of 2 sub-modules:
+    1. My bots ~> A Centralized location where all the Bots,Workflows,Reports,Documents are uploaded from the enterprise client on to the control room.It provides the ability to run and schedule tasks on 'Bot Runners'
+    2. Credentials ~> It is a centralized location for securely creating and storing sensitive information that is included in the automation tasks in the form of credentials
+
+4. <u>Devices</u>
+* It lists all the devices that are registered and connected to the control room in the My Bot page
+* It allows you to create and view a list of Device Pools
+* Device pools are a collection of devices provisioned to run bots with queues as a part of the Workload Management
+* In the ```My Device``` tab , the status of the device can either be:
+    1. Connected ~> when the user is logged on to the Control Room
+    2. Disconected ~> when the user is not logged on to the Control Room
+    3. Offline ~> when the device user, has been unregistered or disabled by the Control Room Admin
+* In the ```My Device Pools``` tab , the status of the device pool can either be:
+    1. Connected ~> If the bot runners assigned to the device pool are logged into the control room,or
+    2. Disconnected ~> If the assigned bot runners are not logged into the control room
+
+5. <u>Workload</u>
+* It allows you to manage your work items by dividing them into small yet logical modules.
+* Simultaneouly, the Workload module processes these small, logical modules to ensure time-based ```Service Level Agreement``` or SLA's are met and resource utilization is optimized
+* It consists of 2 sub-modules:
+    1. Queues ~> These are a collection of work items,that is , a defined set of columns that constitute a single unit of work
+    Is Created by a Control Room admin with Create Queues privilege
+    Can be defined by manually setting up columns or using Excel worksheet as its base
+    Three kind of statuses are assigned to Queues which are ```In Use,Draft and Not in Use```
+
+    2. S-L-A Calculator ~> It helps in calculating either the processing time or the number of devces required to meet the desired S-L-A by estimating the device pool size or time required for a given queue
+
+* You can use ```Workload Management``` to:
+    1. Manage work items using queues
+    2. Create,update and control the way work items are included in queues
+    3. Modify the work items distributed to Bot Runners that are assigned to Device Pools,and
+    4. Estimate SLA
+* Benefits :
+    1. Centralized definition and management of work items is made easy
+    2. A row of data in a queue can be processed on a collection of devices in a device pool as well
+    3. Queues can be added manually as well as atomatically using Control Room or using the "Insert Work Item" command in the Workbench
+    4. Specific roles and permission element in the Workload further enhances the control over the queue system
+
+6. <u>Audit Log</u>
+* Captures details of all activities performed on RPA platform
+* Provides read-only records of all the important actions performed in Control Room and by the client
+* This helps enforce internal compliance regulations as well as prevent tampering with mission-critical processes. 
+* One of the most important aspect of Audit log is that it allows you to back up all the actions performed in the form of a ```CSV``` file,if required.
+* Only a Control Room Admin or a user with Audit Log privileges can select an activity from the Audit Logs to view its details.
+* The Audit log allows you to view actions based on the
+    1. Status
+    2. Action Type
+    3. Item Name
+    4. Action taken by
+
+7. <u>Administration</u>
+* It is used to control and manage the general settings of the entire AA RPA platform in the organizations network.
+* It's sub-modules include:
+    1. Settings ~> Manages users and administrators who play various roles in automation
+    2. Roles ~> Manages or assigns roles required to perform various functions by users
+    3. Licenses ~> Installs and manages product licenses
+    4. Migration ~> Assists in migrating data from the CR v10 into the Cr v11
+* The Administration page of the Control Room can be used to perform the following actions:
+    1. Create Roles/Users
+    2. Edit Roles/Users
+    3. Delete Roles/Users
+    4. Change General Settings
+    5. Install,view and manage licenses
+    6. Migrate Information to new Control Room version
+* The Administration module consists of five sub-components,which are:
+    1. <u>Settings</u>
+    <b>General</b> ~> Editing General Settings and Control ROom database
+    <b>Bots</b> ~> Enable or disable Version Control in Bots
+    <b>Client Application</b> ~> Enable or disable Secure recording,set product help URLs, and configure Device health checks in Client applications
+    <b>Credentials</b> ~> Configure the connection mode to the Credential Vault in Credentials,and
+    <b>Email</b> ~> Enable or disable the email settings
+
+    2. <u>Users</u>
+    * As a Control Room admin with user management privileges, you can view,create,edit,delete, and enable or disable a user
+    * You can also perform other actions,such as ```delete multiple users```,```export the list of users in CSV format```,```refresh the list in the Users table```,```Create a user and assign a role to it```
+
+    3. <u>Roles</u> 
+    * The Roles page provides information of the role defined for each user such as Administrators,Clients, and non-Clients.
+    * This role-based accessibility model or ```RBAC``` ensures each User, views information or data that is relevant to the role assigned to them
+    * Use this page to create roles,edit and delete roles for various features and operations in the Control Room
+    * There are 2 types of roles:
+    ```System-created``` ~> Pre-configured during the Control Room installation
+    ```User Created``` ~> Created by the user themselves and can be customized accordingly
+
+    4. <u>License</u>
+    * It provides detailed information about the current license installed. It also allows Admin's to monitor license details and usage statistics
+    * View Product license details any time and avail information about the list of purchased products,along with license version and product license status as used, not used, or not applicable
+
+    5. <u>Migration</u>
+    * Used to migrate data from a previous Control Room version 10.x to 11.x
+    * Need to be a Control Room Administrtor to access the Migration wizard tool
+    * Use the tool to migrate data either on the basis of Roles or Users in phases depending on your business requirements
+    * Dependent data such as licenses,credentials, bots,and schedules are also migrated automatically when you migrate roles or users
+
+## Notes
+* Failure Score = 0.5*Memory Usage + 0.3*CPU Usage + 0.2*HDD Usage 
+* Bot HeartBeat ~> Provides a statistical representation of the relationship between the failure score of a bot and the respective bot
+* Bot Status ~> Tracks the task progression based on the status: Deploy Failed,Stopped,Started,Failed and Completed
+* Most Valuable Process (MVP Bots) ~> Displays bots based on their maximum processing time and the number of times they are run
+* Top Failure Reasons ~> Categorizes the errors that your bots may encounter into various groups and shows the count of each group
+* Upcoming Schedule widget ~> Displays all bots that are scheduled to run,which are sorted by the number with which they are run
+* Backlog = Number of hours it takes to complete the existing work items from all automations in that pool
+* Wait time = Automation start or resume time Processing start time
+* The owner can manage the Operation Manager's Dashboard
+* The Chart Editor allows you make changes to the widget
+* ```Not Started``` is the invalid status of the bot in Historical Feature
+* The automation of a bot will fail if you do not have folder privileges on the dependencies
+* The System role AAE Pool Admin must be assigned for a user to Administrator all device pools and by default the AAE Admin role will only see device pools where they are assigned as a device pool owner
+* If the queue is not being used or is in draft state, the Automation Name and Automation Status column will show Not Application and shows the automation name if in use.
+* The ```Calculation``` tab in the SLA Calculator populates the number of work items processed and average processing time of a work item for the selected automation
+* ```Reactivation Threshold value``` ~> This is the minimum no of new work items that should be present in the queue to resume the queue process after all the work items in the queue are processed
+* A first-time user has access to trial license for a period of 30 Days, after which a user can continue with an extended trial license or install a new license
+* The View and manage ALL scheduled activity allows a bot creator to manage and view scheduled activities for all users.
+
+## Benefits of Features Panel
+1. Simplified and improved monitoring
+2. Convenience in accessing and managing tasks , clients, users
+3. Monitor task progress and status
+4. Increased collaboration
+5. Accomodate Scaling
+6. Enforce controlled edits 
+7. Enforce role-based access
+
+## Credentials
+* A Centralized location for securely creating and storing sensitive information that is included in automation tasks in the form of credentials
+* It consists of 3 tabs:
+    1. My Credentials ~> It lists the credentials created by a User.All Users have permission to see their credentials
+    2. My Lockers
+        * Displays the list of user created Lockers
+        * Allows user with Locker Admin/Manage My Locker permission to create Locker
+        * Allows users to view lockers created by them or the lockers they are members of
+        * Allows user to give permission to use credentials in the locker
+    3. Credential Requests
+        * Displays the list of user-provided credentials requests sent to a Locker Admin and Locker owner
+        * Sends a credential request to fill in the credential value for credential created with user-provided attribute
+
+
+
+
 # Assesment (Recorders)
 1. While building a task using Screen Recorder, which of the following points should be kept in mind?
 Ans. ```Use the same screen resolution for task recording and execution,Use the same operating system for task recording and execution```
@@ -817,3 +977,45 @@ Ans. ```Analytics Expert```
 Ans. ```Analytics Expert```
 (Score 100%)
 
+# Assesment (Web Control Room)
+1. Which of the following components is not a part of the Activity page?
+Ans. ```Workload Activity```
+2. What does the HDD utilization widget display?
+Ans. ```Number of devices that crossed the threshold for HDD usage```
+3. Roshni is working on Bots and wants to move Bots from one automation room to another. Which option should she use?
+Ans. ```Export Bots```
+4. Sohab wants to use a component that will manage the work items and estimate Service Level Assessment or SLA. Which of the following component will help him achieve the task?
+Ans. ```Workload```
+5. What is the function of the Audit Log?
+Ans. ```Enforces internal compliance regulations```
+6. Which option schedules a Bot to be executed at a specific point in time
+Ans. ```Schedule Bots```
+7. In My Device tab, what are the three status that a device can be in?
+Ans. ```Connected,Disconnected,Offline```
+8. The _________________provides a centralized location for securely creating and storing sensitive information included in automation task.
+Ans. ```Credentials```
+9. Rohit wants to access a Bot from the laptop while travelling. Which interface will help him to complete his task?
+Ans. ```Device Interface```
+10. Nitya is a Control Room Administrator and wants to know the permissions granted to him as an admin. Which of the following features provides this information in the Control Room application?
+Ans. ```Administration```
+11. Diya wants to transfer data from a previous Control Room Version 10.x to the current version. Which option will she use?
+Ans. ```Migration```
+12. Cyrus needs to monitor certain events like the highest percentage of a particular activity being performed based on either user name or host machine type. Which of the following components will help him achieve this task?
+Ans. ```Insight component```
+13. Which of the following details are displayed on the Home dashboard?
+Ans. ```Active users,Failed tasks,Memory and HDD utilization```
+14. Which option allows a user to manage roles by modifying roles and users?
+Ans. ```Administration```
+15. What are the benefits of workload management?
+Ans. ```Assists in management of work items,Adds queues manually and automatically,Enhances the control of queues```
+16. Priya has opened up the Dashboard. She is now wondering what the insight component helps with. Help her by choosing the right option.
+Ans. ```Analyse task data in real-time```
+17. Which of the following options defines number of work items and number of devices required to process?
+Ans. ```SLA Calculator```
+18. What is the function of a Roles option in Administration?
+Ans. ```To manage or assign roles```
+19. Which dashboard helps consumers to analyse task data and enhance widgets?
+Ans. ```Insights Dashboard```
+20. Which option in the Administration panel allows the user to view a list of purchased products?
+Ans. ```License```
+(Score 80%)
