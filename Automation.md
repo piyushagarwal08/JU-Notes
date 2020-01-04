@@ -1019,3 +1019,30 @@ Ans. ```Insights Dashboard```
 20. Which option in the Administration panel allows the user to view a list of purchased products?
 Ans. ```License```
 (Score 80%)
+
+# Extra Questions(Non AA)
+1. Choose the commands that support Secure Recording mode select one or more in AA
+Ans. ```Object cloning ,Image Recognition```
+2. RPA interacts with multiple applications at the———–Layer in AA.
+Ans. ```Presentation```
+3. Is it possible to check broken links using a web recorder in Automation Anywhere?
+Ans. ```Yes```
+4. Greater resilience is achieved in RPA through———- in AA?
+Ans. ```Functional approach```
+5. What is a Default mode of Credential Manager in AA?
+Ans. ```The default mode of the credential manager is express mode.```
+6. Which Subversion (SVN) is used in AA for creating and maintaining a repository?
+Ans. ```Automation anywhere supports Apache subversion.```
+7. Which browsers are supported in AA?
+Ans. ```IE 10 & 11,FIREFOX 45,46,47,CHROME 49 and above,Chrome is not supported in meta bot designers.```
+8. Which type of script is supported by AA?
+Ans. ```AA support two types of scripting: 1).  Java script,2). VB script```
+9. Tell the name of App integration commands in Automation anywhere?
+Ans. ```Browser, Dos Command prompt, Java Applet```
+10.  What is the AA meta bot file extension?
+Ans. ```.MBOT```
+11. What is the AA report Designer file extension?
+Ans. ```.RTDX```
+12. What is the workflow file extension in AA?
+Ans. ```.WKFX```
+
