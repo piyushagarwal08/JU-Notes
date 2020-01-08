@@ -842,6 +842,8 @@ It allows you to monitor various events such as the highest percentage of a part
     * There are 2 types of roles:
     ```System-created``` ~> Pre-configured during the Control Room installation
     ```User Created``` ~> Created by the user themselves and can be customized accordingly
+    * Participant ~> Roles added as participants in a queue are allowed to view the queue and add work items to the queue but are not allowed to edit any other properties of the queue
+    * Consumers ~> Roles added as consumers of the queue can view the work items in the queue,edit work items in the queue, or use the queue when running bots.Users expected to run bots with queue should have roles as a consumer in both the queue and the device pool
 
     4. <u>License</u>
     * It provides detailed information about the current license installed. It also allows Admin's to monitor license details and usage statistics
@@ -872,6 +874,8 @@ It allows you to monitor various events such as the highest percentage of a part
 * ```Reactivation Threshold value``` ~> This is the minimum no of new work items that should be present in the queue to resume the queue process after all the work items in the queue are processed
 * A first-time user has access to trial license for a period of 30 Days, after which a user can continue with an extended trial license or install a new license
 * The View and manage ALL scheduled activity allows a bot creator to manage and view scheduled activities for all users.
+* Permissions that any Enterprise Control Room user has access to by default are: View Dashboard, Manage my credentials and locker, View and manage my queues.
+* Permissions that a non-admin user has no access to are: Admin, BotFarm Admin, Pool Admin, Locker Admin.
 
 ## Benefits of Features Panel
 1. Simplified and improved monitoring
@@ -896,7 +900,62 @@ It allows you to monitor various events such as the highest percentage of a part
         * Sends a credential request to fill in the credential value for credential created with user-provided attribute
 
 
+# Center of Excellence Team Structure
+1. <u>Bot Framework and Library Management Team</u>
+    * Develop reusable bots and scripts
+    * Devlop best practices, common framework, and reusable fast Meta-bots
+2. <u>Demand Management Team</u>
+    * Identify automation opportunities
+    * Process prioritization automation pipeline management
+3. <u>Risk and Control Team</u>
+    * Check bots operational risks and control methods
+    * Handle password management policies
+4. <u>Production Support and Monitoring Team</u>
+    * Maintain runbooks 
+    * Resolve common infrastructure issues and root cause analysis of bot production issues
+5. <u>Research Team</u>
+    * Identify new technologies(AI,IQ-bot,Analytics,Meta-bots)
+    * Manage internal demos and Proof of Concepts(POCs)
+6. <u>RPA Scripting Team</u>
+    * Write Scripts (Core Scripting Team:Developers and Solution Architect)
+    * Deliver bots
 
+* It is divided into 3 Teams:
+    1. Business Excellence Team ~> Demand Management-Process Verification-Bot Definition and Solution
+    2. Scripting Team ~> Developent in UAT Applications-Bot UAT and Demo
+    3. Scripting and Operations Team ~> Production Readiness-Test in Production Application-Deployment in Production
+
+* <u>Business Excellence Team</u>
+    1. Process assessment and prioritization
+    2. BRD Documents
+    3. UAT Application (Mainframe,WebApps,Windows applications) access for developers
+    4. Process flow documents
+    5. Solution mapping with process flow
+    6. Effort estimation in bot development
+    7. Application test against Automation Anywhere
+
+* <u>Scripting Team</u>
+    1. Modulation of bots as indepedent deliverable entities
+    2. Development in UAT Applications
+    3. Parameterize parameters which will change from development to production in configurations
+    4. Continuous communications with demand management to discuss the changes and demo of progressed bot
+
+* <u>Scripting and Operations Team</u>
+    1. Bug fixing
+    2. Test environment's test acceptance approval
+    3. Bot performance assessment
+    4. Bot Machines count estimations
+    5. Robotics ID access raised for production application involved in automation process
+    6. Process owner training (education on how to run bots,raise issues,password change)
+    7. Bug fixing which appeared because of bot migration into production environment
+    8. Bot production deployment and execute production parallel phase
+
+## Deployment Planning 
+The purpose of deployment planning is to:
+1. Define and agree deployment plans with customers/stakeholders
+2. Ensure that all deployment packages can be tracked,installed,tested,verified,and/or uninstalled or backed out, if appropriate
+3. Ensure that change is managed during the deplyment activities
+4. Ensure that there is knowledge transfer to enable the customers and users to optimize their use of the service 
 
 # Assesment (Recorders)
 1. While building a task using Screen Recorder, which of the following points should be kept in mind?
@@ -1019,6 +1078,34 @@ Ans. ```Insights Dashboard```
 20. Which option in the Administration panel allows the user to view a list of purchased products?
 Ans. ```License```
 (Score 80%)
+21. Which of the following actions are allowed by the Action bar?
+Ans. ```Refresh the table contents to view the latest audit logs,Export data based on month, filters or selection,Show or hide specific columns in the audit table ```
+22. Reena is a Control Room Admin and wants to check the different errors that the Bots may have encountered? Which of the following widgets provide this information on the Bots page.
+Ans. ```Top Failure Reasons widget```
+23. Gunjan wants to learn how to create a locker. A locker can only be created with ____________________.
+Ans. ```Manage My Locker Permission```
+24. Prathik is viewing details of an action to ensure that he can track all the changes that are being made in Control Room. Which of the following option will not appear in update settings?
+Ans. ```Action attribute```
+25. Karan is a new automation anywhere user. He wants to know what will the Bots option help him with?
+Ans. ```Graphically summarized view of Bots```
+26. What actions can you perform via the Audit Log page?
+Ans. ```Type of action performed,Date and time of the action ```
+(Score 80%)
+
+# BOT Deployment Assessment
+1. After deployment of the bot, the Development Team is given access to which folder?
+Ans. ```DEV```
+2. Mark, a tester, was performing a smoke test on a newly developed software bot which automates the process of mapping audio files with their script. After testing, he reported a number of bugs whose resolution was easily available, and their hot fix was coming shortly. What category do these bugs belong to?
+Ans. ```Category 2```
+3. Where is the fully tested signed off package moved?
+Ans. ```PROD folder```
+4. Which of the following team is responsible for mapping solutions with process flow?
+Ans. ```Business Excellence Team```
+5. Before giving sign-off, the Business needs to perform which of the following step?
+Ans. ```UAT```
+6. Which of the following team is responsible for identifying new technologies?
+Ans. ```Research Team```
+
 
 # Extra Questions(Non AA)
 1. Choose the commands that support Secure Recording mode select one or more in AA
@@ -1045,4 +1132,22 @@ Ans. ```.MBOT```
 Ans. ```.RTDX```
 12. What is the workflow file extension in AA?
 Ans. ```.WKFX```
+
+Ans. ```You can configure your own format for the Date variable.```
+13. From which console in the Control Room can we assign user roles and relevant privileges?
+Ans. ```Security Console```
+14. In which console of the Control Room you can view the status of tasks that have been played successfully or have error-ed out during play time
+Ans. ```Operations Room```
+15. Repository Manager can be used to schedule a task on clients with:
+Ans. ```Bot Runner privileges```
+16. Automation can be extended to business process consisting of conditional processing using which capability of AA?
+Ans. ```Workflow Designer```
+17. Credential Vault uses industry standard Enterprise grade security encryption and can be accessed by ALL users across the enterprise```
+Ans. ```False```
+18. A System task can be scheduled to execute when:-
+Ans. ```when computer starts,user logs on```
+19. Which Bot can be used to create black boxes of automation leveraging multi level integrations to create repeatable,complex system to system automation in conjunction with Task bots?
+Ans. ```MetaBots```
+20. A bug, belonging to which of the following category, makes the bot impossible for Go-live?
+Ans. ```Category 3```
 
