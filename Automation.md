@@ -876,6 +876,8 @@ It allows you to monitor various events such as the highest percentage of a part
 * The View and manage ALL scheduled activity allows a bot creator to manage and view scheduled activities for all users.
 * Permissions that any Enterprise Control Room user has access to by default are: View Dashboard, Manage my credentials and locker, View and manage my queues.
 * Permissions that a non-admin user has no access to are: Admin, BotFarm Admin, Pool Admin, Locker Admin.
+* Wild Cards can be used in AA such as ```*``` and ```?``` same as UiPath
+* With Secure Recording Option enabled, we can not re-capture the image 
 
 ## Benefits of Features Panel
 1. Simplified and improved monitoring
@@ -972,6 +974,7 @@ Ans. ```Smart Recorder```
 Ans. ```Screen Recorder```
 7. Which of the following web-based technologies does Smart Recorder capture?
 Ans. ```HTML```
+(Score 100%)
 
 # Assessment (BOT)
 1. When using the Log Data into File option of the Error Handling command, what happens when you press the F2 key while your cursor is in the Log File (filename) field.
@@ -1005,6 +1008,12 @@ Ans. ```Variable Assignment```
 15. When using the Image Recognition command, click the _______ button to check if the target image is identified in the source window. 
 Ans. ```Quick Test```
 (Score 93%)
+16. Polly asked Gautam for help adding a command to click a button she missed when using the Web Recorder. What command is used for this?
+Ans. ```Manage Web Controls```
+17. While working in Error Handling, Matt wants to add an additional line error data to an existing log file. Which option should he use?
+Ans. ```Append into Log file" under "Log Data into File```
+(Score 86%)
+
 
 # Assesment (MetaBot)
 1. Alexa is working on MetaBot Designer and wants to capture multiple screens of the webpage on one go. Which view should she use?
@@ -1034,6 +1043,9 @@ Ans. ```Auto-generated Dashboards```
 Ans. ```Analytics Expert```
 5. Bhavisha is using Bot Insight and wants to confirm the data types in the Data Profile tab. Which role should she be assigned?
 Ans. ```Analytics Expert```
+6. Bot Insight enables the operations organization to discover which two of the following?
+Ans. ```Operational Insights,Business Insights```
+
 (Score 100%)
 
 # Assesment (Web Control Room)
@@ -1062,7 +1074,7 @@ Ans. ```Migration```
 12. Cyrus needs to monitor certain events like the highest percentage of a particular activity being performed based on either user name or host machine type. Which of the following components will help him achieve this task?
 Ans. ```Insight component```
 13. Which of the following details are displayed on the Home dashboard?
-Ans. ```Active users,Failed tasks,Memory and HDD utilization```
+Ans. ```Active users,Failed tasks,Registered Clients```
 14. Which option allows a user to manage roles by modifying roles and users?
 Ans. ```Administration```
 15. What are the benefits of workload management?
@@ -1150,4 +1162,5 @@ Ans. ```when computer starts,user logs on```
 Ans. ```MetaBots```
 20. A bug, belonging to which of the following category, makes the bot impossible for Go-live?
 Ans. ```Category 3```
-
+21. Shortcut key combination to stop the recording is
+Ans. ```Ctrl+Alt+S```
