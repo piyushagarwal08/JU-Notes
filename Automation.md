@@ -353,7 +353,7 @@ e.g [ENTER]
     Manual Mode: Use this to manually connect to the Credential Vault(Highly Secure as need passkey everytime)
 
 ## Highlights
-* Version COntrol Integration with SVN
+* Version Control Integration with SVN
 * Browser-Based Access
 * Interactive Dashboard with real-time data
 * Multiple Admin Support
@@ -762,6 +762,7 @@ It allows you to monitor various events such as the highest percentage of a part
 * It consists of 2 sub-modules:
     1. My bots ~> A Centralized location where all the Bots,Workflows,Reports,Documents are uploaded from the enterprise client on to the control room.It provides the ability to run and schedule tasks on 'Bot Runners'
     2. Credentials ~> It is a centralized location for securely creating and storing sensitive information that is included in the automation tasks in the form of credentials
+    * It asks for Attribute Name,Attribute Description,Attribute Value
 
 4. <u>Devices</u>
 * It lists all the devices that are registered and connected to the control room in the My Bot page
@@ -879,6 +880,24 @@ It allows you to monitor various events such as the highest percentage of a part
 * Wild Cards can be used in AA such as ```*``` and ```?``` same as UiPath
 * With Secure Recording Option enabled, we can not re-capture the image 
 
+## Lockers
+
+* This enables separation of duties for credential management and consumption. Users with the following permissions can work with lockers:
+
+    1. Manage my lockers: This permission allows you to create and manage your own locker.
+
+    2. Administer ALL lockers: This permission allows you to view all the lockers and perform limited actions on them. This permission is available for AAE_Locker Admin role only
+
+* The roles and permissions related to locker management are:
+
+    1. Locker Owner: A locker owner can edit, view, delete a locker and can add or remove other owners.
+
+    2. Locker Manager: A locker manager has access to all the functionality like a locker owner, but does not have permission to add owners, managers, or participants to the locker.
+
+    3. Locker Participants: A locker participant has access to view a locker and participants and can also add own credentials to a locker. A locker participant does not have access or visibility of credentials created by other users.
+
+    4. Locker Consumers: You must select one or more user-defined roles and the users belonging to these selected roles are the consumers of the locker. These users have access to view a locker and input credential value.
+
 ## Benefits of Features Panel
 1. Simplified and improved monitoring
 2. Convenience in accessing and managing tasks , clients, users
@@ -958,6 +977,15 @@ The purpose of deployment planning is to:
 2. Ensure that all deployment packages can be tracked,installed,tested,verified,and/or uninstalled or backed out, if appropriate
 3. Ensure that change is managed during the deplyment activities
 4. Ensure that there is knowledge transfer to enable the customers and users to optimize their use of the service 
+
+# Bot Lab Control Room
+
+1.dashboard
+  registered clients
+  active users
+  failed tasks in last 2 days
+  task in progress
+* Client Service Port for our CR = 8001
 
 # Assesment (Recorders)
 1. While building a task using Screen Recorder, which of the following points should be kept in mind?
