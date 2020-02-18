@@ -1192,3 +1192,48 @@ Ans. ```MetaBots```
 Ans. ```Category 3```
 21. Shortcut key combination to stop the recording is
 Ans. ```Ctrl+Alt+S```
+
+
+# Terminal Emulation
+* A Terminal is a device with a computer screen and a keyboard used to communicate with a minicomputer or mainframe computer
+* A terminal emulator is an application that allows PC users to talk with mainframes as if they were using a terminal
+* Automation Anywhere is an automation software that has a terminal emulator build into it
+* You can use terminal emulation commands to perform various operatins,such as connect,send text,get text,set value and disconnect
+* Terminal Model ~> It Enables you to connect to various Terminal Workstations and Displays such as IBM 3477,IBM 3278 and more as listed in the command UI
+* Code Page ~> Enables you to set the encoding type such as German 273, Iceland 871 etc. for the Terminal
+
+* Various Commands of Terminal Emulator are:
+
+1. Connecting to a remote system
+    * Using the Connect command, we cam remotely connect to a terminal.Terminals with which we can connect are:
+    ```ANSI,VT100,TN3270,TN5250```
+    * With SSL ~> ensures a secure connection for Terminal Types ```TN3270 and TN5250``` with the default port ```992```
+    * Selecting ```Enable TN3270E Support``` allows you to choose a ```Connection Method```,which could be either ```Generic``` or ```Specific```
+    * Generic ~> Input the Device Name
+    * Specific ~> Input the Device Name and Resource LU Name (Only on enabling TN5250 Support
+    
+
+2. Sending Text
+    Using the ```Send Text``` command,you can send text to the remote system,similar to how you send keystrokes by using the ```insert keystrokes``` command
+
+3. Setting a field value
+    Using the ```Set Field``` command, you can set a field value,similar to how you assign a value to an input box on an HTML page.Fields are defined by name or index,so be sure and get the field name or index ahead of time
+
+4. Recieving Text
+    After sending text,you can recieve the response from the terminal using the ```Get Text``` command,which is coordinate-based
+
+5. Receiving a field value
+    Using the ```Get Field``` command, you can get a field value,which is similar to getting the value of an input box on a HTML page.
+
+6. Recieving all field values
+    You can also use the ```Get All Fields``` command to recieve all the field values and their field names into an array.Getting all fields allows you to reverse engineer a terminal field set that was not documented or for which the documentation was lost.
+
+7. Waiting for a response
+    Use the ```Wait``` command to wait for a specific bit of text to be sent to the emulator from the mainframe.This allows for a good pacing of messaging because the older systems tend to make some time to respond to messages
+
+8. Controlling the cursor positioning
+    Using the ```Control``` command,you can also control terminals cursor positioning, similar to the cursor positioning available on the old IBM terminals
+
+9. Disconnecting from the remote system
+    Once all the data is sent and recieved, you can disconnect from the remote system using the ```Disconnect``` command
+
