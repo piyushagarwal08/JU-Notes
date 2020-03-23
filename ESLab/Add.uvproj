@@ -355,19 +355,9 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>ADD.asm</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\ADD.asm</FilePath>
-            </File>
-            <File>
               <FileName>MULT.asm</FileName>
               <FileType>2</FileType>
               <FilePath>.\MULT.asm</FilePath>
-            </File>
-            <File>
-              <FileName>DIV.asm</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\DIV.asm</FilePath>
             </File>
           </Files>
         </Group>

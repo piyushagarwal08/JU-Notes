@@ -1237,3 +1237,96 @@ Ans. ```Ctrl+Alt+S```
 9. Disconnecting from the remote system
     Once all the data is sent and recieved, you can disconnect from the remote system using the ```Disconnect``` command
 
+
+# IQ Bot
+An IQ bot is Automation Anywhere's global digital workforce platform that learns from human behaviour and is built for business people,by solving specific use cases without requiring AI experts or data scientists.
+
+
+# Installation Of CR and AAE Client
+
+<img src="RPA_CR.png"/>
+
+* The Control Room(CR) is an central interface to manage and monitor all the processes of your RPA infrastructure
+* It allows us to :
+    1. Manage bots
+    2. Monitor activities
+    3. Create and manage users and roles
+    4. Monitor connected and disconnected devices
+    5. View audit logs
+    6. Schedule bots, and much more
+
+* The Automation Anywhere Enterprise (AAE) Client allows you to create automated tasks with ease by providing you the essentials features to record, modify and run simple or complex tasks.
+
+## Control Room
+## Hardware and Software Prerequisites
+1. Supported Operating System ~> AAE CR runs on the Standard and Datacetre Editions of Microsoft Windows Server 2012 (R2) and Server 2016.
+2. Minimum Hardware Configuration ~> 
+    * Processor -- 8 Core Intel Xeon Processor
+    * RAM -- 16 GB
+    * Disk Space -- 500 GB
+3. Supported Browsers and Version Control ~>
+    * <u>Browsers</u> ~> 1. Google Chrome v57 and above
+    2. Internet Explorer v1 and v11
+    3. Firefox v52 and above
+
+    * <u>If Version Control is enabled</u> ~> 1. For subversion 1.9.7 - Visual SVN 3.6.x
+    2. For subversion 18.15 - Visual SVN 3.3.x
+    3. For subversion 1.7.2 - Visual SVN 2.5.2
+4. Supported MS SQL Servers and .NET Frameworks ~> AAE CR can run on Microsoft SQL Server 2012,2014(SP1), 2016 & 2017. Microsoft.NET 4.6 framework is also needed
+
+## Installation Modes
+* AAE Control Room can be installed in the following 2 modes:
+1. Express Mode ~> It is for quick setup with default configurations.This is recommended for demonstrating, Training, Evaluation or internal use
+2. Custom Mode ~> It is used to configure a customized setup and is recommended for an Enterprise Environment setup with needs like high productivity, high availability and disaster recovery
+
+## Express Mode
+1. SQL Server Parameters
+<table>
+<th>Parameter</th>
+<th>Default Value</th>
+<tr>
+<td>SQL database instance </td>
+<td>SQLEXPRESS</td>
+</tr>
+<tr>
+<td>Authentication type </td>
+<td>Windows authentication</td>
+</tr>
+<tr>
+<td>Control Room Database </td>
+<td>CRDB-NEW</td>
+</tr>
+<tr>
+<td>Bot Insight database</td>
+<td>Bot Insight</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>1433</td>
+</tr>
+</table>
+
+2. PostgreSQL Server Parameters
+<table>
+<th> Parameter</th>
+<th>Default Value</th>
+<tr>
+<td>PostgreSQL Server database</td>
+<td>zoomdata</td>
+</tr>
+<tr>
+<td>PostgreSQL Server username</td>
+<td>zoomdata</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>5432</td>
+</tr>
+</table>
+
+3. Installation Path,repository path and Ports
+* Default Installation to:
+```C:\Program files\Automation Anywhere\```
+* Default CR Repository path:
+```C:\user\public\documents\Server Files\```
+* Database Authentication Ports ~> Since Express mode uses ```Non-AD Authentication```, the default ports for HTTPS are ```81 and 443```

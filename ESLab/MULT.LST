@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  MULT                                                                 02/17/2020 21:39:47 PAGE     1
+A51 MACRO ASSEMBLER  MULT                                                                 03/12/2020 18:48:13 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02b
@@ -8,11 +8,11 @@ ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE MULT.asm SET(SMALL) DEBUG EP
 LOC  OBJ            LINE     SOURCE
 
 0000                   1     ORG 00H
-0000 7403              2     MOV A,#03H
-0002 75F004            3     MOV B,#04H
+0000 74FF              2     MOV A,#0FFH
+0002 75F0D2            3     MOV B,#0D2H
 0005 A4                4     MUL AB
                        5     END
-A51 MACRO ASSEMBLER  MULT                                                                 02/17/2020 21:39:47 PAGE     2
+A51 MACRO ASSEMBLER  MULT                                                                 03/12/2020 18:48:13 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------

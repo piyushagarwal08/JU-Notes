@@ -4,33 +4,11 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\piyus\Desktop\JU-Notes\ESLab\Add.uvproj
-Project File Date:  02/16/2020
+Project File Date:  02/17/2020
 
 <h2>Output:</h2>
 Build target 'Target 1'
 assembling MULT.asm...
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0006H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=28
-"Add" - 0 Error(s), 4 Warning(s).
-Build target 'Target 1'
-assembling DIV.asm...
-DIV.asm(4): error A38: NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
-Target not created
-Build target 'Target 1'
-assembling DIV.asm...
 linking...
 *** WARNING L5: CODE SPACE MEMORY OVERLAP
     FROM:    0000H
@@ -50,3 +28,17 @@ linking...
     ADDRESS: 080AH
 Program Size: data=9.0 xdata=0 code=34
 "Add" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0002H
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ?C_START
+    MODULE:  STARTUP.obj (?C_STARTUP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ?C_START
+    MODULE:  STARTUP.obj (?C_STARTUP)
+    ADDRESS: 080AH
+Program Size: data=9.0 xdata=0 code=21
+"Add" - 0 Error(s), 3 Warning(s).

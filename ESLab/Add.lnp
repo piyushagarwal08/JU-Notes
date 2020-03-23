@@ -1,5 +1,3 @@
 "STARTUP.obj",
-"ADD.obj",
-"MULT.obj",
-"DIV.obj" 
+"MULT.obj" 
 TO "Add" 
