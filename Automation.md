@@ -1243,6 +1243,8 @@ An IQ bot is Automation Anywhere's global digital workforce platform that learns
 
 
 # Installation Of CR and AAE Client
+### Installation Files for CR,SQLSeverand Client
+<img src="AAE_Setup_Files.png">
 
 <img src="RPA_CR.png"/>
 
@@ -1330,3 +1332,244 @@ An IQ bot is Automation Anywhere's global digital workforce platform that learns
 * Default CR Repository path:
 ```C:\user\public\documents\Server Files\```
 * Database Authentication Ports ~> Since Express mode uses ```Non-AD Authentication```, the default ports for HTTPS are ```81 and 443```
+
+## SQL Express Installation and CR
+* Click and Run the AAE_MSSQL_Express installtion file
+* accept all default values
+* Set Protocols for SQLExpress by
+    1. Enable the TCP/IP protocol
+    2. Double click TCP/IP
+    3. Go to IP Addresses Properties and remove the default value for TCP Port
+    4. Set value as 1433
+* Select SQL Server Services
+    1. Restart SQL Server (SQLEXPRESS)
+    2. Verify all protocols get enabled
+    3. open cmd and type ```telnet localhost 1433```
+    4. If above command fails make sure that port number is added to Inbound And Outbound rules of your Server-Firewall
+* Click and Run the AutomationAnywhereEnterprise_11 executable installation file
+* Launch the AAE CR application and enter the details in the welcome page
+* Copy the master key into notepad
+
+## Custom Mode
+There are a large number of customisation options available in custom mode, such as:
+1. choose an installation folder destination for Control Room
+2. Configure Cluster using system IP for High Availability Setup
+3. Use Certificate Authority (CA) or a self-signed certificate to configure the application Transport Layer Security (TLS)
+4. Use Certificate Authority(CA) for secure connection with SQL, Mail and LDAP(Lightweight Directory Access Protocol used for accessing and maintaining distributed directory information services over an IP network) servers
+5. Configure service credentials to use Localsystem or Windows user account (or sevice account)
+6. Select the database server, port and mode of authentication to connect to database(either SQL or Windows Authentication database)
+7. Select a pre-created database for Control Roo and Bot Insight or create a new one during installation
+8. Choose to install Postgre SQL with Control ROom setup, or connect an existing/pre-install PostgreSQL instance on another machine
+9. Choose to configure Control Room authentication modes such as LDAP,SAML-2(Security Assertion Markup Language is an open standard for exchanging authentication and authorization data between parties, in particular, between an identity provider and a service provider.) or non-Active Directory modes
+example: ```ldap://brdad.brdst.com```<br>
+        ```Domain:brdst\aatest```<br>
+        ```Password: *****```
+
+
+### Control Room installation in Custom Mode 
+* Click and Run the AutomationAnywhereEnterprise_V11 installation file
+* Select custom mode
+* Select the installation path for Control Room
+* Select / Enable the cluster setup, To setup cluster please click on ```Enable Cluster Setup``` and provide static IP for cluster nodes(applicable for HA and DR setup) or click Next
+* On TLS Configuration Page, Provide HTTP(81) and HTTPS ports(443)
+* Note:
+    If you want to redirect HTTP to HTTPS then you can check ```Forect HTTP Traffic to HTTPS``` and its recommended to use the CA trusted certificate for your Control Room server/LB in PFX format and provide its private key  password
+    If the CA trusted certificate is not available, check the Self Signed Certificate box and installer will create a Self-Sign certificate for HTTPS communication
+* Database Server: Select the SQL Database as ```(local)\SQLEXPRESS11,1433``` where ```1433``` is the port number and in such case keep the ```Database Port``` field empty
+* The user allotted during configuration should have Database creating authority that is basically ```sysadmin```
+* PostgreSQL uses port ```5432```
+
+### High Availability and Disaster Recovery with CR
+* High - Availability Deployment Model
+<img src="High_Availability_and_DisasterRecovery.png"/>
+
+* High Availability and Disaster Recovery Deployment Model
+<img src="High_Availability_and_DisasterRecovery_Deployment-Model.png">
+
+* for HA Configuration , following things should be kept in mind
+    1. Installation process is same as normal
+    2. while checking for database and port, open ```pg.hba.conf``` file and add a tag at last of file that is ```host all all ip-of-server/port-of-server md5```
+
+### Control Room: Post Installation Configuration
+Once installation is complete. We configure the following aspects of Control Room:
+1. Repository Path
+2. Control Room Access URL (Local or Load Balancer-based)
+3. Control Room Authentication; which could be:
+    * Non-Active Directory Authentication
+    * LDAP Authentication
+    * SAML2 Authentication
+
+
+## FAQs 
+### (Licenses)
+1. I have just installed license v11.x Why is it still asking me to provide a license key?
+Ans. ```Please make sure that you have never installed v11.x in the past on this machine, whose 30-day trial period expired. If you have tried to change the date in your system during the trial period, your license will have expired, and you need to provide the correct license.```
+2. Can I use my v10.x license for v11.x CR?
+Ans. ```No```
+3. Can the Master Key be regenerated after 1st setup of CR
+Ans. ```No```
+4. Can License service port be changed post istallation
+Ans. ```Yes, with certificate import via command line in Installation guide, you can update the SSL certificate in case of expiration, SAN addition, or modification. You must then restart AAE Reverse proxy service to let the certificate take effect.```
+
+### (Servers)
+1. Does v11 support Cloud based setup and what are the best practices for cloud setup?
+Ans. ```Yes,you just need to use same database for CR and BotInsight```
+2. Does v11 support DB as PaaS for SQL and Postgres database?
+Ans. ```Yes```
+3. What is the minimum server requirement for HA setup of v11 CR?
+Ans. ```The server requires a minimum of 2 CR application nodes, in case of SQL as separate 2 SQL cluster node for DB, 1 Load balancer, NAS or SAN file repository for SMB file share. If Postgres is used as remote then additional Postgres server. ```
+
+### (Ports)
+1. Can LDP for child domain URL be used for LDAP authentication setup with port 389 and 636?
+Ans. ```No, v11 only supports LDAP for Global CataLog of Parent domain. The Global CataLog LDAP works over ports 3268 and 3269. E.g. if your domain is oprInd.oprGlob.com then the LDAP URL “ldap://oprInd.OprGlob.com” which would be your India level Domain would not work, you need to use parent domain LDAP URL i.e. “ldap://OprGlob.com” (over 3268) ```
+2. What is the Postgres server recommendation for remote Postgres installation to be used?
+Ans. ```V11 does support remote Postgres for version 9.5.x only. For versions prior to v11.2 you need to use a default database named “zoomdata”, with “postgres” as the default username and “5432” as the default port. From version 11.2 onwards can customise the database name, user or port. ```
+3. What are the other ports used by v11 CR which are not provided during installation?
+Ans. ```Besides HTTP/HTTPS port, SQL and Postgres ports provided during installation, AAE Control Room uses 8080 or next available port for License service. Port 5672, range 47100-47200 and 47500- 47600 are used for cluster communication in HA & DR setup. ```
+4. Can the cluster communication ports be changed post installation?
+Ans. ```No, the cluster communication ports cannot be changed and are set as default, you need to keep these ports open in local as well as network firewall for seamless cluster communication. ```
+
+## Migration from v10.x to v11.x
+
+### Migration Prerequisites
+Before beginning migration, make sure you have all the right things in place.
+
+These include:
+1. Taking backups
+2. Recording credentials and other details
+3. Installing destination infrastructure
+Note: If one migration process is already underway, do not initiate another migration process.
+
+### AA Prerequisite Checklist
+Make sure that:
+1. Automation Anywhere Licensing service is running on port 8080. (For more information on port configuration, see How To Change Automation Anywhere License Service Port)
+2. Automation Anywhere Licensing service is running under a domain user account and this account has access to Control Room v10.x repository path using a shared drive
+
+### Backups
+Here is a list of backups you need to have in place.
+
+1. Control Room v10.x* SQL database
+2. Control Room v10.x* shared repository
+3. Control Room v10.x* SVN database (where applicable)
+4. Bot Insight SQL database (where applicable)
+5. Bot Insight meta-data database (where applicable)
+
+* Includes Automation Anywhere Enterprise 10 LTS, 10 SP2, and hot-fixes with these as base versions. Please refer to Installation Guides of particular versions for details.
+
+### Credentials
+Please keep the following credentials handy.
+1. Credentials to connect to Control Room v10.x* SQL database
+2. Master key to connect to Credential Vault of Control Room v10.x
+3. Shared path to v10.x repository
+4. Credentials to connect to Bot Insight SQL database (applicable only if using Bot Insight with Control Room v10.x)
+5. URL of Bot Insight meta-data database
+* Includes Automation Anywhere Enterprise 10 LTS, 10 SP2, and hot-fixes with these as base versions.
+
+### Migration Options
+* We can use the tool to migrate data in phases depeneding on business requirements
+* Following are migrated independently
+    1. Roles
+    2. Users
+    3. Bots
+
+### Migration Considerations
+The Automation Anywhere Enterprise 10.x environment should be strictly controlled and monitored once the migration process is initiated. Hence, it is recommended ```that you do not```:
+1. Create users, roles, and permissions
+2. Create and upload any meta data (such as new automation bots)
+3. Create new schedules
+4. Check out bots (if version control is enabled)
+5. Schedule and deploy on-demand bots
+
+* Data that can be migrated includes:
+1. Repository data
+2. Meta-data available in database. Users, roles, licenses, and permissions
+3. Automation schedules
+4. System defined credentials
+5. Application settings
+6. Automation bots with version history (if applicable)
+7. Bot Insight data
+
+* Data migration excludes:
+1. Devices/Clients
+2. Audit logs
+3. License information of source Control Room
+4. User defined credentials
+5. Version Control Settings
+6. Schedule history
+7. You cannot migrate from Automation Anywhere Enterprise v9.x If you are using a version older than v10 LTS, you should first migrate to v10 LTS using the v10 LTS Migration Utility and then migrate from v10 LTS to v11.x
+Note: Hot fixes on v10 LTS are supported for migration to v11.x.
+8. Migrating data from 11 GA (v11.0) to v11.2 is not supported.
+9. If Version Control is enabled in v10.x Control Room then you must enable the same in v11.x Control Room manually since the settings for Version Control are not migrated. It is mandatory to use a fresh SVN database for   v11.x and ensure that it is different from the v10.x SVN database.
+10. Ensure the SQL database service is running during the migration process.
+11. Migration of SAML configuration data is not supported.
+12. Data from source Control Room configured for one user type cannot be migrated to destination Control Room configured for another user type, i.e. user data configured for Active Directory cannot be migrated to a Non Active Directory.
+
+### Migration Process
+<img src="Migration_Process.png"/>
+
+# AAE Client Installation
+
+## Hardware and Software Prerequisites
+1. Required Operating Systems
+
+AAE Client will run on the following operating systems:
+1. Microsoft Windows Server 2016 – Datacenter or Standard Editions
+2. Microsoft Windows 8 or 8.1 Pro or Enterprise Edition
+3. Microsoft Windows Professional Edition
+4. Microsoft Windows Server 2012 R2 – Standard Edition
+5. Microsoft Windows Server 2012 – Standard Edition
+6. Microsoft Windows Server 2008 R2 – Standard Edition
+7. Microsoft Windows 10* – Pro or Enterprise Editions
+```AA does not support Automation using Flex technology, nor does it support triggers for Windows Store or Metro UI apps.```
+2. Minimum Hardware Configuration
+    * Processor – Minimum 3.5 GHz+ with 4 cores
+    * RAM – 8 GB
+    * Disk Space – 300 MB for installation
+Note:
+* An average Automation Anywhere script is approximately 100-150 KB in size. Additional free disk space is required to develop automation projects, as Automation Anywhere creates temporary files like screenshots, server logs, audit files etc. during script execution.
+* The actual free space required increases with project size. We recommended at least 40-50 GB of free disk space to implement long term projects.
+* You might have to upgrade to a higher configuration post installation depending upon product usage. For instance, in MetaBot Designer - log files, Logic creation, etc. might require more disk space later.
+3. Supported Browsers
+    * Internet Explorer: v10 and v11
+    * Google Chrome: v49 and higher
+    * Microsoft Edge: Only if on a Windows 10 OS.
+    * Automation through Chrome and Edge is not supported in Metabot
+4. Supported Plugins
+<table>
+<th>Plugin</th>
+<th>Version</th>
+<tr>
+<td>Silverlight</td><td>5.1.x</td>
+</tr>
+<tr>
+<td>Adobe Flex</td><td>24</td>
+</tr>
+<tr>
+<td>Internet Explorer 11</td><td>11.0</td>
+</tr>
+<tr>
+<td>Chrome</td><td>49 and above</td>
+</tr>
+<tr>
+<td>EDGE</td><td>-</td>
+</tr>
+<tr>
+<td>MODI</td><td>12.0</td>
+</tr>
+<tr>
+<td>TOCR</td><td>5.0</td>
+</tr>
+</table>
+
+### FAQ
+1. How should I resolve Error 27502 during installation?
+Ans. 
+```
+Here are a list of steps to help resolve the issue:
+1. Check that the SQL server/instance is accessible from Control Room server over a specified port, you can check telnet command to validate connectivity from CR to SQL server over the specified port.
+2. Make sure you are entering correct SQL server, Port and User details.
+3. Ensure Database authentication credentials (SQL or Windows) have SysAdmin rights to the Database server/instance.
+4. If using custom port (besides 1433) use DB connection to provide port with server name. e.g. “SQLserver,\<port>”.
+5. You can try using SSMS or other such tools to validate SQL connection and user access to the provided SQL server and database.
+Select this <a href="https://automationanywhere.litmos.com/cloudmedia/66126/scorm/4726166_3/assets/pdf/matrix_table.pdf">link</a> to download a matrix for creating databases, tables and services.
+```
