@@ -1564,6 +1564,7 @@ Note:
 ### FAQ
 1. How should I resolve Error 27502 during installation?
 Ans. 
+
 ```
 Here are a list of steps to help resolve the issue:
 1. Check that the SQL server/instance is accessible from Control Room server over a specified port, you can check telnet command to validate connectivity from CR to SQL server over the specified port.
@@ -1573,3 +1574,71 @@ Here are a list of steps to help resolve the issue:
 5. You can try using SSMS or other such tools to validate SQL connection and user access to the provided SQL server and database.
 Select this <a href="https://automationanywhere.litmos.com/cloudmedia/66126/scorm/4726166_3/assets/pdf/matrix_table.pdf">link</a> to download a matrix for creating databases, tables and services.
 ```
+
+## Client Server Components
+
+### Core Services
+1. Automation Anywhere Control Room Caching ~> Used for distributed cache storage which includes vault status,Credential Vault(CV) private key, and Client Tokens
+Restart of cache service disconnects connected clients and vault status.Can be mitigated by setting up distributed mode of CR
+Vault configured in Express mode, opens automatically on cache service start-up.
+2. Automation Anywhere Control Room Messaging ~> Ensures all events starting from Client side operations to server side activities are logged in database (DB) as Audit Entries.Audit logs are managed by this service
+3. Automation Anywhere Control Room Reverse Proxy ~> Receives all incoming HTTP(s) requests for Automation Anywhere (AA) products and forwards to the correct service.Core Control Room components requests are redirected to Control Room service
+4. Automation Anywhere Control Room Service ~> Receives and processes Application Programming Interface (API) requests for the Control Room. Accepts requests redirected from reverse proxy server and takes care of schedule invocation and deployment
+5. Automation Anywhere Control Room Licensing ~> Manages Licensing information for AA products and services
+
+### Client Core Components
+1. Bot Runner Desktop Components
+    1. Bot Player ~> used to run a bot ```AAPlayer.exe```
+    2. Reports ~> Graphical Reports to measure success and ROI,display the status of the tasks,workflows and ROI over time
+    3. Event Watcher ~> Manages easy task execution facilities such as triggers or hot key
+2. Common Background Services
+    1. Auto-Login ~> Responsible for machine unlock and executing task in Run and Scheduled cases
+    2. Client Services ~> Keeps alive AAE Client application,Receive run request from CR and invoke Execution based on run request
+    3. Local Scheduler ~> It Involves task execution for local schedules
+3. Bot Creator Desktop Components
+    1. Task Editor
+    2. Event Watcher
+    3. Reports
+    4. Bot Player
+
+### Client Server Communication
+<u>Refresh Token</u>
+
+* A mechanism to maintain a unqiue sesion for every user
+* Unique json token (JWT) which keeps changing at regular intervals
+* Introduced to authenticate the REST calls from AAE Client
+* Control Room Server returns respose with payload containing status codes for each incoming access token to be refreshed
+* Life cycle of refresh token is:
+    1. Create Token
+        * A Token is composed of client information & License details
+        * First login access token from server is passed on to client service to refresh at a regular interval of 5 mins.
+    2. Refresh Access Token
+        * Client Service(Windows service) is responsible for refreshing the token at the predefined interval
+        * Runs on a separate thread from the existing ping call to the Control Room
+        * Control Room validates the access token
+        * If validation fails,
+            * Unauthorized access response is sent back
+            * Service clears the user session from memory
+            * All Client applications,except player, gets terminated with notification,after 5 minutes
+        * If validation succeeds, a new access token will be returned
+    3. Token Expiry
+        * When the user token expires,Refresh Token will return the empty token
+        * Client service will terminate all AAE Client Applications after notification
+        * User can re-login to the client
+    4. License Change
+        * If there is any change in license on server side,RefreshToken will return the License Changed flag as "True"
+        * Client service will terminate all AAE Client APplications after notifications
+        * User can re-login to the client and new license changes can take effect
+* Refresh Token Configuration
+    1. Access Token Refresh Time Interval = Max 300 seconds
+    2. Fail Over Retry Count = Max3
+    3. Time Between Retry = Max 15 seconds(default 3)
+    4. Request Time Out In Second = Max 60 seconds (default 15)
+    
+    These Configurations can be configured from ```AAClietService.exe``` config file
+    (Default file Path: C:\Program Files (x86)\Automation Anywhere\Enterprise\Client\AAClientService.exe config)
+    Note: Restart Automation Anywhere Client Service, for the changes to take effect
+
+<img src="AAE Ports and Protocols (Default).png"/>
+<img src="AAE Ports and Protocols (Default)_1.png"/>
+<img src="AAE Ports and Protocols (Default)_2.png"/>
