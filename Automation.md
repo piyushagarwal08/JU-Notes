@@ -1642,3 +1642,81 @@ Vault configured in Express mode, opens automatically on cache service start-up.
 <img src="AAE Ports and Protocols (Default).png"/>
 <img src="AAE Ports and Protocols (Default)_1.png"/>
 <img src="AAE Ports and Protocols (Default)_2.png"/>
+
+
+# Bot Deployment
+
+## Pre-Requisites
+1. A Bot Runner machine registered with Control Room 
+2. A Bot to be deployed
+3. A Control Room User with permission to deploy a Bot.Following visibility parameters are driven by Role and permissions which assigned to User:
+    * Run Button 
+    * Bot
+    * Devices
+
+## API Overview
+* A CR user use 3rd party API's to deploy Bots or tasks to Bot Runners on commencement of external 3rd party or an external application
+* Key features and business benefits of Control Rooms APIs:
+    1. Bots can be deployed from an external third party systems susing AAE APIs
+    2. The input and output of APIs is JSON based (industry standard data-interchange format)
+    3. Bot Deployment can be orchestrated from an External Application/Workflow using a combination of scripts and AAE APIs
+* The Bot Deployment API can only be invoked once the system/user has authenticated using the Authentication API
+* Deployment API is used to deploy Bots to Bot Runners.User will need to have "Run my Bots" privileges and the privileges of the Bot Runners on which the Bot is to be deployed
+<img src="Run and Schedule based Bot Deployment.png" />
+
+<img src="RDP Based Deployment Flow.png" />
+<img src="RDP Based Deployment Flow1.png" />
+
+* Once the bot is created on the CR, a deployment notification is sent to the Bot Client.
+
+## Troubleshooting for Bot Deployment: Best Practices
+1. For all types of deployment
+* Ensure Bot Runner machine reachable from Control Room machine via FQDN(Fully Qualified Domain Name) as displayed on Bot Runner machine's computer properties
+* Ensure Auto-Login settings are enabled to Clint machine to ensure player invocation in corect user profile
+2. For RDP based deployment
+* Tools ~> Options:
+    * Username and Passwords need to be set
+    * "Auto Login your computer when the task runs" needs be checked
+    * "Bypass legal disclaimer" needs to be unchecked
+* Machine status should be either "Locked" or "Log off"
+* Legal Disclaimer should be disabled
+* Player should not be running on machine
+* Remote connection should be allowed from machine
+
+## Overview
+* Dependency scanner ~> the mechanismo of scanning the child tasks,MetaBots , and referenced documents is known as dependency scanner
+* Prerequisites:
+    1. Ensure all the dependent files are uploaded and available on CR
+    2. Control Room user who initiates the Run or creates schedules, must have permissions of folders where dependent files are available
+    3. When Apache Subversion (SVN) is integrated, Run Event will deploy latest version of SVN copy,hence, it doesn't verify the production is set or not.However , while scheduling a Bot, it will check the production version of all child Bots, hence ensure production version is set for all child Bots.
+* TroubleShooting ~ when dependent files are shown as missing, ensure that:
+    1. Production Version is set in case SVN is enabled
+    2. File does exist on server, and should be on same path as referred in Master Bot
+    3. Folder permission must be available to the user
+    4. No custom variables are used.Encourage to use ```$AAAPlicationPath``` system variable to get the dependency auto resolved
+
+# SVN
+* Mechanism of versioning and revision control of tasks
+* AA manages the Subversioning using Visual SVN server which is updated to Apache Subversion
+* Version Control Integration, if enabled in Automation Anywhere is carried out through Subversion,provided by the Apache Subversion software project
+* Distributed as open source under the Apache License
+<table>
+<th>Apache Subversion</th>
+<th>SVN Server</th>
+<tr>
+<td>Subversion 1.9.7</td><td>Visual SVN Server 3.6.x</td>
+</tr>
+<tr>
+<td>Subversion 1.8.13 and 1.8.14</td><td>Visual SVN Server 3.3.x</td>
+</tr>
+<tr>
+<td>Subversion 1.7.2</td><td>Visual SVN Server 2.5.2</td>
+</tr>
+</table>
+
+## <u> SVN Repositories</u>
+* There are 2 kind of Repositories
+1. Control Room Repository ~> Folder/file-based structure on DIstributed File System (DFS),Network Attached Storage(NAS),Storage Area Network(SAN) or any other windows-based file loctaion
+2. SVN Repository ~> Internal SVN Repository,not visible from functioning point of view
+
+## Configuration
