@@ -1719,4 +1719,49 @@ Vault configured in Express mode, opens automatically on cache service start-up.
 1. Control Room Repository ~> Folder/file-based structure on DIstributed File System (DFS),Network Attached Storage(NAS),Storage Area Network(SAN) or any other windows-based file loctaion
 2. SVN Repository ~> Internal SVN Repository,not visible from functioning point of view
 
-## Configuration
+## Configuration - SVN Repos
+1. Create the Repositories ~> For this, right-click Repositories because AA product only supports empty Repository
+2. Don't forget to create an Empty Repository because AA product only supports empty Repository
+3. Add the Internet Information Service(IIS) application pool Identity user in the SVN Repositor permissions
+4. After creating the repository, Create User in the SVN by Launching Visual SVN Server,Right-Click Users, and Create User
+5. Enter User Name and Password in the pop-up window
+Also, make sure the user in the SVN has Read/Write permissions to the SVN repository created
+6. Once a Repository is created,you will see a similar screen
+
+<img src="Configuring_SVN.png"> 
+7. The actual Repository path will be displayed at the top of the screen. This path can be used to browse the Repository from the Web Browser.
+
+## Integrating SVN with AA
+1. Launch Control Room -> Administration -> Settings -> Bots
+2. Enter the details
+3. Connect
+* Syncing of Control Room and SVN Repository is known as ```Base Version Upload```
+* Do not interrupt the process
+* It may take hours, depending on the size of the Control Room Repository and uplaod speed between CR and SVN servers
+
+## AA Client Upload Life Cycle
+
+```Upload file from Client``` -> ```Validate the upload permission for the User``` -> ```CR recieves the file and sends to ``` ->
+1. ```QueueStore Folder``` -> ```Sends a copy of file to SVN Repository```
+2. ```CR Repository Path``` -> ```Confirmation sent to client machine for successful upload```
+
+<img src="Upload From Client Side- Workflow.png" />
+
+1. File Splitter ~> Split the file into multiple parts , that 4mb of each by default (is configurable)
+2. File Parts Uploader ~> Sends HTTP/HTTPS request to CR to initialize the File Upload
+3. FileParts Storage Folder ~> As soon as files are recieved at CR , its created by default in the Repository application Path if not present
+4. A Unique session ID is allotted to all the chunks/parts of the file being uploaded
+5. Chunk Collector ~> Collects all the file parts being uploaded through AAE Client and sequentially stores them in File Parts Storage to prevent its corruption
+6. Chunk Merger ~> As soon as all parts are uploaded, merge all the file parts and check the checksum value to be same as sent by the Client in the original request
+7. After the above process, the file is updated in the meta data and stored in the Database
+8. If the SVN is on, file is also copied to SVN's QueueStore Folder and one by one sent to SVN
+
+## AA Client Download Life Cycle
+<img src="Download from Client Side - Workflow.png" />
+
+1. Downloading is initiated from Client Side by sending an HTTP/HTTPs request to CR
+2. On receiving the request for download from the AAE Client, the CR splits the file into chunks and sends information about number of chunks and the checksum of the whole file to AAE Client
+3. The file that is to be downloaded is split up into parts in this filesplitterstorage folder and each will have the unique download session ID
+4. If the SVN is on and requested file version is available, The Queue Store/SVN Store will send each part and the chunks will be collected by Chunk Collector in the AAE Client
+5. Once all chunks are downloaded,they are merged by the Chunk Merger and it gives a response stating download is successful
+
