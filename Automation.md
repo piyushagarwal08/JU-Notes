@@ -1765,3 +1765,75 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 4. If the SVN is on and requested file version is available, The Queue Store/SVN Store will send each part and the chunks will be collected by Chunk Collector in the AAE Client
 5. Once all chunks are downloaded,they are merged by the Chunk Merger and it gives a response stating download is successful
 
+
+# Credential Vault
+* A Credential Vault provides a secured way to manage common and user specific credentials.It also provides a way for Bots to consume the credentials in a secure way.
+* Base CV functionality is to:
+    1. Create my own credentials and locker to group credentials
+    2. Grant owner and participant permission to manage locker and locker content (i.e credentials)
+    3. Grant Usage privilege on a Locker via Role (i.e. Grant Role(s) use access to a Locker)
+    4. Access credentials from the CV while running a TaskBot
+    5. Use user-specific / common credentials while running a TaskBot
+    6. Audit usage of credentials
+    7. All credentials are persisted in database in encrypted form and decrypted in runtime when needed
+
+## CV Keys
+<img src="CV Keys.png" />
+
+* while generating keys, ```private key``` is saved externally by the admin
+* AAE works with ```CYBERARK``` to provide CV to users
+* You are not required to :
+    1. Store your sensitive data in two places or copy and paste data such as your passwords from CyberArk Password Vault to Automation Anywhere Credential Vault
+    2. Maintain data security in two places
+* Key Benefits:
+    1. Clients get the ability to securely retrieve the credentials needed for the Bots to perform their functions.
+    2. CyberArk rotates the credentials to ensure the Client stays in compliance with corporate policies and industry guidelines.
+    
+
+# License Management
+## Bot User Licenses
+1. Bot creator (Development) ~> Users with privilege to create and automate Bot(s) in Client
+2. Bot runner(Run time with TaskBots) ~> Users with privilege to run Bot(s)
+3. BotFarm (Run time) ~> Bot user count of licenses, measured in number of hours used by all runtime clients within BotFarm to execute a Bot
+4. Bot Insight ~> It shows 2 things:
+    * The number of users having Business Analytics role, i.e., Bot Insight Consumer or Expert
+    * The Application Program Interface (API) count measured in number of rows that API fetches from Bot Insight database
+    * If you have a Bot Insight license, Operational Analytics is available by default with CR v11.0
+
+## License Installation Steps
+* A CR Admin or a user with License management permission can install a License and evaluate Control Room version 11.0
+* By default, a trial license(30 D) is shipped that offers three Bot Creators and two Bot Runners
+* To Install a License
+```Select Administration -> Licenses tab``` ~> ```Select Install License button``` ~> ```Browse the License file``` ~> ```Select Install```
+
+
+## Error Messages
+1. When a file with invalid or an expired License is selected
+2. When a file with different extension other than ```.License```, is selected
+3. When a file is either deleted or moved to another location
+4. When current License is expired
+
+## Role Bases Access Control : Role Types
+* The Control Room license management is made more granular and controlled via seperate permissions
+1. ```View License Permission``` ~> View license details from the Licenses page
+2. ```Manage User Device License Permission``` ~> Allocate / deallocate / release licenses
+3. ```Install License Permission``` ~> Install a new Control Room license
+* The License Management access can be set while creating Roles
+
+
+## Mechanism of License Installation
+* Ensure that ```Automation Anywhere Licensing``` service is up and running during installation of licenses adn through out the usage of product
+* Ensure that the ```8080``` port is vacant before installation and no other application on the server machine is assigned to use the 8080 port because the licensing service gets installed and runs on 8080 port
+* Validate if the license service is running on the 8080 port, in case of any Licensing Server / service related error messages
+* Ensure that licensing service is able to reach Control Room DB server and the user configured to run the service has access of the Control Room Database
+
+<img src="mechanism of License Installation.png" />
+
+##  License Downgrade Scenario
+* License downgrade is a scenario or condition where devices counts (Bot Creator, Bot Runners) are lesser than the existing utilized counts
+* In Such scenario ,the Admin will be required to first deallocate the license and bring the used counts equal or less to counts availed in new license file
+<img src="License Downgrade.png" />
+
+
+# Control Room Administration
+
