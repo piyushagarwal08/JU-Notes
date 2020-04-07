@@ -1837,3 +1837,83 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 
 # Control Room Administration
 
+## Configuration Settings   
+* As a Control Room admin , you can change the Access URL if the CR is setup in custom mode
+* Website Security ~> shows the type of security protocol used - http or https and is configured during installation and is not editable
+* Website Configuration
+    1. Express installation ~> One host name is shown
+    2. Custom Installation ~> Multiple host names are shown provided CR is listed in Cluster mode
+    3. Usernames and Passwords are not shown
+    4. This setting is configured during installation and is not editable
+* Control Room Users    ~> Shows the Authentication type used to log on to CR instance by Bots and configured during installation and is not editable
+    1. Active Directory ~> Active Directory users are configured when you want Bots of a specific domain to be authenticated with their Active Directory credentials
+    2. Single Sign-On(SAML 2.0) ~> These are configured when you want Bots to be authenticated using ```SAML 2.0 protocol ```and log on using the organizations ```ldp server credentials```
+    3. Database ~> Database users or Non-Active Directory users are configured when you want Bots to be authenticated using the Control Room Database
+
+* Control Room Database 
+    1. Windows Authentication ~> It is the authentication type used to connect to the database server.It shows ```Enabled``` when Windows Authentication is selected while configuring the database in installation. It shows ```Disabled``` when default database authentication is used
+    2. Server Host Name ~> It is the fully qualified name of the CR database server
+    3. Server Port ~> It is the port to which the database is configured
+    4. Database Name ~> It is the database that will be used to store CR data
+    5. The values are not displayed
+
+* Control Room Administration
+    1. Control Room repository shows the location where all Bots,application files, and supporting files are stored
+    2. Default location: ```C:\ProgramData\AutomationAnywhere\Server Files```
+    3. The default path can be edited post installation but just remember to :
+        * Copy the existing files to another location
+        * Put the CR in maintenance mode
+        * Inform users to disconnect their devices from the CR instance
+    4. ```Select Edit``` ~> ```Change Path``` ~> ```Save Path```
+
+* Login and Session Settings
+    1. Login Settings ~> Allow to automatically time-out users from the CR browser session after 20 minutes of inactivity
+    2. Session settings ~> Allow or disallow users to be automatically logged into CR when they navigate to the Control Room URL via browser if Control Room is configured for Kerberos enabled Active Directory Authentication
+    3. By default these settings are ```Enabled```
+    
+* Deployment Settings ~> Shows whether the users with run and schedule privileges can choose to run Bot Runner session on CR when you deploy or schedule a Bot
+
+* Security
+    1. It defines the password policy settings for all the CR users
+    2. We can customize the password length,password content , and/or select the number of log on attempts allowed
+    3. Password policy is only enabled for a CR that is configured for Database authentication type
+
+## Client Application Settings
+* Device Health Check Configuration ~> It allows you to set the time interval for Device Health check that includes parameters such as Central Processing Unit or CPU, Memory and Disk usage etc. You can set the frequency at which the data is exchanged between Control Room and connected Clients
+* To modify Device health check configuraton:
+    1. First Select the Client application
+    2. Then Click Edit, the page opens in edit mode wherein the ```Blip interval during bot execution``` can be enabled.The default value is set to 60 seconds
+    3. Change the Blip interval time as required.Please note that ,you cannot input less than sixty or empty value otherwise an error is shown
+    4. After changing interval, click ```Save Changes```
+
+## Email Settings
+* As CR admin, we can send email notifications to other CR users when certain activities that affect the users are updated
+* By default, email notifications are disabled
+* When they are enabled, all users have to confirm their account by clicking on the confirmation link that they receive in their email account, set the password and security questions, and login to the CR
+
+## Users
+* View the detailed information of existing users
+* with user management privileges, you can view,edit,delete, and enable or disable a user
+* Perform other actions, such as delete multiple users, export the list of users in CSV format, refresh the list in the Users table, and show or hide columns in the Users table and you can also Create a user and role
+* when you specify search parameters for the same column, the system searches using ```OR``` operator. When you specify search parameters for different columns, the system searches using ```AND``` operator
+* when you use special keys ```_``` or ```-```, the system lists all Usernames instead of Usernames having these parameters
+
+<img src="User_Column_Actions.png" />
+<img src="User_Individual_Actions.png" />
+
+
+## Create Active Directory Users
+* To create an active directory user, the user must be a part of an active directory
+* Perform the given steps to create an active directory user:
+    1. First, log on to CR with administration privileges
+    2. Navigate to the Users page
+    3. Click, create user link
+* In the General details area:
+    1. Select the ```Enable user``` check box to enable the user
+    2. Select the active directory name for the user.The list displays all domains that are available in Active Directory domain controller
+    3. Type a user name for the user, the ```Check name in Active Directory``` button is enabled
+    4. When you click ```Check name in Active Directory``` button, one of the following happens
+        * If the user name is present in the Active Directory, the First,Last name, email and confirm email fields are automatically displayed
+        * If the user name is not present in  the active directory, an error message is displayed
+
+## Create Non-Active Directory Users
