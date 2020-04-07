@@ -1916,4 +1916,14 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
         * If the user name is present in the Active Directory, the First,Last name, email and confirm email fields are automatically displayed
         * If the user name is not present in  the active directory, an error message is displayed
 
-## Create Non-Active Directory Users
+## Edit Directory User Details
+* As an administrator, You can edit the details of an active directory user from the Users page
+* But you cannot change the Username and Active Directory domain for a user nor your own profile
+* You need to contact an administrator to change the username of an active directory user
+* When you edit the details of a user, an email is sent to the user
+* These changes are audit logged and authorized users can refer to it in the future
+
+## Managing Users
+* To remove redundant users, and free allocated license, a CR Admin user can delete users
+* When an admin user deletes a user from CR, the user is displayed as Inactive appended to their name
+* One of the details shown in the ```USER DETAILS``` section on the Users page is ```License Status```
