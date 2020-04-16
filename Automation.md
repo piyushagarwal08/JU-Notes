@@ -1927,3 +1927,22 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 * To remove redundant users, and free allocated license, a CR Admin user can delete users
 * When an admin user deletes a user from CR, the user is displayed as Inactive appended to their name
 * One of the details shown in the ```USER DETAILS``` section on the Users page is ```License Status```
+
+
+## Data Migration and Version Comparison
+* Before starting data migration between client v10.x and client 11.x , ensure that
+    1. Backup is created for 10.x AA applcation folder , public documents, and program data
+    2. 10.x LTS CR must be migrated to 11.x
+    3. User must be migrated to 11.x CR
+
+<img src="Client Migration.png"/>
+
+* After Migration process, a file named ```Flips Data Migration``` that is the log file of migration is located at the application path
+
+* Various Differences between V10 and V11 are
+
+<img src ="v10 vs v11.png" />
+<img src ="V10 vs V11_1.png" />
+<img src ="V10 vs V11_2.png" />
+<img src ="V10 vs V11_3.png" />
+

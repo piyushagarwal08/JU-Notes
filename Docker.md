@@ -1,8 +1,11 @@
 # Docker
 
 #### Current Login Connections
-35.193.189.6
 
+## Remove old pre-installed packages
+```
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
 ## Install Docker CE using Repository in Ubuntu
 1. Update the ```apt``` package index
     ```sudo apt-get update```
@@ -165,5 +168,29 @@ docker container run \
  * Here the ```--force``` parameter is used to remove the running container without shutting down
  * In production environment, use the ```docker container stop container-name``` to stop the container and use ```docker container rm container-name``` to permanently remove it
 
+# Docker API Configuration (AMAZON INSTANCE)
+* open docker file
+```vim sudo /etc/sysconfig/docker```
+* Add line ```-H tcp://0.0.0.0:2375``` in line ```OPTIONS="--default-ulimit nofile=1024:4096"```
+* ```systemctl daemon-reload```
+* ```systemctl restart docker```
+* Add ```$env:DOCKER_HOST="tcp://public-ip:port"``` in windows powershell or 
+``` export DOCKER_HOST="tcp://public-ip:port```
 
-# Modify a Running Website
+## Start Containers Automatically
+* Docker provides restart policies so that container can be restarted automatically when the daemon gets started
+* For this task ```--restart``` tag is used with the ```docker run``` command
+* The ```restart``` tag  has following values
+    ```
+    1. no ~> Do not automatically restart the container (default)
+    2. on-failure ~> Restart the container if it exists due to an error, that is an non zero exit code is manifested
+    3. always ~> Always restart the container even if its manually stopped as long as Daemon is running
+    4. unless-stopped ~> restart the container unless its manually stopped
+    ```
+
+## Port Forwarding
+* Used to redirect a user from single ip to multiple containers
+* ```ip:port1``` can redirect to container1 and ```ip:port2``` can redirect to container2
+* ```docker container run -d --name user:version -p any-4-digit-port:80 image-name```
+* allow the port used for forwarding traffic in firewall rules
+
