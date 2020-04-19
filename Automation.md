@@ -1813,7 +1813,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 3. When a file is either deleted or moved to another location
 4. When current License is expired
 
-## Role Bases Access Control : Role Types
+## Role Based Access Control : Role Types
 * The Control Room license management is made more granular and controlled via seperate permissions
 1. ```View License Permission``` ~> View license details from the Licenses page
 2. ```Manage User Device License Permission``` ~> Allocate / deallocate / release licenses
@@ -1946,3 +1946,84 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 <img src ="V10 vs V11_2.png" />
 <img src ="V10 vs V11_3.png" />
 
+## Audit Trail Reading
+* Understanding Basic Table Elements
+    1. Status ~> Displays the status of the action - whether it is "successfull" or "unsuccessful"
+    2. Time ~> Displays the data and time of performed action
+    3. Action Type ~> Displays the type of action performed by users
+    4. Item Name ~> Displays the entity on which action was performed
+    5. Action Taken By ~> User that performed the action
+    6. Source Device ~> Displays the device/machine name/IP address used to perform the action
+    7. Source ~> Displays the component from where action originated or was performed such as the CR,Client or API.
+
+* The Audit Details Page is divided into 2 sections:
+    1. Action Details ~> Shows details including Status,Object type,and Time
+    2. Action Type Details ~> Shows details such as ATTRIBUTE and VALUE
+
+
+## Workload Management Queue
+* Used for processing of data round the clock by creating a pool of Runners and executing tasks, so that the Runners are utilized in better way and data can be processed in parallel
+* WLM Queue ~> Collection of all data (work items) to be processed and associated configuration
+* WLM Device Pool ~> Collection of all Runners on which Bot is executed and associated configuration
+* WLM Bot ~> Bot marked with queue category in variable manager
+* Insert Work Item(Queue) ~> Command is used to push work item in queue
+* Work Item (Column name) ~> Variables used in Bot to pull data from queue and process further
+
+* Various Roles and their funcationalities in WLM are:
+    1. Queue Admin ~> User with Queue Admin role can create a queue
+    2. Pool Admin ~> User with Pool Admin role can create Device Pool
+    3. CR Admin ~> CR Admin can create these users or one user can have both these roles
+    4. Queue Participant ~> Queue Participant needs a user defined role and it makes all users with that role a participant of the queue - they can push work items to queue
+    5. Queue Consumer ~> Queue Consumer needs a user defined role and it makes all users with that role as consumer of queue - they can consume work items in Bot from queue
+    6. Pool Consumer ~> Pool Consumer needs a user defined role and it is associated with Queue Consumer as unless both are in synch, queue cannot be scheduled on device pool
+
+* WLM Component : Queue
+1. Owners: Can be many owners and is advised to add CR admin as owner of queue as admin privileges are required to stop the queue
+2. Partipants : Users who can add work item to a queue.Select a user defined role which is assigned to user
+3. Consumers : Users, generally Runners, who will consume work items from queue. Select a user defined role which is assigned to user
+4. Work Item Structure : Defines work item in queue. Queue Category is mandatory and it works like business process mapping of a queue.Column Structure is associated with queue category.So, if you create a new queue and map same category, column structure is copied to new queue.Queue Category is then mapped with Bot in Variable Manager to indicate which queue is accessible for Bot
+5. Reactivation Threshold ~> Needs to be defined the time of queue creation which indicates on how many new work items in queue, queue gets activated again
+
+* <u>WLM Components : Device Pool Execution</u>
+For Successful device pool execution,the Queue Consumer and the Pool Consumer must have the same role
+* For execution of multiple queues on the same Device Pool , the Pool Admin can configure execution in two ways:
+    1. Round Robin
+    2. Priority
+* Round Robin ~> Round Robin configuration gives a time slice, which indicates for how many seconds, minutes, or hours work items from one queue get executed, and then the task from the next queue is executed
+* Priority ~> Priority setup gives an option to select priorities between multiple queues running on same Device Pool.In this case,all work items from priority one queue get executed before work items from the second priority queue.
+
+* Insert Work Item 
+    1. Pushes work item in queue
+    2. Shows a list of all queues associated with logged in user
+    3. Can be used along with other commands like Loop or Excel
+* Work Item can be consumed using variable ```$WorkItem(Column)$```
+* Data can be uploaded into queue manually by simply uploading a csv file
+
+
+## Bot Life Cycle Management
+* Various Pre-requisites for Import or Export a Bot and its dependencies are:
+* The End User System initiates export of Bots from Control Room 1 and initiates import to Control Room 2
+1. Export Pre-requisites
+    * The CR user authenticating the export must have:
+        * ```Export Bots``` permission
+        * ```Download``` permission for the Bots and dependencies
+    * If Version Control is enabled in the source CR:
+        * The ```production version``` of all Bots and dependencies myst be set
+    * The user account being used to run the CR services must have access to the ```export destination```
+2. Import Pre-requisites
+    * The CR user authenticating the imports must have:
+        * Import Bots permission
+        * Upload permission for the Bots and the dependencies
+    * The CR user executing utility to importing multiple Bots must have access to the exported package file provided by AA
+
+<img src="Bot Life Cycle Component Diagram.png" />
+
+<img src="Bot Life Cycle Sequence Diagram.png" />
+
+
+## Role Bases Access Control
+* Benefits of creating roles include:
+    1. Increased security by controlling users access according to their specified roles
+    2. Decreased need of customer support
+    3. Easy and accurate monitoring of the use and access of data by higher management, leading to better research management
+* System-created roles for BotFarm,Bot Insight and Cognitive Platform apps are displayed based on purchased license

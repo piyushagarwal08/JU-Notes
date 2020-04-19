@@ -1,6 +1,25 @@
 # Docker
 
-#### Current Login Connections
+# Notes
+
+### CMD vs EntryPoint
+* Work of ```CMD``` tag in Dockerfile is to always run the specified command,whenever a container is created
+* Work of ```Entrypoint``` tag in Dockerfile is to run the default command if no command is given at run time
+
+### Add vs Copy
+* Both work the same way in Dockerfile
+* Only advantage that ```Add``` tag has over ```Copy``` is that it can copy files from a URL like ```github``` as well directly to container-image
+
+### Docker Hub
+* To upload any image over docker hub, we need
+    1. docker login
+    2. image to be tagged
+* To tag image use
+    ```docker image tag image-name:version user-name/imagename:version```
+* To Push or pull images
+    ```docker push user-name/imagename:version`
+
+
 
 ## Remove old pre-installed packages
 ```
@@ -175,7 +194,7 @@ docker container run \
 * ```systemctl daemon-reload```
 * ```systemctl restart docker```
 * Add ```$env:DOCKER_HOST="tcp://public-ip:port"``` in windows powershell or 
-``` export DOCKER_HOST="tcp://public-ip:port```
+``` export DOCKER_HOST="tcp://public-ip:port"``` in linux
 
 ## Start Containers Automatically
 * Docker provides restart policies so that container can be restarted automatically when the daemon gets started
@@ -194,3 +213,46 @@ docker container run \
 * ```docker container run -d --name user:version -p any-4-digit-port:80 image-name```
 * allow the port used for forwarding traffic in firewall rules
 
+## .dockerignore
+* This is a file used in production considered as best practice
+* The Use of this file is to ignore certain files from being copied to container by the Dockerfile
+
+## Docker Networking
+* By networking the containers can communicate with each other with being isolated from each other
+* ```docker inspect container-name``` used to check ip of container
+* When install Docker for the first time, 3 Docker bridges are created by default
+* Out of these 3, one bridge is named ```docker0``` given by OS and docker has named these 3 bridges as
+    1. Bridge
+    2. host
+    3. None
+* To check present docker bridges 
+    ```docker network ls```
+* To remove non-default bridges
+    ```docker network rm $(docker network -q)```
+* <u>Network Addressing Translation</u> ~> all containers uses the host bridge ip to connect to outside world and this process is called NAT
+* To change the network of a container, we use the command
+``` docker run -itd --name t5 --nework host alpine sh ```
+* Containers can be configured that even being on same host , they can not communicate to each other that is possible by creating self customized containers
+* To create your own new network, run the command
+``` docker network create network-name ```
+
+
+# Docker Storage
+* Docker Storage or basically the location where all the files,images,containers are stored can be configured for:
+    1. Docker Engine
+    2. Containers
+* In Containers, the data is temporary/emphieral/non-persistent which can be easily lost but by attaching volumes or basically ```Docker Volume``` we can save the data externally
+
+## Docker Volume
+* These are basically files/folders/hard disks/complete host storage space which can mounted as pool or distributed storage over containers
+* To Create a Docker Volume,run command
+    ```docker volume create volume-name```
+* by default,size of above volume will be that of the host os
+* To attach the created volume to a container,we need to attach/mount it when initializing the container,by running the command
+    ```docker container run -it -v volume-name:\mount-folder-for-volume image-name command```
+* To check volume stats, run the command
+    ```docker inspect volume volume-name```
+* To share a folder/file as volume , we run the command
+    ```docker container run -it -v foldername:\mount-path image-name command```
+* Even more then 1 volume can be mounted using the same command as above that is
+    ```docker container run -it -v folder1:\mount-path1 -v folder2:\mount-path2 image-name command```

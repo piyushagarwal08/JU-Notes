@@ -3,7 +3,7 @@
 
 int main()
 {
-    int a[7] = {0,40,30,10,19,1,7};
+    int a[6] = {3,9,10,1,30,40};
     int s,r,q,p;
     int max = INT_MIN,max1=INT_MIN,min=INT_MAX,min1=INT_MAX;
     
