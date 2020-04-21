@@ -2056,4 +2056,92 @@ For Successful device pool execution,the Queue Consumer and the Pool Consumer mu
 * The athentication is only valid for ```15 minutes``` from the time it is used
 
 * Response Codes
-    1. 200 ~>
+    1. 200 ~> Authentication is successful
+    2. 401 (invalid credentials) ~> Invalid Password / User does not exist / Active Directory Authentication Credentials are invalid
+    3. 401 (Unverified Email) ~> Email notification is enabled - user has not verified email
+    4. 402 ~> License has expired
+    5. 403 ~> User is deactivated
+
+## Login Credentials API
+* To automate updating of passwords, CR 11.1 provides a direct API to create , update or delete ```Login Credentials``` in ```Credential Vault```
+* Only CR Administrators or users having AAE Admin Roles can use it
+* It will use authentication token obtained using Authentication API.This token has to be passed to the Login Credentials API
+* Takes 3 inputs:
+    1. Username (AAE)
+    2. Login (Windows) username
+    3. Login (Windows) password
+
+* Managing User Credentials ~> CR Admins can manage user credentials using HTTP methods like
+    1. POST ~> CR admins can create a user's login credentials in the CR
+    2. PUT ~> CR admins can update the user's login credentials in the CR
+    3. DELETE ~> CR admins can delete the user's login credentials in the CR
+
+
+## Deployment API
+* These API's are used to deploy Bots/tasks on Bot Runners on commencement of events specified by third-party/external application
+* Input and Output of APIs is based on JSON (the industry standard data-interchange format)
+* Bot deployment can be orchestrated from an external application/workflow using combination of scripts and AAE APIs
+* To use these,the user needs ```Run my Bots``` privileges and privilege of Bot Runner on which bot is to be run
+* It takes 3 parameters:
+    1. Bot name with relative path (mandatory)
+    2. List of Bot-Runners and users in JSON format (mandatory)
+    3. Use RDP-based approach (optional,"false" by default)
+* Response Codes:
+    1. 200 ~> Successful creation of automation
+    2. 400 ~> Bad Request has been made
+    3. 401 ~> Authentication is required
+    4. 403 ~> Unauthorized attempt to access
+    5. 409 ~> Implies a conflict
+    6. 500 ~> Internal server error
+
+## BLM Export-Import API
+* Using this API, we can introduce a customized Bot Lifecycle Management (BLM) solution to remove all external factors that could possibly disrupt your automation life cycle
+* Using this API we can manage the dependent files in different environments such as:
+    1. Development
+    2. Testing
+    3. Acceptance
+    4. Production
+* End point for Export:
+    ```<Control Room URL>/v1/alm/export```
+    ```https://crdevenv.com:81/v1/almexport```
+* End point for Import:
+    ```<Control Room URL>/v1/alm/import```
+    ```https://crdevenv.com:82/v1/alm/import```
+* Benefits:
+    1. Provides RBAC on BLM
+    2. Automatic export of dependencies (files and Bots)
+    3. Audit and traceability on source and target environment for compliance
+    4. Email notification on successful execution/failure of export and import
+* Requirements for exporting files:
+    1. Export and Download Bots permission
+    2. Minimum Execute permission on MetaBot and dependencies that are being exported
+    3. production version of all Bots and dependencies must be set
+    4. access to location where packaging is getting exported
+* Requirements for importing files:
+    1. Import and Upload Bots permission
+    2. CR user who will use APIs to import multiple Bots must have access to exported package file provided by AA
+* Procedure for exporting a Bot:
+    1. Generate a token through the POST method using appropriate end point
+    2. State parameteres for credentials in Body Data using the POST method
+    3. Click ```Play``` or ```Start```
+    4. BLM Export API makes use of authentication token obtained using Authentication API.This token has to be passed on as header input to BLM Export API
+    5. Provide parameters such as filename,destination path and package name in Body Data to export a Bot
+    6. Click ```Play``` or ```Start```
+    7. Use multiple sources to view the export results in : 
+        1. Response Data : comprise package path and checksum
+        2. Audit Log page : Landing page as well as details page
+        3. Email : When you receive notifictaion on success or failure, if configured
+* Procedure for importing a Bot:
+    1. Generate a token through the POST method using appropriate end point
+    2. State parameters for credentials in Body Data using the POST method
+    3. Click Play or Start
+    4. BLM Export API makes use of authentication token obtained using Authentication API.This token has to be passed on as header input to BLM Export API
+    5. Provide parameters such as package path and checksum in Body Data
+Note : You can copy the response of the BLM Export API and directly pass that as input to the BLM Import API, if the package path is same an is accessible to the BLM Import API user
+* Response Codes:
+    1. 200 ~> Package created Successfully
+    2. 400 ~> Bad Request parmeter (Retry with valid parameters)
+    3. 404 ~> File not found ( Ensure that the file / bot is present in the CR)
+    4. 501 ~> Permission Error ( Ensure export/import bot or download/uplaod bot permission)
+
+## WLM Export-Import API
