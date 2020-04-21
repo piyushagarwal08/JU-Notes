@@ -2026,4 +2026,34 @@ For Successful device pool execution,the Queue Consumer and the Pool Consumer mu
     1. Increased security by controlling users access according to their specified roles
     2. Decreased need of customer support
     3. Easy and accurate monitoring of the use and access of data by higher management, leading to better research management
+* usernames can not contain special characters
 * System-created roles for BotFarm,Bot Insight and Cognitive Platform apps are displayed based on purchased license
+* View dashboards is a default permission available to all roles and users
+* A non-Admin user having the roles permission cannot see the Admin role.This is a filtration between Admin and non-Admin roles.If you are an Admin, you can see all the roles, but if you are non-Admin, then you cannot see the Admin roles
+* The system checks for Admin using the keyword ```AAE_admin``` in admins name
+* If Control Room is integrated with Active Directory or SMTP enabled,Password and Confirm Password field will not be visible
+* In case of Active Directory integrated, CR do not set and manage password.Validation will be performed by integrated Active Directory Server
+* In case of SMTP enabled and non-Active Directory, email will send to the user to set the password
+
+
+# Public API
+* AAE enables third-party applications to consume RPA , orchestrate bots, and manage the RPA data based on events
+* The CR offers APIs to automatically:
+    1. Authenticate users
+    2. Manage Bot login credentials
+    3. Deploy Bots
+    4. Export and import Bots for BLM(Business Lifecycle Management)
+    5. Export and Import Workload Management (WLM) Configuration.
+    6. Fetch the list and details of work items in the CR or add/insert work item to a given queue.
+
+## Authentication API
+* It precedes all other APIs
+* Invoking third-party application user needs to be authenticated to use downstream APIs
+* Takes two parameters as inputs in JSON.These include  
+    1. Username of AAE user
+    2. Password of AAE user
+* If the URL of the CR is ```https://ultron.com:81``` then URL of Authentication API will be ```https://ultron.com:81/v1/authentication```
+* The athentication is only valid for ```15 minutes``` from the time it is used
+
+* Response Codes
+    1. 200 ~>
