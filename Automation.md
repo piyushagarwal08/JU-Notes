@@ -2145,3 +2145,50 @@ Note : You can copy the response of the BLM Export API and directly pass that as
     4. 501 ~> Permission Error ( Ensure export/import bot or download/uplaod bot permission)
 
 ## WLM Export-Import API
+* Before exporting WLM configuration, ensure these prerequisites are met:
+    1. CR user whose credentials are used for authentication must be either "ADMIN" or have Export Bots permission
+    2. CR user must be wither ```Queue Admin``` or ```Owner``` of the queue to export a particular queue
+    3. Details of Queue Owners,Consumers , and Participants need to be added manually
+    4. User account that is used to run CR services must have read/write access permission to the folder where package is getting exported
+    5. Maximum of 200 queues can be exported in a package
+    6. Queues in draft state cannot be exported
+    7. If any queue export fails, the entire export operation will also fail
+* Before importing WLM configurations,ensure these prerequisites are met:
+    1. CR user whose credentials are used for authentication have Import Bots permission
+    2. CR Queue Admin can import all queues
+    3. CR user who will use the APIs to import multiple Bots must have read/write access permission to the folder where the exported package file shall be provided by AA
+    4. By default,user who imports package becomes the Owner of the imported queues.
+    5. If the queue category is already created by previous import,subsequent imports will use it as long as all column names and types match
+* Procedure for Exporting:
+    1. Generate a token through the POST method using appropriate end point
+    2. State parameters for credentials in Body Data using the POST method
+    3. Click Pay or Start or Send
+    4. Workload Export API makes use of authentication token obtained using Authentication API.This token has to be passed on as header input to Workload Export API
+    5. Provide Request parameters "X-Authentication","Accept" and "queue-ids" as headers
+    6. Click Pay or Start or Send
+    7. Copy package name from response frame.Use it to import the queue package
+* Procedure for Importing:
+    1. Generate a token through the POST method using appropriate end point
+    2. State parameters for credentials in Body Data using the POST method
+    3. Click Pay or Start or Send
+    4. Workload Import API makes use of authentication token obtained using Authentication API.This token has to be passed on as header input to Workload Import API
+    5. Provude request parameters ```X-Authentication``` and ```Content-Type``` as headers
+    6. Provide Parameters such as ```Content-Disposition```,```form data``` ,```name``` and ```filename``` to import queue package in request body
+    7. Click Pay or Start or Send (action is successful when response status is 200 OK)
+* The Response codes are same as other APIs
+
+
+## APIs for Working with Queues
+* Fetch list and queue details available in CR
+* Fetch list of work items in given queue and its details available in CR
+* Insert work item data in given queue available in CR
+* CR user with Export/Import Bots/Queue Admin role permission can use ```Get all queues API``` to fetch list of work items of all queues and its details available in CR
+* CR user with Export/Import Bots/Queue Owner/Participant/Consumer role privileges can use ```Get all queues API``` to fetch list of work items in a queue and its details available in CR
+* end point: ```<Control Room URL>/v1/wlm/queues```
+* Procedure for fetching all queues:
+    1. Generate a token through the POST method using appropriate end point
+    2. Access Workload APIs using the GET method
+    3. Provide Request parameters ```X-Authorization``` and ```Content-Type```
+    4. Click Send
+    5. View result in Body Data
+    
