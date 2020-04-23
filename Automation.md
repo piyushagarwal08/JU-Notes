@@ -2191,4 +2191,195 @@ Note : You can copy the response of the BLM Export API and directly pass that as
     3. Provide Request parameters ```X-Authorization``` and ```Content-Type```
     4. Click Send
     5. View result in Body Data
-    
+* Steps to Add Work item data:
+    1. Log into the CR
+    2. Create a ```queue```
+    3. Note down the Queue ID from database configured for CR
+        * Go to CR database
+        * Right click ```dbo.QUEUES``` in the tables node
+        * Clcik Select Top 1000 Rows to run SQL node
+        * Identify Queue ID displayed beside queue name column
+    4. Use the POST method to insert work item data to the queue API in order to upload work items
+        ```https://crdevenv.com:81/v1/wlm/queues/1/workitems``` for Queue id:1
+    5. Provide the Request parameters ```X-Authorization``` and ```Content-Type``` in the Headers
+    6. Provide the required parameters (work item column names with their data) in the Request Body to insert data in a queue
+    7. Click Send(200 response code)
+    8. View result in Body Data
+
+## Auto-Login Process Workflow
+<img src="Auto Login Process Workflow.png" />
+
+<img src="Auto Login Troubleshoot.png" />
+
+* There are 3 types of logs to refer in case of Auto-Login failure:
+    1. Auto-Login debug level logs
+    2. Player Logs
+    3. Client Service/Scheduler Service debug level Logs
+
+* Sequence of using logs to troubleshoot Auto-Login failure
+1. Client Service/Schedule Service log ~> It receives a call to trigger task execution and invokes the player
+2. Player log
+    * when player application gets invoked,it checks machine state
+    * if session is ```On```, it initiates task execution; otherwise , it validates if the Login settings are configured and Auto-Login is tick marked
+    * If settings are correctly configured,it requests Auto-Login to do its job and kills Players application instance with the entry-ending player after requesting for Auto-login
+3. Auto-Login Log:
+    * Receives Auto-Login request by player
+    * Performs Ctrl+Alt+Del
+    * Create info.xml file at common folder path with requirments parameters for Auto-Login and task execution
+4. Credential Log ~> ```Automation.CredentialProvider.dll``` keeps watch on the common folder path. As soon as the info.xml is found it triggers Auto-Login and reads parameters values from the file,decrypts the password , deletes the info.xml and performs AutoLogin to the Systems on LogonUI.exe
+5. As soon as autologin happens, it sets machine status as ```SessionUnlock``` , and updates machine status in Automation.Autologin.Settings.xml file
+6. Player log ~> Player application gets invoked by Auto-Login service and revalidates machine state.If machine is found in ```Sessionunlock``` or ```Console``` state,it will start task execution otherwise, it will exit the loop with particular failure error
+7. Auto-login log ~> Once the player complete execution,it requests the Auto-Login to put machine back to original state
+8. Credential Log~> Log displays machine status set back to its original state(locked,logged off or disconnected)
+9. Auto-Login log ~> updates machine status in Automation.Autologin.Settings.xml file
+10. Player Log ~> It ends player application instance
+Note : 
+* if Auto-Login happens successfully,it invokes the ```explorer.exe` but in case it does not come in Processes,it will timeout the Auto-Login process,the CredentialProvider removes Info.xml forcefully and the same entry will found at step 5
+* The default Timeout is set to 60 seconds and is configurable
+* The Auto-Login code is successfully hooked with the OS application when both the AutoLogin.txt and CredentialLog.txt files are present in the LogFiles folder
+
+
+## Plugins
+### Troubleshooting for Flex
+* If you are unable to capture Flex objects in IE-11, follow these steps:
+1. Tools ~> Options ~> Plugin Settings
+2. Check if the Flex plugin is installed
+3. Navigate to the mm.cfg configuration file
+4. Open the configuration file with Notepad
+5. Change the username:
+    ```
+    PreloadSwf=C:\Users\ABC\Automation Anywhere to PreloadSwf=C:\Users\Username1\Automation Anywhere.
+    ```
+6. Save the mm.cfg configuration file at:
+    ```%homedrive%%homepath%```
+7. Launch AAE Client before opening the Flex application
+
+## Troubleshooting for Flex: Plugin Popup Issue
+* To Identify if Flex application is connected with AA Proxy Server:
+1. Close AAProxyServer.exe from the Task Manager
+2. navigate to the installation path: ```C:\Program Files(x86)\Automation Anywhere Enterprise 10.3\Client```
+3. In the address bar,type ```AAProxyserver.exe /u```
+4. Open the Flex application and check the connection status in the AAProxyServer.exe UI
+
+##  Troubleshooting for JAVA Plugin: Not Enabled
+* At times,the Java plugin might not get enabled in AAE Client plugin settings after installation. The solution is to enable Java Access Bridge(JAB) on your system
+* There are two ways of doing so:
+```First```
+1. Go to the ```Ease of Access Center``` in the ```Control Panel```
+2. Select ```Use the computer without a display``` option
+3. Under ```other programs installed```,select the ```Enable Java Access Bridge``` check box
+4. Next, click Apply and then click OK
+
+```Second```
+* Go to the ```Command prompt```
+* Run the command to enable the JAB
+* Replace or set the JAB path to JRE_HOME on the system where you are running the command
+
+
+# SSL Certificate
+## SAN Certificates
+* <u>Subject Alternative Name</u>
+    1. Can cover multiple domain names on just one certificate
+    2. All the names must belong to the same domain
+    e.g,www.example.com, example.com, mail.example.com
+* <u>Wildcard Certificates</u>
+    1. Secure website URL and unlimited number of its subdomains
+    2. Certificate requested for ```*.coolexample.com``` will apply for:
+        * coolexample.com
+        * www.coolexample.com
+        * photos.coolexample.com
+        * blog.coolexample.com
+* <u>EV certificates (Extended Validation)/EV SSL Certificates</u>
+    1. Activate both the padlock and the green address bar in all major browsers
+    2. Provide the strongest encryption level available
+        ```secure:https://www```
+
+## What to validate in SSL Certificate
+1. Certificate Format
+    * Automation supports ```.Pfx``` format only
+    * Certificate Conversion Website: ```https://www.sslshopper.com/ssl-converter.html```
+2. Certificate Issued to
+    * Certificate should contain Domain Name System of the servers,including Standardized Query Language Database(SQL DB) Server Certificate,if required
+    * Subject Alternative Name(SAN) extension allows additional identities to be bound to the subject of the certificate
+    * DNS Name extension is used to add a fully qualified domain name to a SSL certificate
+3. Certificate Issuer
+    * Issuer Field identifies the entitiy who has signed and issued the certificate
+    * It contains the Distinguished Name(DN) information for the Intermediate Certificate Authority (CA) Certificate for SSL certificates
+4. Certificate Validity
+    * After validating the certificate issue, the Certificate Validity should be verified.
+    * The fields ```Valid From``` and ```Valid To``` indicate the validity period of the SSL certificate
+5. Certificate Chain
+    * A chain or path begins with the SSL certificate 
+    * And each signed by entity identified by next certificate in the chain
+    * The list of SSL certificates, from the root certificate to the end-user certificate,represents the SSL certificate chain
+    * The Intermediate certificate is the signer/issuer of the SSL certificate
+    * Similarly, root CA Certificate is the signer/issuer of the intermediate certificate
+    * The location of the certificate in AA is
+    ```C:\Program Files\Automation Anywhere\Enterprise\pki```
+
+    <img src="SSL Chain Certificate.png" />
+
+## Scenarios requiring post installation configuration of certificate:
+1. SSL Certificate expiring
+2. Change from Self signed certificate to CA certificate
+3. Move from HTTP to HTTPs protocol
+
+
+# Logs
+* Logs are application diagnostic information which is generated over the time and are useful for troubleshooting in case of faulty behaviour of the application
+* Logs are generated 
+    1. For every module of the AAE application ecosystems
+    2. In the sequence of occurrence along with the Data/Time stamp
+* Logging Levels:
+    1. Info 
+        * Info logs are information messages which give primary information of an event that has occurred
+        * This information is useful for routing analysis like service Start/Stop, configuration assumptions, successful initialization, successful completion of significant transactions,etc.
+        e.g., When a CR service gets started/shutdown
+    2. Error 
+        * It is the 2nd level of failure,indicates that somethinf more critical has occurred.
+        e.g., While adding user with username which already exists or a database service has stopped working
+    3. Fatal
+        * It is used to record system generated exceptions leading to user experience being entirely ceased.
+        * For instance, a component which is central to the operation of the application has failed in a way that leaves it in an unstable state,with only possible course of action being to terminate the application altogether
+    4. Debug
+        * This is the fourth level of error and designates those fine-grained informational events which are most useful to debug an application
+    5. Trace
+        * Logging level trace is the highest level and covers all oher levels underneath.
+        * e.g., Debug,info,errr,fatal
+        * Tracing is a very useful level to trace complete workflow end to end. This can be used for troubleshooting and diagnosing purpose
+* Best Practices:
+    1. The number of log files should be increased and the file size should be kept small
+    2. A user should be able to change log configuration for services run with system user account
+        * Log configuration for services should be maintained in a common file accessible by all users
+        * Since the services are shared among all users of the system,enabling logs for services will enable them for all users of the system
+    3. A user should be able to change log configuration for application without impacting other user's logging preferences,in case of applications run with individual user's account
+        * Each user's logging preferences should be kept in seperate location accessible by them only
+
+# Bot Insight - troubleshoot
+1. Unable to Access Bot Insight
+* users are trying to access a Bot Insight URL using Control Room Admin. However, the Control Room Admin does not have the permission to access the Bot Insight URL
+* Resolution :
+    1. Create a user with ```AAE_BOT Insight_Admin```,```AAE_Bot Insight_Expert```, or ```AAE_Bot Insight_Analyze``` role
+    2. Login to the Control Room with this user to access the Bot Insight URL
+2. Connection refused
+* This error is shown inside the dashboard because the Bot Insight Visualization service can't connect to SQL server
+* Resolution:
+    1. Open ```C:\Program Files\Automation Anywhere\Enterprise\DWAService\bin\src\main\resources\DWMP_CONNECTIONS.properties``` and verify the code present their
+    2. Restart the Bot Insight service after you change
+3. Blank Screen
+* Users see a Blank screen while trying to access the dashboard as Bot Insight are disconnected
+* Resoution:
+    1. Restart all Bot Insight services in the given order:
+        1. Automation Anywhere Bot Insight PostgreSQL
+        2. AABI_Service Discovery
+        3. AABI_Query Engine
+        4. AABI_EDC
+        5. AABI_Visualization
+        6. AABI_Scheduler
+        7. AABI_Service
+    2. Verify Zoomdata is up and running by browsing to ```http://localhost:8191```
+    3. Browse ```C:\Program Data\AutomationAnywhere\Logs``` and check BI_Service.log and zoomdata.log for errors
+    4. File a ticket with Customer Support
+4. WebSocker Error
+* This problem occus when socket connection was closed or cannot be closed
+

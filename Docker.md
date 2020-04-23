@@ -256,3 +256,55 @@ docker container run \
     ```docker container run -it -v foldername:\mount-path image-name command```
 * Even more then 1 volume can be mounted using the same command as above that is
     ```docker container run -it -v folder1:\mount-path1 -v folder2:\mount-path2 image-name command```
+
+
+# Docker Compose
+* It relies on Docker engine
+* It is a file based approach which can be written in ```YAML``` and ```JSON```
+* YAML ~> Yet Another Markup Language
+* JSON ~> JavaScript Object Notation
+* To check if ```compose``` is installed, check by running
+    ```docker-compose```
+* If compose is not present,download the script from ```docs.docker.com``` and make it executable using root permissions.
+* Docker compose is required/installed on client side
+* network-name is same as folder name in which it is created.
+
+## Docker file
+* To start / create container and network
+    ```docker-compose up -d```
+* To show container
+    ```docker-compose ps```
+* To stop - remove everything
+    ```docker-compose down```
+* To kill container,all the containers will be exited not removed (forcefully)
+    ```docker-compose kill```
+* To stop container - not remove it (gracefully)
+    ```docker-compose stop```
+* To initiate only specific service
+    ```docker-compose up -d service-name```
+* To define a compose file with another name
+    ```docker-compose -f file-name.yml up -d```
+* Example 1
+```yaml
+version: '3.5'
+services:
+ ashuapp11: #service name1
+  image: alpine    # image name1
+  container_name: ashuc11   # container name1
+  command: ping fb.com    # parent-process1
+
+ ashuapp12:
+  image: alpine # service 2
+  container_name: ashuc12     # 2nd container
+  command: ping google.com   # parent process of 2nd container
+```
+* Example 2
+```yaml
+version: '3.8'
+services:
+ ashuwebapp1:
+  image: dockerashu/ckad:v2
+  container_name: ashucccc
+  ports:
+     '11111:80`
+```
