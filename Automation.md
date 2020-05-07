@@ -1851,7 +1851,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
     3. Database ~> Database users or Non-Active Directory users are configured when you want Bots to be authenticated using the Control Room Database
 
 * Control Room Database 
-    1. Windows Authentication ~> It is the authentication type used to connect to the database server.It shows ```Enabled``` when Windows Authentication is selected while configuring the database in installation. It shows ```Disabled``` when default database authentication is used
+    1. Windows Authentication ~> It is the authentication type used to connect to the database server. It shows ```Enabled``` when Windows Authentication is selected while configuring the database in installation. It shows ```Disabled``` when default database authentication is used
     2. Server Host Name ~> It is the fully qualified name of the CR database server
     3. Server Port ~> It is the port to which the database is configured
     4. Database Name ~> It is the database that will be used to store CR data
@@ -2383,3 +2383,284 @@ Note :
 4. WebSocker Error
 * This problem occus when socket connection was closed or cannot be closed
 
+
+# AI Sense
+* Automates application running within virtual windows
+* Enables object type of automation for applications exposed as images
+* Hugely widens the scope of RPA
+* It should be used when:
+    1. Working with CITRIX applications
+    2. Applications are exposed as images
+    3. Object-based automation is unavailable
+* It functions by:
+    1. Cognitive autocreation of object
+        * Captures application's screen image
+        * Automatically creates screen objects
+        * Enables faster automation
+        * Captures all objects at once
+        * Eliminates need for manual identification
+    2. Smart linking of object
+        * Intelligently links captured objects for Citrix application
+        * Example: Text area of the label ```Username``` is linked with:
+            1. Username or 
+            2. Highlighted objects
+        * Links ibjects even if screen layour changes(Relative positions)
+        * Makes automation more reliable
+        * Locates difficult to find objects
+        * Links them with easily searchable objects
+        * Identifies objects on mouse hover
+    3. Effective dataset import-export
+        * Performs bulk read or bulk data entry
+        * Supports HTML,Multi-sample anti-aliasing(MSAA),JAVA,Standard,Flex technologies and legacy applications like Telfy
+        * Supports the controls of Text Area,Static Text,Button,Radio Button,Checkbox,Combo Box and List
+        * Accelerates creation and execution
+        * Performs OCR just once
+* Automation Flow uses nearest neighbour algorithm
+<img src="AI Sense Automation Flow.png" />
+
+
+## TECHNICAL SUPPORT SPECIALIST
+1. Device pool is created using?
+```Runners```
+Developers
+Admin Users
+Locker users
+2. Restart of cache service will lead to disconnect of connected clients and close the vault status in which mode of CR set-up?
+```Standalone```
+Clustered
+AD based authentication set-up
+SQL based authentication set-up
+3. Which mode of Credential Vault, it will automatically open the it upon cache service restart?
+Standalone
+Custom
+```Express```
+Distributed
+4. Data key in Credential vault key is which type of key?
+```Symmetric```
+Asymmetric
+Private
+5. Which following feature does not supports "Legal Disclaimer" enabled environment?
+```RDP based deployment```
+Auto login in multi user session
+Centralized Scheduler
+Trigger based execution
+6. Which is a Port where websocket establish a connection with the Botrunner?
+```Same Port as HTTP/HTTPS Port```
+Port 8090
+Port 8001
+Port 5432
+7. What is a default Access Token Refresh Time Interval ?
+100 seconds
+```300 seconds```
+15 seconds
+30 seconds
+8. What is the default logging level for CR and BI?
+```Debug```
+Warning
+Fatal
+Error
+9. How Cache service establishes the communication with another cluster member?
+HTTP + WebSocket Port
+```TCP Port```
+HTTPS Port
+UDP port
+10. Which log file can be referred for Database layer queries?
+WebCR_Usermanagement
+WebCR_Deployment
+```WebCR_Hibernate```
+WebCR_Configuration
+11. Bot Insight consumer role allows users to perfom which of the following functions?
+Publish dashboards
+Save dashboards
+```View published dashboards```
+Create dashboards
+12. Which of the below sql server version are supported for AAE CR Express installation?
+```SQL Server 2014 Express```
+SQL Server 2014 Standard
+SQL Server 2014 Enterprise
+SQL Server 2014 Custom
+13. Which mode of installation allows user defined configuration?
+Express
+```Custom```
+Contemporary
+Standard
+14. Which Service ensures that all the events starting from client-side operations to server-side activities have been logged in DB as Audit Entries? Audit logs are being managed by this service.
+```Automation Anywhere Control Room Messaging```
+Automation Anywhere Control Room Caching
+Automation Anywhere Control Room Service
+Automation Anywhere Bot Insight Service
+15. Which service Receives and processes API requests for the Control Room? This service accepts the requests from reverse proxy server as well and is responsible for schedule invocation and deployment.
+Automation Anywhere Control Room Caching
+```Automation Anywhere Control Room Service```
+Automation Anywhere Licensing
+Automation Anywhere Bot Insight Service
+16. The access token from client is passed to server to refresh at how many default minutes?
+6 mins
+```5 mins```
+10 mins
+20 mins
+17. What is the default values of Request Time Out In Second for Client service configuration?
+Max 60
+Min 60
+```15 sec```
+30 sec
+18. Which Permission is required to import the Bots in the Control Room?
+```Import Bots```
+Export Bots
+Upload Bots
+Download Bots
+19. Which user requires R/W access for CR repository?
+Bot Creator/runner user
+CR Admin user
+```Control Room service user```
+Everyone
+20. For Data Migration CR Service user account requires access of Repository location of which versions?
+10.X
+11.X
+```10.X & 11.X```
+10.X OR 11.X
+21. WebCR_OperationsRoom.log generates the logs for which of the following components?
+Operations room
+```Activity```
+Scheduler
+User Management
+22. What is the default value of maxSizeRollBackups?
+20
+```10```
+30
+50
+23. To schedule a task on AAE client side, where to add login details like Domain\Username and Password?
+```In Tools->Options-> Login Settings```
+In Tools->Options-> Advanced Settings
+In Tools->Options-> Runtime Settings
+In Tools->Options->Java Settings
+24. From which Client/User type, we can schedule task on daily, weekly, monthly basis?
+Development user
+System user
+```Run time user```
+BI Analytics user
+25. Which exe file is required to be in running state for Triggers to execute?
+Auto Login Service
+Scheduler Service
+```AAEventWatcher exe```
+AALoginWatcher exe
+26. In below diagram, which core component of Client Application is missing?
+```Control Room comms (Client Service)```
+Client service
+Scheduler service
+Autologin service
+27. How to create/setup Triggers from Control Room?
+From Control Room Settings
+From Schedule/Trigger Manager
+```We cannot create triggers from Control Room```
+From Administrator page in the Control Room
+28. What is the default Play Mode in Object Cloning?
+Image
+```Object```
+Coordinates
+Hot spot
+29. Object highlighting is not proper while capturing the objects in IE using Object Cloning, What needs to done?
+Upgrade IE
+Downgrade IE
+```Set the IE Zoom value to 100%```
+Lower the security settings in IE
+30. How to enable Autologin Feature?
+Control Room -> User Management -> Edit User details -> Configure Client Details
+```AAE client -> Tools -> Options -> Login Settings -> Configure windows credentials in Login settings and check in Autologin option and Bypass legal disclaimer if applicable```
+Task -> Properties -> Security -> Advanced Settings
+AAE client Application path -> AA.Settings.xml -> manually adding Autologin tag
+31. How many user sessions are allowed for Autologin when you check it from Task Manager -> Users Tab?
+```Only one User session```
+5 users
+10 users
+No users should be there
+32. Which services are required to be in running mode when you are expecting Task to get executed through Local schedule in machine unattended mode?
+```Automation Autologin Service, Automation Client Service, Automation Schedule service```
+Automation Autologin Service, Automation Schedule service
+Only Automation Autologin Service
+Only Automation Client Service
+33. What is functionality of Autologin?
+```A Bot can automatically login into a machine, run the scheduled automation task and then restore the machine to its original locked/logged off state once the task is finished.```
+Automatically logs into the machine, wait for user to manually execute the task and then restore the machine to its original state once the task is finished.
+Automatically logs into the machine at the time of schedule creation, wait till the time when schedule time occurs, execute the Bot and then restore the machine to its original state once the task is finished.
+Waits for User to login to the machine by themselves, execute the Bot and then Waits for User to restore the machine to its original state.
+34. Which algorithm is used for Bot obfuscation 11.X?
+Basic 3DES
+```AES - 256```
+AES � 128
+Basic 4DTS
+35. Which Hosting Technology has been used for Version 11.x?
+IIS (7.5 +)
+```Java (JRE 1.6+)```
+ASP.Net
+.Net
+36. Once the Bot execution is finished, it will make entry in__________ with status if the Bot has finished successfully or not.
+WebCR Logs
+```WebCR Audit Logs```
+WebCR Deployment Logs
+WebCR Migration Logs
+37. Which service is responsible for Sync between Control Room server cluster machines?
+AutomationAnywhere controlroom service
+AutomationAnywehre License service
+```Automation Anywhere Cache service```
+Automation Anywhere Bot Insight Service
+38. In conjunction with our product, how many repositories come into use?
+1
+```2```
+3
+0
+39. Which version of SVN servers does AA support?
+```Visual SVN Server 3.3.X```
+Visual SVN Server 2.3.X
+Apache SVN Server 3.3.X
+Apache SVN Server 2.3.X
+40. What is the prerequisite for the repository for AA to connect with SVN?
+```An empty Repository```
+A non-empty Repository which has been used by AA earlier
+A non-empty Repository which has never been used by AA earlier
+An empty Repository which has been used by AA earlier
+41. Which user can access the SVN repository?
+```User created in SVN Server```
+CR Admin
+All users created in CR with SVN access roles
+Development users
+42. Which one of the below best describes the CR repository?
+It is an internal repository to SVN
+It is a file/folder-based structure on local machines only
+```It is a file/folder-based structure on any accessible windows based file location```
+It is an internal repository stored securely in the credential vault of the CR
+43. What are the access rights the SVN repository user needs to have to use the repository with AA?
+```Read/Write Access```
+Read Access only
+Write access only
+Administrator access
+44. What is the use of re-activation threshold in queue?
+It reactivates Control Room login
+```It reactivates work item execution once threshold is achieved```
+It reactivates Client login
+It reactivates Bot Insight login
+45. What is the role of Participant in a queue?
+Participants don�t do anything
+Participants will consume work items in queue and execute
+```Participants can add work items to queue```
+Participants role does not exist
+46. How Cache service establishes the communication with another cluster member?
+HTTP + WebSocket Port
+```TCP Port```
+HTTPS Port
+UDP port
+47. What is mode of authentication supported to connect Database server?
+```Windows Authentication```
+Anonymous Authentication
+SSO Authentication
+Customer authentication
+48. Which log file can be referred for Database layer queries?
+WebCR_Usermanagement
+WebCR_Deployment
+```WebCR_Hibernate```
+WebCR_Configuration
+49. What is a significance of this icon in the Devices tab?
+Bot runner offline
+Bot runner Disconnected
+```Bot Creator Disconnected```
+Bot Creator offline

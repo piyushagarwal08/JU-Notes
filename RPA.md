@@ -847,6 +847,35 @@ Note:
     * It uses ```KillAllProcess``` to forcefully to its work
 
 
+## Transaction Processing
+* A transaction represents the minimum amount of data and the necessary steps required to process the data, as to fulfill a section of a business process
+* Once processed, the data is no more required
+
+* A Business process can be divided into 3 categories:
+    1. Linear ~> The steps of the process are performed only once and, if there is the need to process different data, the automation needs to be executed again.
+    ```
+    INIT ~> GET DATA ~> PROCESS DATA ~> END
+    ```
+    2. Iterative ~> The steps of the process are performed multiple times, but each time different data items are used
+    ```
+    INIT ~> GET DATA ~> | Process Data in Loop | ~> END
+    ```
+    3. Transactional ~> Similarly to iterative processes, the steps of transactional processes repeat multiple times over different data items. However, the automation is designed so that each repeatable part is processed independently
+
+* Dispatcher ~> The dispatcher is a process used to push transaction items to an Orchestrator queue. It extracts data from one or multiple sources and uses it to create Queue items to be processed by Performer robots.
+* Performer ~> The performer is a process used to pull transaction items from an orchestrator queue and process them as needed in the company. Queue items are processed one at a time.It uses error handling and retry mechanisms for each processed item.
+
+* Dispatcher and Performer models advantages:
+1. Better seperation of processes (between dispatcher & performer)
+2. Better separation & distinction between architecture and process layers
+3. Better error handling and retry mechanism
+4. Possibility to run processes across several machines (availability)
+5. Better re-usability within your project's created components
+6. Improved built-in configuration & Orchestrator integration
+7. Previous workflows created without REFramework can be easily adapted and deployed in order to use REFramework and the dispatcher / performer model
+
+
+
 # UiPath Security Training
 
 ## Layers in Orchestrator
