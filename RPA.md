@@ -1068,3 +1068,76 @@ Ans. ```By using get Attribute activity```
 8. Consider having to click a button which cannot be accessed by using a selector. What other options can be used?
 Ans. ```Click relative to an element that can be identified by a selector,Use a Click Image activity set to click the image of that button, See if clicking the button can be replaced with sending a combination of keys.```
 
+# RPA Developer Continuous Learning
+
+## Regex Selectors
+* A Regular Expression, regex or regexp is a sequence of characters that define a search pattern.  
+* In order to use it:
+1. You can specify the target search tag by using matching:<tag_name>=’regex’;
+2. You can specify the search pattern by using <tag_name>='<regex_command>'
+e.g., ```aaname={{regex}} matching:aaname='regex'``` where ```regex is variable with required expression```
+
+## Fuzzy Selector
+* Fuzzy string matching is a technique to search strings which are not 100% match, and match a pattern approximately, rather than exactly.
+* A selector’s fuzzy search capability enables you to locate strings based on a pattern, rather than on an exact match to your input. 
+* In order to use the fuzzy search capabilities, you need to include in the top-level tag of the target selector a matching option:
+1. You can specify the target search tag by using matching:<tag_name>=fuzzy;
+2. Determines the matching threshold by using fuzzyLevel:<tag_name>=<numerical_value>. 
+3. The values supported are numerical from 0 to 1, a closer to 0 value returns results with lower similarity, and a value closer to 1 returns the results with higher similarity.
+* If more elements are found, the target action is executed on the first one. 
+e.g., ```aaname={{regex}} matching:aaname='fuzzy' fuzzylevel:aaname='0.7'```
+
+## Non-Greedy Selector
+* Non-Greedy search gives you the option to search the subsequent tags in all the windows that match the top-level tag.
+* In order to use the Non-Greedy search capabilities, you need to include in the top-level tag of the target selector an Idx() attribute:
+    You can search through all active window instances for the element matching the top-level tag by using <idx='*'>.
+* Please note that the <idx='1'> option only searches through the window instances in focus. 
+* So if there are multiple tabs open and you want ```Bot``` to apply or find the given selectors to all tabs without bringing them to foreground then we use these ```Non-Greedy Selector```
+* Non-Greedy  Selectors are supported only for <wnd> and <html>.
+
+Note:
+* You should extend the selector definition to have a new namespace for search matching and for the fuzzy level where:
+```matching = regex, fuzzy, fuzzywords, fuzzyLevel = 0 .. 1```
+
+
+# WebDriver
+* WebDriver is a remote control interface that enables introspection and manipulation of Document Object Model (DOM) elements in web browser.
+* The Document Object Model (DOM) is a cross-platform and language-independent interface that treats an XML or HTML document as a tree structure wherein each node is an object representing a part of the document.
+* Using this protocol, headless browser automation (simulate work) becomes possible automating web pages through the WebDriver API,without having to install extensions and even without using the GUIs
+* Headless testing is when you run a UI-based browser test without showing the browser UI. It's running a test or running a script against a browser but without the browser, UI starting up.
+* Types of supported drivers:
+1. <a href="https://chromedriver.chromium.org/">Chrome Driver </a>
+2. <a href="https://github.com/mozilla/geckodriver/releases">Mozilla Firefox </a>
+
+
+## Installing the Web Driver Protocol
+1. Start by downloading the WebDriver executable corresponding to the browser you want to use;
+2. Install and download WebDriver in a location of your choice,such as ```C:\webdriver\Chrome```
+3. Select the Path variable either from User or System and Edit
+4. Click and set path as ```C:\webdriver\Chrome``` 
+5. Restart the Robot Service for the changes to take effect and you are good to go
+
+## Activity Configuration
+1. To enable the ```WebDriver``` capabilities in your browser activities select the browser you are using from the ```BrowserType``` field , then the WebDriver option from the ```Communications Method```
+2. To perform activities without the ```Headless Browser``` leave the ```Hidden``` checkmark ```unchecked``` within the ```Properties panel``` else vice-versa
+
+# Triggers
+* In New Orchestrator, we have 2 types of triggers:
+1. Time Triggers (ex Schedule) : plans a recurrent job
+2. Queue Trigger : Triggers job whenever new items are added to Queue
+* A Queue can have only 1 trigger associated with it
+* When we enable an SLA,the association between the process and the queue is automatically made
+
+# Credential Store Integration in Orchestrator
+* A Credential Store is a named location within a secure store from which you can retrieve robot credentials and credential assets when needed.
+* Mostly Used ones are:
+    1. CyberArk <a href="https://docs.uipath.com/orchestrator/docs/cyberark-integration"> integration </a>
+    2. Azure KeyVault <a href="https://docs.uipath.com/orchestrator/docs/azure-key-vault-integration"> integration </a>
+    3. Orchestrator database (default)
+* To add 3rd party plugins, edit the ```web.config``` file found in the ```installed orchestrator``` files by looking for ```plugins.SecureStores``` and add file names simply by adding values using comma```.``` and restart orchestrator service
+
+
+
+
+
+
