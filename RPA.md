@@ -1137,7 +1137,125 @@ Note:
 * To add 3rd party plugins, edit the ```web.config``` file found in the ```installed orchestrator``` files by looking for ```plugins.SecureStores``` and add file names simply by adding values using comma```.``` and restart orchestrator service
 
 
+# IT Automation
+* The activities are built on top of the official APIs or SDKs provided by the technology vendors (e.g. Microsoft, Amazon, VMware, Citrix, and others)
+* The activities run in the background, not via the UI
+* The activities are developed and owned by UiPath
+* They are published on the official feed and we offer long term support and official maintenance
+* The activities are certified and scanned with ```VERACODE``` and ```FOSSA```
 
 
+## What are the capabilities of IT Automation Activity Packages?
 
+* Easy to Use - Easily create, update, manage and run IT automation processes
+* The list of supported technologies is continuously expanding - Automation for On-Premise and Cloud IT infrastructures & services, User Management systems, Virtualized Environments;
+* Seamless integration - secure integration with your existing Systems & Applications.
+* Examples: Deploy Server(Cloud/onprem), AD-Create User/Reset User Password, VMware export VM to OVF...and many more
+
+## Features
+* easy to use by drag and drop
+* reduced setup time
+* background running via APIs
+* no additional costs with implementation
+* blends with your existing partner ecosystem
+* secure Veracode certified
+* official long-term support by UiPath
+
+## Integration
+1. Self Service & Delegation, Triggers, Integrations
+    * schedule jobs from the Orchestrator web application - for example, the controlled maintenance power-off of a datacenter
+    * jobs automatically triggered by an event - for example, a password reset based on a ticket
+    * nightly trigger a servers power-off job to stop unused computers and save costs.
+2. Orchestrator mobile app
+    * start process jobs from your mobile devices
+    * access logs and reports on the go
+    * reply to Long Running Workflows approval requests
+    * react to critical IT requests in real time.
+3. Integrate the existing IT scripts in the UiPath automations
+    * increased security - for example, credentials can be safely stored in Orchestrator assets or secure vaults
+    * access control - delegate workflow executions to other colleagues
+    * mobility: run them on the go
+    * integrated with approval and persistence
+    * support for Audit / ISO certifications - logging layer and reporting.
+
+<img src="IT_Automation.png"/>
+
+## Important Terms 
+1. Microsoft Active Directory
+* Active Directory (AD) is a directory service that Microsoft developed for the Windows domain networks. It is included in most Windows Server operating systems as a set of processes and services. Active Directory uses Lightweight Directory Access Protocol (LDAP) versions 2 and 3, Microsoft's version of Kerberos, and DNS.
+* <a href="https://en.wikipedia.org/wiki/Active_Directory">Fore more info</a>
+
+2. Domain Controller
+* A Server running in Active Directory Domain Service(AD DS) is called a domain controller.It authenticates and authorizes all users and computers in a Windows domain type network-assigning and enforcing security policies for all computers and installing or updating software
+
+3. sAMAccountName
+* The sAMAccountName property is a login name used to support clients and servers from the previous versions of Windows, such as Windows NT 4.0,Windows 95,Windows 98, and LAN Manager.The login name must be less than 20 characters and be unique among all security principal objects within the domain
+* <a href="https://docs.microsoft.com/en-us/windows/win32/ad/active-directory-domain-services-reference">Fore more info</a>
+
+4. Microsoft Exchange Server
+* Microsoft Exchange Server is a mail server and calendaring server developed by Microsoft. It runs exclusively on Windows Server operating systems
+* <a href="https://products.office.com/en-us/exchange/microsoft-exchange-server">Fore more info</a>
+
+5. MailBox
+* User mailboxes are Exchange mailboxes that are associated with people,typically one mailbox per person. Each user mailbox has an associated Active Directory account that gives the person access to the mailbox to send and receive email messages and create meetings and appointments
+* <a href="https://docs.microsoft.com/en-us/exchange/recipients/create-user-mailboxes?view=exchserver-2019">Fore more info</a>
+
+6. Exchange Management Shell
+* The Exchange Management Shell is built on Windows PowerShell technology and provides a powerful command-line interface that enables the automation of Exchange administration tasks.
+* It can be used to:
+    1. Create email accounts
+    2. Create Send connectors
+    3. Receive connectors
+    4. Configure mailbox database properties
+    5. Manage distribution groups
+    6. Bulk Operations
+* In fact, when you do something in the Exchange admin center (EAC), the Exchange Control Panel (ECP), or the Exchange Management Console (EMC), it's the Exchange Management Shell that does the work behind the scenes. 
+* <a href="https://docs.microsoft.com/en-us/powershell/exchange/exchange-server/exchange-management-shell?view=exchange-ps">Fore more info</a>
+
+
+## Active Directory and Exchange Server Activity
+### Prerequisites for Active Directory
+1. Active Directory Server
+2. Username
+3. Password
+
+* It offers activities for Microsoft Active Directory Domain Services (AD DS)
+* It provides a hierarchical data storage for objects in a network.This set of activities enables IT professionals to easily automate important operations with Active Directory objects like users,groups,and computers
+
+* Possible operations that can be automated are:
+    1. Creating and updating user groups
+    2. Managing group membership
+    3. AD object management
+    4. Access control and 
+    5. rights management
+
+### Microsoft Exchange Server
+1. Install Exchange Management shell on the Exchange Server
+2. The machine where the workflow is running should be domain-joined with the Exchange Server, and access should be available - FQDN(Fully Qualified Domain Name ) of the Exchange Server should be known/resolved by the robot machine.
+e.g., Mail.devsl.local
+
+* It offers administration activities for On-Prem Microsoft Exchange Server 2016 and 2019
+* With these activities, you can delete and create Exchange mailboxes , as well as enable and disable archiving for existing mailboxes.
+
+## Various Possible Processes that can be automated
+1. Employees Onboarding
+* When a new employee is hired in a company, the HR department provides the input for a UiPath automation process which can be in any format, let's say Excel.
+
+* Our workflow will create a corresponding new user account in Active Directory, will generate a random password for it and will set it to expire after the first login, and lastly adds the user account to a list of specified groups. 
+
+2. Employees Offboarding
+* When an employee leaves the company, the associated Active Directory user account is removed from the groups it belongs to and the user account is disabled.
+
+3. Password Reset & User Account Unlock
+* These are the most common IT operations that are happening on a daily basis in any company. Automating them will make the life of IT admins easier. 
+
+* For example, employees can make requests to an IT Help Desk Chatbot which automatically triggers a UiPath process to respond to their requests for password reset or user account unlock. This can happen almost instantly.
+
+4. Active Directory Objects Management
+* These are the most common IT operations that are happening on a daily basis in any company. Automating them will make the life of IT admins easier. 
+
+* For example, employees can make requests to an IT Help Desk Chatbot which automatically triggers a UiPath process to respond to their requests for password reset or user account unlock. This can happen almost instantly.
+
+5. Access Control & Rights Delegation
+* You can manage the access to miscellaneous resources via Active Directory group memberships.
 

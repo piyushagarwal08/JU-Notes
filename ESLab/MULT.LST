@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  MULT                                                                 03/12/2020 18:48:13 PAGE     1
+A51 MACRO ASSEMBLER  MULT                                                                 05/14/2020 15:56:56 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02b
@@ -7,12 +7,13 @@ ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE MULT.asm SET(SMALL) DEBUG EP
 
 LOC  OBJ            LINE     SOURCE
 
-0000                   1     ORG 00H
-0000 74FF              2     MOV A,#0FFH
-0002 75F0D2            3     MOV B,#0D2H
-0005 A4                4     MUL AB
-                       5     END
-A51 MACRO ASSEMBLER  MULT                                                                 03/12/2020 18:48:13 PAGE     2
+0000                   1     ORG 00H  ; ORIGIN DIRECTIVE
+0000 754020            2     MOV 40H,#20H
+0003 8540F0            3     MOV B,40H ; COPY 40 INTO A .... A=40
+                       4     ; MOV IS A MNEUMONIC
+                       5     ;MOV A,#20H ; ERROR YA NOT READABLE
+                       6     END ; END THIS PROGRAM
+A51 MACRO ASSEMBLER  MULT                                                                 05/14/2020 15:56:56 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------

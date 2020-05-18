@@ -182,8 +182,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>117</TopLine>
+      <CurrentLine>126</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STARTUP.A51</PathWithFileName>
       <FilenameWithoutPath>STARTUP.A51</FilenameWithoutPath>
@@ -194,20 +194,6 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>5</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\ADD.asm</PathWithFileName>
-      <FilenameWithoutPath>ADD.asm</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>0</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
@@ -215,20 +201,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\MULT.asm</PathWithFileName>
       <FilenameWithoutPath>MULT.asm</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>0</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>5</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\DIV.asm</PathWithFileName>
-      <FilenameWithoutPath>DIV.asm</FilenameWithoutPath>
     </File>
   </Group>
 
