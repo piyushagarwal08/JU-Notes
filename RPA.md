@@ -1259,3 +1259,21 @@ e.g., Mail.devsl.local
 5. Access Control & Rights Delegation
 * You can manage the access to miscellaneous resources via Active Directory group memberships.
 
+
+# Orchestration Process
+
+### Long-running workflows
+* A Long running workflow is a workflow which needs to wait for an external service to complete a period of time to pass or a Human user to provide input before it can continue
+* These go into a ```suspended state``` until the conditions are met for it to resume. This greatly reduces resource usage
+* While the long-running workflow is waiting, the workflow context (The state variables ad of the execution) remains persistent
+
+### Asynchronous Processing
+* When executing a set steps ```synchronously```,like in the case of a ```For Each``` activity, the system waits for each iteration of the loop to complete before executing to the next one.
+* When executing the steps ```asynchronously```,like in the case of a ```Parallel for Each``` activity ,multiple transactions can be processed at the same time. The transactions are executed in different ```threads```. Threads are series of activities that can run concurrently.
+<img src="Asynchronous Processing.png" />
+
+### When should we choose Orchestration Process
+* When our process will run in an unattended environment and requires that we use a rules engine to stitch together robot tasks, human tasks and asynchronous processing.
+
+* When the execution of our process needs to wait for an event to complete and we don't want the robot to keep polling for resources
+
