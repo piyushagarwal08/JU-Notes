@@ -9,7 +9,7 @@ Project File Date:  03/12/2020
 <h2>Output:</h2>
 Build target 'Target 1'
 assembling MULT.asm...
-MULT.asm(4): warning A73: TEXT FOUND BEYOND END STATEMENT - IGNORED
+MULT.asm(3): warning A41: MISSING 'END' STATEMENT
 linking...
 *** WARNING L5: CODE SPACE MEMORY OVERLAP
     FROM:    0000H
@@ -21,79 +21,5 @@ linking...
     SYMBOL:  ?C_START
     MODULE:  STARTUP.obj (?C_STARTUP)
     ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=17
+Program Size: data=9.0 xdata=0 code=22
 "Add" - 0 Error(s), 4 Warning(s).
-Build target 'Target 1'
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=17
-"Add" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-assembling MULT.asm...
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=19
-"Add" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-assembling MULT.asm...
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=19
-"Add" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-assembling MULT.asm...
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=20
-"Add" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-assembling MULT.asm...
-linking...
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    0000H
-    TO:      0002H
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  STARTUP.obj (?C_STARTUP)
-    ADDRESS: 080AH
-Program Size: data=9.0 xdata=0 code=21
-"Add" - 0 Error(s), 3 Warning(s).

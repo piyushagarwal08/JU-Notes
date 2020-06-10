@@ -1277,3 +1277,94 @@ e.g., Mail.devsl.local
 
 * When the execution of our process needs to wait for an event to complete and we don't want the robot to keep polling for resources
 
+
+# Universal Blob Storage
+* The ```Universal Blob Storage``` allows you to publish a set of generic storage API methods.By using this approach, the application services become agnostic of the native storage provider
+* The UBS makes the process of switching between different flavours of storage solutions easy and transparent, facilitating cost optimization, performance scaling and data center improvements
+
+<img src="Storage Framework.png">
+<center>UiPath - Storage Framework </center>
+
+## Definition of Terms
+1. Storage ~> Abstract a key-value storage solution.The Storage Client API interface is compliant with the Object Storage cloud terminology.The API user should design the data with respect to a flat model(bucket like).
+2. Storage Provider ~> The underneath implementation of the persistence system, the storage wapped by the Storage Client API interface
+3. Storage Bucket ~> Bucket as it is described by the Object Storage concepts.By analogy with the traditional file systems, the bucket should be read as a disk volume
+4. Storage Content ~> The actual data being persisted into the wrapped storage solution
+5. Storage Content Prefix ~> The mechanism to logically group the saved content under a single bucket
+6. Storage Location ~> It fully describes the location of the content inside the storage, that's the tuple (key,prefix,bucket). The key must be unique across the enclosing bucket
+7. Storage Transaction ~> It's a best effort mechanism to address the all-or-nothing request for a set of storage commands
+
+## AI Computer Vision Demo
+* To install, first we need to remove ```UIAutomation``` activities which comes pre-installed
+* Go to Manage Package and install ```Computer Vision``` activities package given officially by ```UiPath```
+* It Gives various activities and Computer Vision Recorder
+* server path is ```cv.uipath.com```
+* ```ESC``` ~> Stop Recorder
+* ```F2``` ~> Delay
+* ```F5``` ~> Refresh CV scope
+* ```ALT + left``` ~> to back to main page
+* All the activities are selected based on ```Anchors```
+* ```yellow color``` ~> Similar selections are present on screen
+* ```red color``` ~> Selection is not unique or does not have proper unique anchor
+* ```green color``` ~> selection and its anchor is unique and usable
+* ```CV Highlight``` ~> This activity is used to highlight any particular element in our workflow during execution. It can use ```output object``` of some activity as its ```input object``` to detect and highlight an object/element
+* <a href="https://activities.uipath.com/docs/about-the-ai-computer-vision-activities-pack">Article for more learning </a>
+
+## Intelligent OCR Activities
+* ```Taxonomy Manager``` ~> Create and edit a set of document types that are sorted by Groups and Categories
+* The created taxonomy can be used by converting it into a  .NET data type with the ```Load Taxonomy``` activity
+* The ```Digitize Document``` activity is used to turn the docs into digitalized docs generating classification algos used by the ```Classify Document Scope``` activity
+* The ```Classify Document Scope``` activity allows for the usage of any classification algorithm to identify the type of a document
+* ```classificationResults.Any``` tells if classification is possible or data is possible to be extracted
+* The ```Data Extraction Scope``` activity enables us to retrieve information from documents based on the taxonomy and document type by calling the data extraction algorithms we configure
+* The object can be mapped to a DataSet using the ```Export Extraction Results``` activity, or used as-is for more complex queries
+* The ```Train Classifiers and Extractors scope``` activity allows for the completion of the feedback loop for any classifiers and data extraction algorithms capable of learning ( the Keyword Based Classifier for example)
+* Important Docs to be referred when using these activities <a href="https://docs.uipath.com/activities/docs/app-integration-intelligentocr">Intelligent OCR activities</a>
+* These are similar to IQBot functioning
+
+
+## UiPath Remote Extension
+* Used to automate applications inside Remote Applications
+* Needs to be installed in Remote Systems
+* Can be obtained through Contacts form from UiPath website easily
+* helps to use any NativeDesktop RDP and Citrix Automation
+
+
+# RPA Solution Architect Role
+* The RPA Solution Architect will design the end-to-end architecture of the RPA solution,typically this is achieved through a diagram that represents the logical connections between the robots, the entities used, all the involved sub-processes, and the input and output data
+* Involved in various stages such as development,testing and performance analytics
+* Decide how many robots to be used,what their configurations are going to be and how they will be split between files and Orchestrator assets as well as what Queues, schedules and documents will be used
+* Logging and Reporting
+* Needs knowledge of Servers,storage,firewalls,load balancers, routers etc.
+
+## Stages of an RPA Project
+1. Infrastructure Setup (Enable)
+* Designing the server architecture
+* Installing and configuring the architecture
+* Setting up dev,test & production environments
+
+2. Project Governance (Preparation)
+* Agreeing on the project development approach
+* Reviewing the RPA best practices
+
+3. Workflow Design (Design)
+* Filling the Process Design Document (PDD)
+* Creating test cases and data
+* Designing the solution
+
+4. Workflow Development (Build)
+* Building the workflows
+* Performing Unit and Functional testing
+* Creating the Development Specification Document (DSD)
+
+5. Quality Assurance (Test)
+* Executing the test cases
+* Reporting the results
+* Making the Go/NoGo descision
+
+6. Hypercare (Sustain)
+* Performing workflow support
+* Managing Changes and improvements
+
+<img src="Responsibilities.png" />
+

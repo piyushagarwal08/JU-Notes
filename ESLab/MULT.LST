@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  MULT                                                                 05/14/2020 15:56:56 PAGE     1
+A51 MACRO ASSEMBLER  MULT                                                                 06/03/2020 13:54:20 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02b
@@ -7,13 +7,11 @@ ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE MULT.asm SET(SMALL) DEBUG EP
 
 LOC  OBJ            LINE     SOURCE
 
-0000                   1     ORG 00H  ; ORIGIN DIRECTIVE
-0000 754020            2     MOV 40H,#20H
-0003 8540F0            3     MOV B,40H ; COPY 40 INTO A .... A=40
-                       4     ; MOV IS A MNEUMONIC
-                       5     ;MOV A,#20H ; ERROR YA NOT READABLE
-                       6     END ; END THIS PROGRAM
-A51 MACRO ASSEMBLER  MULT                                                                 05/14/2020 15:56:56 PAGE     2
+0000 7489              1     MOV A,#89H
+0002 75F03F            2     MOV B,#3FH
+0005 95F0              3     SUBB A,B
+*** WARNING #A41 IN 3 (MULT.asm, LINE 3): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  MULT                                                                 06/03/2020 13:54:20 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -27,4 +25,4 @@ B. . . . . . . . .  D ADDR   00F0H   A
 REGISTER BANK(S) USED: 0 
 
 
-ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)

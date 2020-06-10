@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        05/14/2020  15:56:56  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/03/2020  13:54:21  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -22,8 +22,8 @@ LINK MAP OF MODULE:  Add (?C_STARTUP)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-* OVERLAP * CODE    0000H     0006H     ABSOLUTE     
-                    0006H     07FAH                  *** GAP ***
+* OVERLAP * CODE    0000H     0007H     ABSOLUTE     
+                    0007H     07F9H                  *** GAP ***
             CODE    0800H     000CH     UNIT         ?C_C51STARTUP
 
 
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  Add (?C_STARTUP)
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
   C:0800H         SYMBOL        STARTUP1
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/14/2020  15:56:56  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/03/2020  13:54:21  PAGE 2
 
 
   N:0000H         SYMBOL        XBPSTACK
@@ -77,8 +77,9 @@ SYMBOL TABLE OF MODULE:  Add (?C_STARTUP)
 
   -------         MODULE        MULT
   D:00F0H         SYMBOL        B
-  C:0000H         LINE#         2
-  C:0003H         LINE#         3
+  C:0000H         LINE#         1
+  C:0002H         LINE#         2
+  C:0005H         LINE#         3
   -------         ENDMOD        MULT
 
 *** WARNING L5: CODE SPACE MEMORY OVERLAP
@@ -95,8 +96,8 @@ SYMBOL TABLE OF MODULE:  Add (?C_STARTUP)
     ADDRESS: 080AH
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0015H BYTE ( 1%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0016H BYTE ( 1%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 code=21
+Program Size: data=9.0 xdata=0 code=22
 LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)
