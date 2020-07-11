@@ -2053,7 +2053,7 @@ For Successful device pool execution,the Queue Consumer and the Pool Consumer mu
     1. Username of AAE user
     2. Password of AAE user
 * If the URL of the CR is ```https://ultron.com:81``` then URL of Authentication API will be ```https://ultron.com:81/v1/authentication```
-* The athentication is only valid for ```15 minutes``` from the time it is used
+* The authentication is only valid for ```15 minutes``` from the time it is used
 
 * Response Codes
     1. 200 ~> Authentication is successful

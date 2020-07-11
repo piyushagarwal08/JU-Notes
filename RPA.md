@@ -60,7 +60,7 @@
 * ```%``` is represent by ```mod```
 * ```!=``` is represent by ```<>```
 * ```==``` is represent by ```=```
-* 
+ 
 
 ## FlowChart
 * To check some in condition inside a flow chart we use ```Flow Decision```
@@ -1368,3 +1368,50 @@ e.g., Mail.devsl.local
 
 <img src="Responsibilities.png" />
 
+
+# Python
+
+* The Python Activities can be used using the Package ```UiPath.Python.Activities```
+* This Package Consists of following activities:
+    1. Python Scope
+    2. Load Python Script
+    3. Invoke Python Method
+    4. Get Python Object
+    5. Run Python Script
+### <u>Python Scope</u>
+* This Activity is used to set or connect UiPath robot with python environment installed on your system.
+* This activity requires path to the folder containing the ```python.exe``` file
+* UiPath currently only supports python version < 7
+* The Path to ```python.exe``` can be acquired from the Windows Environment Variables tab
+* Make sure ```python 3.6 or less``` version can be accessed by cmd using ```python``` keyword.
+
+### <u>Load Python Script</u>
+* This activity enables two kind of inputs
+    1. Code ~> You can just type the complete code as within "" ( Double Quotes)
+    2. File ~> Best approach is to write your code in a python file and give path to the file in this input field
+* This activity gives an python ```instance``` to be referred to in another activites
+
+### <u>Invoke Python Method</u>
+* This activity is used to execute specific functions from our python code that are present in ```python instance``` which is the output of the ```Load Python Script``` activity
+* This activity enables 3 kinds of parameters:
+1. Input Parameters ~> Any number of input you would like to provide to your function. This input should be in the format of ```object```
+The object should be like ```{"some string","charcater like /"}``` Assuming our python code is 
+```py
+from collections import Counter
+
+def CalculateCharacterLength(string,char):
+    strDict = Counter(string)
+    return strDict[char]
+```
+2. Instance ~> It takes ```python instance``` to work upon
+3. Name ~> The input to this field is the exact function name to be called
+* The output of this activity is a ```python object``` or ```python instance``` which again needs to be converted to ```.net object``` to be used along with other activities
+
+### Get Python Object
+* This activity is used to Convert ```Python object``` to required data type to be used in other uipatha ativities
+
+### Run Python Script
+* This activity is used to execute any python code as similar to double-clicking an python ```.py``` file
+
+
+# UiPath Test Suite
