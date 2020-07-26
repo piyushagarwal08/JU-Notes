@@ -60,7 +60,7 @@
 * ```%``` is represent by ```mod```
 * ```!=``` is represent by ```<>```
 * ```==``` is represent by ```=```
- 
+* ```**``` is represented by ```^```
 
 ## FlowChart
 * To check some in condition inside a flow chart we use ```Flow Decision```
@@ -120,6 +120,7 @@
 * To define an list we set the variable data type as ```List<String>``` and with default value as ```new List(of String) from ['v1','v2']```
 * ```Invoke Method``` is used to append new elements to the ```List```
 * Dictionary has the data type ```Dictionary<String,String>``` and values can be appended to it using simply ```Assign``` function and works like normal ```dictionary``` does
+* Syntax for dictionary is ```new Dictionary(Of String,Int32) From {{"key1",val1},{"key2",val2}}```
 
 ## String Functions
 * The string functions here works similarly as ```python```
@@ -140,6 +141,7 @@
 * To access a specific column of a specific row , use ```sampleData.Rows(0)("Name").ToString```
 * We must use ```[]``` with the ```Select```     method when the column name contains spaces.
 * Accessing a specific value from a row, ```row("First").ToString```
+* To color any cell, we can use ```set color range``` activity which takes an ```System.drawing.Color.red``` variable to highlight any cell with particular color
 
 ## Quiz Lesson 3
 1. How can a string variable called myString be converted to an all-capitals representation for future use?
@@ -677,6 +679,7 @@ Ans. ```GetCustomerNumber.xaml```
 * Basically when ```Credential Asset``` is made with two values which are ```Username``` and ```Password```
 * Then they are fetched and used at run time in Studio using ```Get Credential``` activity
 * To use the pass acquired from the ```Get Credentials``` we would need to use ```Type Secure Text``` activity
+* To use Windows Credentials use ```UiPath.Credential.Activities```
 
 ## Type Secure text
 * This activity is used to decrypt the ```.NET``` secured string from encrypted password to normal decrypted text
@@ -813,6 +816,7 @@ e.g., ```datetime.Now.addHours(24)```
 ## Exceptions
 * There are 2 kinds of Exception that are:
     1. Business Exception ~> In Case of issues in data , invalid data,missing information in data.
+                                business rule exceptions are something you defined while building the process(exceptions which are expected and there is no chance of record getting success even if we retry)
         Transaction status is ```set as failed``` and transaction is ```not re-tried```
     2. System/Application Exception ~> In case application not available(UI Element not available or unknown error)
         Transaction is ```re-tried```
@@ -874,6 +878,14 @@ Note:
 6. Improved built-in configuration & Orchestrator integration
 7. Previous workflows created without REFramework can be easily adapted and deployed in order to use REFramework and the dispatcher / performer model
 
+
+## Re-Framework Meetup Learning
+* In Config file, we have got 3 sheets
+    1. Settings ~> Contain data we wish to access such as email,url,username or password
+    2. Constant ~> Something like retry count
+    3. Assets ~>
+* A Config variable is of ```Dictionary (String,Object)```
+* Reframework can be used for multiple input types (queues,datatable,array,list et)
 
 
 # UiPath Security Training
@@ -1415,3 +1427,74 @@ def CalculateCharacterLength(string,char):
 
 
 # UiPath Test Suite
+* Software Testing ~> Software testing is the process of verifying that a software meets certain requirements and behaves as expected
+* The requirements can be differentiated into 2 aspects:
+    1. Functional ~> refers to an expected behaviour
+    2. Non Functional ~> System Efficiency
+* Different levels of Testing:
+    1. Unit or Component Testing ~> In this one we focus on testing individual 'code' units, down to the level of methods and functions (done by software developers)
+    2. Integration Testing ~> In this we focus on the interactions between the components or systems
+    3. System Testing ~> In this we focus on the behaviour of an entire software system or product. Also referred to as End-to-End testing
+    4. Acceptance Testing ~> In this testing, we include end users and other key stakeholders, to check how the users behave with the software differently or as intended.
+* Different types of testing:
+    1. Black Box Testing ( Focus on Input & Output ) ~> Black box testing solely focuses on providing a certain input and verifying the output
+    2. White Box Testing ( Access to Implementation ) ~> White box testing provides a certain amount of access to the source code to the tester
+
+    1. Manual Testing (Run by a person)
+        It is further divided into 
+            * Scripted (Requires Processing) ~> pre-defined steps of operations, followed by specific verification steps
+            * Exploratory (Requires Thinking) ~> Manually performed, but it typically provides only a high-level charter,then it leaves the rest to the actual testing to explore in detail.
+    2. Automated Testing ( Run unattended by a Robot )
+        It is further divided into
+            * UI Testing ~> Test the business layer
+            * API Testing ~> Test the API layer. It includes several interfaces and protocols, such as Soap, Rest, Queues and many other
+
+
+
+# UiPath Document Understanding
+* This topic is divided into 7 sections:
+    1. Introduction
+    2. Taxonomy
+    3. Digitize
+    4. Classify
+    5. Extract
+    6. Validate
+    7. PostPreprocessing
+
+1. <u>Introduction</u>
+* Document Understanding is the ability to extract and interpret information and meaning from a wide range of document types, storage formats (e.g., images, PDFs, text), and objects (e.g., handwriting, stamps, logos).
+* There are two types of data extraction methodologies:
+    1. Rule-Based data extraction
+    2. Model-Based data extraction
+* Rules-Based data extraction ~> It relies on a set of rules to extract data from a document (like using regex)
+* Model-Based data extraction ~> It is based on Machine Learning
+    1. Semi-structured document ~> it extracts the same data from each document, and it requires a pre-trained ML model with further retraining
+    2. Non-structured document ~> It needs to "read" the text to extract the meaning and identify the right data.Thus it also requires pre-trained models and retraining.
+* OCR is a method that reads text from images,recognizing each character and its position.It comes handy in the <b>Digitize</b> step of the process when dealing with non-native documents, like scanned files
+
+## Document Understanding Framework
+1. Taxonomy ~> In this pre-processing step, you can add multiple document types and the fields you are interested in extracting.e.g., Total Amount,Patient Name , User/Product Id etc
+2. Digitization ~> As the documents are processed one by one, they go through the digitiation process.The outputs of this step are the ```Document Object Model``` and a ```string variable``` containing all the document text and are passed down to the next steps
+3. Classification ~> If you are working with multiple documents types in the same project, to extract data properly you need to know what ```type of document``` you're working with. The important thing is that you can ```use multiple classifiers``` in the same scope,you can ```configure the classifiers``` and, later in the framework, ```train``` them. The classification results help in applying the right strategy in extraction
+4. Extraction ~> Extraction is getting just the data you are interested in.In this framework, you can use different extractors, for the different document structures, in the same scope application.The extraction results are passed further for validation.
+5. Validation ~> The extracted data can be validated by a human user through the Validation Station. Validation results can then be exported and used in further automation activities
+6. Export ~> Use the validated information or save it in datatable or anywhere else you want.
+7. Training Classifiers and Extractors ~> Classification and Extraction are as efficient as the classifiers and extractors used are.If a document wasn't classified properly, it means it was unknown to the active classifiers.
+The same way goes for the incorrect data extraction.
+
+## Intelligient OCR Activities
+1. Taxonomy Manager ~> With the Taxonomy Manager Wizard, you can create the Taxonomy for your document understanding project, meaning the information that you want to extract and the type of that information. e.g., Data Table,Text,Date etc
+2. Load Taxonomy ~> Loads the taxonomy created with the help of the Taxonomy Manager into a variable that can be further userd with other activities
+3. Digitize Document ~> For scanned documents or images, this activity will use OCR to extract the text and the ```Document Object Model```, a JSON object containing information regarding the positions of the words on the document.
+(For digital documents, the text will be extracted without the use of the OCR engine)
+4. Classify Document Scope ~> The scope allows multiple classifiers to be used in order to classify the documents. You can find classifiers in the intelligent OCR actvity package, as well as in other UiPath or third-party packages(e.g., Abbyy activities)
+5. Configure Classifiers Wizard ~> Use it to configure the Classify Document Activity. It allows multiple classifiers to be used in order to classify the documents. You can also establish a confidence threshold for each type of classifier
+6. Data Extraction Scope ~> The scope allows multiple extractors to be used in order to extract the data from the documents. e.g., UiPath.DocumentUnderstanding.ML.Activities or your own extractor
+7. Configure Extractors Wizard ~> With this Wizard, you can customize which extractors will be used for each individual field,of each document type.
+8. Present Validation Station ~> Opens the Validation Station, which enables you to review and correct document classification and automatic data extraction results.
+9. Integrated Validation Station ~> This activity pair allows for the creation of Validation Station human tasks in a web-based environment, through UiPath's Actions
+10. Validation Station ~> The extracted data can be corrected and confirmed by a human user through the Validation Station
+11. Export Extraction Results ~> Once you have extracted information, you can use it as it is, or save it in a DataTable format that can be converted very easily into an Excel file
+12. Train the Classifiers and Extractors used ~> Sometimes, the workflow may fail to recognize the document or extract the correct data. To improve the classifiers and extractor's performance, even if they recognized the correct data, they should be trained.
+
+## Taxonomy
