@@ -1498,3 +1498,125 @@ The same way goes for the incorrect data extraction.
 12. Train the Classifiers and Extractors used ~> Sometimes, the workflow may fail to recognize the document or extract the correct data. To improve the classifiers and extractor's performance, even if they recognized the correct data, they should be trained.
 
 ## Taxonomy
+* It starts with categorizing the documents and defining the information you want to extract.
+* Group the documents based on the department or purpose of the documentextract tables and names or even pick the language document is written in.
+* There can be only ```one taxinomy file``` per project stored in ```Document Processing``` folder under the project folder
+* Once the taxonomy file is created then it can be used in the workflow using <a href="https://docs.uipath.com/activities/docs/load-taxonomy">```Load Taxonomy```</a> activity
+
+### Taxonomy Manager
+1. Defining the Document Type:
+    * Select or create the group and category that the document is a part of
+    * Add new document type and define its fields
+    * Note: A group can contain multiple categories and a category can contain multiple document types
+2. Defining Document Fields
+    * Editing the name of the document,its belongings, and define the fields that interest you in extracting
+    * Defining the fields in the document, selecting the area and pairing them with their respective variable
+    * New Field ~> Selecting <b>New Field</b> opens up the window on the right,where you can edit the field's information
+3. Editing the Documents Field
+    * Choose a name for the field,specify whether it is multi-value and choose its type
+<a href="https://docs.uipath.com/activities/docs/taxonomy-managerhttps://docs.uipath.com/activities/docs/taxonomy-manager">Taxonomy Manager Doc</a>
+<a href="https://docs.uipath.com/activities/docs/document-taxonomy-class">To store taxonomy file at different location</a>
+
+
+## Digitizing Scanned and Native Documents
+* All the documents that are to be processed (native and scanned) must pass through this step in order for the robot to understand the kind of document it's working with and what data is relevant
+* Turning the document into a ```DOM``` and extracting the text is done with the ```Digitize Document``` activity
+* The ```Degree of Parallelism``` defines how many pages the workflow will analyze in parallel
+* Supported Entensions are: .png, .gif, .jpe, .jpg, .jpeg, .tiff, .tif, .bmp and .pdf
+<a href="https://docs.uipath.com/activities/docs/digitize-document">More About Digitize Documentation </a>
+
+### Document Object Model
+* This contains basic information regarding the processed document such as name,content type,text length, and information about each page
+* Variable data type is ```document```
+* It is used during validation
+<a href="https://docs.uipath.com/activities/docs/document-processing-contracts-dom">For More... </a>
+
+
+## Document Classification
+* This step is used when dealing with multiple document types
+* It is done using ```Classify Document Scope``` activity
+* The ```Document Classification Scope Wizard``` will open at selecting the ```Configure Classifiers``` option and it allows users to customize which classifier will be used for each individual type of document
+* For this, first we create a classify.json file
+* We have 2 classifiers by default
+    1. Intelligent Keyword CLassifier
+    2. Keyword Based Classifier
+* Keyword based requries various kinds of keywords that may came up in the document in different forms, such as for Invoices : statement,invoice,invoiec , in-voice, in voice etc
+* Configure Classifier is used to select the document type for which the classifer is supposed to be used
+* We can have multiple classifiers used at the same time
+
+### Present Classification Station
+* In Many cases, document files comes as a ```package```. within the same file, there are multiple document types that contain different sets of information and which need to be treated separately as far as data extraction and post-processing goes.
+* This activity is used to :
+    1. manually ```split``` files into logical documents, by selecting a document type and a tange of pages applicable for it
+    2. Verify any automatic classification and splitting of a file into logical documents and perform correctios to the automatically proposed classification and separation
+* Steps:
+    1. After the ```Classify Document Scope```, add the ```Present Classification Station``` activity
+    2. At run time, the classification station will open and show the automatic classification results
+    3. If needed, one can adjust the Classification results.
+    4. After clicking on the Save button, the workflow continues with the human validated classification information
+<a href="https://docs.uipath.com/activities/docs/present-classification-station">Classification Station Doc</a>
+
+## Data Extraction
+* This is the step to extract the required data from the documents
+
+### Data Extraction Scope
+* Based on the structure of the document, different extractors come to play
+* The ```Data Extraction Scope Wizard``` will open at selecting the ```Configure Extractors``` option and it allows users to customize which extractors will be used for each individual field
+* It allows users to mix and match extractors as well as use extractors in parallel based on which extractor has the highest confidence level
+* If ```classification result``` is provided then ```Document ID``` is not required
+* Steps to work with ```form extractor```:
+    1. We added the Form Extractor inside the Data Extraction scope and provided the API Key from the Cloud Platform account. Next, we started to Manage Templates
+    2. Created a new template for the W-4 form, using a file from the project's folder, and the OmniPageOCR and we stared configuring it
+    3. We matched the first page with representative keywords. To make the multiple selections, we pressed the CTRL key
+    4. We started matching the fields with the values defined in the taxonomy. We did this either by choosing the selection mode or pressing the D+X keys.
+    5. When we finished mapping all the values, we saved the template.
+* For unstructured or semi-structured data, we can also ```regex based extractor```
+* For semi-structured data, ML Extractors can also be used
+* They can be installed using ```UiPath.DocumentUnderstanding.ML.Activities``` package
+* Things to remember:
+    1. The endpoint for community work is ```https://invoices.uipath.com```
+    2. API key can be found at ```platform.uipath.com```
+    3. Set-up each field in correspondant to pre-configured field types/names
+    4. <a href="https://docs.uipath.com/lang-de/automation-cloud/docs/about-licensing#section-document-understanding-endpoints">Other Endpoints can be found at</a>
+
+
+## Validation
+* For 100% accuracy of the results, human validation is always recommended. This step is triggered by the ```Present Validation Station``` activity
+
+### Present Validation Station
+* This activity triggers the opening of the validation station.
+* It's the tool that allows you to review and, if necessary correct the document classification and automatic data extraction results
+* Use this activity inside a Try-Catch activity to check and workaround of business exceptions
+* <a href="https://docs.uipath.com/activities/docs/present-validation-station"> For More... </a>
+
+KeyBoard Shortcuts
+<img src="KeyboardShortcut.png" />
+
+## Exporting Extraction Results
+* After you validate the extracted data, you can export it to whatever environment you need in order to consume it. The extraction results can be exported as a DataSet variable which can be further processed. 
+
+### Export Extraction Results
+* This activity export the data extracted to a DataSet.
+* When used with the automatic extraction results and the ```IncludeConfidence``` flag is to True, it is the perfect way of accessing the extracted data,with the purpose of any RPA-based validation logic available
+* The DataSet variable output by the ```Export Extraction Results``` activity has a fixed structure as follows: 
+1. Table named ```Simple Fields``` ~> Contains columns with name equal to each field name in your document type, and the values ( on the subsequent lines ) pertaining to each field. More than one value in a column is possible if :
+    * You define a field as ```multi-value``` in your taxonomy
+    * for a field, with multiple ```suggestions```
+2. Table named ```Simple Fields - Formatted``` ~> it is same as ```simple fields``` but it provides the output in proper formatted way like for date ```YYYY-MM-DD``` and for Address and Name fields, these values contain a JSON representation of the Address and Name parts respectively
+3. A collection of tables ~> two for each table field in the document type
+
+Note:It is strongly recommended, for easy identification and understanding of the output DataSet content, to exercise by ```looping through``` the ```DataSet.Tables``` in a ```For Each``` activity, and writing each Table in a sheet of an Excel file using the Write Range activity.
+
+## Train Classifiers Scope
+* This activity has ability to train the classifiers using either the output of the Human Validated Classification Station or the output of the Validation Station - as both sets of information are human confirmed and can be ingested by the classifiers to self-learn
+* It is used using ```Train Classifier Scope``` activity 
+
+### Intelligent Form Extractor
+* Used got extracting handwritten words/characters from documents
+* Has few limitations for Community edition:
+    1. The size of the documents is limited at 1 page.
+    2. Community endpoints are rate-limited per IP address at 50 requests per hour.
+    3. If the rate-limit is reached, an 429 - Too Many Requests error is displayed, and the IP address is blocked for 1 hour.
+<a href="https://docs.uipath.com/activities/docs/v206-intelligent-form-extractor-preview">To Learn More... </a>
+
+### <a href="https://www.uipath.com/webinar-recording/document-understanding-ai-enhanced?mkt_tok=eyJpIjoiTTJJellqWTRZV1E0WWpZMiIsInQiOiJJUVYyeDBpVWVGYlVFZGJud0ZKVEYzakpxU1ZrXC91alpkYkxlVGRRbFprYkV4ME01SmxFdWdKV1lXQXVaZVg1Mm54c0tMUDA3aXVpQ2ZkSko2NEhDdmc1SEVXQ0F1cThpNkE3eWJnMXVrZlc3VUxRdDVhQ0FpNHpvZTFXQ1hYRjEifQ%3D%3D">Access to On Demand Webinar to Document Understanding </a>
