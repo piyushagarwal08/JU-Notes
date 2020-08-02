@@ -1476,7 +1476,7 @@ def CalculateCharacterLength(string,char):
 1. Taxonomy ~> In this pre-processing step, you can add multiple document types and the fields you are interested in extracting.e.g., Total Amount,Patient Name , User/Product Id etc
 2. Digitization ~> As the documents are processed one by one, they go through the digitiation process.The outputs of this step are the ```Document Object Model``` and a ```string variable``` containing all the document text and are passed down to the next steps
 3. Classification ~> If you are working with multiple documents types in the same project, to extract data properly you need to know what ```type of document``` you're working with. The important thing is that you can ```use multiple classifiers``` in the same scope,you can ```configure the classifiers``` and, later in the framework, ```train``` them. The classification results help in applying the right strategy in extraction
-4. Extraction ~> Extraction is getting just the data you are interested in.In this framework, you can use different extractors, for the different document structures, in the same scope application.The extraction results are passed further for validation.
+4. Extraction ~> Extraction is getting just the data you are interested in. In this framework, you can use different extractors, for the different document structures, in the same scope application.The extraction results are passed further for validation.
 5. Validation ~> The extracted data can be validated by a human user through the Validation Station. Validation results can then be exported and used in further automation activities
 6. Export ~> Use the validated information or save it in datatable or anywhere else you want.
 7. Training Classifiers and Extractors ~> Classification and Extraction are as efficient as the classifiers and extractors used are.If a document wasn't classified properly, it means it was unknown to the active classifiers.
@@ -1620,3 +1620,24 @@ Note:It is strongly recommended, for easy identification and understanding of th
 <a href="https://docs.uipath.com/activities/docs/v206-intelligent-form-extractor-preview">To Learn More... </a>
 
 ### <a href="https://www.uipath.com/webinar-recording/document-understanding-ai-enhanced?mkt_tok=eyJpIjoiTTJJellqWTRZV1E0WWpZMiIsInQiOiJJUVYyeDBpVWVGYlVFZGJud0ZKVEYzakpxU1ZrXC91alpkYkxlVGRRbFprYkV4ME01SmxFdWdKV1lXQXVaZVg1Mm54c0tMUDA3aXVpQ2ZkSko2NEhDdmc1SEVXQ0F1cThpNkE3eWJnMXVrZlc3VUxRdDVhQ0FpNHpvZTFXQ1hYRjEifQ%3D%3D">Access to On Demand Webinar to Document Understanding </a>
+
+
+# Schedule Task using Windows Scheduler
+* Note: This process is not officially supported by UiPath
+* To Schedule your bot, follow the given steps
+    1. Publish your bot to packages that is create a ```.nupkg``` file
+    2. Create a ```.bat``` file with content as ```"Path-to-UiRobot.exe" -file "path-of-nupkg"```
+    e.g.,
+    ```"C:\Users\piyus\AppData\Local\UiPath\app-20.6.0-beta0093\UiRobot.exe" -file "C:\ProgramData\UiPath\Packages\JU.ParentPortal.1.0.1.nupkg"```
+    3. Open Windows Task Scheduler
+    4. Click on Create Task
+    5. Give some name to your Bot Schedule
+    6. Set ```Configure for ``` to ```Windows Vista , Windows Server 2008```
+    7. In ```Triggers``` tab create a new trigger, select ```On a Schedule``` and set some time
+    8. In ```Actions``` tab, set things as
+        * Action: Start a Program
+        * Program/Script: cmd
+        * Add a argument: /c "file-name-with-extension"
+        * Start in : path-to-the-directory-containing-file(without double quotes)
+    9. In ```Conditions``` tab, uncheck the box with ```Start task only at AC Power```
+    10. Click ok and close the scheduler, bot is scheduled successfully
