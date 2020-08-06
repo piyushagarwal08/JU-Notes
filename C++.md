@@ -95,23 +95,24 @@ And this prints 0
 
 * Integer Type Modifiers:
 <table>
-<th><td>Type</td><td>Size</td><td>Range</td>
+<tr><td>Type</td><td>Size</td><td>Range</td></tr>
 <tr><td>short</td><td>2</td><td>-32768 to 32767</td></tr>
 <tr><td>unsigned short</td><td>2</td><td>0 to 65535</td></tr>
 <tr><td>signed short</td><td>2</td><td>same as short</td></tr>
-<tr><td>int</td><td>2</td><td>-32768 to 32767</td></tr>
-<tr><td>unsigned int</td><td>2</td><td>0 to 65535</td></tr>
-<tr><td>signed int</td><td>2</td><td>Same as int</td></tr>
-<tr><td>long</td><td>4</td><td>-2147483648 to 2147483647</td></tr>
-<tr><td>unsigned long</td><td>4</td><td>0 to 4294967295</td></tr>
-<tr><td>signed long</td><td>4</td><td>Same as long</td></tr>
+<tr><td>int</td><td>4</td><td>-32768 to 32767</td></tr>
+<tr><td>unsigned int</td><td>4</td><td>0 to 65535</td></tr>
+<tr><td>signed int</td><td>4</td><td>Same as int</td></tr>
+<tr><td>long</td><td>8</td><td>-2147483648 to 2147483647</td></tr>
+<tr><td>unsigned long</td><td>8</td><td>0 to 4294967295</td></tr>
+
+<tr><td>signed long</td><td>8</td><td>Same as long</td></tr>
 </table>
 
 * Character Type Modifiers ~> char is neither signed nor unsigned
 * Floating-point Type Modifiers:
     1. Float - size:4 - precision:7
     2. Double - size:8 - precision:15
-    3. long double - size:10 - precision:19
+    3. long double - size:12 - precision:19
 * If no data type is given to a variable after type modifier, then compiler automatically converts it to int data type
 * We can't use any modifiers in float data type.If programmer tries to use it, the compiler automatically gives compile time error
 * only ```long``` modifiers are allowed for ```double``` data type
