@@ -188,4 +188,269 @@ int main()
         * used to restrict the modification
 
 
+```c++
+#include<iostream>
+using namespace std;
+int main()
+{
+  int a,b;
+  std::cin>>a>>b;
+  std::cout<<"a+b="<<a+b<<endl;
+  std::cout<<"a-b="<<a-b<<endl;
+  std::cout<<"a*b="<<a*b<<endl;
+  std::cout<<"a/b="<<a/b<<endl;
+  std::cout<<"a%b="<<a%b<<endl;
+  return 0;
+}
+```
+```cpp
+#include<iostream>
+int main()
+{
+    int a =2;
+    int b=9;
+    std::cout<<((b=2)==a); // 1
+}
+```
+```cpp
+#include <iostream>
+int main()
+{
+  int a=9, b=1, c=3;
+  int result1=((a==9)||(b=3));  // 1 || b=1
+  std::cout<<"Result1 : "<<result1<<" b : "<<b; // Result1 : 1 b : 1
+  int result2=((b>c)&&(c=0));  // 0 && c=3
+  std::cout<<"\nResult2 : "<<result2<<" c : "<<c;  // Result2: 0 c 3
+}
+```
+
+* Integers are of two types:
+    1. Positive ~> Stored as Binary Representation
+    2. Negative ~> 2's complement
+* To Calculate 2's complement ~ convert 1 to 0 and vice versa, add 1 to it and set - sign in front
+
+```cpp
+#include<iostream>
+int main(){
+  int a = 13, b = 45;
+  a++; // 14
+  b--; // 44
+  int c = (++a) + (b--); // c = 14 + 44
+  std::cout<<a<<" "<<b<<" "<<c; // 14 , 43, 59
+}
+```
+
+* Miscellaneous Operators
+    1. Sizeof Operator:
+        * Unary operator
+        * can have a variable or a data-type as an operand
+        * returns the size of the operand
+    2. Comma Operator
+        * Used to separate two or more expressions that are included where only one expression is expected
+        * Example: a=(b=3,b+2) // a=5 b = 3
+    3. Explicit type-cast operator
+        * Converts a value of one type to another data-type
+        * x=int(y) , if y is of type float
+        * x = int(y) , if y is of type float
+    4. Ternary Operator
+        * Evaluates one expression, either results in true or false
+        * condition?true-expression:false-expression
+        * example: ```(7==5)?std::cout<<"equal":std::cout<<"not equal";```
+
+```cpp
+#include<iostream>
+int main()
+{
+    int x;
+    std::cin>>x;
+    x%2==0?std::cout<<"Possible":std::cout<<"Not possible";
+    return 0;
+}
+```
+* if two or more operators have same precedency then grouping is followed
+```cpp
+#include<iostream>
+int main()
+{
+	int a = 10, b = 11, c = 3;
+	std::cout << ++a + 2 * b++ / c;
+    // 11 + 2 * 11 / 3 \
+    11 + 22 / 3 \
+    11 + 7 = 18
+
+	return 0;
+}
+```
+```cpp
+#include<iostream>
+int main()
+{
+	int a = 1, b = 2, c;
+	c = a << b >> 1; 
+    // 4 >> 1 ~> c =2
+	std::cout<<c;
+	return 0;
+}
+```
+* The Newspaper Agency
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  // w is no of copies sold and x is cost per copy and y cost agency spends
+  
+  int w,x,y,result;
+  std::cin>>w>>x>>y;
+  result = w*x - w*y - 100;
+  std::cout<<result;
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+
+float round(float var)
+{
+  float value = (int)(var*100 + 0.5);
+  return (float)value/100;
+}
+
+int main()
+{
+  //Type your code here.
+  // discount is of 2 % on interest
+  int x ;// x =  principal amount borrowed by alice
+  int r; // r = rate of interest
+  int y; // y - time for interest in years
+  float si,amount,discount,result;
+  std::cin>>x>>r>>y;
+  si = (x*r*y)/100;
+  amount = si+x;
+  discount = 0.02*(si);
+  result = amount-discount;
+  std::cout<<round(si)<<"\n"<<round(amount)<<"\n"<<round(discount)<<"\n"<<round(result)<<endl;
+  
+  return 0;
+}
+```
+* to find square root, we have to use ```cmath``` preprocessing directive
+* Hop n Hop
+```cpp
+#include<iostream>
+#include<cmath> // used for sqrt function
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int x,y,r;
+  std::cin>>x>>y;
+  r = sqrt((x-3)*(x-3) + (y-4)*(y-4));  // finds the perpendicular distance between 2 points
+  std::cout<<r;
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+int main(){
+  int x = 67;
+  if(x=10) // 10 is assigned to x
+    std::cout<<x;  // print 10
+}
+```
+
+```cpp
+#include<iostream>
+int main()
+{
+  int b = 0;
+  if(b++) // b is 0
+    std::cout<<"Yahoo!";
+  else if(++b) // b is 2
+    std::cout<<"Wow!";  // printed
+  else
+    std::cout<<"Yay!";
+}
+```
+
+```cpp
+// leap year
+#include <iostream>
+using namespace std;
+/*
+If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
+If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.
+If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.
+The year is a leap year (it has 366 days).
+The year is not a leap year (it has 365 days).
+*/
+int main() 
+{
+   // Try out your code here
+    int y;
+  std::cin>>y;
+  if(y%4==0)
+  {
+    if(y%100==0)
+    {
+      if(y%400==0)
+        std::cout<<"Vicky can celebrate his birthday.";
+      else
+        std::cout<<"Vicky can't celebrate.";
+  	}
+    else
+      std::cout<<"Vicky can celebrate his birthday.";
+  }
+  else
+    std::cout<<"Vicky can't celebrate.";
+  return 0;
+}
+```
+
+* Expression in switch case can only be int,short,char.
+* Switch does not work for float
+* ```fallthrough``` is a condition that occurs when break is not used.
+
+```cpp
+//Gardening
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int r,c,t;
+  std::cin>>r>>c>>t;
+  if(t>r && t<=2*r)
+    std::cout<<"It is a mango tree";
+  else if(t<=r*(c-1) && t > r*(c-2))
+    std::cout<<"It is a mango tree";
+  else
+    std::cout<<"It is not a mango tree";
+  return 0;
+}
+```
+
+```cpp
+// Cricket
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int nb,tr,rs,bb,overs;
+  float of,trr,crr;
+  overs = nb/6;
+  of = bb/6 + (bb%6)/10;
+  crr = rs/of;
+  trr = (float)tr/overs;
+  std::cout<<overs<<"\n"<<of<<"\n"<<crr<<"\n"<<trr<<endl;
+  if(crr > trr)
+    std::cout<<"Elgible to Win";
+  return 0;
+}
+```
 
