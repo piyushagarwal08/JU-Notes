@@ -717,4 +717,227 @@ int main()
   return 0;
 }
 ```
+* For loop is also known as ```Entry Controlled Loop```
+
+```cpp
+// factorial of a number
+#include<iostream>
+int main(){
+  // Type your code here
+  int x,result=1;
+  std::cin>>x;
+  for(;x>0;x--)
+    result = result*x;
+  std::cout<<result;
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+int main() 
+{
+  int n = 5, i;
+  for(i = 1; i <= n; i++); // will run for i<=5
+  std::cout<<i; // 6
+}
+```
+
+```cpp
+// reverse number
+#include <iostream>
+int main() 
+{
+	// Type your code here
+  int x;
+  std::cin>>x;
+  while(x>0)
+  {
+   std::cout<<x%10;
+    x = x/10;
+  }
+	return 0;
+}
+```
+
+```cpp
+// pallindrome
+#include <iostream>
+int main() 
+{
+	int n, rev = 0,r, temp;
+  std::cin>>n;
+  temp = n;
+  while(n > 0){
+          r = n % 10;
+          rev = rev * 10 + r;
+          n = n / 10;
+       }
+       if(rev == temp)
+  	    std::cout<<"Palindrome";
+	return 0;
+}
+```
+
+```cpp
+#include<iostream>
+int main() 
+{
+  int i = 0, x = 0;
+  do
+  {
+    if(i % 5 == 0) // 0 1  2  3  4 5
+    { 
+      std::cout<<x; // 0 1
+      x++; // 1
+    }
+    ++i; 
+  }while(i <= 5); 
+  std::cout<<x; // 2
+  return 0;
+}
+```
+
+```cpp
+// count of digits
+#include<iostream>
+int main()
+{
+  // Type your code here
+  int x,count;
+  std::cin>>x;
+  if(x==0)
+    count++;
+  while(x>0)
+  {
+    count++;
+    x = x/10;
+  }
+  
+  std::cout<<count;
+  return 0;
+  
+}
+```
+
+```cpp
+// Decrypt the message
+  /*
+  A number which is equal to sum of all its positive divisors is called Perfect number
+  */
+#include<iostream>
+using namespace std;
+int PerfectNumber(int x)
+{
+  int sum = 0;
+  for(int i=1;i<x;i++)
+  {
+    if(x%i==0)
+      sum +=i;
+  }
+  if(sum==x)
+    return 1;
+  else
+    return 0;
+}
+
+int main()
+{
+  int x,y;
+  std::cin>>x>>y;
+
+  if(PerfectNumber(x+y))
+    std::cout<<"They can read the message";
+  else
+    std::cout<<"They can't read the message";
+  return 0;
+}
+```
+
+```cpp
+// Perfect numbers in the range
+#include<iostream>
+using namespace std;
+int PerfectNumber(int x)
+{
+  int sum = 0;
+  for(int i=1;i<x;i++)
+  {
+    if(x%i==0)
+      sum +=i;
+  }
+  if(sum==x)
+    return 1;
+  else
+    return 0;
+}
+int main()
+{
+  int x,y;
+  std::cin>>x>>y;
+  for(;x<y+1;x++)
+  {
+    if(PerfectNumber(x))
+      std::cout<<x<<" ";
+  }
+  return 0;
+}
+```
+
+```cpp
+// Handshake
+#include<iostream>
+using namespace std;
+int main()
+{
+  int x,count=0;
+  std::cin>>x;
+  while(x>0)
+  {
+    for(int i=1;i<x;i++)
+      count++;
+    x--;
+  }
+  std::cout<<count;
+  return 0;
+  //Type your code here.
+}
+```
+
+```cpp
+// Dollars & Cents
+#include<iostream>
+using namespace std;
+int main()
+{
+  int a,b,c,d;
+  int cent,dollar;
+  std::cin>>a>>b>>c>>d;
+  cent = b+d;
+  dollar = a+c;
+  if(cent>100)
+  {
+    dollar+= cent/100;
+    cent = cent%100;
+  }
+  std::cout<<dollar<<"\n"<<cent;
+  return 0;
+  //Type your code here.
+}
+```
+
+```cpp
+//chalk
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int x;
+  std::cin>>x;
+  std::cout<<x+(int)sqrt(x)+1;
+  return 0;
+}
+```
 
