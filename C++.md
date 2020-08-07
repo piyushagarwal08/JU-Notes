@@ -454,3 +454,267 @@ int main()
 }
 ```
 
+```cpp
+//game with shapes
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  // x ~> radius of circle , y~> length of square
+  int x,y;
+  std::cin>>x>>y;
+  if(2*x<=y)
+    std::cout<<"circle can be inside a square";
+  else
+    std::cout<<"circle cannot be inside a square";
+  return 0;
+}
+```
+
+```cpp
+//boating
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  /* x ~> weight that boat can handle
+  	 y ~> number of adults (75kg per person)
+     z ~> number of children (30kg per person)
+     */
+  int x,y,z;
+  std::cin>>x>>y>>z;
+  if(x>= (y*75 + z*30))
+    std::cout<<"Boat is stable";
+  else
+    std::cout<<"Boat will drow";
+  return 0;
+}
+```
+
+```cpp
+//Car mileage
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  float x; //mileage
+  int y,z; // litres of petrol, distance to travel
+  std::cin>>x>>y>>z;
+  x*y>=z?std::cout<<"Can reach":std::cout<<"Cannot reach";
+  return 0;
+}
+```
+
+```cpp
+// Age detector
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int x,y;
+  std::cin>>x>>y;
+  if(y>x)
+    std::cout<<y-x<<endl;
+  else
+    std::cout<<(100+y)-x<<endl;
+  return 0;
+  
+}
+```
+
+```cpp
+//online shopping
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int amount_of_shirt,discount_offered,shipping_charges; // flipkart
+  int amount_of_shirt1,discount_offered1,shipping_charges1; //snapdeal
+  int amount_of_shirt2,discount_offered2,shipping_charges2; // amazon
+  int F,S,A;
+  std::cin>>amount_of_shirt>>discount_offered>>shipping_charges>>amount_of_shirt1>>discount_offered1>>shipping_charges1>>amount_of_shirt2>>discount_offered2>>shipping_charges2;
+  F = amount_of_shirt+shipping_charges-(discount_offered*amount_of_shirt)/100;
+  S = amount_of_shirt1+shipping_charges1-(discount_offered1*amount_of_shirt1)/100;
+  A = amount_of_shirt2+shipping_charges2-(discount_offered2*amount_of_shirt2)/100;
+  std::cout<<"In Flipkart Rs."<<F<<"\n"<<"In Snapdeal Rs."<<S<<"\n"<<"In Amazon Rs."<<A<<endl;
+  if(F <= A && F <= S)
+    std::cout<<"He will prefer Flipkart";
+  else if(A <= F && A <= S)
+    std::cout<<"He will prefer Amazon";
+  else if(S<=F && S<=A)
+    std::cout<<"He will prefer Snapdeal";
+  return 0;
+  
+}
+```
+
+```cpp
+// microwave oven
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int n;
+  float t;
+  std::cin>>n>>t;
+  if(n==2)
+    std::cout<<fixed<<setprecision(2)<<t+ 0.5*t;
+  else if(n==3)
+    std::cout<<fixed<<setprecision(2)<<2*t;
+  else if(n>3)
+    std::cout<<"Number of items is more";
+  else
+    std::cout<<fixed<<setprecision(2)<<t;
+  return 0;
+}
+```
+
+```cpp
+//matinee movie tickets
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int a;
+  float t;
+  std::cin>>a>>t;
+  if(t>13 && t<16)
+  {
+    if(a > 13)
+      std::cout<<"$5.00";
+    else
+      std::cout<<"$2.00";
+  }
+  else
+  {
+    if(a > 13)
+      std::cout<<"$8.00";
+    else
+      std::cout<<"$4.00";
+  } 
+  return 0;
+}
+```
+
+```cpp
+//Treasure Finder
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int x,y,z;
+  std::cin>>x>>y>>z;
+  
+  if(x>y && x<z || x>z && x<y) // x is second largest
+    std::cout<<"The treasure is in box which has number "<<x<<endl;
+  else if(y>x && y<z || y>z && y<x)
+    std::cout<<"The treasure is in box which has number "<<y<<endl;
+  else if(z>x && z<y || z>y && z<x)
+    std::cout<<"The treasure is in box which has number "<<z<<endl;
+  
+  if(y%x==0 && z%x==0)
+    std::cout<<"The code to open the box is "<<x;
+  else if(z%y==0 && x%y==0)
+    std::cout<<"The code to open the box is "<<y;
+  else if(x%z==0 && y%z==0)
+    std::cout<<"The code to open the box is "<<z;
+  else
+    std::cout<<"The code to open the box is "<<1;
+  return 0;
+}
+```
+
+```cpp
+// mago tree - I
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int r,c,t;
+  std::cin>>r>>c>>t;
+  if(t<c || t%c==0)
+    std::cout<<"Yes";
+  else if((t-1)%c==0)
+    std::cout<<"Yes";
+  else
+    std::cout<<"No";
+  return 0;
+}
+```
+
+```cpp
+//sece dining
+/*
+front ~> r1 ~> left
+front ~> r2 ~> right
+rear ~> r1 ~> right
+rear ~> r2 ~> left
+Assume rail is attached with the wall
+and if no rail is selected, then print based on door
+*/
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string s;
+  int rail;
+  getline(cin,s);
+  std::cin>>rail;
+  if(s=="front" && rail==1 || s=="rear" && rail==2)
+    std::cout<<"Left Handed";
+  else if(s=="front" && rail==2 ||  s=="rear" && rail==1)
+    std::cout<<"Right Handed";
+  else if(s=="front")
+    std::cout<<"Right Handed";
+  else
+    std::cout<<"Left Handed";
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+  // Time Sheet
+  //Type your code here.
+  /*
+  100 per hr
+  +15 per hr if hr>8
+  +25 per hr if hr >40 in one week
+  +25% of hr saturday and +50% of hr for sundays
+  */
+  int a[7],pay=0,total=0;
+  std::cin>>a[0]>>a[1]>>a[2]>>a[3]>>a[4]>>a[5]>>a[6];
+  for(int i=0;i<7;i++)
+  {
+    if(a[i]>8)
+      pay = pay+15*(a[i]-8);
+    
+    if(i==0)
+      pay = pay+100*a[i]+0.5*100*a[i];
+    else if(i==6)
+      pay = pay + 100*a[i] + (100*a[i])/4;
+    else
+    	pay = pay + 100*a[i];
+    total = total+a[i];
+}
+  if(total-a[0]-a[6]>40)
+    pay = pay+25;
+  std::cout<<pay;
+  return 0;
+}
+```
+
