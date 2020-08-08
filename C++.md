@@ -31,6 +31,7 @@ int main() // main is a predefined identifier not an keyword
 * Generally, C++ compiler ignores the white-spaces
 * We can comment also as``` // any comment \ move to next line```
 * In all web-based compilers, 0 is assigned to an uninitialized local variable by default. But, in the offline compiler(Dev C++, Turbo C), garbage value is assigned to an uninitialized local variable 
+* To find the length of string, use ```<cstring>``` directive and ```str.length()``` function 
 * To String as input we use the code as
 ```c++
 #include<iostream>
@@ -941,3 +942,635 @@ int main()
 }
 ```
 
+```cpp
+// Harshad Number
+//Harshad Number is a number which is divisible by the sum of digits
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  //Type your code here.
+  
+  int x,sumValue=0,temp;
+  std::cin>>x;
+  temp = x;
+  while(x>0)
+  {
+    sumValue += x%10;
+    x = x/10;
+  }
+  temp%sumValue==0?std::cout<<"Harshad Number":std::cout<<"Not Harshad Number";
+  return 0;
+}
+```
+
+```cpp
+//collatz problem
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int x,count;
+  std::cin>>x;
+  while(x!=1)
+  {
+    count++;
+    std::cout<<x<<endl;
+    if(x%2==0)
+      x /= 2;
+    else
+      x = 3*x + 1;
+}
+  std::cout<<x<<"\n"<<count;
+  return 0;
+}
+```
+
+```cpp
+// Amoeba multiplication ~> Fibonacci Series
+#include<iostream>
+using namespace std;
+
+int Fib(int n)
+{
+  int F[n+1];
+  F[1] = 0;
+  F[2] = 1;
+  for(int i=3;i<=n;i++)
+    F[i] = F[i-1] + F[i-2];
+  return F[n];
+}
+int main()
+{
+  //Type your code here.
+  int n;
+  std::cin>>n;
+  std::cout<<Fib(n);
+  return 0;
+}
+
+```
+
+```cpp
+// Viva on Odd Numbers
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  /* need positive odd integers
+  if correct ~> result++
+  if positive even ~> result = result - 0.5
+  if negative number ~> then close - 1
+  close when 3 positive odd numbers or a negative number
+  */
+  //Type your code here.
+  int x,count;
+  float result;
+  while(1)
+  {
+    std::cin>>x;
+    if(count==3 || x<0)
+    {
+      if(x<0)
+        result = result -1;
+      break;
+    }
+    if(x>0 && x%2 != 0)
+    {
+      count++;
+      result++;
+    }
+    else if(x>0 && x%2==0)
+      result = result - 0.5;
+    
+    
+  }
+  std::cout<<result;
+  return 0;
+}
+```
+* To find the power of a number, we can use ```cmath``` directive as it has ```pow``` function with syntax ```pow(number,power)```
+* 
+```cpp
+// Kaprekar Number
+/* if n=9, then find its square = 81
+if 8  + 1== 9 ~> Kaprekar Number
+
+if n = 297 , then find its square = 88209
+if 88 + 209 = 297 ~> Kaprekar Number
+*/
+#include<iostream>
+#include<cmath>
+using namespace std;
+int CountNum(int x)
+{
+  int count=0;
+  x = x*x;
+  while(x>0)
+  {
+    count++;
+    x /= 10;
+  }
+  return count;
+}
+
+int main()
+{
+  int n,count,first,last;
+  std::cin>>n;
+  count = CountNum(n);
+  
+  if(count%2==0)
+  {
+    first = n / pow(10,count/2);
+    last = n - first*pow(10,count/2);
+  }
+  else
+  {
+    first = n / pow(10,(count/2)+1);
+    last = n - pow(10,(count/2)+1);
+  }
+  first+last==n?std::cout<<"Kaprekar Number":std::cout<<"Not a Kaprekar Number";
+  return 0;
+}
+```
+
+```cpp
+// Data Mining
+// Sum of odd number == Sum of Even Number
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int n,odd,even,temp;
+  std::cin>>n;
+  while(n>0)
+  {
+    temp = n % 10;
+    temp%2==0?even+=temp:odd+=temp;
+    n = n/10;
+  }
+  if(odd == even)
+    std::cout<<"Yes";
+  else
+    std::cout<<"No";
+  return 0;
+}
+```
+
+```cpp
+//Target Practice
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int tscore,x,sum=0,count=0;
+  std::cin>>tscore;
+  while(sum<tscore)
+  {
+    count++;
+    std::cin>>x;
+    sum +=x;
+  }
+  std::cout<<"The number of turns is "<<count;
+  return 0;
+    
+}
+```
+
+```cpp
+#include<iostream>
+int main(){
+	int i = 1;
+	do{
+	  while(i) // i = 1 means True
+			i--; // i 0
+		for(i++; 0; i++);  // works out of while, first i++ ~> i = 1, 0~> False.. loop ends...
+		break; // breaks out of DO while
+	}while(1);
+	std::cout<<i;  // i = 1
+	return 0;
+}
+```
+
+```cpp
+// Prime Number
+//  1 is not a Prime Number and neither 0
+#include<iostream>
+using namespace std;
+
+int Prime(int x)
+{
+  if(x<=1)
+    return 0;
+  for(int i=2;i<x/2;i++)
+  {
+    if (x%i == 0)
+      return 0;
+  }
+  return 1;
+}
+
+int main()
+{
+  int x;
+  std::cin>>x;
+  if(Prime(x))
+    std::cout<<"Eligible";
+  else
+    std::cout<<"Not eligible";
+  return 0;
+}
+```
+
+* goto ~> this redirects the loop control to mentioned label
+* Syntax is ```goto label;```
+* example
+```cpp
+#include<iostream>
+int main ()
+{
+    int x = 4;
+    loop: // label
+      std::cout<<x-1<<" "; // 3 2 1 0
+      x--;  // 3 2 1 0
+      if(x > 0)
+      {
+          goto loop;
+          std::cout<<x<<" ";
+      }    
+}
+```
+
+```cpp
+#include <iostream>
+int main(){
+  int i, count;
+  do
+  {	
+    for(i = 1; i < 5; i++) {
+      std::cout<<i<<" ";
+      if(i == 1)
+      {   
+        goto stop;
+        std::cout<<"hello";
+      }   
+    }
+    stop:
+        count++;
+        std::cout<<count<<"\n";
+  }while(count < 4);
+}
+/*
+1 1
+1 2
+1 3
+1 4
+```
+
+```cpp
+#include <iostream>
+int main(){
+  for(int i = 0; ;i = (i+1)%2 ) // no break condition, thus infinite loop
+  {
+    std::cout<<i<<"\n";
+  }
+}
+```
+
+```cpp
+#include <iostream>
+int main(){
+  int i = 1;
+  do{
+    std::cout<<i;
+    i++;
+  }while(i = 10); // infinite loop as i = 10, i ko 10 assign hota rahega
+}
+```
+```cpp
+#include<iostream>
+int main()
+{
+  while('A') // loop works infinitely
+    std::cout<<"hello";
+}
+```
+
+```cpp
+// Series I
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+  int n;float x=0.5;
+  std::cin>>n;
+  std::cout<<x<<" ";
+  if(n>1)
+    for(int i=0;i<n-1;i++)
+    {
+      	x = x+pow(3,i);
+    	std::cout<<x<<" ";
+    }
+  
+  return 0;
+}
+```
+
+```cpp
+// Series II
+#include<iostream>
+using namespace std;
+
+void Series(int n)
+{
+  if(n==0)
+    return;
+  if(n==1)
+  {
+    std::cout<<121;
+    return;
+  }
+  if(n==2)
+  {
+    std::cout<<121<<" "<<225;
+    return;
+  }
+  std::cout<<121<<" "<<225<<" ";
+  int a=121,b=225,x;
+  for(int i=2;i<n;i++)
+  {
+    x = 32+2*b - a;
+    std::cout<<x<<" ";
+    a = b;
+    b = x;
+  }
+  return;
+}
+    
+int main()
+{
+  int n;
+  std::cin>>n;
+  Series(n);
+  return 0;
+}
+```
+
+```cpp
+// Series III
+#include<iostream>
+using namespace std;
+
+void Series3(int n)
+{
+  int x=6;
+  if(n<=0)
+    return;
+  if(n==1)
+  {
+    std::cout<<6;
+    return;
+  }
+  std::cout<<6<<" ";
+ for(int i=1;i<n;i++)
+ {
+   x = x + 5*i;
+   std::cout<<x<<" ";
+ }
+  return;
+}
+
+int main()
+{
+  int n;
+  std::cin>>n;
+  Series3(n);
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+
+void Series4(int n)
+{
+  if(n==0)
+    return;
+  if(n==1)
+  {
+    std::cout<<0;
+	return;
+  }
+  if(n==2)
+  {
+    std::cout<<0<<" "<<2;
+    return;
+  }
+  int x=2,y=2;
+  std::cout<<0<<" "<<2<<" ";
+  /*
+      2  3 4  5
+  0 2 8 14 24 34
+  */
+  for(int i=2;i<n;i++)
+  {
+    if(i%2 == 0)
+      x += 4;
+    y = y+x;
+    std::cout<<y<<" ";
+  }
+ 
+  return;
+}
+  
+int main()
+{
+  //Type your code here.
+  int n;
+  std::cin>>n;
+  Series4(n);
+  return 0;
+}
+```
+
+```cpp
+// Pattern I
+#include<iostream>
+using namespace std;
+
+void Pattern1(int n)
+{
+  for(int i=1;i<=4;i++)
+  {
+    for(int j=1;j<=i;j++)
+      std::cout<<n;
+    std::cout<<endl;
+    n++;
+  }
+  n--;
+  for(int i=4;i>=1;i--)
+  {
+    for(int j=1;j<=i;j++)
+      std::cout<<n;
+    std::cout<<endl;
+    n--;
+  }
+  return ;
+}
+  
+
+int main()
+{
+  int n;
+  std::cin>>n;
+  Pattern1(n);
+  return 0;
+}
+```
+
+```cpp
+// Pattern II
+// Example program
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int x,y=0,n;
+  std::cin>>x;
+  for(int i=1;i<=x;i++)
+  {
+      if(i>1 && i%2!=0)
+        goto label1;
+      n = y+i;
+      for(int j=1;j<=i;j++)
+      {
+        cout<<n;
+        y++;
+        n--;
+        if(j+1<=i)
+            cout<<"*";
+      }
+      goto label2;
+      
+      label1:
+      n = y+1;
+      for(int j=1;j<=i;j++)
+      {
+        cout<<n;
+        y++;
+        n++;
+        if(j+1<=i)
+            cout<<"*";   
+      }
+      label2:
+        cout<<"\n";
+  }
+}
+```
+
+```cpp
+// Pattern III
+#include<iostream>
+using namespace std;
+int main()
+{
+  int n;
+  std::cin>>n;
+  for(int i=1;i<=n;i++)
+  {
+    for(int j=1;j<=i;j++)
+    {
+      std::cout<<i;
+      if(j+1<=i)
+        std::cout<<"*";
+    }
+    std::cout<<"\n";
+  }
+  for(;n>0;n--)
+  {
+    for(int j=1;j<=n;j++)
+    {
+      std::cout<<n;
+      if(j+1<=n)
+        std::cout<<"*";
+    }
+    std::cout<<"\n";
+  }
+  return 0;
+}
+```
+
+```cpp
+// Pattern IV
+#include <iostream>
+using namespace std;
+int main() 
+{
+    // Type your code here
+  int n,x;
+  std::cin>>n;
+  for(int i=1;i<=n;i++)
+  {
+    if(i%2!=0)
+      {
+        for(int j=1;j<=n-1;j++)
+          std::cout<<i;
+        std::cout<<i+1;
+      }
+    else
+    {
+      std::cout<<i+1;
+      for(int j=1;j<=n-1;j++)
+        std::cout<<i;
+    }
+    std::cout<<endl;
+  }
+
+    return 0;
+}
+```
+
+```cpp
+// Pattern V
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,x=0,space=0,k=1,number;
+  	std::cin>>n;
+    number = n;
+    for(int i=0;i<n;i++)
+    {
+        
+        
+        for(int j=1;j<=space;j++)
+            std::cout<<"-";
+            
+        for(int j=1;j<=n-i;j++)
+        {
+            x++;
+            std::cout<<x<<"*";
+        }
+        for(int j=1;j<=n-i;j++)
+        {
+            std::cout<<k+number*number;
+            if(j<n-i)
+                std::cout<<"*";
+            k++;
+        }
+        number--;
+      space = space+2;
+        std::cout<<"\n"; 
+    }
+    return 0;
+}
+```
