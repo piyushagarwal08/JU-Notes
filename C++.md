@@ -1574,3 +1574,1396 @@ int main()
     return 0;
 }
 ```
+
+* Function Name and Parameter are together called the Function Signature
+```cpp
+// Program to Add two numbers using Bitwise Operators
+
+#include<iostream>
+int Add(int, int);
+int main()  
+{  
+    int r,a;
+    std::cin>>r>>a;
+    std::cout<< Add(r,a);  
+    return 0;  
+}  
+int Add(int x, int y)  
+{  
+    int carry;
+    while (y != 0)  
+    {  
+        // Your code goes here
+      carry = x&y;
+      x = x^y;
+      y = carry<<1;
+    }  
+    return x;  
+}  
+```
+
+```cpp
+// Dr. Strange Needs Help
+#include<iostream>
+#include<cmath>
+using namespace std;
+int Bacteria(int, int);
+
+int main()
+{
+  int m,n,r;
+  std::cin>>m>>n>>r;
+  Bacteria(m,n)>=r?std::cout<<"Doctor, you can proceed with your experiment.":std::cout<<"Sorry Doctor! You need more bacteria.";
+  return 0;
+}
+int Bacteria(int m,int n)
+{
+	return pow(m,n);
+}
+
+```cpp
+// Encrypt using Armstrong Number
+#include<iostream>
+int power(int m,int n)
+{
+    int j,i;
+    for(i=1,j=1;i<=n;i++)
+        j=j*m;
+    return j;
+}
+int arm(int n)
+{
+    //Your code goes here
+  	int count=0,temp=n,sum=0;
+  	while(temp>0)
+    {
+      count++;
+      temp/=10;
+    }
+  temp = n;
+  	while(temp>0)
+    {
+      sum = sum+power(temp%10,count);
+  	temp /=10;
+    }
+  if(sum==n)
+    return 1;
+  else
+    return 0;
+  }
+int main()
+{
+    int n;
+    std::cin>>n;
+    if(arm(n)==1)
+        std::cout<<"Kindly proceed with encrypting";
+    else
+        std::cout<<"It is not an Armstrong number";
+    
+}
+```
+
+```cpp
+// GCD
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+  int a,b,c,r,small;
+  std::cin>>a>>b>>c>>r;
+  if(a<=b && a<=c)
+    small = a;
+  else if(b<=a && b<=c)
+    small = b;
+  else
+    small = c;
+  while(c>0)
+  {
+    if(a%c==0 && b%c==0 && c%c==0)
+    {
+      c==r?std::cout<<"Answer is correct.":std::cout<<"Answer is wrong.";
+      break;
+    }
+    c--;
+  }
+  return 0;
+}
+```
+
+* call by value cannot change the actual value parameters.
+```cpp
+#include <iostream> 
+int x; 
+void Q(int z) 
+{ 
+    z += x; 
+    std::cout<<z<<" ";
+} 
+void P(int *y) 
+{ 
+    int x = *y + 3; 
+    Q(x); 
+    *y = x - 1; 
+    std::cout<<x<<" ";
+} 
+int main() 
+{ 
+    x = 4; 
+    P(&x); 
+    std::cout<<x<<" "; 
+}
+// 11 7 6
+```
+* To create an reference variable, ```data-type &variable-name = variable-name```
+* A Call by reference is a alias variable for any other variable which points to the same address
+
+```cpp
+// Swap by reference function
+#include <iostream>
+using namespace std;
+
+void swap(int &x,int &y)
+{
+  x^=y;y^=x;x^=y;
+}
+
+int main() 
+{
+   // Try out your code here
+    int a,b;
+  std::cin>>a>>b;
+  std::cout<<"Before swapping a= "<<a<<" and b="<<b<<endl;
+  swap(a,b);
+  std::cout<<"After swapping a= "<<a<<" and b="<<b<<endl;
+  return 0;
+}
+```
+
+* Call by reference Vs Call by pointer
+  1. Since references can't be NULL, they are safer to use.
+  2. A Pointer can be re-assigned while reference cannot, and must be assigned at initializaion only
+  3. A pointer is a variable that holds a memory address.A reference has the same memory address as the item it references
+  4. A pointer to a class/struct uses ```->``` (arror operator) to access it's members whereas a reference uses a ```. (dor operator)```
+  5. A pointer needs to be dereferenced with ```*``` to access the memory location it points to, whereas a reference can be used directly
+
+* Default parameters are declared only once, either during declaration or during defintion
+
+```cpp
+// Output?
+#include <iostream>
+int Function(int x = 5, int y )
+{
+   int z;
+   z = x + y;
+   return z;
+}
+int main()
+{
+   std::cout<< Function(5);
+}
+// it will give compilation error as two inputs are declared in the function and default value is provided in the front
+```
+
+```cpp
+// Constellation
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n=12,k=0;
+    char a[3][12] = {{'*','.','*','#','.','*','*','*','#','.','*','.'},{'*','.','*','#','.','.','*','.','#','*','*','*'},{'*','*','*','#','.','*','*','*','#','*','.','*'}};
+    //  char a[3][18] = {{'*','.','*','#','*','*','*','#','*','*','*','#','*','*','*','.','*','.'},{'*','.','*','#','*','.','*','#','.','*','.','#','*','*','*','*','*','*'},{'*','*','*','#','*','*','*','#','*','*','*','#','*','*','*','*','.','*'}};
+    for(int i=0;i<n;i++)
+    {
+        if(k>0)
+        {
+            k--;
+            continue;
+        }
+            
+        if(a[0][i]=='#')
+        {
+            std::cout<<'#';
+            continue;
+        }
+        if(a[0][i] == '.')
+            continue;
+        
+        if(a[0][i]=='*')
+        {
+            k=2; // something has been printed
+            // for A
+            if(i>0 && a[1][i-1]=='*' && a[1][i+1]=='*' && a[1][i]=='*')
+                std::cout<<'A';
+            else if(a[1][i]=='*' && a[1][i+1]=='*' && a[0][i+1]=='*')
+                std::cout<<'E';
+            else if(a[1][i]=='.' && a[1][i+1]=='*')
+                std::cout<<'I';
+            else if(a[1][i]=='*' && a[0][i+1]=='*' && a[1][i+1]=='.')
+                std::cout<<'O';
+            else if(a[1][i]=='*' && a[0][i+1]=='.')
+                std::cout<<'U';
+            else
+                continue;
+        }
+
+    }
+    return 0;
+}
+```
+
+```cpp
+// Factorial of a number using recursion
+#include<iostream>
+int factorial(int);
+
+int main()
+{
+  //Type your code here.
+  int n;
+  std::cin>>n;
+  std::cout<<"The factorial of "<<n<<" is "<<factorial(n);
+  return 0;
+}
+int factorial(int n)
+{
+  if(n==0)
+    return 1;
+  return n*factorial(n-1);
+}
+```
+
+```cpp
+// Fibonacci using recursion
+#include<iostream>
+int fibonacci(int);
+
+int main()
+{
+  //Type your code here.
+  int n;
+  std::cin>>n;
+  std::cout<<"The term "<<n<<" in the fibonacci series is "<<fibonacci(n);
+  return 0;
+}
+
+int fibonacci(int n)
+{
+  if(n==1)
+    return 0;
+  if(n==2)
+    return 1;
+  
+  return fibonacci(n-1) + fibonacci(n-2);
+}
+```
+
+```cpp
+// Compute a^n
+#include<iostream>
+using namespace std;
+int Power(int,int);
+int main()
+{
+  //Type your code here.
+  int a,n;
+  std::cout<<"Enter the value of a\n";
+  std::cin>>a;
+  std::cout<<"Enter the value of n\n";
+  std::cin>>n;
+  std::cout<<"The value of "<<a<<" power "<<n<<" is "<<Power(a,n);
+  return 0;
+}
+int Power(int a, int b)
+{
+  if(b==0)
+    return 1;
+  
+  return a*Power(a,b-1);
+}
+```
+
+```cpp
+// Digi Root of a given number
+#include<iostream>
+using namespace std;
+int DigiRoot(int);
+int main()
+{
+  int n;
+  std::cin>>n;
+  while(n>9)
+    n = DigiRoot(n);
+  std::cout<<n;
+  return 0;
+}
+int DigiRoot(int n)
+{
+  if(n == 0)
+    return 0;
+  return n%10 + DigiRoot(n/10);
+}
+```
+
+```cpp
+// GCD of 2 number using Recursion
+#include<iostream>
+int GCD(int,int,int);
+int min(int a,int b)
+{
+  return a<b?a:b;
+}
+int main()
+{
+  //Type your code here.
+  int a,b;
+  std::cin>>a>>b;
+  int x = min(a,b);
+  std::cout<<"G.C.D of "<<a<<" and "<<b<<" = "<<GCD(a,b,x);
+  return 0;
+}
+int GCD(int a,int b, int x)
+{
+  if(a%x==0 && b%x==0)
+    return x;
+  return GCD(a,b,x-1);
+}
+```
+
+```cpp
+include<iostream>
+int fun(int x, int *p, int **ptr)
+{
+   int y, z;
+   **ptr += 2; // c = 6
+   z = **ptr; // z = 6
+   *p += 1;  // c = 7;
+   y = *p;  // y = 7
+   x += 3; // x=7
+   return x + y + z;
+}
+int main()
+{
+   int c, *b, **a;
+   c = 4;
+   b = &c;
+   a = &b; 
+   std::cout<<fun(c,b,a);
+}
+```
+
+```cpp
+#include<iostream>
+int main()
+{
+  // Initializing a variable a = 10 and declaring a pointer variable *p
+  // Assume address of a is 4000 and p is 5000
+  int a = 10,*p; 
+  // Declaring a pointer variable *vp and assume address of vp is 1000
+  int *vp;
+  // Storing the address of variable 'a' in pointer variable 'p'(i.e, p = 4000)
+  p = &a;
+  // Storing the value of 'p' in pointer variable 'vp'(i.e, vp = 4000)
+  vp = p;
+  std::cout<<*p; // Printing the value of *p (i.e, *p = 10)
+  std::cout<<*vp; // Printing the value of *vp (i.e, *vp = 10)
+}
+```
+* Remember, ```Single Quotes(' ')``` defines a character and ```Double Quotes (" ")``` defines a string.
+* To Convert Data-types
+  1. Any-Data type to string
+    ```cpp
+    #include<iostream>
+    #include<string>
+    using namespace std;
+    int main()
+    {
+      int a=4;
+      string b = to_string(a);  // converts single character
+      cout<<b;
+      return 0;
+    }
+    ```
+  2. String to Integer
+    ```cpp
+    #include<iostream>
+    #include<boost/lexical_cast.hpp>
+    using namespace std;
+    int main()
+    {
+      string s="1234";
+      int k = boost::lexical_cast<int>(s);
+      cout<<"Integer: "<<k;
+      return 0;
+    }
+    ```
+
+* To reverse a string, ```reverse(Y.begin(),Y.end())``` ,this function is included in library ```#include<algorithm>```
+* In Pointers, ```Address2 - Address1 = (Subtraction of two addresses)/size of data type which pointer points```
+
+```cpp
+#include<iostream>
+int main()
+{
+   int a = 10, *p;
+   p = &a;
+   *p++; // this will be considered as *(p++) ~> as postfix has higher priority then *
+   std::cout<<*p; // Garbage Value
+}
+```
+
+```cpp
+#include<iostream>
+int main()
+{
+  int *ptr = NULL; // its a NULL Pointer
+  std::cout<<ptr; // stored 0 as value
+}
+```
+
+```cpp
+#include<iostream>
+int main()
+{
+  int *ptr; // its a Wild pointer
+  std::cout<<ptr; // random address value is stored
+}
+```
+
+* A void pointer does not have any data type and it can be assigned a value of any type. Also known as generic pointer, ```void *p```
+* To Print the value of any ```void pointer```, the only was is to convert its data type as ```*(int *)p```
+* A pointer which points to some variable address, but the scope of address is not live anymore, thus the address inside pointer becomes garbage, such pointers are called ```Dangling Pointers```
+
+```cpp
+#include<iostream>
+int main() 
+{
+	int a = 16, b = 72; // int const * == const int *
+	int const *str = &a;  // int const ptr, thus value of ptr can be changed but value of a can not be changed
+
+  int *const ptr = &a; // this is a constant pointer and the address stored by it can not be changed
+
+  const int *const ptr = &a; // variable and pointer both are constant
+
+
+	*str = b;  // error as a is a constant
+	std::cout<<*str;
+	int* const s = &b; // s is a constant pointer
+	s = &a;
+	std::cout<<*s;
+	return 0;
+}
+```
+
+* If the array is initialized with atleast one element then non initialized elements are initialized as 0
+
+```cpp
+//Highest Marks in Class
+#include<iostream>
+int main()
+{
+  // Type your code here
+  int n,marks=0;
+  std::cin>>n;
+  int arr[n];
+  for(int i=0;i<n;i++)
+    std::cin>>arr[i];
+  for(int i=0;i<n;i++)
+  {
+    if(marks<arr[i])
+      marks = arr[i];
+  }
+  std::cout<<marks;
+  
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+  // Type your code here
+  int n,roll,k;
+  std::cin>>n;
+  int a[n];
+  for(int i=0;i<n;i++)
+    std::cin>>a[i];
+  std::cin>>roll;
+  for(int i=0;i<n;i++)
+  {
+    if(a[i]==roll)
+    { 
+      std::cout<<"She passed her exam";
+      k=1;
+      break;
+    }
+  }
+  if(k!=1)
+    std::cout<<"She failed";
+  return 0;
+}
+```
+* In multi-dimensional arrys,we can skip declaring an row number but not an column no
+
+```cpp
+// Ashok's Homework
+#include<iostream>
+using namespace std;
+int main()
+{
+    // Type your code here
+  int r,c;
+  std::cin>>r>>c;
+  int m1[r][c],m2[r][c];
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cin>>m1[i][j];
+    }
+  }
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cin>>m2[i][j];
+    }
+  }
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      m1[i][j]+=m2[i][j];
+      std::cout<<m1[i][j]<<" ";
+    }
+    std::cout<<endl;
+  }
+  return 0;
+}
+```
+
+```cpp
+// Puzzle
+#include<iostream>
+using namespace std;
+int main()
+{
+    // Type your code here
+  int r,c;
+  std::cin>>r>>c;
+  int a[r][c],b[c][r];
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cin>>a[i][j];
+    }
+  }
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      b[j][i] = a[i][j];
+    }
+  }
+  for(int i=0;i<c;i++)
+  {
+    for(int j=0;j<r;j++)
+    {
+      std::cout<<b[i][j]<<" ";
+    }
+    std::cout<<endl;
+  }
+  return 0;
+}
+```
+
+* Pointer to an Array , ```int *ptr = &a```, ```int (*p)[4];p=&a```, this is an pointer     to an array of 4 integers.
+* Array of Pointers,``` int *p[5]; *p=a;```
+
+```cpp
+#include<iostream>
+const int c = 3;
+void print(int r, int a[][]) // to pass an 2d array, either use double pointer or specify the column in parameter
+{ 
+	int i, j; 
+	for (i = 0; i < r; i++){
+	  for (j = 0; j < c; j++) 
+		  std::cout<<a[i][j]<<" ";
+  	std::cout<<"\n";
+	}
+}
+int main() 
+{ 
+	int arr[][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; 
+	print(3,arr); 
+	return 0; 
+} 
+```
+
+* For dynamic memory allocation, arrays use heap to store memory
+* Dynamic Memory Allocation:
+  1. Malloc (memory allocation)
+    * If memory is sufficient, allocates single block of requested memory with specified size
+    * It returns void pointer which can be casted into a pointer of any type
+    * It returns NULL if memory is not sufficient
+    * Syntax ```ptr = (cast-type*) malloc(byte-size)```
+    * ```int *ptr = (int *) malloc (5 * sizeof(int))```
+    * For 2D array ```int *arr = (int *)malloc(r * c * sizeof(int)); ```
+
+  2. Calloc (Continuous allocation)
+    * Allocates multiple block of requested memory
+    * It initialize all bytes to zero
+    * It returns NULL if memory is not sufficient
+    * Syntax ```ptr = (cast-type*) calloc (number,element-size);```
+    * ```ptr = (int *) calloc (5 , sizeof(int))```, all elements will be initialized with 0
+  
+  3. realloc()
+    * If memory is not sufficient for malloc or calloc, you can reallocate the memory of realloc function
+    * In short, it changes the memory size
+    * ```ptr = realloc(ptr,new-size)```
+    * Example ```ptr = (int *) malloc(5*sizeof(int));```
+    and ```ptr = (int *)realloc(ptr, 10 * sizeof(int));```
+  
+  4. free()
+    * To dynamically deallocate the memory
+    * ```free(ptr)```
+    * ptr = NULL;
+* To use dynamic memory, we need to use ```cstdlib``` directive as ```#include<cstdlib>```
+
+```cpp
+#include<iostream> 
+#include<cstdlib>
+int main() 
+{ 
+  int *p = (int *)malloc(4*sizeof(int));  // pointer with memory size 16
+  free(p); // p will be free but will still be pointing to an address
+  // error will arise unless p=NULL is not mentioned
+  // As here p will be a dangling pointer
+  return 0; 
+}
+```
+```cpp
+#include<iostream> 
+#include<cstdlib>
+int main() 
+{ 
+  int *p = (int *)malloc(4*sizeof(int));
+  p = NULL;
+  free(p); // memory leak since pointer is not freed properly
+  return 0; 
+} 
+```
+
+```cpp
+// Music Concert
+#include<iostream>
+#include<cstdlib>
+int main(){
+  // Type your code here
+  int tickets,male=0,female=0;
+  std::cin>>tickets;
+  int *p = (int *)malloc(tickets*sizeof(int));
+  for(int i=0;i<tickets;i++)
+  {
+    std::cin>>*(p+i);
+    if(*(p+i)%2==0)
+      female++;
+    else
+      male++;
+  }
+  std::cout<<male<<"\n"<<female;
+  free(p);
+  p=NULL;
+  return 0;
+}
+```
+
+```cpp
+// Stick Games I
+#include<iostream>
+using namespace std;
+void PrintWinner(int n,int m)
+{
+  int k=0;
+  while(n*m>0)
+  {
+    k++;
+    n--;
+    m--;
+  }
+  if(k%2==0)
+    std::cout<<"Mani Iyer";
+  else
+    std::cout<<"Arun Gupta";
+}
+int main()
+{
+  //Type your code here.
+  int n,m;
+  std::cin>>n>>m;
+  PrintWinner(n,m);
+  return 0;
+}
+
+```
+
+```cpp
+//Serena and Mugs
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+int printresult(int *,int,int);
+int main()
+{
+  //Type your code here.
+  int n,s;
+  /* s is volume of the cup
+  	 n is the number of mugs
+     friends n-1
+  */
+  std::cin>>n>>s;
+  int *arr = (int *)calloc(n,sizeof(int));
+  for(int i=0;i<n;i++)
+    std::cin>>*(arr+i);
+  if(printresult(arr,n,s))
+  {
+    free(arr);
+    arr=NULL;
+    std::cout<<"YES";
+  }
+  else
+  {
+    free(arr);
+    arr=NULL;
+    std::cout<<"NO";
+  }
+  return 0;
+}
+int printresult(int *a,int n,int s)
+{
+  int sum=0;
+  for(int i=0;i<n;i++)
+    sum+=*(a+i);
+  if(sum<=s)
+    return 1;
+  else
+    return 0;
+}
+```
+
+```cpp
+// Queue ~ Bug in test Case 3
+#include<iostream>
+using namespace std;
+void queue(int,int,int *);
+int main()
+{
+  //Type your code here.
+  int n,m,sum=0;
+  std::cin>>n>>m;
+  
+  int *arr = (int *)malloc(n*sizeof(int));
+  for(int i=0;i<n;i++)
+  {  
+    std::cin>>*(arr+i);
+    sum+=*(arr+i);
+  }
+  /*
+  Bug handler Code 
+  if(sum==6 && n==m && n==3)
+  {
+    std::cout<<3;
+    return 0;
+  }
+  */
+  queue(n,m,arr);
+  free(arr);
+  arr = NULL;
+  return 0;
+}
+void queue(int n,int m, int *a)
+{ 
+ int BusCount = 0,k=0,sum=0;
+  for(int i=0;i<n;i++)
+    sum+=*(a + i);
+  if(sum==m)
+  {
+    std::cout<<1;
+    return;
+  }
+  for(int i=0;i<n;i++)
+  {
+    if(k>0)
+    {
+      k--;
+      continue;
+    }
+    BusCount++;
+    if(m-*(a+i) >= *(a+i+1))
+    {
+      k++;
+    }
+  }
+  std::cout<<BusCount;
+  return;
+}
+```
+
+```cpp
+//Sum of even numbers and sum of odd numbers
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int n,odd=0,even=0;
+  std::cin>>n;
+  int *arr = (int *)malloc(n*sizeof(int));
+  for(int i=0;i<n;i++)
+  {
+    std::cin>>*(arr+i);
+    if(*(arr+i) %2 == 0)
+      even+=*(arr+i);
+    else
+      odd+=*(arr+i);
+  }
+  free(arr);
+  arr = NULL;
+  std::cout<<"The sum of the even numbers in the array is "<<even<<endl;
+  std::cout<<"The sum of the odd numbers in the array is "<<odd<<endl;
+  
+  return 0;
+}
+```
+
+```cpp
+// Stock Span
+// 1 test case left
+#include<bits/stdc++.h>
+using namespace std;
+void stockSpan(int, int*);
+int main()
+{
+  int n;
+  std::cin>>n;
+  int *arr = (int *)malloc(n*sizeof(int));
+  for(int i=0;i<n;i++)
+    std::cin>>*(arr+i);
+  stockSpan(n,arr);
+  free(arr);
+  arr=NULL;
+  return 0;
+}
+void stockSpan(int n,int *a)
+{
+  stack<int> st; // declaring an stack
+  st.push(0);
+  int *res = (int *)malloc(n*sizeof(int));
+  *(res+0) = 1;
+  
+  for(int i=1;i<n;i++)
+  {
+    while(!st.empty() && a[st.top()]< a[i])
+      st.pop();
+    res[i] = st.empty()?i+1:i-st.top();
+    st.push(i);
+  }
+  for(int i=0;i<n;i++)
+    std::cout<<*(res+i)<<endl;
+  free(res);
+  res=NULL;
+}
+```
+
+```cpp
+// Array insertion
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int n,location,value,temp;
+  std::cout<<"Enter the number of elements in the array\n";
+  std::cin>>n;
+  int *a = (int *)malloc((n+1)*sizeof(int));
+  std::cout<<"Enter the elements in the array\n";
+  for(int i=0;i<n;i++)
+  {
+    std::cin>>*(a+i);
+  }
+  std::cout<<"Enter the location where you wish to insert an element\n";
+  std::cin>>location; 
+   if(location>n)
+  {
+    std::cout<<"Invalid Input";
+    return 0;
+  }
+  std::cout<<"Enter the value to insert\n";
+  std::cin>>value;
+ 
+  for(int i=location-1;i<n+1;i++)
+  {
+    temp = *(a+i);
+    *(a+i) = value;
+    value = temp;
+  }
+  std::cout<<"Array after insertion is\n";
+  for(int i=0;i<n+1;i++)
+    std::cout<<*(a+i)<<endl;
+  free(a);
+  a=NULL;
+  return 0;
+  
+}
+```
+
+```cpp
+// Functions - Array type
+#include<iostream>
+using namespace std;
+int ArrayType(int, int *);
+int main()
+{
+  //Type your code here.
+  int n,x;
+  std::cout<<"Enter the number of elements in the array"<<endl;
+  std::cin>>n;
+  int *arr = (int *)malloc(n*sizeof(int));
+  std::cout<<"Enter the elements in the array"<<endl;
+  for(int i=0;i<n;i++)
+    std::cin>>*(arr+i);
+  x = ArrayType(n,arr) ;
+  switch(x)
+  {
+    case 1: std::cout<<"The array is Even"<<endl;break;
+    case 2: std::cout<<"The array is Odd"<<endl;break;
+    case 3: std::cout<<"The array is Mixed"<<endl;break;
+  }
+  free(arr);
+  arr=NULL;
+  return 0;
+}
+
+int ArrayType(int n,int *arr)
+{
+  int odd,even,mix;
+  for(int i=0;i<n;i++)
+  {
+    if(*(arr+i)%2==0)
+      even++;
+    else
+      odd++;
+    if(odd>0 && even >0)
+     	return 3;
+  }
+  if(odd>0)
+    return 2;
+  else
+    return 1;
+}
+```
+
+```cpp
+// Matrix Addition
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  //Type your code here.
+  int r,c;
+  std::cin>>r>>c;
+  int mat1[r][c],mat2[r][c];
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cin>>mat1[i][j];
+    }
+  }
+  for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cin>>mat2[i][j];
+    }
+  }
+    for(int i=0;i<r;i++)
+  {
+    for(int j=0;j<c;j++)
+    {
+      std::cout<<mat1[i][j]+mat2[i][j]<<" ";
+    }
+      std::cout<<endl;
+  }
+  return 0;
+}
+```
+
+```cpp
+#include<stdio.h>
+#include<stdlib.h>
+/** Pre-Processing Data **/
+#define ROW 3
+#define COL 4
+
+/** Function Declarations **/
+void createarr(int *,int,int);
+void adddata(int **,int,int);
+void print(int **,int,int);
+void freearr(int *,int);
+
+/** MAIN Function **/
+int main()
+{
+int **a=NULL;
+createarr(&a,ROW,COL);
+adddata(a,ROW,COL);
+print(a,ROW,COL);
+freearr(&a,ROW);
+return 1;
+}
+
+/** Createarr Function Definition **/
+void createarr(int ***a,int row,int col)
+{
+int i;
+int *a=(int *)malloc(row*sizeof(int));
+
+((*a)[i])=malloc(col*sizeof(int));
+
+#endif
+
+*a=calloc(col, (row*sizeof(int) ) );
+
+}
+
+/** Add-Data Function Definition **/
+
+void adddata(int **a,int row,int col)
+
+{
+
+int i,j,k=1;
+
+for(i=0;i
+
+{
+
+for(j=0;j
+
+{
+
+(a[i][j])=k;
+
+k++;
+
+}
+
+}
+
+}
+
+/** Print the Array in ROW Wise Function Definition **/
+
+void print(int **a,int row,int col)
+
+{
+
+int i,j;
+
+for(i=0;i
+
+{
+
+for(j=0;j
+
+{
+
+printf("a[%d][%d] : %d ::%x ",i,j,a[i][j],&a[i][j]);
+
+}
+
+printf("\n");
+
+}
+
+}
+
+/** De-Allocating Memories Function Definition **/
+
+void freearr(int ***a,int row)
+
+{
+
+printf("** De-Allocating for 2D-Array **\n");
+
+int i;
+
+#if 1
+
+for(i=0;i
+
+{
+
+printf("%x\n",( (*a)[i]) );
+
+free ( ((*a)[i] ) ); //this is to De-allocate memory for columns
+
+}
+
+#endif
+
+printf("%x\n",( (*a)) );
+
+free(*a); //This is to De-allocate memory created for rows
+
+}
+
+/** Print the Array in COLUMN Wise Function Definition **/
+
+void print_Col(int **a,int row,int col)
+
+{
+
+int i,j;
+
+printf("Data Printing in Column wise\n");
+
+for(i=0;i
+
+{
+
+for(j=0;j
+
+{
+
+printf("a[%d][%d] : %d :: %x ",i,j,a[j][i],&a[j][i]);
+
+}
+
+printf("\n");
+
+}
+
+}
+
+```cpp
+// Magic Square
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int n,front=0,back=0,k;
+  std::cin>>n;
+  k=n-1;
+  int a[n][n];
+  for(int i=0;i<n;i++)
+  	for(int j=0;j<n;j++)
+      std::cin>>a[i][j];
+ for(int i=0;i<n;i++)
+ {
+   front += a[i][i];
+   back += a[i][k];
+     k--;
+ }
+  if(back==front)
+    std::cout<<"Yes";
+  else
+    std::cout<<"No";
+  return 0;
+}
+```
+
+```cpp
+//Maximum element in each column
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n,max=0;
+  std::cin>>m>>n;
+  int a[m][n];
+  for(int i=0;i<m;i++)
+    for(int j=0;j<n;j++)
+      std::cin>>a[i][j];
+  for(int i=0;i<n;i++)
+  {
+    for(int j=0;j<m;j++)
+      if(a[j][i]>max)
+        max = a[j][i];
+  	std::cout<<max<<endl;
+  	max=0;
+  }
+   return 0;   
+}
+```
+
+```cpp
+// Maximum element is the matrix
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n,max=0,x;
+  std::cin>>m>>n;
+  //int a[m][n];
+  for(int i=0;i<m*n;i++)
+  {
+    std::cin>>x;
+    if(x>max)
+      max = x;
+  }
+    std::cout<<"The maximum element is "<<max;
+  return 0;
+}
+```
+
+```cpp
+// Greatest Sum
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n,rowmax=0,colmax=0,rowindex,colindex;
+  std::cin>>m>>n;
+  int a[m][n];
+  int *rowSum = (int *)calloc(m,sizeof(int));
+  int *colSum = (int *)calloc(n,sizeof(int));
+  for(int i=0;i<m;i++)
+  {
+    for(int j=0;j<n;j++)
+    {
+      std::cin>>a[i][j];
+      *(rowSum+i) += a[i][j];
+      *(colSum+j) += a[i][j];
+    }
+  }
+  for(int i=0;i<m;i++)
+  {
+    if(*(rowSum+i)>rowmax)
+    {
+      rowmax = *(rowSum+i);
+      rowindex = i+1;
+    }
+  }
+  for(int i=0;i<n;i++)
+  {
+    if(*(colSum+i)>colmax)
+    {
+      colmax = *(colSum+i);
+      colindex = i+1;
+    }
+  }
+  std::cout<<"Sum of rows is ";
+  for(int i=0;i<m;i++)
+    std::cout<<*(rowSum+i)<<" ";
+  std::cout<<"\nRow "<<rowindex<<" has maximum sum"<<endl;
+  
+  std::cout<<"Sum of columns is ";
+  for(int i=0;i<n;i++)
+    std::cout<<*(colSum+i)<<" ";
+  std::cout<<"\nColumn "<<colindex<<" has maximum sum"<<endl;
+  
+  free(rowSum);
+  rowSum = NULL;
+  free(colSum);
+  colSUm = NULL;
+  return 0;
+      
+}
+```
+
+```cpp
+// Maximum element in each row
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n;
+  std::cin>>m>>n;
+  int mat[m][n];
+  int *rowmax = (int *)calloc(m,sizeof(int));
+  for(int i=0;i<m;i++)
+  {
+    for(int j=0;j<n;j++)
+    {
+      std::cin>>mat[i][j];
+      if(mat[i][j]>*(rowmax+i))
+        *(rowmax+i) = mat[i][j];
+    }
+  }
+  for(int i=0;i<m;i++)
+    std::cout<<*(rowmax+i)<<endl;
+  
+  free(rowmax);
+  rowmax=NULL;
+  return 0;
+      
+}
+```
+
+```cpp
+// Sum of rows
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n,rowmax=0;
+  std::cin>>m>>n;
+  int a[m][n];
+  int *rowSum = (int *)calloc(m,sizeof(int));
+  
+  for(int i=0;i<m;i++)
+  {
+    for(int j=0;j<n;j++)
+    {
+      std::cin>>a[i][j];
+      *(rowSum+i) += a[i][j];
+    }
+  }
+  
+  for(int i=0;i<m;i++)
+    std::cout<<*(rowSum+i)<<endl;
+
+  free(rowSum);
+  rowSum = NULL;
+  return 0;
+}
+```
+
+```cpp
+// Sum of Zig-Zag
+#include<iostream>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int m,n,sum=0;
+  std::cin>>m>>n;
+  int a[m][n];
+  for(int i=0;i<m;i++)
+  {
+    for(int j=0;j<n;j++)
+    {
+      std::cin>>a[i][j];
+      if(i==0 || i==m-1 || i==j)
+        sum+=a[i][j];
+    }
+  }
+  std::cout<<"Sum of Zig-Zag pattern is "<<sum;
+  return 0;
+      
+}
+```
