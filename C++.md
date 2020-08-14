@@ -39,6 +39,7 @@ using namespace std; // used to declare string datatype
 int main()
 {
     string x;
+    // cin reads only words before space
     getline(cin,x); // takes a complete line as input
     std::cout<<x;
 }
@@ -146,7 +147,7 @@ int main()
         * Default storage class
         * Lifetime: inside the block
         * Default value: garbage value
-        * Example: int var; or autp int var;
+        * Example: int var; or auto int var;
     2. ```register```:
         * stored in CPU registers to allow fast access
         * Lifetime: inside the block
@@ -2443,6 +2444,12 @@ int main()
 
 ```cpp
 // Stock Span
+/* 
+for first stock value will be always 1
+for next N stocks, value will be current day- days of stock value less then current
+To solve using stack, store the current stock value in stack and compare from it
+*/
+
 // 1 test case left
 #include<bits/stdc++.h>
 using namespace std;
@@ -2965,5 +2972,996 @@ int main()
   std::cout<<"Sum of Zig-Zag pattern is "<<sum;
   return 0;
       
+}
+```
+
+```cpp
+// Help Kiara in reversing a string
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main()
+{
+  //Your code goes here    
+  string str;
+  getline(cin,str);
+  reverse(str.begin(),str.end());
+  
+std::cout<<str;
+}
+```
+
+# String
+* To make string variable ```string variable-name="hello world"``` or ```string variable-name ("hello world")```
+* To copy a string ```string string-variable(string-variable-to-copy)```
+* To copy just a part ```string s2(s1,starting-index,no-of-char)```
+* ```string s(4,'A') ~> "AAAA"```
+* ```string s(5,97) ~> aaaaa```
+* to get starting index of string ```s.begin()```
+* To append a character in string ```str-variable.push_back('character')```
+* To remove a character in string from end ```str-variable.pop_back()```
+* ```string-variable.front() = 'character'```, this will replace the charcter at 0 index
+* ```string-variable.back() = 'character'```, this will replace the charcter at last index
+* To change a particular index character ```str-variable.at(index-position) = 'charcater'```
+* To find the length of string ```str.size()``` or ```str.length()```
+* To resize the string to some length ```str-variable.resize(last-index)```
+* To resize the string with new character ```str.resize(new-size,character-to-copy)``` , ```"hello".resize(6,'+') ~> hello+```
+* To check if string is empty ```str.empty()```
+* To know the implicitly allocated storage to string variable ```str.capacity()```
+* To find the max size ```str.max_size()```, a very huge value
+* To shring the capacity of string to only required minimum ```str.shrink_to_fit()```
+* ```str.clear()``` , will empty the string variable to null character only
+* To iterate a string, 
+  ```cpp
+  for(std::string::iterator i=str.begin();i<str.end();i++)
+  {
+    std::cout<<*i<<'\n;
+  }
+  ```
+* To iterate in reverse order
+```cpp
+for(std::string::reverse_iterator i=str.rbegin();i<str.rend();i++)
+  std::cout<<*i<<"\n";
+  ```
+
+```cpp
+// Reverse your friend's name
+#include<iostream>
+#include<string>
+using namespace std;
+int main() 
+{ 
+//Type your code here
+  string name;
+  getline(cin,name);
+  for(string::reverse_iterator i=name.rbegin();i<name.rend();i++)
+    std::cout<<*i;
+  return 0;
+}
+```
+* To assign the content of one string to another string, we can use the ```.assign``` function as ```str1.assign(str2)```
+* ```str1.assign(str2,starting-index,number of characters)``` assign specific part of str2 to str1
+* ```str1.assign("FOCUS",2)``` assign first to characters
+* ```str1.assign(4,'*')``` assign 4 '*' characters to str1
+* ```str1.insert(no-of-characters,str2)```
+* To remove a character from string ```str.erase(index,no-of-chars)```
+* to replace ```str.replace(replace-string-start,replace-string-end,string-to-take-replace-characters)```
+* To swap 2 string values ```str.swap(str1)```
+
+```cpp
+#include <iostream>
+#include<string>
+int main() {
+  std::string str1("You ");
+  std::string str2("are ");
+  std::string str3("all ");
+  std::string str4("hardworking");
+  str1+=str2; // You are 
+  str1.append(str3); // You are all 
+  str1.assign(str4,4,7); // working
+  str1.insert(6,str3,1,4); // workinall g
+  std::cout<<str1;
+}
+```
+* to copy characters from str1 to str2 ```str1.copy(str2,no-of-characters,starting-index)```
+* to check if string s1 is present in string s2, ```found = s1.find(s2)``` where found will contain the starting index of s2 in s1
+* if string is not found then an garbage value is return that can be check as ```if(found!=std::string::npos)```
+
+```cpp
+#include <iostream>    
+#include <string>     
+int main ()
+{
+ std::string str1 ("There are two bobbins in this haystack with needles.");
+ std::string str2 ("bobbins");
+ std::size_t found = str1.find(str2); // 14 ~> size_t is also some data type
+ if (found!=std::string::npos) // if string is not found
+  std::cout << "first 'bobbins' found at: " << found << '\n';
+ str1.replace(str1.find(str2),str2.length(),"thread");
+ std::cout << str1 << '\n';
+ /*
+  first 'bobbins' found at: 14
+  There are two threads in this haystack with needles.
+  */
+}
+```
+
+```cpp
+//Help Tia to Extract decimals
+#include<iostream>
+#include<string>
+using namespace std;
+int main() 
+{ 
+	std::string fnum;
+  int length;
+	//Type your code here
+  getline(cin,fnum);
+  size_t dot = fnum.find('.');
+  if(dot!=string::npos)
+  {
+  	length = fnum.length();
+  	string s2(fnum,dot+1,length-dot);
+  	std::cout<<"Floating part is : "<<s2;
+  }
+  else
+    std::cout<<"Floating part is : ";
+  return 0;
+}
+```
+
+```cpp
+#include<iostream>
+int main() 
+{
+	char str[4] = "hello folks";
+	str[1] = 'a'; // changing the value at index '1' as 'a'.
+	std::cout<<str; // "hallo folks"
+	return 0;
+}
+```
+
+```cpp
+// Nursery Admission
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string s;
+  getline(cin,s);
+  std::cout<<"The number of letters in the name is "<<s.length();
+  return 0;
+}
+```
+
+```cpp
+// Special School
+#include<iostream>
+#include<algorithm>
+#include<string>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string a,b;
+  getline(cin,a);
+  getline(cin,b);
+  reverse(a.begin(),a.end());
+  
+  if(a==b)
+    std::cout<<"It is correct";
+  else
+    std::cout<<"It is wrong";
+  return 0;
+}
+```
+
+```cpp
+//Remove character except alphabets
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string s;
+  getline(cin,s);
+  for(string::iterator i=s.begin();i<s.end();i++)
+  {
+    if(isalpha(*i))
+      std::cout<<*i;
+  }
+  return 0;
+}
+```
+
+```cpp
+//WORDAKSHRI
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string s;
+  char a='|';
+  while(true)
+  {
+    getline(cin,s);
+    if(s=="####")
+      break;
+    if(a=='|')
+    {
+      std::cout<<s<<endl;
+      a = s.at(s.length()-1);
+    }
+    else if (a==s.at(0))
+    {
+      std::cout<<s<<endl;
+      a = s.at(s.length()-1);
+    }
+    else
+      break;
+  }
+  return 0;
+}
+```
+
+```cpp
+//Counting
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int vowel=0,consonants=0,space=0,digit=0,symbol=0;
+  string s;
+  getline(cin,s);
+  for(string::iterator i=s.begin();i<s.end();i++)
+  {
+   	if(tolower(*i)=='a' || tolower(*i)=='e' || tolower(*i)=='e' || tolower(*i)=='i' || tolower(*i)=='o' || tolower(*i)=='u')
+      vowel++;
+    else if(tolower(*i) >=97 && tolower(*i) <=122)
+      consonants++;
+    else if(isspace(*i))
+      space++;
+    else if(isdigit(*i))
+      digit++;
+    //else if(*i=='!' || *i =='@' || *i == '#' || *i=='$' || *i == '%' || *i=='^' || *i=='&' || *i=='*' || *i=='(' || *i==')' || *i == '.' || *i==','|| *i=='\\' || *i == '/' || *i=='?' || *i=='<' || *i=='>')
+    else  
+    	symbol++;
+    //else
+      //consonants++;
+ 
+  }
+  std::cout<<"Vowels:"<<vowel<<endl;
+  std::cout<<"Consonants:"<<consonants<<endl;
+  std::cout<<"White Spaces:"<<space<<endl;
+  std::cout<<"Digits:"<<digit<<endl;
+  std::cout<<"Symbols:"<<symbol<<endl;
+  
+  return 0;
+}
+```
+
+```cpp
+// Remove
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  string s;
+  getline(cin,s);
+  while(true)
+  {
+    int found = s.find("the");
+    if(found!=string::npos)
+    	s.erase(found,4);
+    else
+      break;
+  }
+  std::cout<<s;
+  return 0;
+}
+```
+
+* ```strcpy(str1,str2)```
+* ```strcat(str2,str1)``` concatenates two strings to ```str2```
+* ```strncat(str2,str1,n)```  concatenate n characters to str2
+* To find the length of ```char array```, we can use ```strlen()```
+* ```strcmp(a1,a2)``` gives the ```ascii(character-different-of-str1) - ascii-value-of(character-different-of-str1)```
+* ```strcmp(a1,a2,4)``` compare first 4 characters of str1 & str2 and return 0 if true
+* ```char *p = strchr(str,ch)``` where ```char ch = 'r'``` here first position of 'r' in str string is saved in a pointer p
+* Similarly ```char *p = strrchr(str,ch)``` stores the last occurrence of character
+* ```int len = strspn(str,str1)``` to find sequence of similar characters from starting
+* ```int len = strcspn(str,str1)``` to find sequence of similar characters from end
+
+```cpp
+#include<iostream>
+#include<cstring>
+int main()
+{
+  char str1[] = "aeroplane";
+  char str2[] = "funa";
+  char *c ;
+  c = strpbrk(str1,str2); // check which char of str2 first matches with str1
+  // *c will point to the first character in str1 which is same in both string
+  if(c!=0)
+    std::cout<<"First match in str1 is:" <<*c;
+  else
+    std::cout<<"Character not found";
+  
+  return 0;
+}
+
+```cpp
+//Catchy caption
+#include <cstring>
+#include <iostream>
+using namespace std;
+int main()
+{
+   //Your code goes here
+  int n;
+  string s;
+  getline(cin,s);
+ for(string::iterator i=s.begin();i<s.end();i++)
+   if(isspace(*i))
+     n++;
+  if(n+1<=10)
+    std::cout<<"Caption eligible for the contest";
+  else
+    std::cout<<"Caption not eligible for the contest";
+  
+  return 0;
+}
+```
+
+# Vector & Graphs
+* To insert value in a vector ```vector-name.push_back(value)```
+* To get the length of vector ```vector-name.size()```
+* To use ```for-each``` loop over vector
+```cpp
+for(auto data:v)
+  cout<<data<<" ";
+```
+
+```cpp
+#include<iostream>
+#include<vector> // defaultdict is used in python
+using namespace std;
+struct Edge
+{
+  int src;
+  int dest;
+};
+class Graph
+{
+  public:
+  vector<vector<int>>adjlist;
+  // Constructor of the class, a constructor has no data type
+  Graph(vector<Edge>&edges,int N)
+  {
+    adjlist.resize(N); // resize vector size to N no of vertex
+    for(auto edge:edges) //  for each loop in cpp
+    {
+      adjlist[edge.src].push_back(edge.dest);
+    }
+  }
+
+  void Display(int N)
+  {
+    for(int i=0;i<N;i++)
+    {
+      std::cout<<i<<"  ----->  ";
+      for(int v:adjlist[i])
+        cout<<v<<" ";
+
+  }
+};
+int main()
+{
+  vector<Edge>edges = {{0,1},{1,2},{2,0},{5,3},{2,1},{3,2},{4,5},{5,4}};
+  int N=6;
+  Graph graph(edges,N); // class object that will call constructor
+  graph.Display(N);
+}
+/* Output
+0  ----->  1 
+1  ----->  2 
+2  ----->  0 1 
+3  ----->  2 
+4  ----->  5 
+5  ----->  3 4 
+6  ----->  
+7  -----> 
+*/
+```
+
+* For Graphs with some weights
+
+```cpp
+#include<iostream>
+#include<vector> // defaultdict is used in python
+using namespace std;
+struct Edge
+{
+  int src;
+  int dest;
+  int weight;
+};
+class Graph
+{
+  public:
+  vector<vector<int>>adjlist;
+  // Constructor of the class, a constructor has no data type
+  Graph(vector<Edge>&edges,int N)
+  {
+    adjlist.resize(N); // resize vector size to N no of vertex
+    for(auto edge:edges) //  for each loop in cpp
+    {
+      adjlist[edge.src].push_back(edge.dest);
+    }
+  }
+
+  void Display(int N)
+  {
+    for(int i=0;i<N;i++)
+    {
+      std::cout<<i<<"  ----->  ";
+      for(int v:adjlist[i])
+        cout<<v<<" ";
+
+  }
+};
+int main()
+{
+  vector<Edge>edges = {{0,1},{1,2},{2,0},{5,3},{2,1},{3,2},{4,5},{5,4}};
+  int N=6;
+  Graph graph(edges,N); // class object that will call constructor
+  graph.Display(N);
+  return 0;
+}
+```
+* There are 2 way to traverse a graph / trace it:
+  1. BFS
+  2. DFS
+
+```cpp
+
+```cpp
+#include<iostream>
+#include<vector> // defaultdict is used in python
+#include<queue> // data structure available in STL
+using namespace std;
+struct Edge
+{
+  int src;
+  int dest;
+};
+class Graph
+{
+  public:
+  vector<vector<int>>adjlist;
+  // Constructor of the class, a constructor has no data type
+  Graph(vector<Edge>&edges,int N)
+  {
+    adjlist.resize(N); // resize vector size to N no of vertex
+    for(auto edge:edges) //  for each loop in cpp
+    {
+      adjlist[edge.src].push_back(edge.dest);
+    }
+  }
+
+  void Display(int N)
+  {
+    for(int i=0;i<N;i++)
+    {
+      std::cout<<i<<"  ----->  ";
+      for(int v:adjlist[i])
+        cout<<v<<" ";
+    }
+  }
+};
+
+void BFS(Graph graph,int N)
+{
+  //one node should be visited only once
+  vector<bool>visited(N,false); // store all values as False
+  int v=0; // starting index of graph
+  visited[v] = true;
+  queue<int>q; // a queue object is created
+  q.push(v);  // store initial values
+
+  while(q.empty())//check if queue is not empty
+  {
+    v = q.front(); // 0 stored in v
+    q.pop(); // 0 is removed from queue
+    cout<<v<<" ";
+    for(int u:graph.adjlist[v])
+    {
+      if(!visited[u])
+      {
+        visited[u] = true;
+        q.push(u);
+      }
+    }
+
+  }
+}
+
+int main()
+{
+  vector<Edge>edges = {{0,1},{1,2},{2,0},{5,3},{2,1},{3,2},{4,5},{5,4}};
+  int N=6;
+  Graph graph(edges,N); // class object that will call constructor
+  graph.Display(N);
+  return 0;
+}
+```
+
+* DFS
+```cpp
+#include<iostream>
+#include<vector> // defaultdict is used in python
+#include<stack> // data structure available in STL
+using namespace std;
+struct Edge
+{
+  int src;
+  int dest;
+};
+class Graph
+{
+  public:
+  vector<vector<int>>adjlist;
+  // Constructor of the class, a constructor has no data type
+  Graph(vector<Edge>&edges,int N)
+  {
+    adjlist.resize(N); // resize vector size to N no of vertex
+    for(auto edge:edges) //  for each loop in cpp
+    {
+      adjlist[edge.src].push_back(edge.dest);
+    }
+  }
+
+  void Display(int N)
+  {
+    for(int i=0;i<N;i++)
+    {
+      std::cout<<i<<"  ----->  ";
+      for(int v:adjlist[i])
+        cout<<v<<" ";
+    }
+  }
+};
+
+void DFS(Graph graph,int N)
+{
+  //one node should be visited only once
+  vector<bool>visited(N,false); // store all values as False
+  int v=0; // starting index of graph
+  visited[v] = true;
+  stack<int>q; // a stack object is created
+  q.push(v);  // store initial values
+
+  while(!q.empty())//check if stack is not empty
+  {
+    v = q.top(); // 0 stored in v
+    q.pop(); // 0 is removed from queue
+    cout<<v<<" ";
+    for(int u:graph.adjlist[v])
+    {
+      if(!visited[u])
+      {
+        visited[u] = true;
+        q.push(u);
+      }
+    }
+
+  }
+}
+
+int main()
+{
+  vector<Edge>edges = {{0,1},{1,2},{2,0},{5,3},{2,1},{3,2},{4,5},{5,4}};
+  int N=6;
+  Graph graph(edges,N); // class object that will call constructor
+  graph.Display(N);
+  DFS(graph,N);
+  return 0;
+}
+```
+
+* Arrival and Departure Time of Vertex in DFS
+```cpp
+// Complexitiy is m*n
+
+#include<iostream>
+#include<vector> // defaultdict is used in python
+#include<stack> // data structure available in STL
+using namespace std;
+struct Edge
+{
+  int src;
+  int dest;
+};
+class Graph
+{
+  public:
+  vector<vector<int>>adjlist;
+  // Constructor of the class, a constructor has no data type
+  Graph(vector<Edge>&edges,int N)
+  {
+    adjlist.resize(N); // resize vector size to N no of vertex
+    for(auto edge:edges) //  for each loop in cpp
+    {
+      adjlist[edge.src].push_back(edge.dest);
+    }
+  }
+
+  void Display(int N)
+  {
+    for(int i=0;i<N;i++)
+    {
+      std::cout<<i<<"  ----->  ";
+      for(int v:adjlist[i])
+        cout<<v<<" ";
+    }
+  }
+};
+
+void DFS(Graph &graph,int v,vector<bool>&visited,vector<int>&arrival,vector<int>&departure,int time)
+{
+  arrival[v] =++time;
+  visited[v] = true;
+
+  for(int i:graph.adjlist[v])
+  {
+    if(!visited[i])
+    {
+      DFS(graph,i,visited,arrival,departure,time)
+    }
+  }
+  departure[v] = ++time;
+}
+
+int main()
+{
+  vector<Edge>edges = {{0,1},{1,2},{2,0},{5,3},{2,1},{3,2},{4,5},{5,4}};
+  int N=6;
+  Graph graph(edges,N); // class object that will call constructor
+  vector<int>arrival(N);
+  vector<int>departure(N);
+  vector<bool>visited(N,false);
+  int time = -1;
+
+  for(int i=0;i<N;i++)
+  {
+    if(!visited[i])
+    {
+      DFS(graph,i,visited,arrival,departure,time);
+    }
+  }
+
+  for(int i=0;i<N;i++)
+    std::cout<<arrival[i]<<"  ";
+  return 0;
+}
+```
+
+```cpp
+// ladder snake game
+// minimum no of moves to win the game
+
+#include<iostream>
+#include<unordered_map>
+#include<vector>
+using namespace std;
+#define N 100
+
+struct Edge
+{
+  int src;
+  int dest;
+};
+
+void Solution(unordered_map<int,int>&ladder,unordered_map<int,int>&snake)
+{
+  vector<Edge>edges;
+
+  for(int i=0;i<N;i++)
+  {
+    for(int j=1;j<=6 && i+j<=N;j++)
+    {
+      int src=i;
+      int dest = (ladder[i+j]||snake[i+j])?(ladder[i+j]+snake[i+j]):(i+j);
+      Edge e={i,j};
+      edges.push_back(e);
+
+    }
+  }
+
+}
+
+int main()
+{
+  unordered_map<int,int>ladder,snak;
+  ladder[4] = 14;   snake[99] = 78;
+  ladder[9] = 31;   snake[95] = 75;
+  ladder[20] = 38;  snake[93] = 73;
+  ladder[28] = 84;  snake[87] = 24;
+  ladder[40] = 59;  snake[64] = 60;
+  ladder[51] = 67;  snake[62] = 19;
+  ladder[63] = 81;  snake[54] = 34;
+  ladder[71] = 99;  snake[17] = 7;
+
+  Solution(ladder,snake);
+}
+```
+
+```cpp
+// Problem 1 regex
+#include<iostream>
+#include<string>
+#include<regex>
+using namespace std;
+
+int main()
+{
+  string a,b;
+  std::cin>>a>>b;
+  regex c(b);
+  if(regex_match(a,c))
+    std::cout<<"Matched";
+  else
+    std::cout<<"Does not match";
+  return 0;
+}
+```
+
+```cpp
+//Problem 5
+void min_visible_bottles(int* arr, int n) 
+{ 
+    map<int, int> m; 
+    int ans = 0; 
+    for (int i = 0; i < n; i++) { 
+        m[arr[i]]++; 
+        ans = max(ans, m[arr[i]]); 
+    } 
+  
+    cout << "Minimum number of "
+         << "Visible Bottles are: "
+         << ans << endl; 
+} 
+```
+
+```py
+#problem 2
+from collections import Counter
+t = int(input())
+
+def permute(a,l,r):
+    if l==r:
+        result.append(a+k+a[::-1])
+    else:
+        for i in range(l,r+1):
+            a[l],a[i] = a[i][0],a[l][0]
+            permute(a,l+1,r)
+            a[l],a[i] = a[i][0],a[l][0]
+
+while(t!=0):
+    t = t-1
+    s_string = input()
+    if(len(s_string)<=1):
+        print(s_string)
+        continue
+    
+    store = Counter(s_string)
+    pallindrome = []
+    if(len(s_string)%2 == 0):
+        k = [""]
+    for key,value in store.items():
+        if store[key] == 1:
+            k = [key]
+        else:
+            s = [key]*(value//2)
+            pallindrome.extend(s)
+    
+    result = []
+    permute(pallindrome,0,len(pallindrome)-1)
+    if(len(result)==0):
+        print("Not a palindrome")
+        continue
+    answer = []
+
+    for word in result:
+        answer.append("".join(word))
+    answer = sorted(set(answer))
+    for i in answer:
+        if(len(i)!= len(s_string)):
+            print("Not a palindrome")
+        else:
+          print(i)
+```
+
+## Hashing
+
+```cpp
+// find a pair of value whose sum is equal to 10
+
+#include<iostream>
+#include<unordered_map>
+using namespace std;
+
+void FindPair(int *a,int n,int sum)
+{
+    unordered_map<int,int>map;
+    for(int i=0;i<n;i++)
+    {
+        if(map.find(sum-a[i])!= map.end())
+        {
+            cout<<"Pair Found at Index: "<<map[sum-a[i]]<<" "<<i<<endl;
+            break;
+        }
+        map[a[i]] = i;
+    }
+}
+
+int main()
+{
+    int a[] = {8,7,2,5,3,1};
+    int n = sizeof(a)/sizeof(a[0]);
+    int sum = 10;
+    FindPair(a,n,sum);
+}
+```
+
+```cpp
+#include<iostream>
+#include<unordered_set>
+using namespace std;
+int ZeroSum(int *a,int n)
+{
+    unordered_set<int>set;
+    set.insert(0);
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        sum+=a[i];
+        if(set.find(sum)!= set.end()) // complexity to search key is O(1)
+        {
+            return 1;
+        }
+        set.insert(sum);
+    }
+    return 0;
+}
+int main()
+{
+    int a[] = {4,2,-3,-1,0,4};
+    int n = sizeof(a)/sizeof(a[0]);
+    
+    ZeroSum(a,n);
+}
+``` 
+
+```cpp
+#include<iostream>
+#include<unordered_map>
+using namespace std;
+void ZeroSum(int *a,int n)
+{
+    unordered_multimap<int,int>map;
+    for(int i=0;i<n;i++)
+    {
+        if(map.find(a[i])!=map.end())
+        {
+            if(i-map[a[i]]<=k)
+                return 1;
+        }
+        map[a[i]] = i;
+        
+    }
+    return 0;
+}
+
+int main()
+{
+    int a[] = {4,2,-3,-1,0,4};
+    int n = sizeof(a)/sizeof(a[0]);
+    
+    ZeroSum(a,n);
+}
+```
+
+```cpp
+
+#include<iostream>
+#include<unordered_set>
+using namespace std;
+
+void FindSubArraySum(int *a,int n,int sum)
+{
+  int windowsum = 0;
+  int low=0,high=0;
+
+  for(low;low<n;lo++)
+  {
+    while(windowsum < sum && high < n)
+    {
+      windowsum += a[high];
+      high++;
+    }
+    if(windowsum == sum)
+    {
+      cout<<"Sub Array Found "<<low<<" "<<high-1;
+      return ;
+    }
+    windowsum -= a[low];
+  }
+}
+
+int main()
+{
+  int arr[] = {2,6,0,9,7,3,1,4,1,10};
+  int n = sizeof(arr)/sizeof(arr[0]);
+  int sum=15
+  FindSubArraySum(arr,n,sum);
+}
+```
+
+```cpp
+// Custom Sort in arr1 based on arr2
+#include<iostream>
+#include<algorithm>
+#include<unordered_map>
+
+using namespace std;
+
+void CustomSort(int *a,int *b,int m,int n)
+{
+  unordered_map<int,int>map;
+  for(int i=0;i<m;i++)
+  ++map[a[i]];
+
+  index = 0;
+  for(int i=0;i<n;i++)
+  {
+    while(map[b[i]])
+    {
+      a[index++] = b[i]
+      --map[b[i]];
+    }
+    // to delete a key from map
+    map.erase(b[i]);
+  }
+  int i=index;
+  for(auto it=map.begin();it!=map.end();++it)
+  {
+    while(it->second--)
+    {
+      a[index++] = it.first;
+    }
+
+  }
+  sort(a+i,a+index);
+  for(int i=0;i<m;i++)
+    std::cout<<*(a+i);
+}
+
+int main()
+{
+  int arr[] = {2,6,0,9,7,3,1,4,1,10};
+  int n = sizeof(arr)/sizeof(arr[0]);
+  int arr1[] = {3,5,7,2};
+  int m = sizeof(arr1)/sizeof(arr1[0]);
+  CustomSort(arr,arr1,n,m);
 }
 ```

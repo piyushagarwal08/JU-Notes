@@ -132,6 +132,7 @@
 ## Handling Text
 * To print date just use the functioon ```Now.ToString```
 * To print only Month And Year use ```Now.ToString('MMMM yyyy')```
+* ```Datetime.ParseExact(“12/05/2019”,“dd/MM/yyyy”,System.Globalization.CultureInfo.InvariantCulture)``` to convert a string to ```DateTime``` data type
 
 ## Table Activity
 * Read ```csv``` files by using activity ```Read CSV```
