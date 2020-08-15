@@ -3965,3 +3965,137 @@ int main()
   CustomSort(arr,arr1,n,m);
 }
 ```
+
+```cpp
+#include <iostream>
+int main() {
+  int value{ 48 };  // value = 48
+  int &ref{ value }; // &ref = value
+  std::cout<<ref<<std::endl;  // 48
+  std::cout<<value <<std::endl; // 48
+  std::cout<<&value <<std::endl;  //  address of value
+  std::cout<<&ref <<std::endl;  //  address of value
+}
+```
+
+```cpp
+#include <iostream>
+int main() {
+  int value1{ 5 };  // val1  = 5
+  int value2{ 6 }; // val2 = 6
+  int &ref{ value1 };   // &ref = val1
+  std::cout<<ref<<" "; // 5
+  ref = value2;   // val1 = ref = 6
+  std::cout<<ref<<" "; // 6
+  ref = value2;  // 6
+  std::cout<<ref<<" ";
+}
+```
+
+```cpp
+#include<iostream> 
+struct Point 
+{ 
+ int x, y, z; 
+}; 
+  
+int main() 
+{ 
+ struct Point p1 = {.y = 0,.x = 2, .z = 1}; // error
+ struct Point p1 = {.x = 0,.y = 2, .z = 1}; // correct
+ std::cout<< p1.x<< p1.y<< p1.z; 
+ return 0; 
+} 
+```
+
+```cpp
+// Student Data entry
+#include <iostream>
+#include<string>
+using namespace std;
+struct student
+{
+    string name;
+    int roll;
+    float marks;
+};
+int main() 
+{
+  struct student s1;
+  getline(cin,s1.name);
+  std::cin>>s1.roll>>s1.marks;
+  std::cout<<"\nStudent Details\n"<<"Name: "<<s1.name<<endl;
+  std::cout<<"Roll: "<<s1.roll<<endl;
+  std::cout<<"Marks: "<<s1.marks<<endl;
+  return 0;
+}
+```
+* Functions can also be declared inside structs
+
+```cpp
+// Complex Number Calculator
+#include <iostream>
+using namespace std;
+
+struct Complex
+{
+  int x;
+  int y;
+};
+Complex Addition(Complex c1,Complex c2)
+{
+  c1.x = c1.x+c2.x;
+  c1.y = c1.y+c2.y;
+  return c1;
+}
+Complex Subtract(Complex c1,Complex c2)
+{
+  Complex c3;
+  c3.x = c1.x-c2.x;
+  c3.y = c1.y-c2.y;
+  return c3;
+}
+Complex Multiple(Complex c1,Complex c2)
+{
+  Complex c3;
+  c3.x = c1.x*c2.x - c1.y*c2.y;
+  c3.y = c1.x*c2.y + c1.y*c2.x;
+  return c3;
+}
+
+int main() 
+{
+   // Try out your code here
+  int n;
+  Complex c1,c2;
+  std::cin>>n>>c1.x>>c1.y>>c2.x>>c2.y;
+  switch(n)
+  {
+    case 1:
+      c1 = Addition(c1,c2);
+      if(c1.y>0)
+      	std::cout<<c1.x<<"+"<<c1.y<<"i";
+      else
+        std::cout<<c1.x<<c1.y<<"i";
+      break;
+    case 2:
+      c1 = Subtract(c1,c2);
+      if(c1.y>0)
+      	std::cout<<c1.x<<"+"<<c1.y<<"i";
+      else
+        std::cout<<c1.x<<c1.y<<"i";
+      break;
+    case 3:
+      c1 = Multiple(c1,c2);
+      if(c1.y>0)
+      	std::cout<<c1.x<<"+"<<c1.y<<"i";
+      else
+        std::cout<<c1.x<<c1.y<<"i";
+      break;
+    default:
+      std::cout<<"Invalid choice";break;
+  }
+  return 0;
+}
+
+```
