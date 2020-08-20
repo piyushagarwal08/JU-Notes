@@ -1642,3 +1642,57 @@ Note:It is strongly recommended, for easy identification and understanding of th
         * Start in : path-to-the-directory-containing-file(without double quotes)
     9. In ```Conditions``` tab, uncheck the box with ```Start task only at AC Power```
     10. Click ok and close the scheduler, bot is scheduled successfully
+
+
+# Automation Hub
+* It ia collaborative tool for automation opportunity identification,pipeline management and process repository
+* Automation Hub is used by :
+    1. Employees with automation ideas ~> Business users need transparency on the automation program, on the one hand,and an easy way to contribute their ideas and expertise
+    2. The C-suite ~> The C-suite needs a single source of truth on the performance of the automation program, as well as reliable and easy to read information for the decision making process
+    3. Center of Excellence Leaders and their teams ~> Center of Excellence members need one place to store all the information, documentation and contribute to the automation ideas to turn them into reality.
+
+# Process Mining
+* UiPath Process Mining is a Process Mining Solution that transforms data from your IT systems into visual interactive dashboards,allowing you to see existing value decreases, bottlenecks and discrepancies, as well as understanding the root-causes and possible risks.
+
+<img src ="ProcessMiningUsers.png" />
+
+## Product Architecture
+<img src="TaskMiningArchitecture.gif" />
+
+1. <u>Admin Panel</u> ~> A cloud hosted web application that allows the customer to configure the projects. The portal enables an admin to invite and manage users, configure project settings and visualize results from past projects
+
+2. <u>User Workstation (Recorder)</u> ~> The Recorder runs on the users machine and collects data about the tasks they perform. To be more specific, the recorder collects data about the application that the user interacts with, captures keystrokes and clicks,and takes a screenshot for each action
+
+3. <u>Processing Queue</u> ~> The Data Preprocessing component analyzes locally all the captured data and removes the non-essential or confidential information, based on the configurations that the admin set. It also encrypts and packages the data in order to prepare it for uplaod.
+
+4. <u>Internal Storage</u> ~> The packaged data is stored on customer premises, in internal storage
+
+5. <u>Uploader Application</u> ~> Using the uploader application, the data is uploaded to the UiPath cloud
+
+6. <u>Analyzer</u> ~> Analyzer will decrypt the data and will apply AI to identify tasks. After the analysis is finished, data can be imported and visualized in the admin panel.
+
+<img src="TaskMiningUsers.png" />
+
+## Other Features
+1. Dashboard Tab ~> The Dashboard tab is used to track the progress of the project and keep the stakeholders informed by using the graphical displays of the real-time data available.
+
+2. Users tab ~> The admin can invite users to participate in a study and they can view and manage the users recording status and the user's activity
+
+3. Settings Tab ~> Helps the admins configure the projects by setting up the data volume limits, configuring the folder path for the data to be stored, and managing the list of applications to be recorded
+
+4. Processes Tab ~> The admin can view information about the completed processes and import new files provided by the UiPath Representative after the Analyzer stage has been completed
+
+
+# Task Capture
+* It is a process discover tool that helps you get detailed insights about automation candidates directly from your employees.
+
+* It is mainly used by employees with deep expertise on the process analyzed (or Subject Matter Experts, as they are called often) and by Business Analysts.
+
+* Task Capture is not licensed separately, but rather comes bundled with Automation Hub. For every Automation Hub license, you will get an unlimited amount of Task Capture activations.
+
+* Features
+    1. New Process Definition Document (PDD) template
+    2. Save the diagram as an image
+    3. New localizations
+    4. Offline activation
+

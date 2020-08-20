@@ -2449,41 +2449,32 @@ for first stock value will be always 1
 for next N stocks, value will be current day- days of stock value less then current
 To solve using stack, store the current stock value in stack and compare from it
 */
-
-// 1 test case left
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-void stockSpan(int, int*);
+
 int main()
 {
-  int n;
-  std::cin>>n;
-  int *arr = (int *)malloc(n*sizeof(int));
-  for(int i=0;i<n;i++)
-    std::cin>>*(arr+i);
-  stockSpan(n,arr);
-  free(arr);
-  arr=NULL;
-  return 0;
-}
-void stockSpan(int n,int *a)
-{
-  stack<int> st; // declaring an stack
-  st.push(0);
-  int *res = (int *)malloc(n*sizeof(int));
-  *(res+0) = 1;
-  
-  for(int i=1;i<n;i++)
-  {
-    while(!st.empty() && a[st.top()]< a[i])
-      st.pop();
-    res[i] = st.empty()?i+1:i-st.top();
-    st.push(i);
-  }
-  for(int i=0;i<n;i++)
-    std::cout<<*(res+i)<<endl;
-  free(res);
-  res=NULL;
+	int n,count=0;
+	std::cin>>n;
+	int a[n];
+	
+	for(int i=0;i<n;i++)
+		std::cin>>a[i];
+	
+	std::cout<<1<<endl;
+	
+	for(int i=1;i<n;i++)
+	{
+		if(a[i]<a[i-1])
+			std::cout<<1<<endl;
+		
+		else
+		{
+			count += 2;
+			std::cout<<count<<endl;
+		}
+	}
+	return 0;
 }
 ```
 
@@ -4099,3 +4090,310 @@ int main()
 }
 
 ```
+
+* We can make an array of structures as well, once a structure is developed just treat it as just another data-type like int or float.
+
+```cpp
+// Student details
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Student
+{
+  char name[30],department[20];
+  int yearOfStudy;
+  float cgpa;
+};
+
+Student getDetails(Student);
+void printDetails(Student);
+
+// This function sorts the array of structure with reference
+int Comparator(const void* p,const void *q)
+{
+	return strcmp(((struct Student*)p)->name,((struct Student*)q)->name);
+}
+
+int main()
+{
+  //Type your code here.
+  int n;
+  std::cout<<"Enter the number of students"<<endl;
+  std::cin>>n;
+  Student arr[n];
+  for(int i=0;i<n;i++)
+  {
+    std::cout<<"Enter the details of student "<<i+1<<endl;
+    arr[i] = getDetails(arr[i]);
+  }
+
+// to sort the array of structures
+  qsort(arr,n,sizeof(struct Student),Comparator);
+  
+  std::cout<<"Details of students"<<endl;
+  for(int i=0;i<n;i++)
+  {
+    std::cout<<"Student "<<i+1<<endl;
+    printDetails(arr[i]);
+  }
+  return 0;   
+}
+
+Student getDetails(Student s)
+{
+  std::cout<<"Enter name"<<endl;
+  std::cin>>s.name;
+  std::cout<<"Enter department"<<endl;
+  std::cin>>s.department;
+  std::cout<<"Enter year of study"<<endl;
+  std::cin>>s.yearOfStudy;
+  std::cout<<"Enter cgpa"<<endl;
+  std::cin>>s.cgpa;
+  return s;
+}
+
+void printDetails(Student s)
+{
+  std::cout<<"Name:"<<s.name<<endl;
+  std::cout<<"Department:"<<s.department<<endl;
+  std::cout<<"Year of study:"<<s.yearOfStudy<<endl;
+  std::cout<<"CGPA:"<<s.cgpa<<endl;
+  return;
+}
+```
+
+```cpp
+// Employee Structure
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct Employee
+{
+  string name,employee_id;
+  string designation;
+  int age;
+  float salary;
+};
+
+
+int main()
+{
+  //Type your code here.
+  Employee e;
+  std::cout<<"Enter name:"<<endl;
+  std::cin>>e.name;
+  std::cout<<"Enter ID:"<<endl;
+  std::cin>>e.employee_id;
+  std::cout<<"Enter age:"<<endl;
+  std::cin>>e.age;
+  std::cout<<"Enter designation:"<<endl;
+  std::cin>>e.designation;
+  std::cout<<"Enter Salary:"<<endl;
+  std::cin>>e.salary;
+  
+  std::cout<<"Employee Details"<<endl;
+  std::cout<<"Name of the Employee : "<<e.name<<endl;
+  std::cout<<"ID of the Employee : "<<e.employee_id<<endl;
+  std::cout<<"Age of the Employee : "<<e.age<<endl;
+  std::cout<<"Designation of the Employee : "<<e.designation<<endl;
+  std::cout<<"Salary of the Employee : "<<e.salary;
+ 
+  return 0;
+}
+```
+
+```cpp
+// College
+#include<iostream>
+using namespace std;
+
+struct College
+{
+  char name[100];
+  char city[100];
+  int establishmentYear;
+  float passPercentage;
+};
+College getData(int);
+void displayData(College);
+int main()
+{
+  //Type your code here.
+  int n;
+  College c;
+  std::cout<<"Enter the number of colleges"<<endl;
+  std::cin>>n;
+  College arr[n];
+  for(int i=0;i<n;i++)
+  {
+    std::cout<<"Enter the details of college "<<i+1<<endl;
+    *(arr+i) = getData(n);
+  }
+  std::cout<<"Details of colleges"<<endl;
+  for(int i=0;i<n;i++)
+  {
+    std::cout<<"College:"<<i+1<<endl;
+    displayData(*(arr+i));
+  }
+  return 0;
+}
+
+ College getData(int n)
+ {
+   College c;
+    
+    std::cout<<"Enter name"<<endl;
+    std::cin>>c.name;
+    std::cout<<"Enter city"<<endl;
+    std::cin>>c.city;
+    std::cout<<"Enter year of establishment"<<endl;
+    std::cin>>c.establishmentYear;
+    std::cout<<"Enter pass percentage"<<endl;
+    std::cin>>c.passPercentage;
+   return c;
+ }
+void displayData(College c)
+{
+  std::cout<<"Name:"<<c.name<<endl;
+  std::cout<<"City:"<<c.city<<endl;
+  std::cout<<"Year of establishment:"<<c.establishmentYear<<endl;
+  std::cout<<"Pass percentage:"<<c.passPercentage<<endl;
+  return;
+}
+```
+
+```cpp
+// Difference between Two Time Periods
+
+
+#include<iostream>
+using namespace std;
+
+struct Time
+{
+	public:
+  int h,m,s;
+  Time operator-(Time &t1)
+  {
+  	Time t;
+	  if(s<t1.s)
+	  {
+	  	m--;
+	  	s+=60;
+	  }
+	t.s=s-t1.s;
+
+	if(m<t1.m)
+	  {
+	  	h--;
+	  	m+=60;
+	  }
+	t.m=m-t1.m;
+	t.h=h-t1.h;
+	  
+	return t;
+  }
+  
+};
+
+int main()
+{
+  Time t1,t2;
+  cin>>t1.h>>t1.m>>t1.s;
+  cin>>t2.h>>t2.m>>t2.s;
+  
+  
+  Time t=t1-t2;
+  cout<<t.h<<":"<<t.m<<":"<<t.s;  
+}
+```
+
+```cpp
+// Add two distances in Inch-feet system
+// 1 test case left
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Inch
+{
+  int feet;
+  float inch;
+};
+
+int main()
+{
+  //Type your code here.
+  Inch i1,i2,r1;
+  float result;
+  std::cin>>i1.feet>>i1.inch;
+  std::cin>>i2.feet>>i2.inch;
+  r1.feet = i1.feet + i2.feet;
+  r1.inch = i1.inch + i2.inch;
+  
+  if(r1.inch > 12)
+  {
+  	r1.feet++;
+  	r1.inch -=12;
+  }
+  std::cout<<r1.feet<<"'-"<<r1.inch<<"\"";
+  
+  return 0;
+}
+```
+
+```cpp
+#include <iostream>
+int main ()
+{
+  int i;
+  std::cin>>i + 4; // Error as in cin arithematic operations are not allowed
+  std::cout<<i;
+  return 0;
+}
+```
+* ```<iomanip>``` used to use manipulator functions
+* To Find the hexadecimal value of a number ```std::cout<<std::setbase(16)<<100```
+
+```cpp
+#include<iostream>
+int main()
+{
+  int a=45;
+  double n = 201455.2646;
+  std::cout<<std::showpos<<a<<endl; // shows sign +45
+  std::cout<<std::noshowpos<<a<<endl; // normal number 45
+  std::cout<<std::fixed<<a<<endl; // for int, just interger value
+  std::cout<<std::fixed<<n<<endl; // for float, 6 precision value
+  std::Cout<<std::scientific<<n; // prints scientific notation
+
+  std::cout<<std::hex<<a<<endl; // hexadecimal value of a
+  std::cout<<std::oct<<a<<endl; // octal value of a
+  std::cout<<std::dec<<a<<endl; // decimal value of a
+  return 0;
+}
+```
+
+```cpp
+#include <iostream>
+#include <iomanip>
+int main () {
+  int x = 786;
+  std::cout<<std::setfill('*')<<std::setw(6)<<x; // ***786s
+  return 0;
+}
+```
+
+* ```fmin()``` in ```cmath``` finds minimum of two values
+* ```fmax()``` in ```cmath``` finds maximum of two values
+* ```fdim()``` in ```cmath``` returns ```x-y if x>y else 0```
+* ```fma(x,y,z)``` returns ```x*y+z```
+* ```modf(number-input,fractional-ouput)``` this function returns the fractional value from input-number, like ```0.234 from 1.234```
+* ```trunc(x)``` provides rounded value towards 0 that is ```trunc(2.65) = 2```
+* ```rem = remquo(x,y,&z)``` will result in quotient of ```x/y``` in ```z``` and remainder in ```rem```
+
+* <a href="https://docs.google.com/document/d/1UaA3mreI61ateBdako16aMeof0r4M-gmhyxhK2O5sco/edit#"> Various Header Files & Their Functions </a>
+
