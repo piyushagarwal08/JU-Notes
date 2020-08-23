@@ -1358,3 +1358,49 @@ class DemoAWT extends Frame{
 ## Card Layout
 * Applied when components are required to be structured over one another
 * Makes the above component disable or invisible making the below component active or visible
+
+<br>
+
+# CRT Classes
+* Basic Questions related to Java that could be asked will be taught in java class
+
+1. Difference between inner class and sub class?
+
+2. Access specifiers in Java are:
+    1. Public
+    2. Private
+    3. Protected
+    4. Default ~> Method can access only things from same package
+3. Purpose of static method/keyword:
+    It is shared for all the objects
+4. Data encapsulation ?
+    * A Class , wrapping up of data in one unit
+    * Creation of objects inside class also possible
+
+5. What is Singleton class?
+    * when only one object is only possible to be made for a class
+    * It is to be used to limit the resources
+
+6. Types of Loops in Java:
+    1. For ~ For each is a variable concept of for loop
+    2. while
+    3. Do while
+
+7. In for(;;) ~> this refers to infinte loop
+
+8. if initialization or increment/decrement is outside loop and no condition is provided in for loop syntax then it will create error
+
+9. Will bye be printed?
+```java
+for(i=0;i<=10;i++)
+{
+    System.out.print("Hello");
+    i++;
+    continue;
+    system.out.print("bye"); // Not printed
+}
+```
+
+10. Java has ```goto``` statement
+
+11. Precision in float is 6 and for double is 
