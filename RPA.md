@@ -1696,3 +1696,56 @@ Note:It is strongly recommended, for easy identification and understanding of th
     3. New localizations
     4. Offline activation
 
+
+# Telegram API Messaging
+* To send any message using telegram bot API, we will require a bot agent to send messages as a user
+* To create a Telegram Bot:
+    1. Open Telegram and search for BotFather (telegram official user)
+    2. Join the channel and send message ```/newbot```
+    3. Give a name to your Bot and a unique Username
+* Once done you will receive a message similar to
+    ```
+    Use this token to access the HTTP API: 136XXXXXXX:AAHYYYYYYY
+    Keep your token secure and store it safely, it can be used by anyone to control your bot.
+    ```
+* Save the ```HTTP API``` token which is your ```BOTToken``` very securely as it can be used to send messages using your created bot.
+* To use the created bot, we need to add it in some group and for that:
+    1. Create a new group
+    2. Add all the members you want to be in that group
+    3. click on ```Add Member``` and search for ```@BotUsername``` where BotUsername is the username provided by you while creating Telegram Bot
+* Now the final thing required is our ```chatid``` for that:
+    1. Open Browser
+    2. Navigate to ```https://api.telegram.org/bot<YourBOTToken>/getUpdates```
+    3. You will see a message similar to
+    ```
+    "message":{"message_id":2,"from":{"id":607760321,"is_bot":false,"first_name":"Piyush","last_name":"Agarwal","username":"Pykid","language_code":"en"},"chat":{"id":-1001266203044,"title":"Test","type":"supergroup"},"date":1598157993,"text":"Hello"}}]}
+    ```
+    4. Copy and save the chat id as found in this message ```-1001266203044``` and now we are ready to integrate it with our own Bots
+* In Manage Packages, include ```UiPath.Web.Activities```
+* Using ```Http Request``` activity set, the end point as ```https://api.telegram.org/bot<BOTToken>/sendMessage?chat_id=<ChatID>&text=<TextToSent>```
+* Request Method can be ```POST``` as well as ```GET```
+* Accept response as ```JSON```
+* Authentication is not required so set it as ```None``` and ```Client Certificate fields``` as ```Empty```
+* You can test by clicking on ```Preview``` and if you receive the Response as 
+```
+{
+  "ok": true,
+  "result": {
+    "message_id": XX,
+    "from": {
+      "id": XXXXXXXX,
+      "is_bot": true,
+      "first_name": "Testbot",
+      "username": "Testbottestingbot"
+    },
+    "chat": {
+      "id": XXYYYYYYY,
+      "title": "Test",
+      "type": "supergroup"
+    },
+    "date": 1598160256,
+    "text": "Hello World"
+  }
+}
+```
+* And you Bot is ready.
