@@ -1,3 +1,2 @@
 # JU-Notes
-This repo will contain notes of 5 Semester at JU
- well this is an experiment 
+Created this repository for notes from my 5th semester onwards
