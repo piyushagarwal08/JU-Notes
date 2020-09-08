@@ -625,8 +625,8 @@ Ans. ```Every time, regardless if an exception occurred or not.```
 * Keep it clean
     close applications,windows and web pages not being used
 
-## Invoke Method
-* UiPath offers an activity same as ```import``` in python that is ```Invoke Method``` activity
+## Invoke Workflow
+* UiPath offers an activity same as ```import``` in python that is ```Invoke Workflow``` activity
 * In this activity , we can execute any workflow and even pass arguments and import arguments
 * Arguments just work as values which are provided for variables and these arguments or values of variables, can be either given as input or can be extracted as an output for another activity
 * ```Direction``` column in variables define the redirection of values which can be ```In``` or ```Out``` or both ```In/Out```

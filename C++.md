@@ -4397,3 +4397,38 @@ int main () {
 
 * <a href="https://docs.google.com/document/d/1UaA3mreI61ateBdako16aMeof0r4M-gmhyxhK2O5sco/edit#"> Various Header Files & Their Functions </a>
 
+* Types of Exceptions:
+  There are two types of Exception are:
+    1. Built-in Exception
+    2. User Defined Exception
+  
+* Virtual Function  ~> A function which is supposed to be redefined in derived class
+* Function Overloading ~> Same Name and different arguments, happens in same class
+* Function Overriding ~> Same Name and different functions, happens in child class
+
+* Type Casting of 2 types:
+  1. Implicit Type Casting
+  ```cpp
+  #include<stdio.h>
+  int main(){
+	short a=10; //initializing variable of short data type
+	int b; //declaring int variable
+	b=a; //implicit type casting
+	printf("%d\n",a);
+	printf("%d\n",b);
+  } 
+  ```
+  2. Explicit Type Casting
+  ```cpp
+  #include <stdio.h>
+  main() {
+   int  number = 1;
+   char character = 'k'; /*ASCII value is 107 */
+   int sum;
+   sum = number + character;
+   printf("Value of sum : %d\n", sum );
+  }
+  ```
+
+  * AVL Tree
+    AVL tree is the self balancing tree. The binary search tree which is unbalanced undergoes some operation to get converted into balanced BT. The time complexity for searching an element in skewed bst is worst. So such trees are converted to AVL tree.

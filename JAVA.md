@@ -535,7 +535,7 @@ for(int i:a[])
 
 * We have three types of constructor
     1. Default ~> to initialise the variable with default data types
-    2. Parameterised COnstructor ~> Initialse the variables of the class defined by user at run time
+    2. Parameterised Constructor ~> Initialse the variables of the class defined by user at run time
     3. Copy Constructor ~> Previously existing objects are used to create new objects
 * Constructor of Super Class can not be called in the derived class just by using its name
 * To call the constructor ```Base``` class inside the ```Derived``` class we use the function ```super();```
@@ -758,7 +758,7 @@ implements      |_________________|
 # Date 19th September 2019
 
 ## Package
-* A java package is a group of similar types of classes , interfaces ad sub-packages
+* A java package is a group of similar types of classes , interfaces and sub-packages
 * Package in java can be categorized in two form, built-in package and user-defined package
 * ```Abstroict window Toolkit``` is ```AWT```
 * There are many buil in packages such as java,lang,awt.javax,swing,net,io,util,sql etc
@@ -1349,7 +1349,7 @@ class DemoAWT extends Frame{
 
 ### Advantages
 1. It works at client side so less response time
-2. Secured
+2. Secured as it uses its own internal memory and data management systems to block any unauthorized data access. 
 3. It can be executed by browser running under many platforms, inlcuding Linux,Windows , Mac OS etc
 
 ### Drawbacks
@@ -1365,12 +1365,18 @@ class DemoAWT extends Frame{
 * Basic Questions related to Java that could be asked will be taught in java class
 
 1. Difference between inner class and sub class?
-
+    ```
+    * inner classes are in the same file, whereas subclasses can be in another file, maybe in another package.
+    * You cannot get an instance of an inner class without an instance of the class that contains it.
+    * inner classes have the methods they want, whereas subclasses have the methods of their parent class. Subclasses can, of course,    define additional methods, but they'll always have those of their parent.
+    ```
 2. Access specifiers in Java are:
+    ```
     1. Public
     2. Private
     3. Protected
     4. Default ~> Method can access only things from same package
+    ```
 3. Purpose of static method/keyword:
     It is shared for all the objects
 4. Data encapsulation ?
@@ -1380,6 +1386,9 @@ class DemoAWT extends Frame{
 5. What is Singleton class?
     * when only one object is only possible to be made for a class
     * It is to be used to limit the resources
+    * To design a singleton class:
+        1. Make constructor as private.
+        2. Write a static method that has return type object of this singleton class
 
 6. Types of Loops in Java:
     1. For ~ For each is a variable concept of for loop
@@ -1404,3 +1413,111 @@ for(i=0;i<=10;i++)
 10. Java has ```goto``` statement
 
 11. Precision in float is 6 and for double is 
+
+## Array List
+
+```java
+package exes;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class MyFirstGenerics
+{
+    public static void main(String args[])
+    {
+        ArrayList<String> names = new ArrayList<String>();
+        // In order
+        names.add("Piyush"); // append new element
+        names.add("Rajneesh");
+        names.add("Sneha");
+        names.add("Piyush");
+        names.set(1,"chetan"); // change element at position 1
+        System.out.println(names); // print the list
+
+        for(int i=0;i<names.size();i++)
+        {
+            System.out.println(names.get(i)); // print one by one
+        }
+
+        // To Copy one list into another
+        ArrayList<string> copynames = new ArrayList(names);
+        // Iterator Use
+        Iterator itr = names.iterator();
+        
+        /* Iterator has 2 methods
+        1. Has Next : Check whether next element is there or not (gives true or false)
+        2. next: Element
+        */
+
+        while(itr.hasNext())
+        {
+            System.out.println(itr.next());
+        }
+    }
+}
+// javac -d . MyFirstGenerics.java this will create a exes file in current folder
+```
+
+## JDBC
+* Java Database Connectivity
+* standard API specification developed in order to move data from frontend to backend
+* To remove platform dependency, JDBC was introduced after ODBC
+* JDBC drivers are client-side
+* To build JDBC application:
+    1. Import Package ```import java.sql.*```
+    2. Register the driver ~> initialize a driver
+    3. Open a Connection ~> ```DriverManger.getConnection()```
+    4. Execute a query
+    5. Extract Data from result set ~> ```ResultSet.getXXX()```
+    6. Clean up the environment
+* Using Mysql
+    1. Driver Class ```com.mysql.jdbc.Driver```
+    2. Conection URL ```jdbc:mysql://localhost:3306/Database_Name```
+    3. Username
+    4. Password
+* JDBC drivers are of 4 types:
+    1. Type 1 JDBC-ODBC
+    2. Type 2 
+    3. Type 3 Native
+    4. Type 4 
+
+```java
+import java.sql.*;
+
+public class ConnectionDemo
+{
+    static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/CRT";
+
+    static final String USER = "user-name";
+    static final String PASS = "password";
+
+    public static void main(String[] args)
+    {
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            Class.forName(JDBC_DRIVER);
+
+            System.out.println("Connecting");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            // Query
+            stmt = conn.createStatement();
+            String sql = "Select * from placed";
+
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next())
+            {
+                Variable_name = rs.getString("col name");
+            }
+
+        }
+        except{
+
+        }
+    }
+}
+```
+* Static Binding ~> The binding which can be resolved at compile time by compiler is known as static or early binding. The binding of static, private and final methods is compile-time. 
+* When compiler is not able to resolve the call/binding at compile time, such binding is known as Dynamic or late Binding. Method Overriding is a perfect example of dynamic binding as in overriding both parent and child classes have same method and in this case the type of the object determines which method is to be executed. The type of object is determined at the run time so this is known as dynamic binding.
