@@ -1749,3 +1749,11 @@ Note:It is strongly recommended, for easy identification and understanding of th
 }
 ```
 * And you Bot is ready.
+
+# Database Connectivity with UiPath
+* UiPath uses ```UiPath.Database.Activities``` package to inegrate with database
+1. Connect ~> To connect to the ```MySql``` database set the connection string as ```"Server=localhost;Database=db-name;Uid=user-name;Pwd=user-password;"``` and create an output connection ```conn```
+2. Execute Query ~> To Perform ```Select operation``` on database, use it by giving existing connection as ```conn```
+3. Execute Non Query ~> To Perform ```Insert/Update/Delete``` operations on the database
+4. Insert ~> To perform insert operation for a set of rows, this activity is used to insert a complete tabular data in the datatable inside database
+5. Stored Procedures ~> It can be used by using ```Execute Query``` activity by changing the ```command type``` to ```stored procedure```

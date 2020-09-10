@@ -30,5 +30,3 @@
     1. Object Creation is part of ```Model```
     2. Visualforce page is part of ```View```
     3. Controller is a part of ```Controller```
-* Model -> database/tables/relationships(1-1, M-M,1-M)
-* View ~> 

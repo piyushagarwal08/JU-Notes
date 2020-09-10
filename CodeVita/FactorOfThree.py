@@ -5,7 +5,7 @@ def Solution(zero,one,two):
         print("No")
     elif zero==0 and one==0 and two!= 0:
         print("Yes")
-    elif zero==0 and one != 0 and twp==0:
+    elif zero==0 and one != 0 and two==0:
         print("Yes")
     elif zero <= (one+two+1):
         print("Yes")
