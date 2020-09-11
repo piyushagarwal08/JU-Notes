@@ -143,3 +143,41 @@ create table tb-name(
 
 * To delete rows ```delete from tb-name where condition```
 * To update rows ```update tb-name set col-name=new-value where condition```
+* To LIMIT the no of rows, ```LIMIT count``` is used
+* To get rows with unique values ```DISTINCT``` is used as ```SELECT DISTINCT column-name FROM tb-name```
+* To Count no of rows in table ```SELECT COUNT(*) FROM tb-name```
+* For logical operations ```AND```, ```OR``` are used
+* To Apply Condition for range, use ```BETWEEN``` keyword as ```SELECT * FROM tb-name WHERE field1 BETWEEN range-1 AND range-2```
+* ```BETWEEN``` is inclusive in nature
+* To check condition from a iterative object, use ```IN``` as ```SELECT * FROM tb-name WHERE age IN (2,4,6,8,10)``` , this will result in list of tuples with age equal to 2,4,6,8 or 10.
+* Missing or Unknown Values are represented by ```NULL``` in SQL and they can be checked by using ```IS NULL``` or ```IS NOT NULL``` expression
+* IN SQL, ```LIKE``` operator is used with ```WHERE``` clause to search for a ```pattern``` in a column. It uses 2 types of wildcards:
+    1. ```%``` ~> represents zero, one or more charcater
+    2. ```_``` ~> represents a single character
+* Similar to ```LIKE```, we can use ```NOT LIKE``` operator for values not matching certain ```pattern```
+* To Perform arithematic operations , queries like ```SELECT (a+b)``` or ```SELECT (a-b)``` or ```SELECT (a/b)``` can be used
+* Arithematic operations are similar to C programming as Int/Int is INT
+* Aliasing ~> Assigning a temporary name to something, it is done in SQL using ```AS``` keyword
+* To Comment something in SQL use ```--``` 
+* To Sort results ```ORDER BY``` keyword is used, by default its in ```Ascending``` order and for ```Descending``` order we use ```DESC``` as ```SELECT * FROM tb-name ORDER BY field1 DESC```
+* ```ORDER BY``` can be used to sort table data based on multiple columns as ```SELECT * FROM tb-name ORDER BY col1,col2```
+* To Count the Value of cells based on Groups, or basically to divide the data into multiple groups, ```GROUP BY``` is used
+* ```ORDER BY``` is always used after the ```GROUP BY```
+* ```HAVING``` clause is used to use ```AGGREGATE``` functions after ```WHERE``` clause
+
+## JOIN in DBMS
+* To do ```INNER JOIN```, query is ```SELECT * FROM l-table INNER JOIN r-table ON l-table.id=r-table.id;```
+* When joining tables with a common field name, we can use ```USING``` as a shortcut as ```SELECT * FROM tb-name1 INNER JOIN tb-name2 USING(common-field-name)```
+* To use if else conditions in SQL, we use ```CASE```,```WHEN``` and ```THEN```
+```sql
+SELECT country_code, size,
+  CASE WHEN size > 50000000
+            THEN 'large'
+       WHEN size > 1000000
+            THEN 'medium'
+       ELSE 'small' END
+       AS popsize_group
+INTO pop_plus       
+FROM populations
+WHERE year = 2015;
+```
