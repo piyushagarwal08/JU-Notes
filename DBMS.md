@@ -158,7 +158,7 @@ create table tb-name(
 * To Perform arithematic operations , queries like ```SELECT (a+b)``` or ```SELECT (a-b)``` or ```SELECT (a/b)``` can be used
 * Arithematic operations are similar to C programming as Int/Int is INT
 * Aliasing ~> Assigning a temporary name to something, it is done in SQL using ```AS``` keyword
-* To Comment something in SQL use ```--``` 
+* To Comment something in SQL use ```--``` or ```/* */``` for multiline comment
 * To Sort results ```ORDER BY``` keyword is used, by default its in ```Ascending``` order and for ```Descending``` order we use ```DESC``` as ```SELECT * FROM tb-name ORDER BY field1 DESC```
 * ```ORDER BY``` can be used to sort table data based on multiple columns as ```SELECT * FROM tb-name ORDER BY col1,col2```
 * To Count the Value of cells based on Groups, or basically to divide the data into multiple groups, ```GROUP BY``` is used
@@ -181,3 +181,34 @@ INTO pop_plus
 FROM populations
 WHERE year = 2015;
 ```
+* To do ```LEFT JOIN```, query is ```SELECT * FROM l-table LEFT JOIN r-table ON l-table.id = r-table.id;```
+* To do ```RIGHT JOIN```, query is ```SELECT * FROM r-table RIGHT JOIN l-table ON l-table.id = r-table.id;```
+* TO do ```FULL JOIN```,query is ```SELECT * FROM l-table FULL JOIN r-table USING(field)```
+
+* <u>SET THEORY</u>
+* ```UNION``` and ```UNION ALL``` are used to group or merge the output of two or more queries.
+* ```UNION``` refers to summing up of only UNIQUE records where as ```UNION ALL``` refers to summing up of all the records
+* QUERY is as ```SELECT * FROM tb1 WHERE condition UNION SELECT * FROM tb2 WHERE condition2```, the only thing to make sure is that domain of each field from output of both sub-query should be same
+* ```INTERSECT``` is used to extract records that are unique in both the sub queries
+* ```SELECT * FROM tb1 INTERSECT SELECT * FROM tb2```
+* ```EXCEPT``` is used to find the ```A-B``` of two sub-queries in table, ```SELECT * FROM tb1 EXCEPT SELECT * FROM tb2```
+* ```SEMI JOIN```, is query where contents in tb1 match to contents in tb2, ```SELECT * FROM tb1 WHERE field IN (SELECT * FROM tb2);```
+* ```ANTI JOIN```, is query where contents in tb1 not match to contents in tb2, ```SELECT * FROM tb1 WHERE field NOT IN (SELECT * FROM tb2);```
+* Sample of Subquery inside query
+```sql
+-- Select fields
+SELECT *
+  -- From populations
+  FROM populations
+-- Where life_expectancy is greater than
+WHERE life_expectancy > 1.15 * 
+  -- 1.15 * subquery
+  (
+    SELECT AVG(life_expectancy)
+      FROM populations
+      WHERE year = 2015
+  ) AND year = 2015;
+```
+* Subqueries are most frequently used in ```WHERE``` clause
+* Cross JOIN is used as ```SELECT * FROM tb1 CROSS JOIN tb2```
+    
