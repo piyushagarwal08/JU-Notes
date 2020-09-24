@@ -30,3 +30,6 @@
     1. Object Creation is part of ```Model```
     2. Visualforce page is part of ```View```
     3. Controller is a part of ```Controller```
+
+* Classic version of apps - 2016 before not much used in todays time
+* Lightning Apps - used these days
