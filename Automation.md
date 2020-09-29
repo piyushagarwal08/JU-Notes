@@ -2664,3 +2664,107 @@ Bot runner offline
 Bot runner Disconnected
 ```Bot Creator Disconnected```
 Bot Creator offline
+
+# Solution Architect
+* Responsibilities:
+    1. Requirement gathering till deployment
+    2. Understand the stakeholders/process owners requirements
+    3. Design an automation solution for business process
+    4. Estimates and plans resource and infrastructure requirements
+    5. Engages with key stakeholders to achieve a quick ROI of RPA projects
+    6. Drives the strategic and tactical roll-out of RPA projects
+    7. Feasibility Analysis, Solution Design, Coding Standards
+    8. Project management, process improvement, risk identification/mitigation
+    9. Ensure that best practices are followed and document the lessons learned
+
+## Citrix
+* Citrix is an American corporation that produces software designed to facilitate secure access to application and content
+* Citrix offers products for Windows,Macintosha and Linux platforms
+* Citrix provides XenApp and remote desktop  services to allow windows applications and computing resources to be centrally managed in a secure data center
+
+## Citrix XenApp
+* Provides access to hosted resources for multiple users
+* Users share the server's CPU,RAM and other physical resources
+* Allows access to application on XenApp server for anybody around the world
+* Enables application launch on any device without any installation of software(besides Citrix Reciever)
+
+<img src="Citrix XenApp.png" />
+
+## Citrix XenDesktop
+* Delivers high user experience, even in 3D
+* Deploys virtual desktops and applications for any use case
+* Works for all Windows, Web, or Software as a Service (SaaS) applications
+* Transforms IT with open, scalable, and proven technology
+* Offers single instance management
+* Ensures data security and access control
+
+<img src="Citrix XenDesktop" />
+
+## Components of Citrix
+1. Delivery Controller
+* The Delivery Controller is the central management component of any XenApp or XenDesktop site
+* Managing and brokering user access
+* Distributing applications or desktops
+* Optimizing user connections
+* Load balancing the connections
+* Providing machine creation services
+* Managing the state of the desktops based on demand and administrative configuration
+
+<img src="Citrix Delivery Controller.png" />
+
+2. Virtual Delivery Agent
+* It is installed on each physical or virtual machine in your site that you want to make available to users
+* Enables the machine to register with the controller, allowing the machine and the resources it is hosting to be made available to users
+* Establishes and manages the connection between the machine and the user device and verifies that a Citrix license is applied and configured
+
+<img src="Citrix VDA.png" />
+
+3. Citrix Receiver
+* Provides quick secure self-service access to documents, applications and desktops from any of the user's devices
+* Provides on-demand access to windows, web and Software as a Services applications for devices that cannot install receiver software
+* Provides a connection through a HTML5 compatible web browser
+
+4. Citrix Studio
+* It is the management console to configure and manage deployment, eliminating the need for a separate management console for managing the delivery of applications and desktops
+* Guide in the environment setup process
+* Help create workloads to host applications and desktop
+* Assign applications and desktops to the users
+
+5. Machine Catalog
+* Collections of the virtual/physical machines that are managed as a single entity
+* Have resources like an application/virtual desktops that provide users with dynamic and static machine assignment mechanism
+* Have the same operating system and same VDA installed
+* Have the same applications/virtual desktops available on them
+* A Master image is used to create identical virtual machines in the catalogs
+
+6. Machine Types
+* Various Machine Types are:
+    1. Windows Server OS machine:
+        * Virtual or physical machines based on a Windows server operating system are used for delivering XenApp or XenDesktop
+        * These machines allow multiple users to connect to them at one time
+    
+    2. Desktop OS Machine:
+        * Virtual or physical machines based on a Windows desktop operating system are used for delivering VDI desktops, VM hosted applications and Hosted physical desktops
+        * These machines allow only one user at a time to connect to them
+    
+    3. Remote PC Access:
+        * Provide access to users devices included on a whitelist
+        * Enables accessing resources on office PCs remotely, from any device
+        * Allows access management to office PCs through the XenDesktop deployment
+
+* Delivery Groups -> Collection of users given to access a common group of resources
+    1. Delivery Groups contain machines from the machine catalogs and active directory users
+    2. A Delivery group can contain machines from one or more Machine Catalog, but each individual machine can only belong to one Delivery Group at at ime
+    3. One can define which resources can be accessed by the users in the Delivery Group
+* To deliver different applications to different users:
+    1. Install all the applications on the master image for one machine catalog
+    2. Create enough machines in that catalog to distribute among several delivery groups
+
+## Within Citrix Environment
+* Ideal approach to deploy AAE is within the Citrix Environment
+* Operation and montioring in AAE is performed over ```Independent Computing Architecture (ICA)```
+* Direct access to all enterprise systems necessary for business process automation care provided to the Bot Creators, Bot runners, and Control Room
+* Leverage on all available AAE Client features and commands
+* While a bot may be monitored remotely over ICA , if the session drops, the bot continues to run within the intranet
+* Better network performance within the intranet
+* Better security as data processed by the Bot remains within the intranet on systems owned by the enterprise

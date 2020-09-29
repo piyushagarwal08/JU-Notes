@@ -14,7 +14,7 @@
     * Single sequence of stream within a process
     * resources shared between multiple process
     * thread is lightweight
-4. What is Scheduling
+4. What is Schedulingl
     * It is majorly done by short term scheduler 
     * When ready to running state a process is to be sent
     * New -> Ready or Wait -> Ready
