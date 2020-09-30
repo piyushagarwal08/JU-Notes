@@ -1244,9 +1244,9 @@ An IQ bot is Automation Anywhere's global digital workforce platform that learns
 
 # Installation Of CR and AAE Client
 ### Installation Files for CR,SQLSeverand Client
-<img src="AAE_Setup_Files.png">
+<img src="Images/AAE_Setup_Files.png">
 
-<img src="RPA_CR.png"/>
+<img src="Images/RPA_CR.png"/>
 
 * The Control Room(CR) is an central interface to manage and monitor all the processes of your RPA infrastructure
 * It allows us to :
@@ -1381,14 +1381,39 @@ example: ```ldap://brdad.brdst.com```<br>
 
 ### High Availability and Disaster Recovery with CR
 * High - Availability Deployment Model
-<img src="High_Availability_and_DisasterRecovery.png"/>
+<img src="Images/High_Availability_and_DisasterRecovery.png"/>
 
 * High Availability and Disaster Recovery Deployment Model
-<img src="High_Availability_and_DisasterRecovery_Deployment-Model.png">
+<img src="Images/High_Availability_and_DisasterRecovery_Deployment-Model.png">
 
 * for HA Configuration , following things should be kept in mind
     1. Installation process is same as normal
     2. while checking for database and port, open ```pg.hba.conf``` file and add a tag at last of file that is ```host all all ip-of-server/port-of-server md5```
+
+* Why High Availability Required -> It is required for
+    1. Maximum Up-time/Availability: Threats to service availability pertaining to hardware and network failure, storage corruption, and unacceptable Mean Time To Recovery (MTTR) responses
+    2. Least Failure: Protects the business processes at single point
+* When HA is setup -> HA setup is required:
+    1. When there is focus on delivering the optimal performance and availability
+    2. When installing Control Room (CR) for the first time
+* Where to setup HA -> It is required:
+    1. With distributed mode, HA of Web Control Room (Can be achieved), however it required proper planning and seamless installation
+    2. It is necessary to have HA for Enterprise deployment architecture of Control Room
+
+* Why Disaster Recovery Required:
+    1. Switching over to another infrastructure failure with minimal downtime
+    2. Reducing the down time of business processes/functions, as any threat to service availability could result in:
+        * Hardware or network failure
+        * Data loss and storage issues
+* When to setup Disaster Recovery -> DR is required for:
+    1. When the Control Room is set up in Production environment as backup to manage any unwanted/unexpected failure
+    2. To mitigate the impact of infrastructure during disaster
+    3. To comply with business continuity standards
+* Where to setup Disaster Recovery:
+    1. Across different physical locations as per the business continuity standards to achieve optimal Recovery Point Objective(RPO) of an organization
+    2. In different buildings in the same city or across different geographical locations
+    3. DR infrastructure can be setup based on data that can be accessed both at live and DR locations
+* Business Continuity Plan describes the plan for disaster recovery
 
 ### Control Room: Post Installation Configuration
 Once installation is complete. We configure the following aspects of Control Room:
@@ -1505,7 +1530,7 @@ Note: Hot fixes on v10 LTS are supported for migration to v11.x.
 12. Data from source Control Room configured for one user type cannot be migrated to destination Control Room configured for another user type, i.e. user data configured for Active Directory cannot be migrated to a Non Active Directory.
 
 ### Migration Process
-<img src="Migration_Process.png"/>
+<img src="Images/Migration_Process.png"/>
 
 # AAE Client Installation
 
@@ -1639,9 +1664,9 @@ Vault configured in Express mode, opens automatically on cache service start-up.
     (Default file Path: C:\Program Files (x86)\Automation Anywhere\Enterprise\Client\AAClientService.exe config)
     Note: Restart Automation Anywhere Client Service, for the changes to take effect
 
-<img src="AAE Ports and Protocols (Default).png"/>
-<img src="AAE Ports and Protocols (Default)_1.png"/>
-<img src="AAE Ports and Protocols (Default)_2.png"/>
+<img src="Images/AAE Ports and Protocols (Default).png"/>
+<img src="Images/AAE Ports and Protocols (Default)_1.png"/>
+<img src="Images/AAE Ports and Protocols (Default)_2.png"/>
 
 
 # Bot Deployment
@@ -1662,10 +1687,10 @@ Vault configured in Express mode, opens automatically on cache service start-up.
     3. Bot Deployment can be orchestrated from an External Application/Workflow using a combination of scripts and AAE APIs
 * The Bot Deployment API can only be invoked once the system/user has authenticated using the Authentication API
 * Deployment API is used to deploy Bots to Bot Runners.User will need to have "Run my Bots" privileges and the privileges of the Bot Runners on which the Bot is to be deployed
-<img src="Run and Schedule based Bot Deployment.png" />
+<img src="Images/Run and Schedule based Bot Deployment.png" />
 
-<img src="RDP Based Deployment Flow.png" />
-<img src="RDP Based Deployment Flow1.png" />
+<img src="Images/RDP Based Deployment Flow.png" />
+<img src="Images/RDP Based Deployment Flow1.png" />
 
 * Once the bot is created on the CR, a deployment notification is sent to the Bot Client.
 
@@ -1728,7 +1753,7 @@ Vault configured in Express mode, opens automatically on cache service start-up.
 Also, make sure the user in the SVN has Read/Write permissions to the SVN repository created
 6. Once a Repository is created,you will see a similar screen
 
-<img src="Configuring_SVN.png"> 
+<img src="Images/Configuring_SVN.png"> 
 7. The actual Repository path will be displayed at the top of the screen. This path can be used to browse the Repository from the Web Browser.
 
 ## Integrating SVN with AA
@@ -1745,7 +1770,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 1. ```QueueStore Folder``` -> ```Sends a copy of file to SVN Repository```
 2. ```CR Repository Path``` -> ```Confirmation sent to client machine for successful upload```
 
-<img src="Upload From Client Side- Workflow.png" />
+<img src="Images/Upload From Client Side- Workflow.png" />
 
 1. File Splitter ~> Split the file into multiple parts , that 4mb of each by default (is configurable)
 2. File Parts Uploader ~> Sends HTTP/HTTPS request to CR to initialize the File Upload
@@ -1757,7 +1782,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 8. If the SVN is on, file is also copied to SVN's QueueStore Folder and one by one sent to SVN
 
 ## AA Client Download Life Cycle
-<img src="Download from Client Side - Workflow.png" />
+<img src="Images/Download from Client Side - Workflow.png" />
 
 1. Downloading is initiated from Client Side by sending an HTTP/HTTPs request to CR
 2. On receiving the request for download from the AAE Client, the CR splits the file into chunks and sends information about number of chunks and the checksum of the whole file to AAE Client
@@ -1778,7 +1803,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
     7. All credentials are persisted in database in encrypted form and decrypted in runtime when needed
 
 ## CV Keys
-<img src="CV Keys.png" />
+<img src="Images/CV Keys.png" />
 
 * while generating keys, ```private key``` is saved externally by the admin
 * AAE works with ```CYBERARK``` to provide CV to users
@@ -1827,12 +1852,12 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 * Validate if the license service is running on the 8080 port, in case of any Licensing Server / service related error messages
 * Ensure that licensing service is able to reach Control Room DB server and the user configured to run the service has access of the Control Room Database
 
-<img src="mechanism of License Installation.png" />
+<img src="Images/mechanism of License Installation.png" />
 
 ##  License Downgrade Scenario
 * License downgrade is a scenario or condition where devices counts (Bot Creator, Bot Runners) are lesser than the existing utilized counts
 * In Such scenario ,the Admin will be required to first deallocate the license and bring the used counts equal or less to counts availed in new license file
-<img src="License Downgrade.png" />
+<img src="Images/License Downgrade.png" />
 
 
 # Control Room Administration
@@ -1898,8 +1923,8 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
 * when you specify search parameters for the same column, the system searches using ```OR``` operator. When you specify search parameters for different columns, the system searches using ```AND``` operator
 * when you use special keys ```_``` or ```-```, the system lists all Usernames instead of Usernames having these parameters
 
-<img src="User_Column_Actions.png" />
-<img src="User_Individual_Actions.png" />
+<img src="Images/User_Column_Actions.png" />
+<img src="Images/User_Individual_Actions.png" />
 
 
 ## Create Active Directory Users
@@ -1935,7 +1960,7 @@ Also, make sure the user in the SVN has Read/Write permissions to the SVN reposi
     2. 10.x LTS CR must be migrated to 11.x
     3. User must be migrated to 11.x CR
 
-<img src="Client Migration.png"/>
+<img src="Images/Client Migration.png"/>
 
 * After Migration process, a file named ```Flips Data Migration``` that is the log file of migration is located at the application path
 
@@ -2016,9 +2041,9 @@ For Successful device pool execution,the Queue Consumer and the Pool Consumer mu
         * Upload permission for the Bots and the dependencies
     * The CR user executing utility to importing multiple Bots must have access to the exported package file provided by AA
 
-<img src="Bot Life Cycle Component Diagram.png" />
+<img src="Images/Bot Life Cycle Component Diagram.png" />
 
-<img src="Bot Life Cycle Sequence Diagram.png" />
+<img src="Images/Bot Life Cycle Sequence Diagram.png" />
 
 
 ## Role Bases Access Control
@@ -2207,9 +2232,9 @@ Note : You can copy the response of the BLM Export API and directly pass that as
     8. View result in Body Data
 
 ## Auto-Login Process Workflow
-<img src="Auto Login Process Workflow.png" />
+<img src="Images/Auto Login Process Workflow.png" />
 
-<img src="Auto Login Troubleshoot.png" />
+<img src="Images/Auto Login Troubleshoot.png" />
 
 * There are 3 types of logs to refer in case of Auto-Login failure:
     1. Auto-Login debug level logs
@@ -2317,7 +2342,7 @@ Note :
     * The location of the certificate in AA is
     ```C:\Program Files\Automation Anywhere\Enterprise\pki```
 
-    <img src="SSL Chain Certificate.png" />
+    <img src="Images/SSL Chain Certificate.png" />
 
 ## Scenarios requiring post installation configuration of certificate:
 1. SSL Certificate expiring
@@ -2416,7 +2441,7 @@ Note :
         * Accelerates creation and execution
         * Performs OCR just once
 * Automation Flow uses nearest neighbour algorithm
-<img src="AI Sense Automation Flow.png" />
+<img src="Images/AI Sense Automation Flow.png" />
 
 
 ## TECHNICAL SUPPORT SPECIALIST
@@ -2688,7 +2713,7 @@ Bot Creator offline
 * Allows access to application on XenApp server for anybody around the world
 * Enables application launch on any device without any installation of software(besides Citrix Reciever)
 
-<img src="Citrix XenApp.png" />
+<img src="Images/Citrix XenApp.png" />
 
 ## Citrix XenDesktop
 * Delivers high user experience, even in 3D
@@ -2698,7 +2723,7 @@ Bot Creator offline
 * Offers single instance management
 * Ensures data security and access control
 
-<img src="Citrix XenDesktop" />
+<img src="Images/Citrix XenDesktop" />
 
 ## Components of Citrix
 1. Delivery Controller
@@ -2710,14 +2735,14 @@ Bot Creator offline
 * Providing machine creation services
 * Managing the state of the desktops based on demand and administrative configuration
 
-<img src="Citrix Delivery Controller.png" />
+<img src="Images/Citrix Delivery Controller.png" />
 
 2. Virtual Delivery Agent
 * It is installed on each physical or virtual machine in your site that you want to make available to users
 * Enables the machine to register with the controller, allowing the machine and the resources it is hosting to be made available to users
 * Establishes and manages the connection between the machine and the user device and verifies that a Citrix license is applied and configured
 
-<img src="Citrix VDA.png" />
+<img src="Images/Citrix VDA.png" />
 
 3. Citrix Receiver
 * Provides quick secure self-service access to documents, applications and desktops from any of the user's devices
@@ -2768,3 +2793,4 @@ Bot Creator offline
 * While a bot may be monitored remotely over ICA , if the session drops, the bot continues to run within the intranet
 * Better network performance within the intranet
 * Better security as data processed by the Bot remains within the intranet on systems owned by the enterprise
+

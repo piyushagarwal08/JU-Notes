@@ -753,7 +753,7 @@ implements      |_________________|
 ```
 
 ## Difference    
-<img src="ClassVsInterface.png"></img>
+<img src="Images/ClassVsInterface.png"></img>
 
 # Date 19th September 2019
 

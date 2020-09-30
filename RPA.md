@@ -1018,7 +1018,7 @@ Ans. ```Both development and production phases```
 1. Named User License
 2. Node Locked License ~> completely similar to ```Concurrent User license```
 
-<img src="Licenses.jpg">
+<img src="Images/Licenses.jpg">
 
 ## License Activation
 * To Activate any license in machine follow the following steps:
@@ -1191,7 +1191,7 @@ Note:
     * integrated with approval and persistence
     * support for Audit / ISO certifications - logging layer and reporting.
 
-<img src="IT_Automation.png"/>
+<img src="Images/IT_Automation.png"/>
 
 ## Important Terms 
 1. Microsoft Active Directory
@@ -1283,7 +1283,7 @@ e.g., Mail.devsl.local
 ### Asynchronous Processing
 * When executing a set steps ```synchronously```,like in the case of a ```For Each``` activity, the system waits for each iteration of the loop to complete before executing to the next one.
 * When executing the steps ```asynchronously```,like in the case of a ```Parallel for Each``` activity ,multiple transactions can be processed at the same time. The transactions are executed in different ```threads```. Threads are series of activities that can run concurrently.
-<img src="Asynchronous Processing.png" />
+<img src="Images/Asynchronous Processing.png" />
 
 ### When should we choose Orchestration Process
 * When our process will run in an unattended environment and requires that we use a rules engine to stitch together robot tasks, human tasks and asynchronous processing.
@@ -1295,7 +1295,7 @@ e.g., Mail.devsl.local
 * The ```Universal Blob Storage``` allows you to publish a set of generic storage API methods.By using this approach, the application services become agnostic of the native storage provider
 * The UBS makes the process of switching between different flavours of storage solutions easy and transparent, facilitating cost optimization, performance scaling and data center improvements
 
-<img src="Storage Framework.png">
+<img src="Images/Storage Framework.png">
 <center>UiPath - Storage Framework </center>
 
 ## Definition of Terms
@@ -1379,7 +1379,7 @@ e.g., Mail.devsl.local
 * Performing workflow support
 * Managing Changes and improvements
 
-<img src="Responsibilities.png" />
+<img src="Images/Responsibilities.png" />
 
 
 # Python
@@ -1591,7 +1591,7 @@ The same way goes for the incorrect data extraction.
 * <a href="https://docs.uipath.com/activities/docs/present-validation-station"> For More... </a>
 
 KeyBoard Shortcuts
-<img src="KeyboardShortcut.png" />
+<img src="Images/KeyboardShortcut.png" />
 
 ## Exporting Extraction Results
 * After you validate the extracted data, you can export it to whatever environment you need in order to consume it. The extraction results can be exported as a DataSet variable which can be further processed. 
@@ -1654,10 +1654,10 @@ Note:It is strongly recommended, for easy identification and understanding of th
 # Process Mining
 * UiPath Process Mining is a Process Mining Solution that transforms data from your IT systems into visual interactive dashboards,allowing you to see existing value decreases, bottlenecks and discrepancies, as well as understanding the root-causes and possible risks.
 
-<img src ="ProcessMiningUsers.png" />
+<img src ="Images/ProcessMiningUsers.png" />
 
 ## Product Architecture
-<img src="TaskMiningArchitecture.gif" />
+<img src="Images/TaskMiningArchitecture.gif" />
 
 1. <u>Admin Panel</u> ~> A cloud hosted web application that allows the customer to configure the projects. The portal enables an admin to invite and manage users, configure project settings and visualize results from past projects
 
@@ -1671,7 +1671,7 @@ Note:It is strongly recommended, for easy identification and understanding of th
 
 6. <u>Analyzer</u> ~> Analyzer will decrypt the data and will apply AI to identify tasks. After the analysis is finished, data can be imported and visualized in the admin panel.
 
-<img src="TaskMiningUsers.png" />
+<img src="Images/TaskMiningUsers.png" />
 
 ## Other Features
 1. Dashboard Tab ~> The Dashboard tab is used to track the progress of the project and keep the stakeholders informed by using the graphical displays of the real-time data available.

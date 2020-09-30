@@ -25,7 +25,7 @@ int main() // main is a predefined identifier not an keyword
 ```
 * There are 95 keywords in C++
 
-<img src="trigraph_sequence.png">
+<img src="Images/trigraph_sequence.png">
 
 * In modern compilers, trigraph features are disabled by default
 * Generally, C++ compiler ignores the white-spaces
