@@ -211,4 +211,73 @@ WHERE life_expectancy > 1.15 *
 ```
 * Subqueries are most frequently used in ```WHERE``` clause
 * Cross JOIN is used as ```SELECT * FROM tb1 CROSS JOIN tb2```
-    
+* To get the Round-of value, we can use ```ROUND(value,decimal-pomit)``` to get the required output as ```ROUND(0.3434,2)``` to get ```0.34```
+
+## Correlated Subqueries
+* Simple Subquery Vs Correlated Subqueries
+<table>
+<tr>
+    <th>Simple Subquery</th>
+    <th>Correlated Subquery</th>
+</tr>
+<tr>
+    <td>Can be run independently from the main query </td>
+    <td>Dependent on the main query to eecute </td>
+</tr>
+<tr>
+    <td>Evaluated once in the whole query</td>
+    <td> Evaluated in loops -> Significantly slows down query runtime</td>
+</tr>
+</table>
+
+* To get Month from ```Date```, we can use ```EXTRACT(MONTH FROM DATE)```
+* Correlated Nested Subqueries can be correlated or uncorrelated
+    1. They can be a combination of two
+    2. Can reference information from the outer subquery or main query
+
+## Common Table Expressions
+* Table declared before main query
+* Named and referenced later in ```FROM``` statement
+```sql
+WITH cte AS (
+    SELECT col1, col2 
+    FROM table)
+
+SELECT 
+    AVG(col1) AS avg_col
+FROM cte;
+```
+* Executed only once
+    1. CTE is stored in memory
+    2. Improves query performance
+* Improving organization of queries
+* Referencing other CTEs
+* Referencing itself (SELF JOIN)
+* To declare multiple ```CTE``` just separate them with a ```comma(,)```
+```sql
+WITH home AS (
+  SELECT m.id, m.date, 
+  		 t.team_long_name AS hometeam, m.home_goal
+  FROM match AS m
+  LEFT JOIN team AS t 
+  ON m.hometeam_id = t.team_api_id),
+-- Declaring another CTE after ,
+-- Declare and set up the away CTE
+away AS (
+  SELECT m.id, m.date, 
+  		 t.team_long_name AS awayteam, m.away_goal
+  FROM match AS m
+  LEFT JOIN team AS t 
+  ON m.awayteam_id = t.team_api_id)
+-- Select date, home_goal, and away_goal
+SELECT 
+	home.date,
+    home.hometeam,
+    away.awayteam,
+    home.home_goal,
+    away.away_goal
+-- Join away and home on the id column
+FROM home
+INNER JOIN away
+ON home.id = away.id;
+```
