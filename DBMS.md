@@ -281,3 +281,71 @@ FROM home
 INNER JOIN away
 ON home.id = away.id;
 ```
+
+## Window Functions
+* Functions that Perform calculations on an already generated result set (a window)
+* Aggregate Calculations
+    1. Similar to subqueries in ```SELECT```
+    2. Running totals, rankings, moving averages
+```sql
+SELECT
+    date,
+    (home_goal + away_goal) AS goals,
+    AVG(home_goal + away_goal) OVER() AS overall_avg
+FROM match
+WHERE season = '2011/2012';
+```
+```sql
+-- RANK() function orders rank from smallest to largest value
+SELECT 
+    date,
+    (home_goal + away_goal) AS goals,
+    RANK() OVER(ORDER BY home_goal + away_goal) AS goals_rank
+FROM match
+WHERE season = '2011/2012';
+```
+* Processed after every part of query except ```ORDER BY```
+    1. Uses information in result set rather than database
+* Available in PostgreSQL, Oracle, MySQL, SQL Server.. but not SQLite
+```sql
+-- PARTITION BY
+/*
+Calculates separate values for different categories
+Calculates different calculations in the same column
+*/
+SELECT
+    date,
+    (home_goal + away_goal) AS goals,
+    AVG(home_goal + away_goal) OVER(PARTITION BY season) AS overall_avg
+FROM match
+WHERE season = '2011/2012';
+```
+
+### Sliding Windows
+* Performs calculations relative to the current row
+* Can be used to calculate running totals, sums, averages, etc
+* Can be partitioned by one or more columns
+```sql
+ROWS BETWEEN <start> AND <finish>
+```
+* Keywords that can be used in place of start and finish:
+    1. PRECEDING
+    2. FOLLOWING
+    3. UNBOUNDED PRECEDING -> since the beginning
+    4. UNBOUNDED FOLLOWING
+    5. CURRENT ROW -> stop at current row
+```sql
+SELECT 
+	date,
+	home_goal,
+	away_goal,
+    -- Create a running total and running average of home goals
+    SUM(home_goal) OVER(ORDER BY date 
+         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total,
+    AVG(home_goal) OVER(ORDER BY date 
+         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_avg
+FROM match
+WHERE 
+	hometeam_id = 9908 
+	AND season = '2011/2012';
+```

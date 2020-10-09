@@ -1757,3 +1757,29 @@ Note:It is strongly recommended, for easy identification and understanding of th
 3. Execute Non Query ~> To Perform ```Insert/Update/Delete``` operations on the database
 4. Insert ~> To perform insert operation for a set of rows, this activity is used to insert a complete tabular data in the datatable inside database
 5. Stored Procedures ~> It can be used by using ```Execute Query``` activity by changing the ```command type``` to ```stored procedure```
+
+# String Builder
+* It can be used to create a long string
+* Its syntax is ```new StringBuilder``` with data type ```System.text.StringBuilder```
+* A good use-case is to send DataTable as Mail Message to anyone
+* Steps to Convert Excel DataTable into Html Table:
+    1. Create a ```StringBuilder``` variable called ```strbuilder```
+    2. Use ```Append``` function of ```StringBuilder``` to append text for ```HTML``` code 
+        ```html
+        builder.Append("
+        <html>
+        <head>
+        <style>th,tr,td{border: 1px solid black;}</style>
+        <body>
+        <table><tr>")
+        ```
+    3. For each column name to be inserted as header, use ```For each``` activity with value as ```DataTable.Columns``` and data-type as ```System.Data.DataColumn```
+    4. Append the column headers as
+        ```html
+        builder.Append("
+        <th>"+item.ColumnName.ToString+"</th>"
+        )
+        ```
+    5. Similarly Append cells values for each row and every column of individual row
+
+
