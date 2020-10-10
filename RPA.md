@@ -1783,3 +1783,20 @@ Note:It is strongly recommended, for easy identification and understanding of th
     5. Similarly Append cells values for each row and every column of individual row
 
 
+# Windows Application using UiPath Apps
+* UiPath Apps is the latest feature of UiPath 2020 that gives you freedom to develop & customize an App like interface and integrate with your Orchestrator & UiPath Bot
+* For this Application, ```npm``` should be installed in system. 
+* You can download it using <a href="https://nodejs.org/en/download/">Node JS</a>
+* Once the Process is ready -> Convert into package and publish it to Orchestrator
+* Go to <a href="https://github.com/UiPath/AppsClientSample">UiPath Sample Application</a>
+* Download the Zip file
+* Open ```Main.js``` file and do the required minor changes
+    1. Change RUNTIME URL : This is the URL of your UiPath App, After publishing your app when you open it, the url of the browser is what we need
+    2. Window Paramet : if you wish you can change the window size
+* Open ```package.json``` , here you can change the ```display name``` which is the title of windows application
+* ```icon.jpg``` image is the Windows Application icon, that you can replace with any other image just with same name
+* Once done, open your ```cmd``` and move to respective directory with files
+* Run the command, ```npm start``` -> It will verify for requirements necessary for our application
+* Run the command, ```npm run dist``` to develop the final ```.exe``` files which can be run on client machine
+* This application requires ```Bot``` to be connected to ```Orchestrator``` so that app can properly trigger the bot
+
