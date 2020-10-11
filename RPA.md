@@ -1426,6 +1426,60 @@ def CalculateCharacterLength(string,char):
 ### Run Python Script
 * This activity is used to execute any python code as similar to double-clicking an python ```.py``` file
 
+### Use Case
+* To Send Images in Email Body embeded inline, we can use following python code along with our bot
+```py
+# Send an HTML email with an embedded image and a plain text message for
+# email clients that don't want to display the HTML.
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
+def SendMail(From,To,Password,Message,Subject,ImgPath):
+    # Define these once; use them twice!
+    strFrom = From
+    strTo = To
+
+    # Create the root message and fill in the from, to, and subject headers
+    msgRoot = MIMEMultipart('related')
+    msgRoot['Subject'] = Subject
+    msgRoot['From'] = strFrom
+    msgRoot['To'] = strTo
+    msgRoot.preamble = 'This is a multi-part message in MIME format.'
+
+    # Encapsulate the plain and HTML versions of the message body in an
+    # 'alternative' part, so message agents can decide which they want to display.
+    msgAlternative = MIMEMultipart('alternative')
+    msgRoot.attach(msgAlternative)
+    
+    #msgText = MIMEText('This is the alternative plain text message.')
+    #msgAlternative.attach(msgText)
+    
+    # We reference the image in the IMG SRC attribute by the ID we give it below
+    # '<b>Some <i>HTML</i> text</b> and an image.<br><img src="cid:image1" width=20px height=30px><br>Nifty!'
+    msgText = MIMEText(Message, 'html')
+    msgAlternative.attach(msgText)
+
+    # This example assumes the image is in the current directory
+    fp = open(ImgPath, 'rb')
+    msgImage = MIMEImage(fp.read())
+    fp.close()
+
+    # Define the image's ID as referenced above
+    msgImage.add_header('Content-ID', '<image1>')
+    msgRoot.attach(msgImage)
+
+    # Send the email (this example assumes SMTP authentication is required)
+    
+    smtp = smtplib.SMTP('smtp.gmail.com',587)
+    smtp.starttls()
+    smtp.login(strFrom,Password)
+    smtp.sendmail(strFrom,strTo,msgRoot.as_string())
+    smtp.quit()
+    return "Mail Sent"
+```
+
 
 # UiPath Test Suite
 * Software Testing ~> Software testing is the process of verifying that a software meets certain requirements and behaves as expected
@@ -1800,3 +1854,43 @@ Note:It is strongly recommended, for easy identification and understanding of th
 * Run the command, ```npm run dist``` to develop the final ```.exe``` files which can be run on client machine
 * This application requires ```Bot``` to be connected to ```Orchestrator``` so that app can properly trigger the bot
 
+
+# Custom Input
+* This activity is used to get data from HTML webpages
+* It requires a ```JS``` to be embeded into the code that is
+```html
+<!DOCTYPE html>
+<html>
+<!-- Simple HTML Code -->
+<body>
+<h2>Simple Form</h2>
+
+<form action="/action_page.php">
+  First name:<br>
+  <input type="text" name="firstname" id="FirstName">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" id="LastName">
+  <br>
+  Age:<br>
+  <input type="text" name="age" id="Age">
+  <br><br>
+  <input type="submit" value="Submit" id="SubmitButton">
+</form> 
+<!-- Simple Html code ended -->
+<!-- Important Script to get data -->
+<script>
+   document.getElementById("SubmitButton").onclick = function() {
+   		var FirstName = document.getElementById("FirstName").value;
+   		var LastName = document.getElementById("LastName").value;
+   		var Age = document.getElementById("Age").value;
+   		var OutputString = "{\"First_Name\":\"" + FirstName + "\","  +  "\"Last_Name\":\"" + LastName + "\"," + "\"Age\":\"" + Age + "\"}";
+
+   		window.external.setResult(OutputString);
+   		};
+</script>
+<!-- Important Script to get data ended -->
+</body>
+</html>
+```
+* For better use of the ```Output Variable```, we can use the ```deserialize JSON``` activity from the ```UiPath.Web.Activities``` to create an ```JSON``` object that can be easily used.
