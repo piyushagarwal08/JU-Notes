@@ -306,7 +306,7 @@ WHERE season = '2011/2012';
 ```
 * Processed after every part of query except ```ORDER BY```
     1. Uses information in result set rather than database
-* Available in PostgreSQL, Oracle, MySQL, SQL Server.. but not SQLite
+* Available in PostgreSQL, Oracle   , MySQL, SQL Server.. but not SQLite
 ```sql
 -- PARTITION BY
 /*
@@ -349,3 +349,9 @@ WHERE
 	hometeam_id = 9908 
 	AND season = '2011/2012';
 ```
+
+* to add a ```DATE``` in sql, we use ```Date``` data-type and it is inserted as ```DATE 'yyyy/MM/dd'``` format
+* to add a ```TIMESTAMP``` in sql, we use ```timestamp``` data-type and it is inserted as ```TIMESTAMP 'yyyy/MM/dd HH:MM:SS```
+* Timestamp from ```1900``` onwards can only be inserted into SQL
+* To insert characters like ```'(single quote)```, one need to use ```\(backslash)```
+* to use column names with space in between like ```Column Number 1```, we need to represent it inside ```back-quotes``` like ``` `Column Number 1` ``` though it is preferable to always use ```underscore _``` instead of ```space```
