@@ -131,6 +131,7 @@ Context Data Model
 * To disconnect from database ```\quit```
 * To change language from ```JS``` to ```SQL``` use ```\sql```
 * To Create a database ```create database db-name```
+* To clear shell screen, use ```Ctrl + L```
 * To Create a table 
 ```sql
 create table tb-name(
