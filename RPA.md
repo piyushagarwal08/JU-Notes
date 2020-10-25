@@ -452,6 +452,7 @@ Ans. ```By sending keyboard commands/hotkeys```
 * ```Add data row``` ~> this activity is used to add a new row in an ```Excel file``` using an ```array of data``` which is defined using ```circular or curly``` brackets as ```(var1,var2) or {var1,var2}```
 * ``` inputsTable.Rows.Count``` ~> it can be used to count the total number of rows
 * Use of ```Workbooks``` is prefferable over ```Excel files``` as they do not require Excel to be ```installed```
+* To reverse a ```DataTable``` object, we can do so by ```Datatable-name.AsEnumerable.Reverse.CopyToDatatable```
 
 ## Lesson 9 Quiz Time
 1. What happens if the AddHeaders option is checked for Read Range Activity? 
@@ -1894,3 +1895,14 @@ Note:It is strongly recommended, for easy identification and understanding of th
 </html>
 ```
 * For better use of the ```Output Variable```, we can use the ```deserialize JSON``` activity from the ```UiPath.Web.Activities``` to create an ```JSON``` object that can be easily used.
+
+# Forms
+* It provides a look of ```BootStrap```
+* Dismissed Property -> Used to check if the form is filled or abruptly closed that is ```True``` if closed abruptly
+* To insert data inside forms from outside, we can use ```FormFieldsCollection``` where ```Name``` refers to ```FieldKey``` and Value we want to insert
+* To Convert a ```datatable``` into a ```Json Object```, we use ```Newtonsoft.Json.JsonConvert.SerializeObject(Table-Name)```
+* To insert a ```DataTable``` data inside a form, we just same ```TextFields``` to represent tabular data for single row with ```Same FieldKey Name``` as ```Column Name``` placed inside the ```DataGrid``` Component
+* ```DataGrid``` and ```EditGrid``` both works the same way just different with looks
+
+
+# Twilio
