@@ -163,3 +163,115 @@ namespace Giraffe
 ```
 * For inputs of type integer, we can do type conversion from string to integer using ```Convert.toInt32```
 * ```Convert``` function can be used for multiple conversions between different data-types
+
+
+## Arrays
+* To use arrays in C#, the syntax is ```data-type[] array-name = {initialize with values}```
+```c#
+using System;
+using System.Linq;
+using System.Numerics;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace Giraffe
+{
+    
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            int [] integer_Arr = { 1, 2, 3, 2, 1 };
+            string[] string_Arr = { "hello", "hi" };
+            Console.WriteLine(integer_Arr[0]);
+            Console.WriteLine(string_Arr[0]);
+        }
+    }
+}
+```
+
+## Methods
+* All the methods in C# should start with ```static``` keyword
+* Its best practice to start method names with ```Capital Letters```
+* Methods are same as in all other languages
+```c#
+using System;
+using System.Linq;
+using System.Numerics;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace Giraffe
+{
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter your name: ");
+            Greet(Console.ReadLine());
+        }
+
+        static void Greet(string name)
+        {
+            Console.WriteLine("Hii " + name);
+        }
+    }
+}
+```
+
+## Conditionals
+* The if-else syntax is same as in C
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            char x = Convert.ToChar(Console.ReadLine());
+            
+            if (x == 'A')
+            {
+                Console.WriteLine("First if condition" + x);
+            }
+            else if (x == 'B')
+            {
+                Console.WriteLine("Second if statement" + x);
+            }
+            else
+                Console.Write("Enter your Name:");
+                Console.WriteLine("Your name is: " + Console.ReadLine());
+        }
+    }
+}
+```
+* The logical operators are also same as:
+    1. ```And``` -> ```&&```
+    2. ```Or``` -> ```||```
+    3. ```not``` -> ```!```
+
+* using terniary operator in C#, is
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine(GetMax(5, 7));
+            
+        }
+
+        static int GetMax(int a,int b)
+        {
+            return a > b ? a : b;
+        }
+    }
+}
+```
