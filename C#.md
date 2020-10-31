@@ -189,6 +189,64 @@ namespace Giraffe
     }
 }
 ```
+* To get the length of array, we can use ```Array-name.Length```
+* For ```2-D Array```, we have got different syntax
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            // [,] denotes 2-d array
+            int[,] numberGrid = {
+                {1,2,3,4,5},
+                {6,7,8,9,10},
+                {8,9,10,11,12}
+            };
+
+            //foreach loop will print all the elements as
+            foreach (int arr in numberGrid)
+                Console.WriteLine(arr);
+
+            Console.WriteLine(numberGrid[2,3]);
+        }
+    }
+}
+```
+* For ```3-D Array```, the syntax gets a little different
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int[,,] numberGrid = {
+                {
+                    {1,2},{2,3}
+                },
+                {
+                    {2,3},{3,4}
+                }
+            };
+
+            Console.WriteLine(numberGrid[0,1,1]);
+        }
+    }
+}
+```
+* Basically, the number of ```Semi-colons ,``` represent the ```dimension of array```
+    1. 2-D Array -> ```[,]```
+    2. 3-D Array -> ```[,,]```
+    3. 4-D Array -> ```[,,,]```
+* To just initialize the array object, we can do so by ```data-type[dimesnion] var-name = new data-type[row,column]```
 
 ## Methods
 * All the methods in C# should start with ```static``` keyword
@@ -275,3 +333,332 @@ namespace Giraffe
     }
 }
 ```
+* Switch Statements in ```C#``` is same as that in ```C```
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine(GetDay(Console.ReadLine()));
+
+        }
+
+        static int GetDay(string dayNum)
+        {
+            switch(dayNum)
+            {
+                case "Monday":
+                    return 0;
+                case "Tuesday":
+                    return 1;
+                case "Wednesday":
+                    return 2;
+                case "Thursay":
+                    return 3;
+                default:
+                    return -1;
+            }
+        }
+    }
+}
+```
+
+## Loops
+1. ```While Loop```
+```c#
+using System;
+
+namespace Loops
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            while(condition)
+            {
+                //.. statements to be executed
+
+                // termination condition
+            }
+        }
+    }
+}
+```
+2. ```Do-While Loop```
+```c#
+using System;
+
+namespace Loops
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            do
+            {
+                //.. statements to be executed
+
+                // termination condition
+            }while(condition)
+        }
+    }
+}
+```
+3. ```For Loop```
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            for (initial condition; termination condition;Increment/Decrement)
+            {
+                //..Set of statements
+            }
+        }
+
+    }
+}
+```
+4. ```Foreach Loop```
+```c#
+using System;
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int[] arr = { 1, 2, 3, 4 };
+            foreach(data_type var_name in iterative_dataStructure)
+                {
+                    //.. Set of Statements
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+```
+
+## Exception Handling
+* Exception can be handled by using ```Try-Catch``` block
+* It can also be followed by ```finally``` block, which is always executed
+```c#
+using System;
+using System.Runtime.InteropServices.ComTypes;
+
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                int num1 = 5;
+                int num2 = Convert.ToInt32(Console.ReadLine());
+                Console.Write(num1/num2);
+
+            }
+            catch(System.DivideByZeroException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+            catch(Exception e)
+            {
+                Console.Write("Awesome "+e.ToString());
+                Console.WriteLine(e.Message);
+            }
+            finally{
+                Console.WriteLine("I am finally block");
+            }
+        }
+    }
+}
+```
+
+## Classes and Objects
+* To create a class ```right-click``` on ```project-name``` and click on ```add``` then ```new item``` and select ```Class```
+* To create an ```instance``` of class, ```class-name object-name = new class-name();```
+```c#
+// Main Program Class
+using System;
+using System.Runtime.InteropServices.ComTypes;
+
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Book obj1 = new Book();
+            obj1.author = "Pykid";
+            obj1.title = "Pykid way of C#";
+            obj1.pages = 434;
+            obj1.Display();
+        }
+    }
+}
+
+// Book Class
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Giraffe
+{
+    class Book
+    {
+        public string title;
+        public string author;
+        public int pages;
+
+        public void Display()
+        {
+            Console.WriteLine("Title: " + title + Environment.NewLine +
+                "Author: "+author+Environment.NewLine+
+                "Page Count: "+pages);
+        }
+    }
+}
+```
+* Constructors are methods with same name as class and are called whenever an object is created
+```c#
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+namespace Giraffe
+{
+    class Book
+    {
+        public string title;
+        public string author;
+        public int pages;
+        // Constructor of class 
+        public Book(string aTitle,string aAuthor,int aPages)
+        {
+            title = aTitle;
+            author = aAuthor;
+            pages = aPages;
+        }
+        
+        public void Display()
+        {
+            Console.WriteLine("Title: " + title + Environment.NewLine +
+                "Author: "+author+Environment.NewLine+
+                "Page Count: "+pages);
+        }
+    }
+}
+```
+* To Remember that, arguments name for constructor can not be same as variable names of class
+* More then one constructor can be created inside of a class
+
+
+## Getters and Setters
+* These are methods that can be used in the classes
+* Used for more secure classes and validate the type of data that can be passed
+* These are functions/methods that we can use to check if value assigned through an object is a validated statement or not based on conditions
+* We can use this function, to make sure that proper value is provided as input
+```c#
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+namespace Giraffe
+{
+    class Book
+    {
+        private string title; // not accessible by anyone other then methods inside class
+        public string author;
+        public int pages;
+        // Constructor of class 
+        public Book(string aTitle,string aAuthor,int aPages)
+        {
+            Title = aTitle; // this is going to call the Title Method declared below
+            author = aAuthor;
+            pages = aPages;
+        }
+
+        // () are not used here, as its not really an method
+        public string Title 
+        {
+            get { return title; } // used to return value to when function is called
+            set
+            {
+                // obj1.Title or new Book("asas","sasa",232)
+                if (value == "Piyush") // value is here a variable which automatically fetches the data set by object
+                {
+                    title = value; // value for private variable will be set
+                }
+                else
+                    title = "Pykid";
+            }
+            
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Title: " + title + Environment.NewLine +
+                "Author: "+author+Environment.NewLine+
+                "Page Count: "+pages);
+        }
+    }
+}
+
+// Main Function
+using System;
+using System.Runtime.InteropServices.ComTypes;
+
+namespace Giraffe
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Book b1 = new Book("Pimp", "assa", 232);
+            b1.Display();
+        }
+    }
+}
+```
+
+## Static Class Attribute
+* Attribute which is same for all the objects of the class
+* It is basically an attribute of class and not of object
+* It can be called using ```Class-name.static-variable-name``` but can not be accessed using objects
+* To access using objects, we would need to use method for the same
+
+
+## Static Methods & Classes
+* Static Method refers to methods that belongs to a class
+* These methods are declared as ```public static return-type method_name(){}```
+* To prevent one from creating object a class, we just need to make the ```class static```
+```static class class-name```
+* We can not create the object of an static class
+
+## Inheritance
+* Inheritance is the property of OOPS which allows one class to inherit the functions and methods of another class o r basically inheriting the properties of another class
+* In Base class, we can make any function as ```virtual``` to make it possible for child classes to over ride the method with syntax ```public override return-type func-name(){}```
+* To inherit another class, syntax is ```class Class-name : class-name-to-be-inherited```

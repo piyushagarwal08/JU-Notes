@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.ComTypes;
+
 namespace Giraffe
 {
 
     class Program
     {
-
-        static void Main(string[] args)
+        //UsefulTools obj1 = new UsefulTools();
+        
+        public static void Main(string[] args)
         {
-            Console.WriteLine(GetMax(5, 7));
+            UsefulTools ob1 = new UsefulTools();
+            ob1.Func1();
             
-        }
-
-        static int GetMax(int a,int b)
-        {
-            return a > b ? a : b;
+            Book ob2 = new Book("title", "author", 232);
+            ob1.Func2();
         }
     }
 }
