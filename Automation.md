@@ -460,7 +460,7 @@ e.g [ENTER]
 ## Meta Bots
 * Visual Captures ~> GUI Components of screen
 * Application APIs ~> Allow low level operations of an application by evading GUI, Supports API on dll
-* Navigational flows ~> Pre configured use cases of an application and Leverage visual captures and APIs and Screen and DLLs form the Assets
+* Navigational flows ~> Pre configured use cases of an application and Leverage visual captures and APIs and Screen and DLLs form the Assets using which one can create a ```Logic```
 
 
 * STP ~> Number of documents that are processed end-to-end without human intervention
@@ -610,7 +610,7 @@ e.g [ENTER]
 * Metabot is application resilient, which means anytime an application ```Updates``` or ```Changes```, the user can make minimal edits to the Bot itself and those changes will automatically be applied to any process
 utilizing that bot
 * The Automation blue prints can be constructed using the elements present in metabots such as
-    1. Visual Captures ~> GUI components,screensof an application
+    1. Visual Captures ~> GUI components,screens of an application
     2. Application API's ~> which are interfaces that allow low level operations of an application by circumventing GUI(most common is DLL)
     3. Navigation Flows ~> Pre-configured use cases of an application and leverage visual captures and API's
 * Benefits of MEtabots
@@ -2794,3 +2794,58 @@ Bot Creator offline
 * Better network performance within the intranet
 * Better security as data processed by the Bot remains within the intranet on systems owned by the enterprise
 
+
+# SAP Automation
+* There are 3 methods to automate an SAP application:
+    1. MetaBot DLL
+    2. BAPI
+    3. Keystrokes, IR and OCR
+
+## MetaBot DLL Automation
+* Requires SAP GUI Scripting
+* Handles all types of automation though object ID captured by SAP GUI scripting
+* Uses SAP Recording and Playback to identify scripting identities for each GUI field
+* Provides offline development feature to capture the required screens
+
+* It can be created using 3 ways:
+    1. Visual Captures
+    2. Application APIs
+    3. Navigational Flows
+
+* To login value should be ```1``` for pre-existing session
+* To extract complete table, enter ```Rows=Column=0```
+* Metabots are executed from Taskbot
+* In Assets, first need to add SAPGUIScript.dll file
+* In Logic, create the logic while using the ```object id``` from vb script
+
+## BAPI
+* Does not require GUI scripting
+* Connects to SAP from backend without working on GUI layer
+* Requires installation of SAP plugin bundle
+* Makes optimal use of SAP BAPI's transaction codes
+
+### BAPI Manager
+* The BAPI manager allows to add,edit and delete a BAPI function, category and operation
+* To Access ```Tools>Options>SAP Environment>BAPI Manager```
+* SAP plugin is required to be installed
+* On using ```Run Standard BAPI``` command, write the name ```BAPI``` to be used which opens the ```BAPI Explorer```
+* <a href="https://automationanywhere.litmos.com/cloudmedia/66126/scorm/4029718_1/story_content/external_files/BAPI_Show-me_StepList.pdf">Basic Guide</a>
+
+
+### Commands
+1. Connect -> Allows connecting to the specified SAP system with the provided details
+    * Client = 800
+    * Language = EN
+2. Run Standard BAPI -> Allows you to select and execute the required BAPI
+3. Run Custom Workflow -> Allows you to run pre-defined custom workflows for SAP
+4. Run Remote Function Calls -> Allows you to store output values of BAPI to different variables
+
+
+
+## Keystrokes, IR and OCR
+* Does not require GUI scripting
+* Leverages SAP gui to create simple yet powerful automation solutions
+* Inserting Keystrokes automates the typing activities
+* Image Recognition (IR) enables to quickly search for a desired image that represents an object
+* Optical Corrected Recognition extracts text from an image and transfers to anoth application
+* Recommended only if the customer do not want MetaBot or BAPI automation solution or if SAP is to be using CITRIX automation

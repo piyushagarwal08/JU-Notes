@@ -1905,4 +1905,23 @@ Note:It is strongly recommended, for easy identification and understanding of th
 * ```DataGrid``` and ```EditGrid``` both works the same way just different with looks
 
 
-# 
+# Action Center
+* <b>UiPath Action Center</b> is the component of the UiPath RPA Platform meant to enable Humans to start processes, then step in, validate, and make decisions regarding the work of Robots in complex processes that require exceptions, escalations, and approvals. Thus, it provides the means for end to end process automation
+* Whenever bots require human validation,make decisons or anything in which human input is required then, it can use ```Actions Center``` to create a form and wait for the input or pause the current task and move to another work
+* Regardless on how ```Action Center``` is accessed, be it from On-Premises or Cloud Services, the functionality of the platform will be the same
+* Users can have ```different levels of permission``` with the platform, being able to ```View``` or ```Manage``` activities.
+* Users can ```resolve tasks``` as well as ```start processes``` from the Action Center platform
+* If you are looking for a specific task, you can either search for it directly if you remember the ```task's name```, use the ```Sort by Priority``` or ```Filter by Priority``` functions
+* ```Activities outside Action Center``` such as creating a ```Jira ticket``` or ```adding data to Salesforce``` can also ```trigger task creation and completion``` inside Action Center.
+
+## Parts of Action Center
+1. Actions Panel -> This is where tasks are managed.Here you can view, select, search for specific tasks and filter through them
+2. Controls -> Different control options will be displayed depending on the type of interaction required by the assigned activity
+3. Tab Selection -> From here you can access the Home,Actions and Processes Tabs.
+4. Tasks -> Here one can view at task in detail.
+
+## Action Status
+1. Unassigned Action Status -> Once an action is generated for a Human user, it will be displayed in the Actions page with the ```Unassigned Status```.This means that no user has been allocated to it
+2. Completed Actions Status -> Once an action is completed by our Human user, it will be displayed in the Actions page with the ```Completed status``` and this will allow the Robot to ```resume``` the automated business process
+3. Pending Action Status -> If an action is already assigned to a Human user it will be displayed in the ```Action page``` having the ```Pending status```. Most likely a queue of such items will form and will be completely in order depending on their priority
+
