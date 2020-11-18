@@ -2817,6 +2817,8 @@ Bot Creator offline
 * Metabots are executed from Taskbot
 * In Assets, first need to add SAPGUIScript.dll file
 * In Logic, create the logic while using the ```object id``` from vb script
+* <a href="https://automationanywhere.litmos.com/cloudmedia/66126/scorm/4029718_1/story_content/external_files/AA_SAPAutomation_MetaBot_DLL%20Functions_ePDF_v1.0.pdf">MetaBot DLL Functions</a>
+
 
 ## BAPI
 * Does not require GUI scripting

@@ -5,6 +5,7 @@
 * A simple print statement would be ```Console.WriteLine("Any-Text")```
 * ```Console.WriteLine``` always prints in a new line
 * ```Console.Write``` is used to continue text in same line
+* Another way to use ```Console.WriteLine``` is by giving arguments as ```Console.WriteLine("I am {0}","Piyush")```
 * The default input type taken using ```ReadLine``` is ```System.String```
 
 ```c#
@@ -56,7 +57,29 @@ namespace Giraffe
 * For double, we have ```doube var-name  = 3.0m```
 * For float, we have syntax as ```float var-name = 4.45454f```
 * we have got ```bool``` as ```bool var-name=true or false```
-
+* To store ```Null``` value in any data-type, use ```data-type?``` as data-type of any variable
+```c#
+using System;
+class Program
+{
+    static void Main()
+    {
+        bool? VarNum = null;
+        if (bool)
+        {
+            Console.WriteLine("True");
+        }
+        else if(bool == false)
+        {
+            Console.WriteLine("False");
+        }
+        else
+        {
+            Console.WriteLine("None");
+        }
+    }
+}
+```
 ```c#
 using System;
 
@@ -662,3 +685,4 @@ namespace Giraffe
 * Inheritance is the property of OOPS which allows one class to inherit the functions and methods of another class o r basically inheriting the properties of another class
 * In Base class, we can make any function as ```virtual``` to make it possible for child classes to over ride the method with syntax ```public override return-type func-name(){}```
 * To inherit another class, syntax is ```class Class-name : class-name-to-be-inherited```
+
