@@ -1925,3 +1925,37 @@ Note:It is strongly recommended, for easy identification and understanding of th
 2. Completed Actions Status -> Once an action is completed by our Human user, it will be displayed in the Actions page with the ```Completed status``` and this will allow the Robot to ```resume``` the automated business process
 3. Pending Action Status -> If an action is already assigned to a Human user it will be displayed in the ```Action page``` having the ```Pending status```. Most likely a queue of such items will form and will be completely in order depending on their priority
 
+
+# UiPath ChatBot
+* UiPath gives the feature to create your own chatbot by integrating the Orchestrator with the dialogflow and leveraging the power of google ```dialogflow``` engine and ```NLP power```
+* To create your own chatbot, visit ```chatbot.uipath.com```
+* Steps:
+    1. Click on ```Create new (+)```
+    2. Give a name to the ```Connection``` and Save
+    3. Next go to ```https://dialogflow.cloud.google.com/```
+    4. Create an ```Agent``` and ```chatbot``` with features as you like and test in dialogflow
+    5. In Build Part, Connect your ```Dialogflow agent``` and ```Orchestrator Service```
+    6. In Map Part, Map the process with ```single intent``` that has all the required variables
+    7. You are all set
+
+## Steps to Connect Dialogflow agent
+1. Open your ```Dialogflow Console```
+2. Click on ```Settings Gear``` icon
+3. Copy the ```Project-ID``` and paste in connection details
+4. Open ```https://console.cloud.google.com/```
+5. Select your Project, ```Same as Project ID```
+6. Go to ```Navigation > IAM & Admin > Service Accounts```
+7. Create a ```new Service Account```
+8. Give any name to account and role of ```Dialogflow API Admin``` and click on Done
+9. Copy the Email to Chatbot Connection as ```Service Account```
+10. Generate a key from ```Service Account``` by clicking on the side 3 dots and copy the ```Private Key``` to ```Chatbot Console```
+11. Click on connect and you are done
+
+## Steps to Connect Orchestrator Service
+1. Set Deployment type as ```UiPath Cloud```
+2. Open ```https://cloud.uipath.com/```
+3. Go to ```Admin```
+4. Open the ```Drop-down``` of your ```Tenant Name```
+5. Click on ```API Access```
+6. Copy all the details to ```Chatbot Console```
+7. Click on Connect and you are Done
