@@ -18,6 +18,7 @@
 * Type Into -> used to write something inside the application
 * To generate new random values we can use the function ```new Random().Next(range)```
 * To close any application, we can use the ```close application``` activity.
+* To get the path of the ```Desktop```, use ```Environment.GetFolderPath(Environment.SpecialFolder.Desktop)```
 
 ## Properties
 * Present on right hand side tab
@@ -61,6 +62,9 @@
 * ```!=``` is represent by ```<>```
 * ```==``` is represent by ```=```
 * ```**``` is represented by ```^```
+* ```//``` is represented by ```\```
+* Binaray left shift operator is represented as ```<<```
+* Binaray right shift operator is represented as ```>>```
 
 ## FlowChart
 * To check some in condition inside a flow chart we use ```Flow Decision```
