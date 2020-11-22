@@ -518,6 +518,14 @@ Ans. ```Read PDF with OCR```
 * ```Take Screenshot``` is the activity used to take a screen shot at run time which is to be saved in a certain location using ```save image``` activity
 * The ```attachment``` section of the ```Send Mail``` activity requires a file path to be sent 
 * To make something like message Dynamic in ```sending messages``` we can use format type same as ```python``` just replace the content to be changed dynamically with ```{0}``` and provide the argument in ```body section``` of send mail activity
+* To Access Different Folders from ```Gmail```, use the following format for ```MailFolder```:
+    1. Inbox -> ```INBOX```
+    2. All Mail -> ```[Gmail]/All Mail```
+    3. Drafts -> ```[Gmail]/Drafts```
+    4. Sent Mail -> ```[Gmail]/Sent Mail```
+    5. Spam -> ```[Gmail]/Spam```
+    6. Starred -> ```[Gmail]/Starred```
+    7. Trash -> ```[Gmail]/Trash```
 
 ## Quiz Time Lesson 11
 1. What activity can you use to send an email without entering the username and password of the email account?
