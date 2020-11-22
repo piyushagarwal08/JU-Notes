@@ -35,6 +35,10 @@ End Sub
 
 * The ```Dim``` statement is used for variable declaration and storage allocation for one or more variables.The Dim statement is used at module, class, structure, procedure or block level
 
+* To Create a ```DateTime``` object, ```New DateTime(yyyy,mm,dd,hh,mm,ss)```
+```vb
+Dim waiting As DateTime = New DateTime(2012, 12, 12, 17, 58, 1)
+```
 
 ## Conversion Functions
 1. CBool(expression) -> Converts the expression to Boolean data type.
@@ -297,3 +301,125 @@ Line1:
    End Sub
 End Module
 ```
+
+# Strings
+* The String keyword in VB is an alias for ```System.String``` class
+* You can create string object using one of the following methods:
+    1. By assigning a string literal to a String variable
+    2. By using a String class constructor
+    3. By using the string concatenation operator (+)
+    4. By retrieving a property or calling a method that returns a string
+    5. By calling a formatting method to convert a value or object to its string representation
+```vb
+Module strings
+    Sub Main()
+        Dim fname,lname,fullname As String
+        fname = "Piyush"
+        lname = "Agarwal"
+        fullname = fname + " " + lname
+        Console.WriteLine(fullname)
+
+    ' By using String Constructor
+    Dim characters As Char() = {"H","E","Y"}
+    Console.WriteLine(characters)
+    Dim greetings As String = New String(characters)
+    Console.WriteLine(greetings)
+
+    ' Methods returning String
+    Dim sarray() As String = {"Hey","Piyush","Agarwal"}
+    Console.WriteLine(sarray)
+    Dim message As String = String.Join(" ",sarray)
+    Console.WriteLine(message)
+
+    ' formatting method to convert a value
+    Dim waiting As DateTime = New DateTime(2020,11,22,19,21,08)
+    Dim chat As String = String.Format("Message Sent At {0:t} on {0:D}",waiting)
+    Console.WriteLine(chat)
+    End Sub 
+End Module
+```
+## String In Built Functions
+1. String.Compare -> returns 0 if strings are equal
+```vb
+Module strings
+   Sub Main()
+      Dim str1, str2 As String
+      str1 = "This is test"
+      str2 = "This is test"
+      
+      If (String.Compare(str1, str2) = 0) Then
+         Console.WriteLine(str1 + " and " + str2 + " are equal.")
+      Else
+         Console.WriteLine(str1 + " and " + str2 + " are not equal.")
+      End If
+    
+   End Sub
+End Module
+```
+2. String.Contains -> checks if certain substring is present in main string
+```vb
+Module strings
+   Sub Main()
+      Dim str1 As String
+      str1 = "This is test"
+      
+      If (str1.Contains("test")) Then
+         Console.WriteLine("The sequence 'test' was found.")
+      End If
+      Console.ReadLine()
+   End Sub
+End Module
+```
+3. String.Substring -> returns a Substring from a main string
+```vb
+Module strings
+   Sub Main()
+      Dim str As String
+      str = "Last night I dreamt of San Pedro"
+      Console.WriteLine(str)
+      
+      Dim substr As String = str.Substring(23)
+      Console.WriteLine(substr)
+      Console.ReadLine()
+   End Sub
+End Module
+```
+4. String.Join -> Used to join an string iterable using a character. Its syntax is ```String.Join("Character to join with","String to join")```
+```vb
+Module Joining
+    Sub Main()
+        dim story As String() = {
+            "Hey",
+            "My Name is {0}",
+            "And ofcourse i am  smart"
+        }
+
+        Dim name As String = Console.ReadLine()
+        Console.WriteLine(String.Format(String.Join(vbCrLf,story),name))
+    End Sub 
+End Module
+```
+5. String.Concat -> this function is to concatenate any number of string objects and return a joined string 
+```vb
+Module ConcatenateString
+    Sub Main()
+        'Console.Read() reads the values in ASCII value
+        Dim word,sentence As String
+        word = ""
+        sentence = ""
+        While(True)
+            word = Console.ReadLine()
+            If word.length = 0 Then
+                Exit While
+            End If
+            IF sentence.length = 0 Then
+                sentence = String.Concat(sentence,word)
+            Else
+                sentence = String.Concat(sentence," ",word)
+            End If
+        End While 
+        Console.WriteLine(sentence)
+    End Sub
+End Module
+```
+
