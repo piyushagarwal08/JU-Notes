@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<SOH>
+<environment name="dev">
+    <path1>Hello</path1>
+    <path2>Hi</path2>
+</environment>
+</SOH>

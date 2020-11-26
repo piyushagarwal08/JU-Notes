@@ -18,6 +18,15 @@ End Module
  Public Sub Function_Name()
 ```
 * Function Procedure -> The Function procedure performs a task and then returns control to the calling code. When it returns control, it also returns a value to the calling code.
+* To call a function with multiple parameters, the syntax is
+```vb
+Function1 "Parameter1",Parameter2,"parameter3"..
+
+Sub Function1(p1 As String,p2 As Integer,p3 As String)
+    Statements
+End Sub
+```
+
 ```vb
 Public Function Variable_to_Return() As Data_Type
 ```
@@ -423,3 +432,32 @@ Module ConcatenateString
 End Module
 ```
 
+# Date and Time
+* Data Type of Date Value is ```System.DateTime```
+* The ```DateAndTime``` class belongs to the ```Microsoft.VisualBasic``` namespace and the ```DateTime``` structure belongs to the ```System``` namespace
+* ```DateTime``` can be used in C# as well but not the ```DateAndTime```
+* To Get the DateTime value in ```Universal Time (UTC)``` format, we can use ```UtcNow``` function
+* To Find the Complete list of ```DateTime``` methods, <a href="https://docs.microsoft.com/en-us/dotnet/api/system.datetime?redirectedfrom=MSDN&view=net-5.0">Click Me</a>
+
+```vb
+Module Module1
+    Sub Main()
+        ' Date Time Constructor year,month,day,hour,min,sec
+        Dim date1 As New Date(2020,11,25,14,23,12)
+        ' 25-11-2020
+        Console.WriteLine(date1.toShortDateString)
+
+        ' Initialize a new DateTime value
+        Dim date2 As Date = #11/25/2020 01:08:52 PM#
+        ' 25-11-2020 13:08:52
+        Console.WriteLine(date2)
+
+        ' Few properties
+        Console.WriteLine(Date.Now) ' 25-11-2020 15:09:24
+        Console.WriteLine(Date.UtcNow) '25-11-2020 09:39:24
+        Console.WriteLine(Date.Today) '25-11-2020 00:00:00
+        
+    End Sub
+End Module
+```
+* To Find the Complete list of ```DateAndTime``` class, <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualbasic.dateandtime?redirectedfrom=MSDN&view=net-5.0">Click Me</a>
