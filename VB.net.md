@@ -461,3 +461,120 @@ Module Module1
 End Module
 ```
 * To Find the Complete list of ```DateAndTime``` class, <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualbasic.dateandtime?redirectedfrom=MSDN&view=net-5.0">Click Me</a>
+
+
+# Arrays
+* To declare array in ```VB```, use the following syntax
+    1. ```Dim intData(30)``` -> array of 31 elements
+    2. ```Dim strData(20) As String``` -> array of 21 strings
+    3. ```Dim twoDarray(10,20) As Integer``` -> 2D array of integer
+    4. ```Dim ranges(10,100)``` -> 2D array
+* To initialize the arrays,
+    1. ```Dim intData() = {2,3,4}```
+    2. ```Dim strData() = {"a","av","aas"}```
+    3. ```Dim miscData() As Object = {"Hello World",12d,16ui,"A"c}```
+
+```vb
+Module MyModule
+    Sub Main()
+        Dim n(10) As Integer ' array of 11 integers
+        Dim i, j As Integer
+        Console.WriteLine(n.length())
+        'Initialize the elements of array n
+        For i = 0 to 10 step 1
+            n(i) = i + 100 
+        Next 
+
+        ' Output the elements of the array
+        For j=0 To 10
+            Console.WriteLine(n(j))
+        Next j
+    End Sub 
+End Module
+```
+
+## Dynamic Arrays
+* Dynamic arrays are arrays that can be dimensioned and re-dimensioned as par the need of the program
+* Basically, you can change the size of the array at will
+* One can declare it using ```ReDim``` statement
+* Syntax is,
+```vb
+ReDim [Preserve] arrayname(subscripts)
+```
+* where,
+    1. ```Preserve``` keyword helps to preserve the data in an existing array, when you resize it
+    2. ```subscripts``` specifies the new dimension
+```vb
+Module MyModule
+    Sub Main()
+        ' Initializing the object
+        Dim marks() As Integer
+        ' Resize the array two 3 elements, initialize with 0
+        ReDim marks(2)
+        
+        marks(0) = 85
+        marks(1) = 75
+        marks(2) = 90
+
+        ' Resize the array to 11 elements while preserving previous elements
+        ReDim Preserve marks(10)
+        marks(5) = 78
+        marks(7) = 12
+        marks(10) = 122
+
+        For i=0 to 10
+            Console.WriteLine(marks(i))
+        Next i
+    End Sub 
+End Module
+```
+## Multi-Dimensional Array
+* These are also called ```rectangular arrays```
+* To create a 2d array of string, ```Dim twoDStringArray(10,20) As String```
+* To create a 2d array if integer, ```Dim twoDIntArray(10,20) As Integer```
+* To create a 3d array of integer ```Dim array(2,2,2) As Integer```
+* To get value from a ```2d-Array```, you can index it as ```2dArray(row-value)(col-value)```
+```vb
+Module MyModule
+    Sub Main()
+        Dim a(,) As Integer = {
+            {0,0},{1,2},{2,4},{3,6}
+        }
+        Dim i,j as Integer
+
+        For i=0 To 3
+            For j=0 To 1
+                Console.WriteLine(a(i,j))
+            Next
+        Next
+    End Sub
+End Module
+```
+## Jagged Array
+* A Jagged array is an array of arrays.
+* To declare one,
+```vb
+'Dim ArrayName As Integer()() = New Integer(5)() {}
+
+' Example of Jagged Array
+' Array of Array is known as Jagged array
+
+Module MyModule
+    Sub Main()
+        ' Total 5 elements
+        Dim a As Integer()() = new Integer(1)() {}
+        a(0) = New Integer() {0,0}
+        a(1) = New Integer() {1,2}
+
+        Dim i,j As Integer
+        For i=0 to 1
+            For j=0 to 1
+            ' a(i)(j) is the different part from an 2d array
+             Console.WriteLine("a[{0},{1}] = {2}",i,j,a(i)(j))
+            Next
+        Next
+    End Sub
+End Module
+```
+* To reverse an array, ```Array.Reverse(array_name)```
+* To sort an array, ```Array.Sort(array_name)```
