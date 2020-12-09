@@ -534,6 +534,7 @@ End Module
 * To create a 2d array if integer, ```Dim twoDIntArray(10,20) As Integer```
 * To create a 3d array of integer ```Dim array(2,2,2) As Integer```
 * To get value from a ```2d-Array```, you can index it as ```2dArray(row-value)(col-value)```
+* Array inside an jagged array will be of same sizes
 ```vb
 Module MyModule
     Sub Main()
@@ -552,6 +553,7 @@ End Module
 ```
 ## Jagged Array
 * A Jagged array is an array of arrays.
+* Array inside an jagged array can be of different sizes
 * To declare one,
 ```vb
 'Dim ArrayName As Integer()() = New Integer(5)() {}
@@ -578,3 +580,25 @@ End Module
 ```
 * To reverse an array, ```Array.Reverse(array_name)```
 * To sort an array, ```Array.Sort(array_name)```
+
+# Collections
+* Collection classes are specialized classes for data storage and retrieval. These classes provide support for stacks, queues, lists, and hash tables. Most collection classes implement the same interfaces.
+
+## ArrayList
+* To use this data-type, need to import ```collections``` module as
+```vb
+Imports System.collections
+```
+
+* It represents an ordered collection of an object that can be indexed individually.
+* You can add and remove items from a list at a specified position using an index ad the array resizes itself automatically
+* Various methods in ArrayList are:
+    1. Capacity -> Gets or sets the number of elements that the ArrayList can contain
+    2. Count -> Gets the number of elements actually contained in the ArrayList
+    3. IsFixedSize -> Gets a value indicating whether the ArrayList has a fixed size
+    4. IsReadOnly -> Gets a value indicating whether the ArrayList is read-only
+    5. Item -> Gets or sets the element at the specified index
+* Few functions :
+    1. Add(value As Object) As Integer -> adds an object to the end of the ArrayList
+    2. AddRange(c As ICollection) -> Adds the elements of an ICollecition to the end of the ArrayList
+

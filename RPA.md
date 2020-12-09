@@ -93,7 +93,7 @@
 * Type of variable should be array of strings ```System.String()```
 
 ## Generic Value Methods
-* Certain functions inbuild i UIPATH that are helpful in type conversion are :
+* Certain functions inbuild in UIPATH that are helpful in type conversion are :
     1. Split
     2. Replace
     3. Substring
@@ -143,6 +143,7 @@
 * To create a ```Table``` from csv file use the function ```output data table```
 * it is preferable used while web scrapping 
 * To access data from table just like ```DBMS``` use something like ```variable-name.Select("condition")```
+* ```Table-Name.Select("Age > 20 AND Age <50").CopyToDataTable```
 * To access a specific column of a specific row , use ```sampleData.Rows(0)("Name").ToString```
 * We must use ```[]``` with the ```Select```     method when the column name contains spaces.
 * Accessing a specific value from a row, ```row("First").ToString```
@@ -1517,6 +1518,21 @@ def SendMail(From,To,Password,Message,Subject,ImgPath):
             * UI Testing ~> Test the business layer
             * API Testing ~> Test the API layer. It includes several interfaces and protocols, such as Soap, Rest, Queues and many other
 
+* Activity Coverage Widget -> The Activity Coverage Widget calculates the total number of activities that were successfully run form the original workflow or flowchart.Once an activity has run successfully it will be become green.While the workflow runs the widget gets updated in real time.
+* The coverage of each individual workflow can be verified individually by highlighting them;
+* When creating new test cases in StudioPro by right-clicking an RPA Workflow and selecting ```Create Test Cases``` you will be presented with the standard Given, When, Then containers structure
+* The RPA workflow which was right-clicked was automatically invoked in the When section
+* The Then section acts as the verification point. This is achieved by using a Verify Control Attribute activity that checks if the path for the output folder has been created.
+
+* ```Data-driven test cases``` can be easily created by right-clicking simple test cases and selecting ```Add test data``` or by selecting the ```Create Data-Driven Test Case``` button from the ribbon section
+* For any changes in the excel, the user needs to reload that test data into the bot
+* The Studio, itself builds ```arguments``` with same name as ```column name``` to use excel data
+
+* Verify Control Attribute -> This activity checks if the output of any activity is equal to the given fixed input
+* The output of this activity is visible in the ```Output Panel```
+<img src="Images/CI-CD Testing.png"/>
+
+* For more info on ```Jenkins``` integration with ```RPA```, <a href="https://forum.uipath.com/t/ci-cd-in-the-context-of-rpa/210866">Check Out </a>
 
 
 # UiPath Document Understanding
@@ -1971,3 +1987,21 @@ Note:It is strongly recommended, for easy identification and understanding of th
 5. Click on ```API Access```
 6. Copy all the details to ```Chatbot Console```
 7. Click on Connect and you are Done
+
+# Encrypt Text
+* Encryption of content can be done using ```UiPath.Cryptography.Activities```
+* It consists of 4 features:
+    1. Encrypt Text
+    2. Decrypt Text
+    3. Encrypt File
+    4. Decrypt File
+* The Algorithms that can be used are:
+    1. AES
+    2. DES
+    3. RC2 (Non-FIPS)
+    4. Rijndael (Non-FIPS)
+    5. TripleDES
+* The ```Key``` or ```Password``` for the files to be encrypted with are ```user-defined``` and thus you can basically ```Password-Protect``` your files using this package
+* Encoding field are the inputed with the methods of ```System.Text.Encoding```
+* The activites are easy to use and can be utilized for maintaining data security over the cloud
+
