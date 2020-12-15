@@ -132,11 +132,16 @@
     ```variable-name.Contains(word-to-find)```
 * In ```Split(" "c)``` function,we can use ```ctrl + shift + space``` to find all kinds of examples we can use with ```split``` method
 * In split function we can pass more then one delimeter to split string using an ```array``` as ```variable.Split({"word1 "," word2"},StringSplitOptions.None)```
+* UiPath offers 2 different activities to apply regular expression on text:
+    1. Matches -> provides a list of all matches from a string based on provided regular expression, output syntax is like ```Output-variable(item-no).value``` with data type as ```System.Text.RegularExpressions.Match```
+    2. IsMatch -> It checks for a single value, if it matches a particular value or not -> output as ```True``` or ```False```
+
 
 ## Handling Text
 * To print date just use the functioon ```Now.ToString```
 * To print only Month And Year use ```Now.ToString('MMMM yyyy')```
 * ```Datetime.ParseExact(“12/05/2019”,“dd/MM/yyyy”,System.Globalization.CultureInfo.InvariantCulture)``` to convert a string to ```DateTime``` data type
+ 
 
 ## Table Activity
 * Read ```csv``` files by using activity ```Read CSV```
@@ -308,7 +313,7 @@ Ans. [OCR,Native]
     2. ```?``` ~> Replace exactly one character
 
 ## Highlight
-* It is an activity that is used to simple ```Highligh``` an UI Element as the name suggestes
+* It is an activity that is used to simple ```Highlight``` an UI Element as the name suggestes
 
 ## UIExplorer
 * It is Automation Tool which is used to easily manage or edit the Selectors 
@@ -702,6 +707,9 @@ Ans. ```GetCustomerNumber.xaml```
 ## Queue
 *  the transaction items in a queue are processed in chronological order
 * The items inside Queues can be processed by multiple Robots.
+* The priority order of a queue item is based on ```Priority``` and ```Deadline```
+* The Priority is given in order that is ```High Priority and Low Deadline``` if any ```deadline``` is specified and if ```no deadline``` is specified then ```Only Priority``` is checked
+* A Queue Item with ```Priority and Deadline defined``` has more priority over a queue item with ```high priority and no deadline defined```
 
 ## Add Queue Item
 * This activity is used to send values or add the items to Queue in Orchestrator
@@ -2005,3 +2013,13 @@ Note:It is strongly recommended, for easy identification and understanding of th
 * Encoding field are the inputed with the methods of ```System.Text.Encoding```
 * The activites are easy to use and can be utilized for maintaining data security over the cloud
 
+
+# LINQ Query
+* LINQ stands for Language Integrated Query
+* Its general syntax is ```for <range> in <iterable> where <condition> group <grouping> select <result>```
+* Few examples for using LINQ with UiPath are:
+    1. To get all rows of datatable as enumerable ```from row in DT1.AsEnumerable select row```
+    2. To get all distinct values present in a particular column ```(from row in DT1.AsEnumerable group row by variable1=row.item(column-name/index) into grp=Group select variable1).toList```
+    3. To convert the data table of list elements like above, ```(from row in DT1.AsEnumerable group row by variable1=row.item(column-name/index) into grp=Group select Convert.toString(variable1)).toList```
+    4. To list different columns from a table just like ```SQL``` using ```aggregate functions```, ```(from row in DT1.AsEnumerable group row by var1=row.item(0) into grp=Group let col1_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) let col2_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) select {var1,col1_sum,col2_sum})```
+* LINQ queries are way faster then normal uipath activities probably ```10 times```
