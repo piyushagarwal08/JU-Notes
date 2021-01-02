@@ -118,6 +118,7 @@
 * For that purpose, we use ```Get Password``` activity to create or convert a ```string``` to ```password``` type varaible\
     ```qwerty12345 to ********```
 * After creating a password type variable simply use ```Type Into``` activity to perform the task
+* To convert ```System.SecureString``` to ```System.String```, we use ```new System.Net.NetworkCredential(String.Empty,SecureString).Password```
 
 ## Array and Lists & Dictionary
 * TO define an array type variable, with variable type``` Array of T``` or ```String[]``` and default array can also be written
@@ -1314,7 +1315,7 @@ e.g., Mail.devsl.local
 
 
 # Universal Blob Storage
-* The ```Universal Blob Storage``` allows you to publish a set of generic storage API methods.By using this approach, the application services become agnostic of the native storage provider
+* The ```Universal Blob Storage``` allows you to publish a set of generic storage API methods. By using this approach, the application services become agnostic of the native storage provider
 * The UBS makes the process of switching between different flavours of storage solutions easy and transparent, facilitating cost optimization, performance scaling and data center improvements
 
 <img src="Images/Storage Framework.png">
@@ -1323,7 +1324,7 @@ e.g., Mail.devsl.local
 ## Definition of Terms
 1. Storage ~> Abstract a key-value storage solution.The Storage Client API interface is compliant with the Object Storage cloud terminology.The API user should design the data with respect to a flat model(bucket like).
 2. Storage Provider ~> The underneath implementation of the persistence system, the storage wapped by the Storage Client API interface
-3. Storage Bucket ~> Bucket as it is described by the Object Storage concepts.By analogy with the traditional file systems, the bucket should be read as a disk volume
+3. Storage Bucket ~> Bucket as it is described by the Object Storage concepts. By analogy with the traditional file systems, the bucket should be read as a disk volume
 4. Storage Content ~> The actual data being persisted into the wrapped storage solution
 5. Storage Content Prefix ~> The mechanism to logically group the saved content under a single bucket
 6. Storage Location ~> It fully describes the location of the content inside the storage, that's the tuple (key,prefix,bucket). The key must be unique across the enclosing bucket
