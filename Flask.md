@@ -1,13 +1,23 @@
 # Flask
 <a href="flask.palletsprojects.com">Flask Documentation </a>
 
-## Virtual Environment
+# Virtual Environment
+
+## Pipenv
 * Its best to create virtual environments for different projects so that one can easily maintain the version for each module specific to each projects
 * To install ```pipenv``` use ```py -m pip install pipenv```
 * To create a virtual environment , ```py -m pipenv install``` inside the project directory, this gives us two files ```Pipfile``` and ```Pipfile.lock```
 * To activate the environment, run ```pipenv shell```
 * To exit from the environent, type ```exit```
 * To install any module, once inside the ```environment```, run ```pipenv install module-name```
+
+## Virtualenv (venv)
+* Just like ```Pipenv```, we can also use the ```venv``` module of python to create a virtual environment
+* To install ```venv```, run ```pip install virtualenv```
+* To create virtual environment, ```py -m venv environment-name```
+* To activate the environment, run ```environment-name/Scripts/Activate```
+* To exit the environment, run ```deactivate```
+* To install any module inside the environment, run ```pip install module-name```
 
 # General Setup
 * To run any ```Flask APP```
@@ -62,6 +72,16 @@ def home():
     # html tags works properly
     return "<h1> Hello Flask! </h1>"
 ```
+* We can route to same function using multiple ```url paths``` as
+```py
+#base url
+@app.route('/')
+@app.route("/index")
+@app.route("/home")
+def home():
+    # html tags works properly
+    return "<h1> Hello Flask! </h1>"
+```
 
 # render_template
 * Used to display any html page upon ```routing``` to specific ```url```
@@ -112,6 +132,20 @@ def func():
 # The Hello_word.html file
 <h1> This is the home page of {{ name }} </h1>
 ```
+* To include code from any other file, we can use ```{% include "path-of-file" %}```
+* Basic Syntax:
+    1. To get variable name: {{ varibale-name }}
+    2. To use pre-defined terms like if,for,include,extend: {% %}
+    3. Comment: {# #}
+* For if-else
+```
+{% if condition %}
+..statements
+{% else %}
+..statements
+{% endif %}
+```
+* To call a web-page from an ```anchor tag <a>``` from inside an ```html page``` instead of giving path to the ```route url```, we can call the function name as ```<a href='{{ url_for("function-name") }}'>Keyword</a>```
 
 # Request
 * This method is used to get the form data from an ```HTML``` page
@@ -295,3 +329,63 @@ def test_shorten(client):
     }
     ```
     13. Run ```gunicorn "urlshort:create_app()" -b 0.0.0.0 --daemon``` -> to make sure gunicorn runs even if terminal is closed
+
+# Full Stack Flask 
+
+# General
+* Install ```flask```, run ```pip install flask```
+* Install ```flask-wtf```, run ```pip install flask-wtf``` -> used for creating forms easily
+* Create a ```.flaskenv``` file and set the environment variables in this file ```FLASK_ENV=development``` and ```FLASK_APP=main.py``` (we can write anything in place of main.py)
+* FLASK_APP defines the starting source of complete web application that is which apps need to be executed and in what way (the connectivity) among all apps is done through ```main.py``` here
+* In order to run ```.flaskenv``` we would also need ```python-dotenv```
+* To list all the system installed modules in an file, just run ```pip freeze > requirements.txt``` as ```pip freeze``` lists all the modules installed in the environment
+* With help of ```.flaskenv``` file, we can just run our project using ```flask run```
+
+# Simple Flask Application
+* Every ```.py``` file in flask is called an module
+* we can set multiple ```routes``` for a single function 
+```py
+from flask import Flask
+
+# Special variable name to get that the current application is being rendered by flask
+app = Flask(__name__)
+
+@app.route("/")
+@app.route("/index")
+def index():
+    return "<h1> Hello World !! </h1>"
+```
+
+# Confirguring Development Server
+* Create an ```config.py``` file and set value as
+```py
+import os
+
+class Config(object):
+    SECRET_KEY = os.eniron.get('SECRET_KEY') or "secret_string"
+```
+* To get environment variable value, use ```os.eniron.get('SECRET_KEY')```
+* This is used to setup the ```Secret Key``` in the ```config.py``` file
+* Create a ```route.py``` file and set its value like
+```py
+from application import app
+
+@app.route("/")
+@app.route("/index")
+def index():
+    return "<h1> Hello World !! </h1>"
+```
+* Basically, all the ```routing-paths``` are now set in the ```routes.py``` file
+* And in the ```__init__.py``` file, we define 
+```py
+from flask import Flask
+
+# Special variable name to get that the current application is being rendered by flask
+app = Flask(__name__)
+
+from application import routes
+```
+* which defines that after running this application check for ```routes.py``` file for urls functioning
+
+
+# 
