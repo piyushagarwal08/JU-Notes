@@ -1,6 +1,6 @@
 # JU-Notes
 
-## This Repository contains my notes for various different technolofies
+## This Repository contains my notes for various different technologies
 
 Current List is as:
 <ul>
