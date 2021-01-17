@@ -132,10 +132,12 @@
 * For example, to check if a ```String``` contains a particular ```word``` just use
     ```variable-name.Contains(word-to-find)```
 * In ```Split(" "c)``` function,we can use ```ctrl + shift + space``` to find all kinds of examples we can use with ```split``` method
+* ```c``` in ```Split``` stands for ```toCharArray```
 * In split function we can pass more then one delimeter to split string using an ```array``` as ```variable.Split({"word1 "," word2"},StringSplitOptions.None)```
 * UiPath offers 2 different activities to apply regular expression on text:
     1. Matches -> provides a list of all matches from a string based on provided regular expression, output syntax is like ```Output-variable(item-no).value``` with data type as ```System.Text.RegularExpressions.Match```
     2. IsMatch -> It checks for a single value, if it matches a particular value or not -> output as ```True``` or ```False```
+* To replace multiple new lines, spaces, tabs, blank lines etc, we can use ```String.Join(" ",Variable-Name.Split({Environment.NewLine,vbcrlf,vblf," ",vbtab,vbcr,vbNewLine},StringSplitOptions.RemoveEmptyEntries))```
 
 
 ## Handling Text
@@ -464,6 +466,16 @@ Ans. ```By sending keyboard commands/hotkeys```
 * ``` inputsTable.Rows.Count``` ~> it can be used to count the total number of rows
 * Use of ```Workbooks``` is prefferable over ```Excel files``` as they do not require Excel to be ```installed```
 * To reverse a ```DataTable``` object, we can do so by ```Datatable-name.AsEnumerable.Reverse.CopyToDatatable```
+
+## Using Macros with Excel
+* Macros can only be used with ```Excel Application Scope```
+* Macros are saved in file with ```Macro Enabled Workbook extension``` that is ```.xlsm```
+* Macros are written in ```vba``` and can be recorded in excel and edited for ease of use
+* The Macros activity has 2 inputs
+    1. Path of file that contains our macro
+    2. Object Array of parameters to be passed to the macro
+* The Macro activity has 1 output that can be used when working with ```Function``` instead of ```Sub```
+* To Execute the Macro available in different file, we can give the macro name as ```FileNameContainingMacro.xlsm!MacroName```
 
 ## Lesson 9 Quiz Time
 1. What happens if the AddHeaders option is checked for Read Range Activity? 
@@ -825,6 +837,7 @@ e.g., ```datetime.Now.addHours(24)```
         4. End State
     5. SetTransactionStatus
     6. GetAppCredentials
+* The Flow of ```State Machine``` is like First the ```entry action``` is complete, then the ```triggers``` for the state's transitions are scheduled. When a transition to another state is confirmed, the activities in the ```exit action``` are executed, even if the state transitions back to the same state. After the exit action completes, the activities in the ```transition's action execute```, and then the new state is transitioned to, and its entry actions are scheduled.
 
 ## InitAllSettings
 * In The Reframework, it is the Initial ```xaml``` file to be used
@@ -2024,3 +2037,108 @@ Note:It is strongly recommended, for easy identification and understanding of th
     3. To convert the data table of list elements like above, ```(from row in DT1.AsEnumerable group row by variable1=row.item(column-name/index) into grp=Group select Convert.toString(variable1)).toList```
     4. To list different columns from a table just like ```SQL``` using ```aggregate functions```, ```(from row in DT1.AsEnumerable group row by var1=row.item(0) into grp=Group let col1_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) let col2_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) select {var1,col1_sum,col2_sum})```
 * LINQ queries are way faster then normal uipath activities probably ```10 times```
+
+
+# AI Fabric
+
+* ML Skill -> activity used to check the input
+* Upload File -> activity used to re-train the model
+* In Enterprise Trial, we get only 2 Robots which is equivalent to using 4 ML Models and we would need to keep one license free for pipeline if we want our ML Model to train as well
+* To retrain any model, go to <a href="https://docs.uipath.com/ai-fabric/v0/docs/object-detection"> Object Detection </a>
+
+## OOTB Models
+* Also known as Out of the Box Packages
+* Can be found under ML Packages
+* It contains various machine learning models for different use-cases
+
+## Image Analysis
+* It has two packages: ```Image Moderation``` and ```Object Detection```
+* Image Moderation is used to check the moderation level of images
+* It is non-trainable
+
+## Object Detection
+* Identify objects from images
+* Trained on <a href="cocodataset.org">COCO Dataset</a>
+* It is Retrainable
+
+### Guide for Object Detection
+* Go to AI Fabric
+* Create a Project
+* Click ON ML Packages
+* Select Object Detection from Open Source Packages
+* Create a package using basic informations
+* Go to ML Skills
+* Package Major Version = 1, Minor Version = 0, create the package (takes 3~4 minutes)
+* Status of package can be check in ```ML SKills``` Tab in the orchestrator
+* Requires the Package ```UiPath.MLServices.Activities``` in Studio
+* Create ```Input``` ```Output``` folder in the home directory and store the test data in input folder
+* Use ML activity to upload the file and get an json output having ```base64``` string of identified objects and prediction data
+* To convert the ```base64``` string to image, we can leverage the ```https://marketplace.uipath.com/listings/encode-decode-activities``` custom activity
+
+
+## English Text Classification
+* It is a retrainable model
+* It is based on ```RoBERTa```
+* <a href="https://docs.uipath.com/ai-fabric/v0/docs/english-text-classification">Documentation</a>
+* <a href="https://github.com/harish2020Code/MachineLearning-Classification/blob/master/Train.tsv">Micah's Data Set for classification</a>
+* Restaurant Sentiment Analysis <a href="https://www.kaggle.com/apekshakom/sentiment-analysis-of-restaurant-reviews#">Kaggle Data</a>
+* Language Detection is supported by Facebook and can detect the language of the text
+* A Good approach to re-train the model, would be to do it weekly
+
+### Guide to English Text Classification
+* Get the data to train the model
+* Use Restaurant Data <a href="https://www.kaggle.com/apekshakom/sentiment-analysis-of-restaurant-reviews#">Kaggle Data</a>
+* The above data is classified into Positive and Negative
+* The standard splitting of data should be ```80-20```
+* Replace all ```1``` to ```Yes``` and ```0``` to ```No```
+* Create New Project
+* Click on create ```DataSets```
+* Create a folder for ```Train Set``` and upload the ```Train.csv``` data
+* Create a folder for ```Test Set``` and upload the data
+* Navigate to ML Packages and select the ```English Text Classification``` Model
+* Go to pipeline and create new
+* Choose the ```Train run``` and ```Train Data``` folder
+* First Column name used be ```input``` and second as ```target```, if you want different headers,create parameters
+* Save the pipeline
+* Download the trained model from the pipeline which can be used later on in any projects
+* Once the ```Train``` data is ```deployed```, run the same on ```Evaluation``` pipeline where data will be ```Test Data```
+* For ML skills , model versions are ```minor & major as 1```
+* Create a new process with ```ML Package``` and ```Web Activities``` package
+* Rest procedure is same as earlier with ```Object Detection```
+
+
+## Sentiment Analysis
+* We don't need any dataset as it is an ```Pre-trained Model``` and thus can not be ```Retrained```
+* Open sourced by facebook research, trained on Amazons product data review
+* Possible predictions are ```Very negative```, ```Negative```, ```Neutral```, ```Positive```, ```Very Positive```
+* Mostly used AI Fabric model
+* <a href="https://www.uipath.com/community/rpa-community-blog/uipath-ai-fabric-ootb-models-use-cases">Blog with Usecases </a>
+
+
+### Guide to Sentimental Analysis
+* Create your ML Package (V2)
+* Create ML Skill
+* Simply your skill is ready and thus it can be utilized in any studio workflow
+* The ML skill would definitely give an error if no input is passed to it
+
+
+# Language Comprehension
+* All the models are NLP based models
+
+## Question Answering
+* Can give answer for any question by analyzing given paragraph
+* We don't need any dataset as it is an ```Pre-trained Model``` and thus can not be ```Retrained```
+* Input is in the form of json string
+* Example ```"{\"paragraph\": any text,\question\: any question}"```
+* Newline characters are not supported inside paragraph
+
+## Semantics Similarity
+* Finds similarity between 2 sentences
+* Score of 0 -> No Similarity
+* Score of 5 -> High Semantic Similarity
+
+## Text Summarization
+* Works for about 300 characters only as of now
+* Provides back an summary of paragraph provided to it as an input
+
+

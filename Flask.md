@@ -3,6 +3,15 @@
 
 # Virtual Environment
 
+## Note
+* To Open ```Terminal``` in ```VS Code``` use ```Ctrl (back-quote)```
+* One might face issue activating virtual environment through ```VS Code```, something like ```File ..\venv\Scripts\Activate.ps1 cannot be loaded because running scripts is disabled on this system. ```
+* To Solve this scenario, follow the given steps:
+    1. Open ```Powershell``` as ```Administrator```
+    2. Run ```set-executionpolicy remotesigned```
+    3. A Message ```pop-ups``` for permission, enter ```Y```
+    4. Its done, now you can activate virtual environment
+
 ## Pipenv
 * Its best to create virtual environments for different projects so that one can easily maintain the version for each module specific to each projects
 * To install ```pipenv``` use ```py -m pip install pipenv```
@@ -29,7 +38,7 @@
 * It makes the debugger mode ```on```
 * The flask runs the ```app.py``` file by default, and if its present then no need to specify the ```FLASK_APP```
 * Be default ```FLASK``` only allows ```GET``` request
-* To allow other method, we need to define ```methods=["GET","POST"]
+* To allow other method, we need to define ```methods=["GET","POST"]```
 * To pass data between ```developer code``` and ```user```, we need to define ```secret_key``` inside ```app.py```
 ```py
 app = Flask(__name__)
@@ -132,7 +141,9 @@ def func():
 # The Hello_word.html file
 <h1> This is the home page of {{ name }} </h1>
 ```
-* To include code from any other file, we can use ```{% include "path-of-file" %}```
+* To include code from any other file, we can use ```{% include "path-of-file" %}``` at any position in our code, its more like replacing the jinja with actual code on runtime
+* To inherit structure from another file, we use ```extend``` as ```{% extends "filename" %}``` at the top of page
+* The jinja inside an ```html``` can be re-used like any variable of class as ```{{ self.block-name }}```
 * Basic Syntax:
     1. To get variable name: {{ varibale-name }}
     2. To use pre-defined terms like if,for,include,extend: {% %}
@@ -146,8 +157,17 @@ def func():
 {% endif %}
 ```
 * To call a web-page from an ```anchor tag <a>``` from inside an ```html page``` instead of giving path to the ```route url```, we can call the function name as ```<a href='{{ url_for("function-name") }}'>Keyword</a>```
+* For Syntax
+```
+{% for i in Enumerable-Structure %}
+..Statement
+.. {{ i }}
+..Statement
+{% endfor %}
+```
 
 # Request
+* ```Request``` object gives ```response``` in an ```JSON API``` format
 * This method is used to get the form data from an ```HTML``` page
 * The data can be taken from web-page through ```GET``` or ```POST``` method
 * This method is imported from ```flask``` as ```from flask import request```
@@ -156,15 +176,32 @@ def func():
 * To get any data from ```Get Request``` using forms, one can use ```request``` function
 * To get any value from ```Get``` request, use ```request.args["input-field-name"]```
 * ```args``` can be considered as an list with collection of all the items passed through get request
+* Another way is ```request.args.get("input-field-name")```
+* Best way is to use ```request.args.get``` as if no value is present then it gives ```None``` in return where as ```request.args[<name>]``` will crash your website if nothing is returned
 
 ## POST Request
 * To get any value from ```POST``` request, use ```request.form["input-field-name"]```
+* Or ```request.form.get("input-field-name")```
 * Here ```request.form``` is a dictionary with the ```field_name``` as ```key``` and its ```value``` as ```pair```
 * By default, ```flask``` only provides access to ```GET``` requests, so to use ```POST``` we need to explicitly define the same in the method
 ```py
 @app.route("/url-path",methods=["GET","POST"])
 def func():
     return render_template("file.html",var=request.form["input-field-name"])
+```
+
+# Response
+* Response object is commonly used to create APIs
+* A Response object provides following parameters
+```py
+class flask.Response(
+    response=None, # most commonly used
+    status=None,
+    headers=None,
+    mimetype=None,  # most commonly used
+    content_type=None,  # most commonly used
+    direct_passthrough=False
+)
 ```
 
 # Flash messages
@@ -340,6 +377,14 @@ def test_shorten(client):
 * In order to run ```.flaskenv``` we would also need ```python-dotenv```
 * To list all the system installed modules in an file, just run ```pip freeze > requirements.txt``` as ```pip freeze``` lists all the modules installed in the environment
 * With help of ```.flaskenv``` file, we can just run our project using ```flask run```
+* To pass multiple variables, we can send them as an object altogether and to create one the syntax is like
+```py
+object_name = {"var1":variable_name,"var2":var_name}
+
+# To access the same we can use in html pages using jinja
+object_name.var1
+object_name.var2
+```
 
 # Simple Flask Application
 * Every ```.py``` file in flask is called an module
@@ -388,4 +433,4 @@ from application import routes
 * which defines that after running this application check for ```routes.py``` file for urls functioning
 
 
-# 
+# URL Variables
