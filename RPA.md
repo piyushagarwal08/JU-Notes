@@ -476,6 +476,68 @@ Ans. ```By sending keyboard commands/hotkeys```
     2. Object Array of parameters to be passed to the macro
 * The Macro activity has 1 output that can be used when working with ```Function``` instead of ```Sub```
 * To Execute the Macro available in different file, we can give the macro name as ```FileNameContainingMacro.xlsm!MacroName```
+* To Suppress any application alerts like ```delete confirmation```, use ```Application.DisplayAlerts=False```
+* To Create a Pie Chart, for any data use the following code sample
+```vb
+Sub PieChart()
+'Code to create a Pie Chart
+    ActiveSheet.Shapes.AddChart2(251, xlPie).Select
+    ' Set the range of the data to create chart from
+    ActiveChart.SetSourceData Source:=Range("Sheet1!$A$1:$B$5")
+    CoverRangeWithAChart
+End Sub
+```
+* To Create a Bar Chart, for any data use the following code sample
+```vb
+Sub BarChart()
+'Code to create a Bar Chart
+    ActiveSheet.Shapes.AddChart2(201, xlColumnClustered).Select
+    ActiveChart.SetSourceData Source:=Range("Sheet1!$A$1:$B$5")
+    CoverRangeWithAChart
+End Sub
+```
+* To move the position of any chart, with reference to cell range, use the code sample
+```vb
+' Code to change the position of a chart
+Sub CoverRangeWithAChart()
+         Dim RngToCover As Range
+         Dim ChtOb As ChartObject
+         ' Define the range where you wish to put your chart at
+         Set RngToCover = ActiveSheet.Range("L5:S19")
+         Set ChtOb = ActiveChart.Parent
+         ChtOb.Height = RngToCover.Height ' resize
+         ChtOb.Width = RngToCover.Width   ' resize
+         ChtOb.Top = RngToCover.Top       ' reposition
+         ChtOb.Left = RngToCover.Left     ' reposition
+End Sub
+```
+
+
+## Invoke VBA
+* Requires ```Trust Access to the VBA``` to be enabled inside the Excel
+* Invoke VBA activity enables developer to execute macros from outside the file without opening excel
+* Basically ```Invoke VBA``` activity works inside ```Excel Application Scope``` and is used to execute any ```VBA``` code present anywhere in the local system
+* The VBA code should be saved in a ```.vb``` extension file
+* This Activity requires ```Three parameters```
+    1. File Input Path
+    2. Name of the Procedure to call
+    3. Array<object> for paramters to be passed
+* A sample vba code can be 
+```vb
+'Save this in a .vb file
+
+Sub Macro1(Word1 As String, Word2 As String)
+    Range("C2").Select
+    ActiveCell.FormulaR1C1 = Word1
+    Range("D2").Select
+    ActiveCell.FormulaR1C1 = Word2
+    Range("E2").Select
+    ActiveCell.FormulaR1C1 = Word1 + " " + Word2
+    Range("E3").Select
+End Sub
+
+```
+* This activity would be useful in scenarios where macros are not to be saved inside the same input file and thus no need to open the macro file for automation
 
 ## Lesson 9 Quiz Time
 1. What happens if the AddHeaders option is checked for Read Range Activity? 
@@ -1951,8 +2013,21 @@ Note:It is strongly recommended, for easy identification and understanding of th
 * Dismissed Property -> Used to check if the form is filled or abruptly closed that is ```True``` if closed abruptly
 * To insert data inside forms from outside, we can use ```FormFieldsCollection``` where ```Name``` refers to ```FieldKey``` and Value we want to insert
 * To Convert a ```datatable``` into a ```Json Object```, we use ```Newtonsoft.Json.JsonConvert.SerializeObject(Table-Name)```
+* If above code doesn't work, then open ```Imports``` and add ```Newtonsoft``` namespace in it
 * To insert a ```DataTable``` data inside a form, we just same ```TextFields``` to represent tabular data for single row with ```Same FieldKey Name``` as ```Column Name``` placed inside the ```DataGrid``` Component
 * ```DataGrid``` and ```EditGrid``` both works the same way just different with looks
+* To Create drop-downs dynamically,probably like States and respective city names
+```js
+// This code will make the do block of form execute without closing the form
+const.updateOnChange = instance.updateOnChange;
+instance.updateOnChange = function(flags,changed){
+    if (flags.modified){
+        instance.emit('dropdownChanged','drop');
+    }
+    return updateOnChange.call(instance,flag,changed);
+}
+```
+* And if the body is executed then again the parameters/variables are reassigned into the form
 
 
 # Action Center
@@ -2140,5 +2215,40 @@ Note:It is strongly recommended, for easy identification and understanding of th
 ## Text Summarization
 * Works for about 300 characters only as of now
 * Provides back an summary of paragraph provided to it as an input
+
+
+# Language Translation
+* All the packages are ```Non Re-Trainable```
+* There are few language translation models:
+    1. English To French
+    2. English To German
+    3. English To Russian
+    4. German To English
+    5. Russian To English
+* The models are open-sourced by Facebook AI Research
+* Input and Output are simple strings
+* To detect the language of any string, there are two ways:
+    1. Language Detection model
+    2. Google Vision Package -> Can detect language from image
+* Deploying these models are also very simple and easy to use, same as other
+
+
+# Invoke Method
+* The Invoke method activity helps us call a method that is outside the standard built-in activities
+* The activity calls a public method of a specified type or object
+* It acts either on ```Target Type``` or ```Target Object```
+
+## Uses
+* When we have a class library/DLL in vb.net or c# and want to call the method
+* When we want to use a method which does not generate an output, thus can not be used in an ```Assign activity```
+* When we want to use a method which generates several pieces of output (example, TryParse which generates a Bool and Int32)
+
+## Method Types
+* Method Type define the way of configuring the ```Invoke Method``` activity
+* It is of 2 types:
+    1. Static -> Target Type and MethodName are used (TargetObject not)
+    2. Instance -> The object from which the method or members are derived needs to be defined (TargetObject is used)
+* To figure out whether a method is a Static or an Instance method, you can check the Method signature in on the <a href="https://docs.microsoft.com/en-us/dotnet/?view=netcore-3.1">MSDN website</a>. Below, you can find the signatures for a Static method, Round(Decimal), and an Instance method Sort(Comparison<T>). 
+* A quick way to tell what kind of method you are dealing with is to check if the method signature contains the word "static. If it does, the method is static. If it doesn't, it's instance.
 
 
