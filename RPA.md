@@ -2120,6 +2120,7 @@ instance.updateOnChange = function(flags,changed){
 * Upload File -> activity used to re-train the model
 * In Enterprise Trial, we get only 2 Robots which is equivalent to using 4 ML Models and we would need to keep one license free for pipeline if we want our ML Model to train as well
 * To retrain any model, go to <a href="https://docs.uipath.com/ai-fabric/v0/docs/object-detection"> Object Detection </a>
+* ML Skills are deployed on an ```Tenant``` and not on ```Orchestrator``` such that ```ML Skill``` created on Tenant1 won't be available on Tenant2
 
 ## OOTB Models
 * Also known as Out of the Box Packages
@@ -2231,6 +2232,21 @@ instance.updateOnChange = function(flags,changed){
     1. Language Detection model
     2. Google Vision Package -> Can detect language from image
 * Deploying these models are also very simple and easy to use, same as other
+
+
+# TPOT Model
+* It is an ```Trainable``` model
+* After ```Successful``` training, it provides us with ```Trained ML Model``` that is ```model.sav```
+* Need to Train the Model :
+    1. By Train Pipeline
+    2. By Evaluation Pipeline
+* The Ratio should be of 80:20 Percentage
+* The TPOT Model takes input in an ```json format``` as 
+```
+{"column-name1":[value-column1],"column-name2":[value-column2],"column-name3":[value-column3]...}
+```
+* Predicted values are not exact but close to the range of expected value
+* Accuracy is directly proportional to the Training Data
 
 
 # Invoke Method
