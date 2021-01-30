@@ -511,6 +511,14 @@ Sub CoverRangeWithAChart()
          ChtOb.Left = RngToCover.Left     ' reposition
 End Sub
 ```
+* To Merge multiple columns
+```vb
+' Code to merge multiple cells of an excel
+Sub MergeCell()
+    Range("A1:F1").Select
+    Selection.Merge
+End Sub
+```
 
 
 ## Invoke VBA
@@ -521,8 +529,8 @@ End Sub
 * This Activity requires ```Three parameters```
     1. File Input Path
     2. Name of the Procedure to call
-    3. Array<object> for paramters to be passed
-* A sample vba code can be 
+    3. ```Array<object>``` for paramters to be passed
+* A sample vba code can be:
 ```vb
 'Save this in a .vb file
 
@@ -535,9 +543,10 @@ Sub Macro1(Word1 As String, Word2 As String)
     ActiveCell.FormulaR1C1 = Word1 + " " + Word2
     Range("E3").Select
 End Sub
-
 ```
+
 * This activity would be useful in scenarios where macros are not to be saved inside the same input file and thus no need to open the macro file for automation
+
 
 ## Lesson 9 Quiz Time
 1. What happens if the AddHeaders option is checked for Read Range Activity? 
@@ -2266,5 +2275,45 @@ instance.updateOnChange = function(flags,changed){
     2. Instance -> The object from which the method or members are derived needs to be defined (TargetObject is used)
 * To figure out whether a method is a Static or an Instance method, you can check the Method signature in on the <a href="https://docs.microsoft.com/en-us/dotnet/?view=netcore-3.1">MSDN website</a>. Below, you can find the signatures for a Static method, Round(Decimal), and an Instance method Sort(Comparison<T>). 
 * A quick way to tell what kind of method you are dealing with is to check if the method signature contains the word "static. If it does, the method is static. If it doesn't, it's instance.
+
+
+
+
+# GSuite
+* There are various ```GSuite``` features that we can leverage using ```UiPath```
+* Such as
+    1. Sheets
+    2. AppsScripts
+    3. Calendar
+    4. Docs
+    5. Drive
+    6. Gmail
+* Everything works inside the ```GSuite Application Scope```
+* There are 2 things required to use ```GSuite Activities```
+    1. ClientID
+    2. ClinetSecret
+* Set the ```OAuthClient``` to ```Custom```
+* In ```Configure scopes```, select the ```Suite Apps``` you want to use
+* Now you can drag and use any activity from ```GSuite``` inside the Scope
+* To Access the applications on ```Gsuite```, first time user will have to give access to the application on ```Browser``` opened by ```UiPath``` and ```Google``` might show the ```Application``` to be ```Untrusted``` but nothing to worry and ```Move Advance``` and ```Give the Required Permissions```
+
+## Generating ClientID and Secret
+1. Goto ```https://console.cloud.google.com/```
+2. Create a ```New Project```
+3. Goto ```APIs & Services``` in the ```Left Navigation Bar```
+4. Open ```Library```
+5. Select ```Google Drive API``` and ```Google Sheets API```
+6. Repeat ```Step 3``` and Go to ```OAuth Consent Screen```
+7. Create an ```new app```, give any ```name``` you prefer
+8. Repeat ```Step 3``` and Go to ```Credentials```
+9. Create a credential, and save the ```ClientID``` and ```SecretKey```
+10. <b>Remember not to share these with anyone</b>
+
+## Object ID of Sheet
+* In ```GSuite```, we do not access files based on ```names``` rather using ```objectId```
+* To get the ```ObjectId```, we have got 2 ways:
+    1. Through URL as in ```https://docs.google.com/spreadsheets/d/1Bmi3TMxLE2OMGk2Wz1mFm3O3HJyDdyAwrvZcXxEz2Fw/edit#gid=0``` the object id is ```1Bmi3TMxLE2OMFk2Wz1mFm3O3HJyDdyAwrvZcXxEz2Fw``` that is betwwen ```/d/``` and ```/edit```
+    2. Through Drive activity ```Find Files and Folders```, we specify the ```SearchExpression``` as ```"name = 'nameoffile-withoutExtension'"```
+
 
 

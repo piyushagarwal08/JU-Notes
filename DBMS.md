@@ -356,3 +356,4 @@ WHERE
 * Timestamp from ```1900``` onwards can only be inserted into SQL
 * To insert characters like ```'(single quote)```, one need to use ```\(backslash)```
 * to use column names with space in between like ```Column Number 1```, we need to represent it inside ```back-quotes``` like ``` `Column Number 1` ``` though it is preferable to always use ```underscore _``` instead of ```space```
+* To change password use ```ALTER USER 'root'@'localhost' IDENTIFIED BY 'New-Password'```
