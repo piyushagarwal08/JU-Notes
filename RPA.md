@@ -138,7 +138,7 @@
     1. Matches -> provides a list of all matches from a string based on provided regular expression, output syntax is like ```Output-variable(item-no).value``` with data type as ```System.Text.RegularExpressions.Match```
     2. IsMatch -> It checks for a single value, if it matches a particular value or not -> output as ```True``` or ```False```
 * To replace multiple new lines, spaces, tabs, blank lines etc, we can use ```String.Join(" ",Variable-Name.Split({Environment.NewLine,vbcrlf,vblf," ",vbtab,vbcr,vbNewLine},StringSplitOptions.RemoveEmptyEntries))```
-
+* To get the ```ASCII Value``` of any character, we can use ```Convert.ToByte(Convert.ToChar(variable))``` and can later convert to int for manipulation
 
 ## Handling Text
 * To print date just use the functioon ```Now.ToString```
@@ -928,6 +928,7 @@ e.g., ```datetime.Now.addHours(24)```
         Transaction status is ```set as failed``` and transaction is ```not re-tried```
     2. System/Application Exception ~> In case application not available(UI Element not available or unknown error)
         Transaction is ```re-tried```
+* We can generate exceptions using the ```Throw``` activity, like to generate ```Business Exception``` use ```new BusinessRuleException("Message to Pass with Exception")```
 
 ## Working of REFramework
 Note: 
