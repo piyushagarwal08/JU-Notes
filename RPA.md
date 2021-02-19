@@ -1977,6 +1977,30 @@ Note:It is strongly recommended, for easy identification and understanding of th
 * Run the command, ```npm run dist``` to develop the final ```.exe``` files which can be run on client machine
 * This application requires ```Bot``` to be connected to ```Orchestrator``` so that app can properly trigger the bot
 
+## Allow any User to use UiPath App
+* We can create an app and allow any person to access it without installing UiPath in his system
+* The User would need to just create an account on <a href="https://cloud.uipath.com">UiPath Cloud</a> and the creator of app should add the user in his organization
+* Add a new ```Group``` in the ```Orchestrator``` by
+    1. Launch your ```Orchestrator```
+    2. Go to ```Tenant``` -> ```Roles```
+    3. Add a new ```Role```, say ```AppUser```
+    4. Add Tenant Permission : Webhook (View) and Folder Permission: Job (Create)
+    5. Click Review and Submit
+
+* To Add any user to your cloud tenant:
+    1. Login to your Cloud
+    2. Go to ```Admin``` -> ```Users and Groups```
+    3. Click on ```Invite Users``` and ```Enter email```
+    4. Edit the User and Set the group to ```AppUser``` 
+* Users would get an invite on mail and can create account with the same email
+
+* To Share the ```app``` with user:
+    1. Click on ```:``` icon on ```Apps``` page
+    2. Click on ```Share```
+    3. Click on ```Add User``` for single user or ```toggle``` the Allow all users button for everyone
+    4. After ```Add User```, enter email and assign ```User(can run)```
+
+* With these 3 configurations the user will be able to execute the app from his account and the ```App``` will work same as it was working for ```Administrator```
 
 # Custom Input
 * This activity is used to get data from HTML webpages
