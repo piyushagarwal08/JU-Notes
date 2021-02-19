@@ -1980,27 +1980,51 @@ Note:It is strongly recommended, for easy identification and understanding of th
 ## Allow any User to use UiPath App
 * We can create an app and allow any person to access it without installing UiPath in his system
 * The User would need to just create an account on <a href="https://cloud.uipath.com">UiPath Cloud</a> and the creator of app should add the user in his organization
-* Add a new ```Group``` in the ```Orchestrator``` by
-    1. Launch your ```Orchestrator```
-    2. Go to ```Tenant``` -> ```Roles```
-    3. Add a new ```Role```, say ```AppUser```
-    4. Add Tenant Permission : Webhook (View) and Folder Permission: Job (Create)
-    5. Click Review and Submit
+* Role -> It can be understood as an position in the Tenant with specific powers/privileges to services
+* Group -> It is a group of users you want to categorise with similar powers
+* UiPath App Roles -> In UiPath app there are 2 roles which can be provided to a user (only one per user)
+    1. User (can run) -> User with this role will only be able to run the app
+    2. Co-Author (can edit and run) -> User will be able to edit the app and run as well
 
-* To Add any user to your cloud tenant:
-    1. Login to your Cloud
-    2. Go to ```Admin``` -> ```Users and Groups```
-    3. Click on ```Invite Users``` and ```Enter email```
-    4. Edit the User and Set the group to ```AppUser``` 
-* Users would get an invite on mail and can create account with the same email
+### Process
+1. Create a new ```Group``` (will be helpful with multiple users)
+    * Login to your <a href="https://cloud.uipath.com">UiPath Cloud</a>
+    * Go to ```Admin``` -> ```Users and Groups```
+    * Click on ```Groups``` -> ```Add Group```
+    * Give a name, say ```UiPath Apps```
+2. Create a new ```Role```
+    * Launch your ```Orchestrator```
+    * Go to ```Tenant``` -> ```Roles```
+    * Add a new ```Role```, say ```AppUser```
+    * Add Tenant Permission : Webhook (View) and Folder Permission: Job (Create)
+    * Click Review and Submit
+3. Add the group created in step 1 to ```Orchestrator```
+    * In ```My Folders```, select ```Default``` -> the folder to which user would have access
+    * Go to Settings (Top Right)
+    * Click on ```Assign User or Group```
+    * Enter ```UiPath Apps``` and click on ```Assign```
+4. Assign a role to this group
+    * Go to ```Tenant``` in ```Orchestrator```
+    * Go to ```Users```
+    * You will see ```uipath apps``` listed, click on ```More Actions```
+    * Select ```Edit``` and choose ```Role``` as ```AppUser``` and ```Update```
+5. To add any user to this group
+    * Go back to your <a href="https://cloud.uipath.com">UiPath Cloud</a>
+    * Go to ```Admin``` -> ```Users and Groups```
+    * Click on ```Users```
+    * Click on ```Invite Users```
+    * Select Group membership as ```UiPath Apps```
+    * Enter the users email and click on ```Invite```
+6. Finally to give access to run your app,
+    * Go to your ```UiPath App```
+    * From the ```More Options``` of your created ```App``` select ```Share```
+    * Click on Add User
+    * Enter the user name to whom you want to give access
+    * Assign a Role, say User (can run)
 
-* To Share the ```app``` with user:
-    1. Click on ```:``` icon on ```Apps``` page
-    2. Click on ```Share```
-    3. Click on ```Add User``` for single user or ```toggle``` the Allow all users button for everyone
-    4. After ```Add User```, enter email and assign ```User(can run)```
-
-* With these 3 configurations the user will be able to execute the app from his account and the ```App``` will work same as it was working for ```Administrator```
+* With this when user accepts the invite and create his account he will have access to your Tenant and will be able to access apps
+* User will not have any access to other services or Orchestrator and will only be able to see Webhook calls
+* And next time to add a new user, you will just have to add him to ```UiPath Apps``` Group and give access to specific ```App``` you want.
 
 # Custom Input
 * This activity is used to get data from HTML webpages
