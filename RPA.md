@@ -2364,5 +2364,12 @@ instance.updateOnChange = function(flags,changed){
     1. Through URL as in ```https://docs.google.com/spreadsheets/d/1Bmi3TMxLE2OMGk2Wz1mFm3O3HJyDdyAwrvZcXxEz2Fw/edit#gid=0``` the object id is ```1Bmi3TMxLE2OMFk2Wz1mFm3O3HJyDdyAwrvZcXxEz2Fw``` that is betwwen ```/d/``` and ```/edit```
     2. Through Drive activity ```Find Files and Folders```, we specify the ```SearchExpression``` as ```"name = 'nameoffile-withoutExtension'"```
 
+## Access Files from Folder
+* To access all the files from a folder, we need the ```object id``` of the respective folder
+* To get the ```Object Id``` of folder, we can use the ```Find files and Folders``` activity with input as ```"name='Folder-Name'"``` and save the ```Id``` in a variable say ```FolderId```
+* To get a list of ```Google.Apis.Drive.v3.Data.File``` which is basically a ```file``` present in ```Google Drive``` again use ```Find files and Folders``` activity with input as ```"'"+FolderId+"' in parents and name contains '*'"``` which will give a list of files available in the mentioned folder
 
-
+## Bugs
+* FileExtension property does not return any string
+* FullFileExtension property does not return any string
+* Download File activity will download the files with just path being given but will download "Excel" as "PDF" only
