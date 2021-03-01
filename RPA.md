@@ -2345,6 +2345,8 @@ instance.updateOnChange = function(flags,changed){
 * In ```Configure scopes```, select the ```Suite Apps``` you want to use
 * Now you can drag and use any activity from ```GSuite``` inside the Scope
 * To Access the applications on ```Gsuite```, first time user will have to give access to the application on ```Browser``` opened by ```UiPath``` and ```Google``` might show the ```Application``` to be ```Untrusted``` but nothing to worry and ```Move Advance``` and ```Give the Required Permissions```
+* ```Delete File``` activity removes the file from the ```Drive``` completely that is it can not be retrieved from ```Bin```
+* ```Configure Scope``` is an activity that is used to provide access to the Application to specific resources, ```needs to be done only once```
 
 ## Generating ClientID and Secret
 1. Goto ```https://console.cloud.google.com/```

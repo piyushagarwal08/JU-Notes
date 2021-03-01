@@ -118,3 +118,12 @@ export default DemoState
     3. Unmounting
 
 <img src="Images/ReactLifeCycle.png"/>
+
+
+# Forms and Validations
+* we use ```event.preventDefault()``` when we want to prevent page from reloading
+
+# Routing in React
+* ```npm install react-router-dom``` is a command needs to be run to initialise routing in react
+* ```Navlink``` are used in ```React``` instead of ```Anchor``` tags
+
