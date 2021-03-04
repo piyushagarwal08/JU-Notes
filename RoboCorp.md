@@ -18,6 +18,13 @@
 * To Use Excel without installing excel in system we can use ```RPA.Excel.Files```
 * To Automate on web we use ```RPA.Browser.Selenium```
 * To print anything for testing purpose we can use ```Log``` keyword as ```Log ${variable_name}```
+* In keywords if we have multiple arguments then we can pass them on multiple lines by using ```...``` in beginning of each line
+```yaml
+Keyword     Argument1="Some Value"
+...     Argument2="Some Value 2"
+...     Argument3="Some Value 3"
+```
+* To use space in paths use ```\``` , like ```/Users/piyus/Desktop/JOB/Piyush\ Agarwal\ _10.jpg```
 
 # Tasks
 * The Tasks file structure consists of 3 major parts
@@ -92,6 +99,8 @@ END
     1. ```${CURDIR}``` -> represents the current directory where our task file resides
     2. ```${/}``` -> represents the path separator for the current operating system
     3. ```[Teardown]``` -> ensures that the keyword is executed for sure even if other keyword faces some error. It can be understood as the finally block of try-catch
+    4. ```[Return]``` -> To Return any value from a ```Keyword``` which is basically a function we use this in-built variable
+    5. ```[Arguments]``` -> To send arguments to the keyword while calling we use this in-built variable
 
 # Vault
 * Credentials in RoboCorp are stored in vault
@@ -124,3 +133,125 @@ END
 ```yaml
 ${secret}=      Get Secret      Credential_Name
 ```
+* To access any key from a dictionary, ```${secret}[key-name-without-quotes]```
+
+# Send Mail
+* To Send mails, we use ```RPA.Email.ImapSmtp``` library
+* It takes two arguments that are ```server name``` and ```port```
+```yaml
+Library     RPA.Email.ImapSmtp      smtp_server=smtp.gmail.com      smtp_port=587
+```
+* To Authorize your mailing credentials, we use ```Authorize``` keyword as
+```yaml
+Authorize       account="username"      password="pass"
+```
+* To Send Message
+```yaml
+Send Message        sender="sender-email"
+...     recipients="reciever-email"
+...     subject="subject line"
+...     body="mailing body"
+```
+* Attachments can be send using the ```attachments``` parameter
+* we can either send individual attachments or a ```list``` of attachments
+```yaml
+Send Message        sender="sender-email"
+...     recipients="reciever-email"
+...     subject="subject line"
+...     body="mailing body"
+...     attachments=    file.txt
+```
+```yaml
+Send Message        sender="sender-email"
+...     recipients="reciever-email"
+...     subject="subject line"
+...     body="mailing body"
+...     attachments=@{Attachments}
+```
+* Emails retrieved from Imap contains following keys which can be used
+```
+'Mail-Id', 'Message','Return-Path','Received','Message-ID','From','To','Subject','Date','MIME-Version','Content-Type','Body','Delivered-To','Has-Attachments'
+```
+* Example to retrieve mails from server is
+```yaml
+Get Messages Where Subject Contains
+    [Arguments]     ${subject}
+    @{emails}    List Messages       SUBJECT "${subject}"
+    FOR     ${email}    IN      @{emails}
+        Log     ${email}
+        Log     ${email}[Subject]
+        Log     ${email}[From]
+        Log     ${email}[Date]
+        Log     ${email}[Received]
+        Log     ${email}[Has-Attachments]
+    END
+    [Return]    @{emails}
+```
+* Example to download the attachments
+```yaml
+Download Attachments
+    [Arguments]    @{emails}
+    FOR    ${email}    IN    @{emails}
+        Run Keyword If    ${email}[Has-Attachments] == True
+        ...    Save Attachment    ${email}    target_folder=${CURDIR}${/}output    overwrite=True
+    END
+```
+
+# File System
+* For file system operations we use ```RPA.FileSystem```
+* Keywords for ```Directories``` are:
+```yaml
+    ${dir_exists}=    Does Directory Exist    ${CURDIR}
+    ${dir_does_not_exist}=    Does Directory Not Exist    ${CURDIR}
+    ${dir_tree}=    Log Directory Tree    ${CURDIR}
+    ${dir_is_empty}=    Is Directory Empty    ${CURDIR}
+    ${dir_is_not_empty}=    Is Directory Not Empty    ${CURDIR}
+    Create File    ${TEXT_FILE}    Hello    overwrite=True
+    Wait Until Created    ${TEXT_FILE}
+    Touch File    ${TEXT_FILE}
+    ${file_exists}=    Does File Exist    ${TEXT_FILE}
+    ${file_does_not_exist}=    Does File Not Exist    ${TEXT_FILE}
+    ${file_is_empty}=    Is File Empty    ${TEXT_FILE}
+    ${file_is_not_empty}=    Is File Not Empty    ${TEXT_FILE}
+    ${found_files}=    Find Files    \*.txt
+    Append To File    ${TEXT_FILE}    World!
+    ${text_content}=    Read File    ${TEXT_FILE}
+    ${absolute_path}=    Absolute Path    ${TEXT_FILE}
+    ${created}=    Get File Creation Date    ${TEXT_FILE}
+    ${extension}=    Get File Extension    ${TEXT_FILE}
+    ${modified}=    Get File Modified Date    ${TEXT_FILE}
+    ${name}=    Get File Name    ${TEXT_FILE}
+    ${size}=    Get File Size    ${TEXT_FILE}
+    Copy File    ${TEXT_FILE}    ${TEXT_FILE_COPY}
+    ${files}=    List Files In Directory    ${CURDIR}
+    ${directories}=    List Directories In Directory    ${CURDIR}
+    Create Directory    ${NEW_DIR_1}
+    ${files_to_move}=    Create List    ${TEXT_FILE}    ${TEXT_FILE_COPY}
+    Move Files    ${files_to_move}    ${NEW_DIR_1}    overwrite=True
+    Run Keyword If File Exists
+    ...    ${NEW_DIR_2}/${TEXT_FILE}
+    ...    Remove Directory    ${NEW_DIR_2}    recursive=True
+    Move Directory    ${NEW_DIR_1}    ${NEW_DIR_2}    overwrite=True
+    Run Keyword And Ignore Error
+    ...    Copy Directory    ${NEW_DIR_2}    ${NEW_DIR_2_COPY}
+    Run Keyword And Ignore Error
+    ...    Change File Extension
+    ...    ${NEW_DIR_2}/${TEXT_FILE_COPY}
+    ...    .md
+    Empty Directory    ${NEW_DIR_2_COPY}
+```
+
+# Access Windows Credential Manager
+* By Default ```RoboCorp``` does not provide this feature
+* We can use ```keyring``` module for the same using its function ```get_credential(Address_Name,None)```
+```py
+import keyring
+
+def Credentials(Address_Name):
+    secret = dict()
+    c = keyring.get_credential("Address_Name")
+    secret["Username"] = c.username
+    secret["Password"] = c.password
+    return secret
+```
+
