@@ -357,3 +357,207 @@ WHERE
 * To insert characters like ```'(single quote)```, one need to use ```\(backslash)```
 * to use column names with space in between like ```Column Number 1```, we need to represent it inside ```back-quotes``` like ``` `Column Number 1` ``` though it is preferable to always use ```underscore _``` instead of ```space```
 * To change password use ```ALTER USER 'root'@'localhost' IDENTIFIED BY 'New-Password'```
+
+
+# View
+* It is a keyword which can be used as data table
+* It creates an alias for a ```SELECT``` query
+* Its syntasx is
+```sql
+CREATE VIEW name_for_view AS select_query
+```
+
+# Stored Function
+* Delimeters are applied at the client 
+```sql
+DELIMETER //
+CREATE FUNCTION track_len(seconds INT)
+RETURNS VARCHAR(16)
+DETERMINISTIC
+BEGIN
+    RETURN CONCAT_WS(':',seconds DIV 60,LPAD(second MOD 60,2,'0'));
+END //
+DELIMETER ;
+```
+* To delete a function ```DROP FUNCTION IF EXISTS function_name```
+* To list functions created by you ```SHOW FUNCTION STATUS WHERE DEFINER LIKE 'admin%';```
+
+# Procedure
+* It is called using ```CALL``` keyword as ```CALL procedure_name (any_param_if_req)```
+```sql
+DELIMITER //
+CREATE PROCEDURE procedure_name (IN parameter VARCHAR(255), OUT outp VARCHAR(255))
+BEGIN
+    SELECT * INTO outp FROM album;
+    SELECT * FROM track;
+END
+DELIMITER ;
+
+CALL procedure_name("parameter_value",@output_variable);
+SELECT @output_variable;
+```
+* We can call any function/procedure from inside of another function or procedure
+* To Check all procedures use ```SHOW PROCEDURES STATUS WHERE DEFINER LIKE 'admin%';```
+* To drop procedure use ```DROP PROCEDURE IF EXISTS procedure_name```
+
+
+# Variables and Loops
+* An Example for use of variables and loops with a procedure
+```sql
+USE db_name;
+
+DROP PROCEDURE IF EXISTS str_count;
+
+DELIMITER //
+CREATE PROCEDURE str_count()
+BEGIN
+    DECLARE max_value INT UNSIGNED DEFAULT 5;
+    DECLARE int_value INT UNSIGNED DEFAULT 0;
+    DECLARE str_value VARCHAR(255) DEFAULT '';
+
+    WHILE int_value < max_value DO
+        SET int_value = int_value + 1;
+        SET str_value = CONCAT(str_value,int_value," ");
+    END WHILE;
+    SELECT str_value;
+END //
+DELIMITER ;
+
+CALL str_count();
+```
+
+# Transactions
+* One for all - all for one
+* Follows the ACID properties
+* Its Syntax is as
+```sql
+START TRANSACTION
+    INSERT INTO TB1
+    INSERT INTO TB2
+    SELECT FROM TB1
+    INSERT INTO TB3
+END TRANSACTION
+```
+* State of database rolls back to original shape if any statement fails from an transaction
+* Each transaction occurs isolately
+* Example
+```sql
+DROP TABLE IF EXISTS widgetInventory;
+DROP TABLE IF EXISTS widgetSales;
+
+CREATE TABLE widgetInventory(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    description TEXT,
+    onhand INTEGER NOT NULL
+);
+
+CREATE TABLE widgetSales (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    inv_id INTEGER,
+    quan INTEGER,
+    price INTEGER
+);
+
+INSERT INTO widgetInventory (description, onhand ) VALUES ('rock',25), ('paper',25), ('scissors',25);
+SELECT * from widgetInventory;
+```
+* Transaction Example
+```sql
+START TRANSACTION;
+INSERT INTO widgetSales ( inv_id,quan,price) VALUES (1,5,500);
+UPDATE widgetInventory SET onhand = (onhand-5) WHERE id=1;
+COMMIT;
+
+SELECT * FROM widgetSales;
+SELECT * FROM widgetInventory;
+```
+* Rollback example
+```sql
+START TRANSACTION;
+INSERT INTO widgetInventory (description,onhand) VALUES ('toy',24);
+ROLLBACK;
+```
+* Transactions are way faster as compared to single queries
+* An example to check the same is
+```sql
+-- code without transaction takes about 34 sec
+-- code with transaction takes about 0.42 sec
+-- All thanks to buffering all together
+
+DROP TABLE IF EXISTS test;
+DROP PROCEDURE IF EXISTS insert_loop;
+
+CREATE TABLE test (id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, data TEXT);
+
+DELIMITER //
+CREATE PROCEDURE insert_loop(IN count INT UNSIGNED )
+BEGIN
+    DECLARE accum INT UNSIGNED DEFAULT 0;
+    DECLARE start_time VARCHAR(32);
+    DECLARE end_time VARCHAR(32);
+    SET start_time = SYSDATE(6);
+    WHILE   accum < count DO
+        SET accum = accum + 1;
+        INSERT INTO test (data) VALUES ("This is text");
+    END WHILE;
+
+    SET end_time = SYSDATE(6);
+    SELECT TIME_FORMAT(start_time,"%T.%f") AS 'Start',
+        TIME_FORMAT(end_time,"%T.%f") AS 'End',
+        TIME_FORMAT(TIMEDIFF(end_time,start_time),"%s.%f") AS "Elapsed Secs";
+END //
+DELIMITER ;
+
+-- START TRANSACTION;
+call insert_loop(10000);
+-- COMMIT;
+```
+
+# Triggers
+```sql
+DROP TRIGGER IF EXISTS newWidgetSale;
+DROP TABLE IF EXISTS widgetSale;
+DROP TABLE IF EXISTS widgetCustomer;
+
+CREATE TABLE widgetCustomer (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), last_order_id INT
+);
+
+CREATE TABLE widgetSale (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY, item_id INT, customer_id INT, quan INT, price INT
+);
+
+INSERT INTO widgetCustomer (name) VALUES ("BOB"),("Sally"),("Fred");
+
+SELECT * FROM widgetCustomer;
+
+DELIMITER //
+
+CREATE TRIGGER newWidgetSale AFTER INSERT ON widgetSale
+    FOR EACH ROW
+    BEGIN
+        UPDATE widgetCustomer SET last_order_id = new.id WHERE widgetCustomer.id = NEW.customer_id;
+    END //
+DELIMITER ;
+
+INSERT INTO widgetSale (item_id,customer_id,quan,price) VALUES (1,3,5,1995),(2,2,3,1495),(3,1,1,2995);
+
+SELECT * FROM widgetSale;
+SELECT * FROM widgetCustomer;
+```
+* To show triggers present in a database, use ```SHOW TRIGGERS```
+* Triggers are associated with the table thus dropping a table will drop the triggers as well
+* To drop specific trigger ```DROP TRIGGER IF  EXISTS trigger_name;```
+
+* To Prevent a code from being inserted using ```triggers```
+```sql
+DELIMITER //
+CREATE TRIGGER updateWidgetSale BEFORE  UPDATE ON widgetSale
+    FOR EACH ROW
+    BEGIN
+        IF OLD.id = NEW.id AND OLD.reconciled = 1 THEN
+            SIGNAL SQLSTATE "45000" set message_text = "Cannot update reconciled row: ";
+        END IF
+    END //
+DELIMITER ;
+```
