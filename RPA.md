@@ -2375,3 +2375,116 @@ instance.updateOnChange = function(flags,changed){
 * FileExtension property does not return any string
 * FullFileExtension property does not return any string
 * Download File activity will download the files with just path being given but will download "Excel" as "PDF" only
+
+
+# Generate QR Code
+* QR Codes can automated using ```UiPath.QRCodeLib.Activities```
+* It provides us with activities to read ```QR Code``` from images directly or by providing an path to the image
+* It also gives us activities to generate ```QR Code``` either directly saving image to path or creating an image variable to be used
+
+
+# Fix Robot Error
+1. Install all latest Windows Updates.
+2. Uninstall Studio from Apps & Features menu
+3. Navigate to these folders and make sure to delete any leftover files
+    ```sh
+    rmdir /s /q "C:\Program Files (x86)\UiPath"
+    rmdir /s /q "C:\Program Files (x86)\UiPath Platform"
+    rmdir /s /q "C:\Program Files\UiPath"
+    rmdi    r /s /q "C:\Program Files\UiPath Platform"
+    rmdir /s /q C:\ProgramData\UiPath
+    rmdir /s /q %APPDATA%\UiPath
+    rmdir /s /q %APPDATA%\NuGet
+    rmdir /s /q %LOCALAPPDATA%\Temp\nuget
+    rmdir /s /q %LOCALAPPDATA%\Temp\NuGetScratch
+    rmdir /s /q %LOCALAPPDATA%\NuGet
+    rmdir /s /q %LOCALAPPDATA%\UiPath
+    rmdir /s /q %APPDATA%\Roaming\UiPath
+    rmdir /s /q %USERPROFILE%\.nuget
+    ```
+4. Get your latest Stable Studio Community Edition .exe installer from our Automation Cloud resources:
+5. After installation, you get a few choices to license your Studio. The most foolproof method is to connect your Robot to Orchestrator
+
+
+# Microsoft Teams
+* To send an message to any channel, we can use ```Incoming Webhook``` connector
+* To configure this connector in any channel:
+    1. In the left panel, click on ```...``` icon
+    2. Search for ```Incoming Webhook``` in ```Find an app```
+    3. Click on ```Add to a team```
+    4. Select the channel name
+    5. Click on ```setup a connector```
+    6. Give any name to webhook
+    7. Upload an image for it (optional)
+    8. click on create and copy the end-point
+
+<img src="Images\Webhook.png" />
+
+* Use ```HTTP Request``` from ```UiPath.Web.Activities``` to send an message in backend to teams as
+    1. Request Type: Post
+    2. BodyFormat: application/json
+    3. Body: "{'Text':'Any message you want to send'}
+
+    
+# API
+* To call any API certain parameters are fixed which can be created as variables like
+    1. Tenant Name
+    2. Account Logical Name
+    3. Folder Id
+    4. Orchestrator Url
+* To call API 2 headers are always required 
+    ```json
+    {
+        "Authorization": "Bearer <access_token>",
+        "X-UIPATH-TenantName": "<tenant Name>"
+    }
+    ```
+## Authenticating API
+* For this, use ```Postman```
+* Get the following information from uipath cloud
+    1. User Key
+    2. Account Logical Name
+    3. Tenant Name
+    4. Client Id
+* Create a ```POST``` request on url ```https://account.uipath.com/oauth/token```
+* Headers as
+    ```json
+    {
+        "Content-Type": "application/json",
+        "X-UIPATH-TenantName": "<Your Tenant Name from above>"
+    }
+    ```
+* Body as
+    ```json
+    {
+        "grant_type": "refresh_token",
+        "client_id": "<your client id>",
+        "refresh_token": "<your user key>"
+    }
+    ```
+* Click on Send
+* Copy the ```access_token``` received in ```Response```
+* Remember this access token will be valid for the next ```24 hours``` to use any other API
+
+## Get All Environment Names
+* To Get folder id
+    1. Open your orchestrator
+    2. Select the particular folder
+    3. from url fetch the id ```fid=xxxxx```
+* Use a ```GET``` request using ```{{url}}/odata/Environments?$expand=Robots```
+* Set Headers as
+    ```json
+    X-UIPATH-TenantName: tenantName,
+    X-UIPATH-OrganizationUnitId: <copy folder if from url>
+    ```
+* Set Authorization as
+    ```json
+    Bearer Token: <access_token>
+    ```
+* This will result in an ```Response``` in an ```JSON``` format containing the required information
+* Similarly we can get multiple details from ```Orchestrator``` like ```Processes```,```Jobs```,```Queues```,```Assets``` etc
+
+## Get Particular Asset
+* The idea behind calling any API is same as above
+* For this the Request URL will be ```{{url}}/odata/Assets?$filter=Name eq 'Test'```
+* for the ```?$filter=Name eq 'Test'``` part, in ```Postman``` go to ```Params``` and set value as ```$filter: Name eq 'assetName'```
