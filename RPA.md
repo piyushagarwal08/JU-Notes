@@ -1050,7 +1050,7 @@ Best Practices to be used while setting up RPA workflows
 * Development Environment
     1. The RPA Developers and their robots interact only with systems that have sandbox environments
     2. the robots should not be able to connect to the UAT and production orchestartor
-* Productin Environment
+* Production Environment
     1. The robots permanently monitored for malicious tempering of packages and the execution of correct version of the package
     2. access to the robots in the production should be restricted to the trusted individuals
 
