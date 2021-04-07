@@ -143,3 +143,80 @@ cksum filename
 #output
 # uniqueValue size filename
 ```
+
+# Sleep
+* ```-z``` returns True if the variable does not exist
+* For delay, we can use ```sleep``` command as ```sleep 2``` in seconds
+```sh
+#!/usr/bin/bash
+
+DELAY=$1
+
+if [ -z $DELAY ]
+then 
+    sleep $DELAY
+fi
+```
+
+# Watching a Process
+* Watch other process and quit when they terminate
+```sh
+#!/usr/bin/bash
+
+STATUS=0
+
+if [ -z $1 ]
+then
+    echo "Please supply a process PID"
+    exit 1 # not run successfully
+fi
+
+echo "Watching PID $1"
+while [ $STATUS -eq 0 ]
+do
+    ps $1 > /dev/null
+    STATUS=$? # if ps command is not successful means program stopped
+done
+
+echo "Process $1 has terminated"
+exit 0
+```
+
+# Input from User
+* To read inputs from user
+```sh
+#!/usr/bin/env bash
+
+# -p make sures user input comes on same line as message
+read -p "What is your first name: " Name
+echo Your Name is : $Name
+```
+* To validate the data 
+```sh
+#!/usr/bin/bash
+
+VALID=0
+
+while [ $VALID -eq 0 ]
+do
+    read -p "Please enter your name and age: " Name Age
+    if [[ ( -z $Name) || ( -z Age) ]]
+    then
+        echo "Not enough parameters passed"
+        continue
+    # check for a regular expression
+    elif [[ ! $Name =~ ^[A-Za-z]+$ ]]
+    then
+        echo "Non alpha characters detected [$Name]"
+        continue
+    elif [[ ! $Age =~ ^[0-9]+$ ]]
+    then
+        echo "Non numeric characters are detected [$Age]"
+        continue
+    fi
+    VALID=1
+done
+echo "Name = $Name and Age = $Age"
+
+exit 0
+```
