@@ -23,5 +23,7 @@ Current List is as:
   <li><a href="https://github.com/piyushagarwal08/JU-Notes/blob/master/TestAutomation.md">Test Automation</a></li>
   <li><a href="https://github.com/piyushagarwal08/JU-Notes/blob/master/REACT.md">React</a></li>
   <li><a href="https://github.com/piyushagarwal08/JU-Notes/blob/master/RoboCorp.md">RoboCorp</a></li>
+  <li><a href="https://github.com/piyushagarwal08/JU-Notes/blob/master/ShellScripting.md">ShellScripting</a></li>
+  <li><a href="https://github.com/piyushagarwal08/JU-Notes/blob/master/Agile.md">Agile Methodology</a></li>
 </ul>
   
