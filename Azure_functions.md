@@ -48,3 +48,5 @@
 * Start qucik test
 * upload image and check its probability
 
+
+# Azure Fundamentals

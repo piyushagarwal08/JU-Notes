@@ -8,6 +8,7 @@
     3. Scrum
     4. DSDM
     5. FDD
+
 # Scrum
 * Scrum is the most used framework of Agile because it is simple to understand and quick in revealing the real progress
 * The maximum size of a Scrum Team is 11(1+1+9)
@@ -61,6 +62,6 @@
 * For scenarios where business stakeholders work in a political atmosphere and consensus building is very slow.Agile way of working will develop several roadblocks.This scenario may require more formal protocol based approach ( like in traditional models of phases, milestones and accountabilities)
 
 
-
+<a href="https://www.scribd.com/document/420484807/Agile-Key-With-Answers-Consolidated-pdf">Solutions on Mobile</a>
 * backlog
 * retrospective

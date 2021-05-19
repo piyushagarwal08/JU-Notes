@@ -19,6 +19,7 @@
 * To generate new random values we can use the function ```new Random().Next(range)```
 * To close any application, we can use the ```close application``` activity.
 * To get the path of the ```Desktop```, use ```Environment.GetFolderPath(Environment.SpecialFolder.Desktop)```
+* To Apply filter in ```Get Outlook Mail Messages``` activity, you can use something like ```@SQL=urn:schemas:httpmail:subject LIKE '%your-mail-subject%'``` as string value
 
 ## Properties
 * Present on right hand side tab
