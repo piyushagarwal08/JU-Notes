@@ -20,6 +20,8 @@
 * To close any application, we can use the ```close application``` activity.
 * To get the path of the ```Desktop```, use ```Environment.GetFolderPath(Environment.SpecialFolder.Desktop)```
 * To Apply filter in ```Get Outlook Mail Messages``` activity, you can use something like ```@SQL=urn:schemas:httpmail:subject LIKE '%your-mail-subject%'``` as string value
+* To Apply multiple filters, try ```@SQL=(urn:schemas:httpmail:subject LIKE '%your-mail-subject%') AND (urn:schemas:httpmail:sendername = 'sender-email')``` as string value
+* For filter with Gmail Smtp we can apply something like ```SUBJECT one-keyword-for-subject```
 
 ## Properties
 * Present on right hand side tab
@@ -2171,6 +2173,31 @@ instance.updateOnChange = function(flags,changed){
     3. To convert the data table of list elements like above, ```(from row in DT1.AsEnumerable group row by variable1=row.item(column-name/index) into grp=Group select Convert.toString(variable1)).toList```
     4. To list different columns from a table just like ```SQL``` using ```aggregate functions```, ```(from row in DT1.AsEnumerable group row by var1=row.item(0) into grp=Group let col1_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) let col2_sum = grp.SUM(Function(x) CDbl(x.item(column-index))) select {var1,col1_sum,col2_sum})```
 * LINQ queries are way faster then normal uipath activities probably ```10 times```
+
+## Structure of Linq
+1. Obtain Data Source
+2. Define Filters
+3. Define Grouping Operations
+4. Define Result
+
+* Its general syntax is ```for <range-variable> in <iterable> where <condition> group <grouping-logic> select <result>```
+* To get a list of range of numbers using LINQ, you can use ```(from num in list1 select num+1).toList```
+* To get the type of Linq Query result, you simply use ```GetType``` function
+
+## Linq with Excel
+* Enumerable Data is a collection of data that can be iterated over, though AsEnumerable is not really required in latest uipath versions
+* ```Group``` keyword refers to a ```Group``` type for a variable name
+* ```New With``` is something we use when we want to group our rows based on multiple columns and it is used together with another keyword called ```Key```
+* To get the entires column values for a particular column, ```from row in DT1.AsEnumerable select row.item(0)```
+* To get the desired data type for the values in our collection, ```from row in DT1.AsEnumerable select Convert.toString(row.item(0))```
+* To get a list of distinct items in a column, ```(from row in DT1.AsEnumerable select Convert.toString(row.item(0))).toList.Distinct.toList``` or ```(from row in DT1.AsEnumerable group row by pn=row.item("column-name"/index) into grp=Group select pn).toList```
+* To get sum of a column for duplicate columns, ```(from row in DT1.AsEnumerable group row by pn=row.item("column-name"/index) into grp=Group select grp.Sum(Function(x) x.item("column-name"/index))).ToList```
+* To get multiple columns altogether, ```(from row in DT1.AsEnumerable group row by pn=row.item(0) into grp=Group let var1=grp.Sum(Function(x) x.item("column-name"/index)) select {pn,var1.ToString}).ToList```
+* To convert the list to a dictionary, we can use ```ToList.ToDictionary(Function(x) x(0),Function(x) x(1))```
+* To use select function of Group method, syntax is like ```grp.Select(Function(x) x.Field(OfString)("columnName"/index))```
+* To group rows based on multiple column conditions, use ```(from row in DT.AsEnumerable group row by pn=New With {Key.A=row.item("column-name"/index),Key.B=row.item("column-name"/index)} into grp=Group select {pn.A,pn.B}).ToList```
+* To merge different row values for a particular column, use ```(from row in DT.AsEnumerable group row by pn=New With{Key.A=row.item(0),Key.B=row.item(1)} into grp=Group select {pn.A,pn.B,String.Join("/",grp.select(Function(x) x.Field(of string)("Status")))}).ToList(0)```
+* To get a list of ```DataRow``` object which is grouped based on some specific columns, we can use ```(from row in DT.AsEnumerable group row by pn=New With{Key.A=row.item(0),Key.B=row.item(1)} into grp=Group select grp.First).ToList``` -> In this rows will be grouped on the basis of first and second column and the first group item will be available
 
 
 # AI Fabric

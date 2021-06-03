@@ -1,5 +1,34 @@
 {
-  "version": 1,
-  "dgSpecHash": "cKbO1Xnos3scf5t3p1sBLjkjtcF17dewTdsjbcnGgkzAdjCmds+OAXB9ZR5k3cQSu2UuxKAP2q6kYXsc4y7K6A==",
-  "success": true
+  "version": 2,
+  "dgSpecHash": "QVyV8I/L5+8/SKJAkeSbNiHoOh+ghxjINcx1BNWLTiWlxQErdK9RFLehSXzShl4vpPAZWcnCtk8p6uXD1tIYmA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\Assignment2_Level3_Performer\\.local\\",
+  "expectedPackageFiles": [
+    "C:\\Users\\piyus\\.nuget\\packages\\avalonedit\\5.0.3\\avalonedit.5.0.3.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\bouncycastle\\1.8.5\\bouncycastle.1.8.5.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\credentialmanagement\\1.0.2\\credentialmanagement.1.0.2.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\csvhelper\\2.13.5\\csvhelper.2.13.5.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\documentformat.openxml\\2.5.0\\documentformat.openxml.2.5.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\extended.wpf.toolkit\\2.8.0\\extended.wpf.toolkit.2.8.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\humanizer.core\\2.4.2\\humanizer.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\interop.domino.dll\\1.0.0\\interop.domino.dll.1.0.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\microsoft.aspnet.signalr.client\\2.4.0\\microsoft.aspnet.signalr.client.2.4.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\microsoft.rest.clientruntime\\2.3.20\\microsoft.rest.clientruntime.2.3.20.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\microsoft.visualstudio.ole.interop\\7.10.6071\\microsoft.visualstudio.ole.interop.7.10.6071.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\npoi\\2.4.1\\npoi.2.4.1.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\sharpziplib\\1.0.0\\sharpziplib.1.0.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath\\19.10.7230.26901\\uipath.19.10.7230.26901.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.credentials.activities\\1.1.6479.13204\\uipath.credentials.activities.1.1.6479.13204.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.excel.activities\\2.7.1-ce\\uipath.excel.activities.2.7.1-ce.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.mail.activities\\1.7.1-ce\\uipath.mail.activities.1.7.1-ce.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.ocr.contracts\\2.2.1\\uipath.ocr.contracts.2.2.1.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.system.activities\\19.10.0-ce\\uipath.system.activities.19.10.0-ce.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.uiautomation.activities\\19.10.0-ce\\uipath.uiautomation.activities.19.10.0-ce.nupkg.sha512",
+    "C:\\Users\\piyus\\.nuget\\packages\\uipath.vision\\1.8.1\\uipath.vision.1.8.1.nupkg.sha512"
+  ],
+  "logs": []
 }
