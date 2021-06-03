@@ -48,4 +48,3 @@ def SendMail(From,Password,To,Message,Subject,ImgPath):
     smtp.quit()
     return "hey"
 
-#SendMail("piyushmittal.agarwal2@gmail.com","piyushagarwal.0108@gmail.com","mjcmlmsjtrnjjoqk","<b>Some <i>HTML</i> text</b> and an image.<br><img src='cid:image1' width=20px height=30px><br>Nifty!","hidfdfdii","IMG_20200921_214859.jpg")
