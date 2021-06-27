@@ -2198,6 +2198,7 @@ instance.updateOnChange = function(flags,changed){
 * To group rows based on multiple column conditions, use ```(from row in DT.AsEnumerable group row by pn=New With {Key.A=row.item("column-name"/index),Key.B=row.item("column-name"/index)} into grp=Group select {pn.A,pn.B}).ToList```
 * To merge different row values for a particular column, use ```(from row in DT.AsEnumerable group row by pn=New With{Key.A=row.item(0),Key.B=row.item(1)} into grp=Group select {pn.A,pn.B,String.Join("/",grp.select(Function(x) x.Field(of string)("Status")))}).ToList(0)```
 * To get a list of ```DataRow``` object which is grouped based on some specific columns, we can use ```(from row in DT.AsEnumerable group row by pn=New With{Key.A=row.item(0),Key.B=row.item(1)} into grp=Group select grp.First).ToList``` -> In this rows will be grouped on the basis of first and second column and the first group item will be available
+* To get all records from a data table in which certain condition is matched, we can use ```WHERE``` keyword as ```(from row in DT1 Where Convert.ToInt32(row("ID")) = 2 Select Convert.toString(row("Position"))).ToList```
 
 
 # AI Fabric
