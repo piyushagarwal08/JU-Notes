@@ -1,5 +1,4 @@
-# Microsoft Workshop
-
+# Microsoft Azure
 * <a href="portal.azure.com">Open Azure Console</a>
 
 # Custom Vision

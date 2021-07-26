@@ -19,9 +19,13 @@
 * To generate new random values we can use the function ```new Random().Next(range)```
 * To close any application, we can use the ```close application``` activity.
 * To get the path of the ```Desktop```, use ```Environment.GetFolderPath(Environment.SpecialFolder.Desktop)```
-* To Apply filter in ```Get Outlook Mail Messages``` activity, you can use something like ```@SQL=urn:schemas:httpmail:subject LIKE '%your-mail-subject%'``` as string value
+* To Apply filter in ```Get Outlook Mail Messages``` activity, you can use something like ```@SQL=urn:schemas:httpmail:subject LIKE '%your-mail-subject%'``` as string value which is known as ```DASL Query```
 * To Apply multiple filters, try ```@SQL=(urn:schemas:httpmail:subject LIKE '%your-mail-subject%') AND (urn:schemas:httpmail:sendername = 'sender-email')``` as string value
+* To filter mails based on Received Date ```"@SQL=(urn:schemas:httpmail:datereceived< '19/07/2021 00:00AM') AND (urn:schemas:httpmail:datereceived > '12/07/2021 00:00AM')"```
 * For filter with Gmail Smtp we can apply something like ```SUBJECT one-keyword-for-subject```
+* To Create a ```delay``` to be variable, you can use ```Timespan.FromMilliseconds(value in ms)``` which will return ```500``` as ```00:00:00.5000000```
+* To convert a Dates timezone from one country to another, you can use ```TimeZoneInfo.ConvertTime(DateTime.Now,TimeZoneInfo.Local,TimeZoneInfo.FindSystemTimeZoneById("Middle East Standard Time"))```
+* To Install ```Chrome Extension``` during bot execution, use ```Start Process``` activity with ```FileName``` as ```C:\Program File (x86)\UiPath\Studio\UiPath\SetupExtensions.exe``` and ```Arguments``` as ```/chrome```.
 
 ## Properties
 * Present on right hand side tab
