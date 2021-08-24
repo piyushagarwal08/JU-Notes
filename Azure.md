@@ -119,6 +119,22 @@
     2. D-Series: offers faster CPUs and local Hyper-V host SSD (temporary disk)
     3. Dv2 series: provides VMs with configuration up to 448 GB of RAM and 64 data disks. CPU is 35% faster than D-series
     4. DS, DSv2, and GS series: Support for Premium Storage (SSD for operating system and data disks)
+* Various VM Sizes that can cater to every kind of requirement:
+    1. General Purpose: Ideal for testing and development. (DSV2,Dv2,DS,D,Av2,A0-7)
+    2. Compute Optimized: recommended for medium traffic web servers and network appliances. (Fs,F)
+    3. Memory Optimized: Used for relational DB servers, medium to large caches, and for in-memory analytics. (GS,G,DSv2,DS)
+    4. Storage Optimized: Used for Big Data, SQL, and NoSQL databases. (LS)
+    5. GPU: Ideal for heavy graphic rendering and video editing. (NV,NC)
+    6. High Performance Compute: Optimal for high-throughput network interfaces (RDMA). (H,A8-11)
+* Azure Virtual Machines follow ```Infrastructure as a Service (IaaS)``` model and lets you create VMs in the cloud.
+* VM's are provisioned with:
+    1. Storage
+    2. Compute
+    3. Networking Capabilities
+    4. Operating System
+* You can attach multiple network interface cards (NICs) to each of your VMs.
+* Multiple NICs are used for many network visual appliances and WAN Optimization solutions, as it provides high network traffic management capability, including isolation of traffic between a front-end NIC and back-end NIC(s).
+* Once deployed, a VM with single NIC cannot be configured with multi NICs (and vice-versa) without deleting and re-creating it.
 
 ## Azure VM Components
 ### Disks
@@ -133,6 +149,24 @@
 * The components could include equipment such as separate network, load balancers, firewall and more
 * These components are deployed in an ```Azure Virtual Network```
 * AVN provides many features like Subnet,IP address, Load balancer and Network Security Group.
+* Network Security Groups (NSG) provides advanced security protection for the VMs. It contains inbound and outbound rules that specify whether the traffic is approved or denied.
+* NSGs can be applied at the following level:
+    1. NIC (ARM deployment model)
+    2. VM (classic deployment)
+    3. All VMs in a Subnet (both deployment models)
+* NSG Rule Properties
+    1. Name: is a unique identifier for the rule.
+    2. Direction: specifies whether the traffic is inbound or outbound
+    3. Priority: If multiple rules match the traffic, rules with higher priority apply.
+    4. Access: specifies whether the traffic is allowed or denied.
+    5. Source IP address prefix: identifies from where traffic originates.
+    6. Source port range: specifies source ports
+    7. Destination IP address prefix: identifies the traffic destination IP range.
+    8. Destination port range: specifies destination ports
+    9. Protocol: specifies a protocol that matches the rule.
+* By default 100 NSGs can be created per region per subscription. This can be extended to 400 by contacting Azure support.
+* A single NSG can have 200 rules which can be raised to 1000 by contacting Azure support.
+* Only one NSG can be applied to a VM, subnet, or NIC. However, the same NSG can be applied to multiple resources.
 
 ### Availability Sets
 * Sometimes there is a slight chance that there could be a failure in physical servers
@@ -310,3 +344,38 @@
     5. Enable federation between organizations.
     6. Provide an identity management solution.
     7. Multi-factor authentication
+
+# Azure ARM Templates
+* JSON Files that can be defined to automate the resource deployment
+* One way to get a template is ```Go to Azure```-> search for ```Template Deployment``` -> choose from existing ones.
+* Azure Resource Manager Tool Extension can be downloaded in VS Code
+```js
+{
+    "$schema":"https://schema.manaement.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion":"1.0.0",
+    "parameters":,
+    "variables":,
+    "resources":
+}
+```
+* Another best way is to use Visual Studio 2019 and create an project with using ARM Template.
+
+
+# Azure REST APIs
+* One of the most powerful ways to manage Azure is via the Azure REST APIs. Representational State Transfer APIs are service endpoints that support sets of HTTP operations to manage your resources.
+* It forms the connecting glue between your applications and Azure.
+* Checkout examples at: <a href="https://azure.github.io/projects/apis/">Azure API Examples</a>
+
+# VPN Gateway
+* A VPN Gateway is a type of ```virtual network gateway``` that sends encrypted traffic across Azure virtual networks and also from Azure virtual network to an on-premises location.
+* Each virtual network can have only one VPN gateway
+* ```Multiple Connections``` can be made with the same VPN gateway
+* when multi VPNs connect to the same VPN gateway, all ```VPN tunnels share the bandwidth that is available for the gateway```.
+
+## Vnet to Vnet Connectivity
+* It is similar to connecting a VNet to an on premises site location, except that both ends of the connection are VNets.
+* VMs and Cloud service components in each VNet can communicate as if they were on the same VNet.
+* In VNet to VNet model, the connected VNets can be in the:
+    1. same or different regions
+    2. same or different subscriptions
+    3. same or different deployment models
