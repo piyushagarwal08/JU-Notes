@@ -7,7 +7,7 @@
 
 # Notes
 * RoboCorp is a Python or YAML based programming platform using which we can automate many things like Web Automation and Desktop Automation
-* Unlikek other platforms like UiPath and Automation Anywhere, it is coding based but do provides an feature to select and locate the element attributes from application
+* Unlike other platforms like UiPath and Automation Anywhere, it is coding based but do provides an feature to select and locate the element attributes from application
 * The RoboCorp follows a certain structure:
     1. Every Robot is created inside an virtual environment
     2. It consists of 3 files by default ```robot.yaml```, ```tasks.robot```, ```conda.yaml```

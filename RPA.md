@@ -118,10 +118,11 @@
 * <u> Tables </u> ~> A Table is siilar to an array of dictionaries where values are accessible by row index and column names
 * <u> Generic Value </u> ~> It can represent basic types of data, including text,number and date/times.
 * ```ctrl + k``` create the variable with appropriate ```data type``` in properties of a particular activity
+* To Remove certain elements from an ```Array``` we can use ```Array_Var.Except(New String() {String1,String2,String3_to_remove}).ToArray()```
 
 
 ## Get Password
-* By default ```UiPath``` is not able to type in a string into a password element
+* By default ```UiPath``` is not able to type in a `string` into a password element
 * For that purpose, we use ```Get Password``` activity to create or convert a ```string``` to ```password``` type varaible\
     ```qwerty12345 to ********```
 * After creating a password type variable simply use ```Type Into``` activity to perform the task
@@ -151,6 +152,7 @@
 * To print date just use the functioon ```Now.ToString```
 * To print only Month And Year use ```Now.ToString('MMMM yyyy')```
 * ```Datetime.ParseExact(“12/05/2019”,“dd/MM/yyyy”,System.Globalization.CultureInfo.InvariantCulture)``` to convert a string to ```DateTime``` data type
+* To Convert the Date Timezone, we can use ```TimeZoneInfo.ConvertTime(DateVariable,TimeZoneInfo.Local,TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"))```.
  
 
 ## Table Activity
@@ -2553,3 +2555,5 @@ instance.updateOnChange = function(flags,changed){
 4. Business & Industry Knowledge
 5. Analytical Skills
 6. Vision
+
+
