@@ -2557,3 +2557,181 @@ instance.updateOnChange = function(flags,changed){
 6. Vision
 
 
+# UiPath Integration Service
+* This is a platform developed to ease the integration of UiPath with 3rd Party Applications.
+* Any Application comprising an API of its service can be integrated with UiPath but this platform makes it far more easier with the selected 3rd party applications. example: Google, One Drive, Service Now, Bamboo etc
+* Integration Services comprises of 3 components:
+    1. Connectors -> The first part of service that lets you connect your Orchestrator/Cloud Tenant with the 3rd Party applications. The only thing in general this is required is to login to your account and give permission over the requested access.
+    2. Connections -> The Existing connections are listed in this component. From here you can manage your added connections.
+    3. Triggers -> This helps you create a trigger to execute a certain process for any 3rd party application added connector. The Triggers comprises of 3 possibilities 
+        1. Create Record
+        2. Delete Record
+        3. Update Record
+* Whenever a Trigger executes it sends 4 values to UiPath Orchestrator while calling the configured process
+    1. UiPathEventConnector -> The Specific connector name that has been triggered by some event
+    2. UiPathEvent -> The kind of event has took place be it Create/Delete/Update
+    3. UiPathEventObjectType -> The type of the object
+    4. UiPathEventObjectId -> The unique id of that particular object which lets you perform specific actions from your RPA Bots.
+* The Triggers checks for the state of 3rd party application in every 5 minute.
+
+
+# Custom Activities
+* This is an advanced topic which is suggested for developers who have some prior experience working with Uipath or .Net languages.
+* There are 2 tools required to create custom activities:
+    1. Microsoft Visual Studio <a href="https://visualstudio.microsoft.com/downloads/">Download</a>
+    2. Nuget Package Installer (Available in Microsoft Store) <a href="https://www.microsoft.com/store/productId/9WZDNCRDMDM3">Download</a>
+* The coding part is done in C# (preferably) and in the ```Microsoft Visual Studio``` where as the Compilation of ```DLL``` into a package that we generally see in ```Manage Package``` tab is done using ```Nuget Package Installer```
+
+## Nuget Package Installer
+* Open the application
+
+<img src="Images\NugetPackageInstaller.png">
+
+* Right click on screen, and select the ```Add Lib Folder``` option.
+* Under this folder, we will be adding our dll files which are to be converted in nuget packages.
+* Right Click on ```Lib```, select the ```Add Existing File``` option and choose your ```dll``` that was build using ```Microsoft Visual Studio```.
+* To perform any changes/add data about your developed package for end-users, click on ```Edit Metadata``` icon present at the top in the left panel or use Short-cut key (Ctrl + K).
+* This information includes details like:
+    1. Version of the package
+    2. Title of your package name (It is to be used by end-users to search for your package in UiPath)
+    3. Author/Owners name -> basically your name
+    4. Description -> What is the purpose of this package
+    5. Any other important information you wish to pass-on to its users (Dependency,Requirement,Licensing etc).
+
+## Visual Studio
+* To start creating your ```DLL``` files for your nuget package, you would need to install ```Microsoft Visual Studio```.
+* Create a new project of ```Class Library(.NET Standard)```
+    1. Lanaguage: C#
+    2. Platform: Windows
+    3. Project Type: Library
+* It gives you a certain code already pre-written
+* You need to add 2 ```References``` in your code as mandatory for creating the packages which are:
+    1. System.Activities
+    2. System.ComponentModel.Composition
+* To Add new References:
+    1. Click on right-hand panel ```(Search Solution Explorer Ctrl + ;)``` 
+    2. Right click on ```References``` and click on ```Add Reference...```
+    3. Select the required references and click on ```OK```.
+
+## Concepts to Understand while creating DLL
+1. Your Class-Name will be your Activity Name
+2. All Classes are supposed to inherit the ```CodeActivity``` class
+3. The function ```protected override void Execute(CodeActivityContext context)``` is used to write the functionality of your activity.
+4. Few things to understand about ```Properties of an Activity```:
+    * The tabs in this panel with name such as Common,Input,Misc,Options etc are referenced in the code as ```[Category("Name of the tab")]``` like ```[Category("Input")]``` or ```[Category("Options")]```
+    <img src="Images\ActivityPropertiesTab.png" height=350>
+    * To Mark certain field as mandatory you need to use ```[RequiredArgument]```
+    * To set label for input field use ```[Description("Some label text")]```
+    * To Initialize an argument its syntax is like ```public InArgument<data-type> Argument-Name { get; set;}```
+    * In the above line, the ```get``` keyword is used to fetch value provided to it by user and the ```set``` value is used to return some value to the argument thus would be used when direction would be ```InOut``` or ```Out```
+
+
+## Examples for practice
+* SayHello -> Takes name from user and gives an output as ```Hello <name>```
+* PdfPageCount -> Takes file path from user and gives an output as integer value with no of pages in PDF
+* Create NewWorkBook -> Takes path of file to create a new workbook.
+
+### Complete Code
+```c#
+using System.Activities;
+using System.ComponentModel;
+using System.IO;
+using System.Text.RegularExpressions;
+using Microsoft.Office.Interop.Excel;
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+namespace CustomActivities.Starter
+{
+    
+    public class SayHello:CodeActivity{}
+
+    public class PDFTotalCount: CodeActivity{}
+    
+    public class CreateWorkbook : CodeActivity{}
+    
+    // The mentioned functions are defined below.
+}
+```
+
+### SayHello
+```c#
+public class SayHello:CodeActivity
+    {
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Enter your First Name")]
+        public InArgument<string> FirstName { get; set; }
+
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Enter your Last Name")]
+        public InArgument<string> LastName { get; set; }
+
+        [Category("Output")]
+        [Description("String Variable for output")]
+        public OutArgument<string> Result { get; set; }
+        protected override void Execute(CodeActivityContext context)
+        {
+            string name = FirstName.Get(context)+" "+LastName.Get(context);
+            string result = "Hello " + name;
+            Result.Set(context, result);
+        }
+    }
+```
+
+### PdfPageCount
+```c#
+public class PDFTotalCount: CodeActivity
+    {
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Enter PDF Path")]
+        public InArgument<string> PdfFile { get; set; }
+
+        [Category("Output")]
+        [RequiredArgument]
+        [Description("Total Count of Pages")]
+        public OutArgument<int> PageCount { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            string FilePath = PdfFile.Get(context);
+            StreamReader reader = new StreamReader(FilePath);
+            Regex reg = new Regex(@"/Type\s*/Page[^s]");
+            MatchCollection matches = reg.Matches(reader.ReadToEnd());
+            int Count = matches.Count;
+            PageCount.Set(context, Count);
+        }
+    }
+```
+
+### Create NewWorkBook
+```c#
+public class CreateWorkbook: CodeActivity
+    {
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Please enter the path of new workbook")]
+        public InArgument<string> WorkbookPath { get; set; }
+
+        [Category("Output")]
+        [Description("Workbook type variable")]
+        public OutArgument<Workbook> ExcelWorkbook { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            string FilePath = WorkbookPath.Get(context);
+            Application xlApp = new Application();
+            Workbook xlWorkBook = xlApp.Workbooks.Add(Missing.Value);
+            xlWorkBook.SaveAs(FilePath);
+            // Missing.Value is used when you do not wish to pass any value to an required argument.
+            xlWorkBook.Close(true, Missing.Value, Missing.Value);
+            xlApp.Quit();
+            ExcelWorkbook.Set(context, xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+            Marshal.ReleaseComObject(xlWorkBook);
+        }
+        
+    }
+```
