@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461</TargetFrameworks>
+		<RootNamespace>Company.Product1</RootNamespace>
+		<AssemblyName>Company.Product1</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <DocumentationFile>bin\$(Configuration)\Company.Product1.xml</DocumentationFile>
+  </PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		
+		
+		<Reference Include="Microsoft.CSharp"/>
+ 		
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Xml"/>
+    <Reference Include="System.Net.Http"/>
+    <Reference Include="System.Windows"/>
+    <Reference Include="System.Xaml"/>
+    <Reference Include="WindowsBase"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.*.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+</Project>

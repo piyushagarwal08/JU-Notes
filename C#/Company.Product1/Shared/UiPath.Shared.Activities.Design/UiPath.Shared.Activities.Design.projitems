@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>df9c43f0-add3-4fbf-995e-84b92f9cbf25</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UiPath.Shared.Activities.Design</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ActivityDecoratorControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ActivityIconConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ArrayToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringArgumentToComboboxConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\ArgumentCollectionEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\ArgumentDictionaryEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\PasswordBoxAssistant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\PasswordEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ModelItemExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ComboboxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\FilePathControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\RestrictiveBodyConnector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Editors\EditorTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ComboboxControl.xaml.cs">
+      <DependentUpon>ComboboxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FilePathControl.xaml.cs">
+      <DependentUpon>FilePathControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RestrictiveBodyConnector.xaml.cs">
+      <DependentUpon>RestrictiveBodyConnector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\EditorTemplates.xaml.cs">
+      <DependentUpon>EditorTemplates.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

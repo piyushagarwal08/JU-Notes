@@ -2574,6 +2574,18 @@ instance.updateOnChange = function(flags,changed){
     4. UiPathEventObjectId -> The unique id of that particular object which lets you perform specific actions from your RPA Bots.
 * The Triggers checks for the state of 3rd party application in every 5 minute.
 
+# Chrome - Restore Pages Pop-Up Error
+* we can set few properties from google preferences to disable the ```restore pages``` settings.
+* The pop-up is shown as kill process close the browser abruptly.
+* Follow the below steps:
+    1. Go to C:\Users<>\AppData\Local\Google\Chrome\User Data\Default
+    2. Now right click on preferences file
+    3. Open with notepad.
+    4. Search for “exit_type” and “exited_cleanly”
+    5. Change the values to “exit_type” : “none”, and “exited_cleanly”: true,
+    6. Save the file and close it.
+    7. Change the properties of the file to “Read-Only”
+* This serves the purpose.
 
 # Custom Activities
 * This is an advanced topic which is suggested for developers who have some prior experience working with Uipath or .Net languages.
@@ -2630,9 +2642,12 @@ instance.updateOnChange = function(flags,changed){
 * SayHello -> Takes name from user and gives an output as ```Hello <name>```
 * PdfPageCount -> Takes file path from user and gives an output as integer value with no of pages in PDF
 * Create NewWorkBook -> Takes path of file to create a new workbook.
+* Read Range -> A copy of Read Range (Workbook) activity provided by UiPath.
+* Write Cell -> A copy of Write Range activity provided by UiPath.
 
 ### Complete Code
 ```c#
+using System;
 using System.Activities;
 using System.ComponentModel;
 using System.IO;
@@ -2734,4 +2749,144 @@ public class CreateWorkbook: CodeActivity
         }
         
     }
+```
+
+### Read Range
+* For this we would need ```Microsoft.ACE.OLEDB.12.0``` driver that is if not present, can be installed from <a href="https://www.microsoft.com/en-in/download/details.aspx?id=13255">Microsoft Access Database Engine 2010</a>.
+```c#
+public class ReadRange : CodeActivity
+    {
+        [Category("Input")]
+        [RequiredArgument]
+        [DisplayName("FilePath")]
+        [Description("Please enter full path of workbook")]
+        public InArgument<string> In_FilePath { get; set; }
+
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Please enter sheet name")]
+        [DisplayName("Sheet")]
+        public InArgument<string> In_SheetName { get; set; } = "Sheet1";
+
+        [Category("Input")]
+        [Description("Please enter range")]
+        [RequiredArgument]
+        [DisplayName("Range")]
+        public InArgument<string> In_Range { get; set; } = "";
+
+        [Category("Output")]
+        [RequiredArgument]
+        [Description("Please use a Data Table variable")]
+        [DisplayName("DT")]
+        public OutArgument<System.Data.DataTable> Out_DT { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            try
+            { 
+                string filePath = In_FilePath.Get(context);
+                string sheetName = In_SheetName.Get(context);
+                string sheetRange = In_Range.Get(context);
+
+                // Insert Data in DataTable
+                System.Data.OleDb.OleDbConnection MyConnection = new System.Data.OleDb.OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + filePath + "';Extended Properties=Excel 8.0;");
+                System.Data.OleDb.OleDbDataAdapter MyCommand = new System.Data.OleDb.OleDbDataAdapter("select * from [" + sheetName + "$" + sheetRange + "]", MyConnection);
+                MyCommand.TableMappings.Add("Table", "TestTable");
+                System.Data.DataSet DTSet = new System.Data.DataSet();
+                MyCommand.Fill(DTSet);
+                System.Data.DataTable DT1 = DTSet.Tables[0];
+                MyConnection.Close();
+                
+                // Assigning Output Varaible
+                Out_DT.Set(context, DT1);
+            }
+            catch(System.Exception e)
+            {
+                System.Console.WriteLine("Exception: " + e.Message+Environment.NewLine+In_Range.Get(context)+Environment.NewLine+In_SheetName.Get(context) + Environment.NewLine+In_FilePath.Get(context));
+            }
+        }
+    }
+```
+
+### Write Cell
+```c#
+namespace CustomActivities.ExcelFormatting
+{
+    public class WriteCellAsText: CodeActivity
+    {
+
+        [Category("Input")]
+        [RequiredArgument]
+        [Description("Enter full file path")]
+        [DisplayName("FilePath")]
+        public InArgument<string> FilePath { get; set; }
+
+        [Category("Input")]
+        [RequiredArgument]
+        [DisplayName("SheetName")]
+        [Description("Value")]
+        public InArgument<string> SheetName { get; set; }
+
+        [Category("Input")]
+        [RequiredArgument]
+        [DisplayName("Cell")]
+        [Description("Enter the cell address")]
+        public InArgument<string> Cell { get; set; }
+
+        [Category("Input")]
+        [RequiredArgument]
+        [DisplayName("CellValue")]
+        [Description("Value")]
+        public InArgument<string> Value { get; set; }
+
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            string ExcelRange = Cell.Get(context);
+            string ExcelPath = FilePath.Get(context);
+            string ExcelValue = Value.Get(context);
+            string ExcelSheet = SheetName.Get(context);
+
+            Application xlApp = new Application();
+            Workbook xlWorkbook = xlApp.Workbooks.Open(ExcelPath);
+            Worksheet xlWorksheet = xlWorkbook.Worksheets.get_Item(ExcelSheet);
+            try
+            {
+                // To get range with some data in it
+                //Range rng = xlWorksheet.UsedRange;
+
+                Range rng = xlWorksheet.get_Range(ExcelRange);
+
+                // To change the format of cell to Text
+                rng.NumberFormat = "@";
+
+                // Get ASCII Value
+                char c = char.Parse(ExcelRange.Substring(0, 1));
+
+                // Get Cell row and column value
+                int colIndex = (int)c-64;
+                int rowIndex = int.Parse(ExcelRange.Substring(1));
+                
+                xlWorksheet.Cells[rowIndex,colIndex] = ExcelValue;
+
+                // Close Excel Objects
+                xlWorkbook.Save();
+                xlWorkbook.Close();
+                xlApp.Quit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message+Environment.NewLine+e.Source);
+            }
+
+            // Release all objects calling to Com Objects
+            finally
+            {
+                Marshal.ReleaseComObject(xlWorksheet);
+                Marshal.ReleaseComObject(xlWorkbook);
+                Marshal.ReleaseComObject(xlApp);
+            }
+        }
+    }
+}
 ```

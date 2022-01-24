@@ -1,0 +1,21 @@
+﻿<ResourceDictionary x:Class="UiPath.Shared.Activities.Design.Editors.EditorTemplates"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:propertyEditing="clr-namespace:System.Activities.Presentation.PropertyEditing;assembly=System.Activities.Presentation"
+                    xmlns:localization="clr-namespace:UiPath.Shared.Localization"
+                    xmlns:editors="clr-namespace:UiPath.Shared.Activities.Design.Editors">
+
+    <DataTemplate x:Key="ArgumentDictionaryEditor">
+        <DockPanel LastChildFill="True">
+            <TextBlock Text="{x:Static localization:SharedResources.Collection}" TextTrimming="CharacterEllipsis" IsEnabled="False"/>
+            <propertyEditing:EditModeSwitchButton TargetEditMode="Dialog" HorizontalAlignment="Right" DockPanel.Dock="Right" />
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PasswordEditorTemplate">
+        <DockPanel LastChildFill="True">
+            <PasswordBox x:Name="EmailPassword" editors:PasswordBoxAssistant.BindPassword="True" editors:PasswordBoxAssistant.BoundPassword="{Binding Path=Value, Mode=TwoWay}" />
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

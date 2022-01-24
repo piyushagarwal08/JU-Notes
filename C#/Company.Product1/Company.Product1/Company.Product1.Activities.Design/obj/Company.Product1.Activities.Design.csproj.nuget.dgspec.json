@@ -1,0 +1,144 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities.Design\\Company.Product1.Activities.Design.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities.Design\\Company.Product1.Activities.Design.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities.Design\\Company.Product1.Activities.Design.csproj",
+        "projectName": "Company.Product1.Activities",
+        "projectPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities.Design\\Company.Product1.Activities.Design.csproj",
+        "packagesPath": "C:\\Users\\piyus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities.Design\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\.nuget\\NuGet.Config",
+          "C:\\Users\\piyus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\ProgramData\\UiPath\\Components": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.org/api/v2/": {},
+          "https://www.myget.org/F/uipath/": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {
+              "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\Company.Product1.Activities.csproj": {
+                "projectPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\Company.Product1.Activities.csproj",
+                "privateAssets": "all"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\Company.Product1.Activities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\Company.Product1.Activities.csproj",
+        "projectName": "Company.Product1.Activities.Implementation",
+        "projectPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\Company.Product1.Activities.csproj",
+        "packagesPath": "C:\\Users\\piyus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1.Activities\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\.nuget\\NuGet.Config",
+          "C:\\Users\\piyus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\ProgramData\\UiPath\\Components": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.org/api/v2/": {},
+          "https://www.myget.org/F/uipath/": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {
+              "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\Company.Product1.csproj": {
+                "projectPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\Company.Product1.csproj",
+                "privateAssets": "all"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\Company.Product1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\Company.Product1.csproj",
+        "projectName": "Company.Product1",
+        "projectPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\Company.Product1.csproj",
+        "packagesPath": "C:\\Users\\piyus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\Company.Product1\\Company.Product1\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\piyus\\Desktop\\JU-Notes\\C#\\Company.Product1\\.nuget\\NuGet.Config",
+          "C:\\Users\\piyus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\ProgramData\\UiPath\\Components": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.org/api/v2/": {},
+          "https://www.myget.org/F/uipath/": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

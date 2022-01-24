@@ -4,3 +4,4 @@ C:\Users\piyus\Desktop\JU-Notes\C#\HelloUser\HelloUser\obj\Debug\HelloUser.cspro
 C:\Users\piyus\Desktop\JU-Notes\C#\HelloUser\HelloUser\obj\Debug\HelloUser.dll
 C:\Users\piyus\Desktop\JU-Notes\C#\HelloUser\HelloUser\obj\Debug\HelloUser.pdb
 C:\Users\piyus\Desktop\JU-Notes\C#\HelloUser\HelloUser\obj\Debug\HelloUser.csproj.ResolveComReference.cache
+C:\Users\piyus\Desktop\JU-Notes\C#\HelloUser\HelloUser\obj\Debug\Interop.UiPathChildSessionServiceLib.dll

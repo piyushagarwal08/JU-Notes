@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Designers\CheckDesigner.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="..\..\Shared\Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="C:\Users\piyus\Desktop\JU-Notes\C#\Company.Product1\Shared\UiPath.Shared.Activities.Design\Controls\ComboboxControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="C:\Users\piyus\Desktop\JU-Notes\C#\Company.Product1\Shared\UiPath.Shared.Activities.Design\Controls\FilePathControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="C:\Users\piyus\Desktop\JU-Notes\C#\Company.Product1\Shared\UiPath.Shared.Activities.Design\Controls\RestrictiveBodyConnector.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="C:\Users\piyus\Desktop\JU-Notes\C#\Company.Product1\Shared\UiPath.Shared.Activities.Design\Editors\EditorTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461</TargetFrameworks>
+		<RootNamespace>Company.Product1.Activities</RootNamespace>
+		<AssemblyName>Company.Product1.Activities</AssemblyName>
+    <PackageId>Company.Product1.Activities.Implementation</PackageId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <DocumentationFile>bin\$(Configuration)\Company.Product1.Activities.xml</DocumentationFile>
+  </PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		
+		
+		<Reference Include="Microsoft.CSharp"/>
+ 		
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Xml"/>
+    <Reference Include="System.Activities"/>
+    <Reference Include="System.Windows"/>
+    <Reference Include="System.Xaml"/>
+    <Reference Include="WindowsBase"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Product1\Company.Product1.csproj" PrivateAssets="All"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.*.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Activities\" />
+  </ItemGroup>
+  <Import Project="..\..\Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.projitems" Label="Shared" />
+</Project>
