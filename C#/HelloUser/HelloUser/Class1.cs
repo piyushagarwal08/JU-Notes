@@ -185,7 +185,7 @@ namespace CustomActivities.ExcelFormatting
             string ExcelValue = Value.Get(context);
             string ExcelSheet = SheetName.Get(context);
 
-            Application xlApp = new Application();
+            Microsoft.Office.Interop.Excel.Application xlApp = new Application();
             Workbook xlWorkbook = xlApp.Workbooks.Open(ExcelPath);
             Worksheet xlWorksheet = xlWorkbook.Worksheets.get_Item(ExcelSheet);
             try
@@ -224,5 +224,5 @@ namespace CustomActivities.ExcelFormatting
             }
         }
 
-    }
+    }  
 }
