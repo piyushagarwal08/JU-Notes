@@ -2890,3 +2890,40 @@ namespace CustomActivities.ExcelFormatting
     }
 }
 ```
+
+# XML 
+* XML stands for Extensible Markup Language
+* It defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
+* Each XML Document contains an ```declaration```, which is the first line of the xml document e.g., 
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+```
+* The element present after the declaration is known as ```Root Element```
+
+## Reading a XML file
+* First way is to use ```Deserialize XML``` activity available in ```UiPath.Web.Activities``` it gives you an ```XDocument``` type of variable that is ```System.XML.Linq.XDocument```
+* Second way is to create a XDocument variable and use its ```Load``` method as ```XDcoument.Load("Path-of-xml-file")```
+
+## Operations possible with XML Document
+* To Read the declaration of xml file, use ```XDocument.Declaration``` method
+* There are other inbuilt methods in ```Declaration``` which helps you to read the version of xaml ```Declaration.Version``` or the encoding style using ```Declaration.Encoding```
+* To Read the ```Root Element``` use ```XmlDocument.Root```
+* Sample data for better understanding
+```xml
+<catalog>
+   <book>
+     <author age="23">Piyush Agarwal</author>
+     <author age="25">Ravi Agarwal</author>
+     <platform>YouTube</platform>
+     <platform>LinkedIn</platform>
+     <book> Om Namah Shivay!!! </book>
+     <action>Like, Share and Subscribe</action>
+   </book>
+   <platform>Facebook</platform>
+ </catalog>
+ ```
+* To fetch a particular element from an XML file, one can use ```XmlDocument.Descendants("element-tag-name")``` which will give an array of parent elements matching the provided ```element-tag-name```
+* To Check if a particular ```XMLElement``` has further child nodes with it, we can use ```hasElements``` functions which would provide a ```True/False``` value in return
+* To update a specific attribute value in ```XML```, we can use something like ```XmlDocument.Descendants("author")(0).Attribute("age").value``` and provide the new value in R-Side of assign activity.
+* To point to a specific element one can also use the traditional approach of pointing from parent element to child element like ```XmlDocument.Elements("catalog").Elements("book").Elements("platform")```
+* To Update a specific value of XmlElement, use ```XmlDocument.Descendants("author")(0).value``` and provide the new value in R-Side of assign activity.
