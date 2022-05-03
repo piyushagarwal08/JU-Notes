@@ -2644,6 +2644,7 @@ instance.updateOnChange = function(flags,changed){
 * Create NewWorkBook -> Takes path of file to create a new workbook.
 * Read Range -> A copy of Read Range (Workbook) activity provided by UiPath.
 * Write Cell -> A copy of Write Range activity provided by UiPath.
+* GET API Request -> Call a Http GET Request
 
 ### Complete Code
 ```c#
@@ -2889,6 +2890,56 @@ namespace CustomActivities.ExcelFormatting
         }
     }
 }
+```
+
+## Get API Request
+```c#
+using System;
+using System.Activities;
+using System.ComponentModel;
+using System.Net;
+using System.IO;
+
+namespace UiPathAPI_Custom_Activity
+{
+    public class APICallActivity:CodeActivity
+    {
+        [RequiredArgument]
+        [Category("Input")]
+        [Description("Enter User Id")]
+        public InArgument<string> UserId { get; set; }
+
+        [RequiredArgument]
+        [Category("Output")]
+        [Description("String variable to store the API Response")]
+
+        public OutArgument<string> APIResponse { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            string UserNo = UserId.Get(context);
+            string url = "https://reqres.in/api/users/"+UserNo;
+
+            WebRequest requestObject = WebRequest.Create(url);
+            requestObject.Method = "GET";
+
+            HttpWebResponse responseObject = null;
+            responseObject = (HttpWebResponse)requestObject.GetResponse();
+
+            string Result = null;
+            using (Stream stream = responseObject.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(stream);
+                Result = sr.ReadToEnd();
+                sr.Close();
+            }
+
+            APIResponse.Set(context, Result);
+
+        }
+    }
+}
+
 ```
 
 # XML 
