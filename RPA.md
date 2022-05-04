@@ -2942,6 +2942,66 @@ namespace UiPathAPI_Custom_Activity
 
 ```
 
+## POST API Request
+```c#
+public class PostAPICall:CodeActivity
+    {
+        [RequiredArgument]
+        [Category("Input")]
+        [DisplayName("Email")]
+        [Description("Enter Username")]
+        public InArgument<string> Username { get; set; }
+
+        [RequiredArgument]
+        [Category("Input")]
+        [DisplayName("Password")]
+        [Description("Enter Password")]
+        public InArgument<string> Password { get; set; }
+
+        // public InArgument<System.Security.SecureString> Password { get; set; };
+
+        [RequiredArgument]
+        [Category("Output")]
+        [DisplayName("API Response")]
+        [Description("String variable to store the API Response")]
+
+        public OutArgument<string> APIResponse { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            string Email = Username.Get(context);
+            string password = Password.Get(context);
+
+            // API
+            string Result = null;
+            string stringURL = "https://reqres.in/api/register";
+            string PostData = "{" + String.Format("\"email\":\"{0}\", \"password\":\"{1}\"",Email,password) +"}";
+
+            WebRequest requestObject = WebRequest.Create(stringURL);
+            requestObject.Method = "POST";
+            requestObject.ContentType = "application/json";
+
+            using (var streamWriter = new StreamWriter(requestObject.GetRequestStream()))
+            {
+                streamWriter.Write(PostData);
+                streamWriter.Flush();
+                streamWriter.Close();
+
+                var httpResponse = requestObject.GetResponse();
+
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    Result = streamReader.ReadToEnd();
+                }
+
+            }
+
+            APIResponse.Set(context, Result);
+        }
+
+    }
+```
+
 # XML 
 * XML stands for Extensible Markup Language
 * It defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
