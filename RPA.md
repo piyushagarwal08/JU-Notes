@@ -1229,6 +1229,10 @@ Note:
 * You should extend the selector definition to have a new namespace for search matching and for the fuzzy level where:
 ```matching = regex, fuzzy, fuzzywords, fuzzyLevel = 0 .. 1```
 
+## Case Sensitive Selector
+* ```casesensitive``` tag allows you to compare any selector attribute in non case sensitive approach
+* Example ```aaname="Piyush " casesensitive:aaname='False'```
+
 
 # WebDriver
 * WebDriver is a remote control interface that enables introspection and manipulation of Document Object Model (DOM) elements in web browser.
