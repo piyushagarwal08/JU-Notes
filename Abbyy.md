@@ -28,3 +28,8 @@
     2. Project Setup Station -> Setting up document processing
 
 <img src="Images\FlexiComponentsInteraction.png" />
+
+
+# Abbyy Vantage
+* Abbyy Vantage is a comprehensive platform of cognitive services that applies AI to understand your documents in a fast and simple way.
+

@@ -3042,3 +3042,11 @@ public class PostAPICall:CodeActivity
 * To update a specific attribute value in ```XML```, we can use something like ```XmlDocument.Descendants("author")(0).Attribute("age").value``` and provide the new value in R-Side of assign activity.
 * To point to a specific element one can also use the traditional approach of pointing from parent element to child element like ```XmlDocument.Elements("catalog").Elements("book").Elements("platform")```
 * To Update a specific value of XmlElement, use ```XmlDocument.Descendants("author")(0).value``` and provide the new value in R-Side of assign activity.
+
+
+# Convert Base64 String to File
+* When working with API's, we get Base64 String as response for any attachment that is to be downloaded.
+* To Convert this Base64 string into a html file
+    1. Convert the string into Byte Array as ```Convert.FromBase64String("YourResponseString")```
+    2. Use Invoke Method as ```TargetType: System.IO.File ; TargetObject: Blank ; MethodName: WriteAllBytes``` and Parameters as ``` FilePath <String> ; ByteArrayFromPoint1 <Byte[]>```
+* This file download the file at the FilePath position.
