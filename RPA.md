@@ -1834,17 +1834,64 @@ Note:It is strongly recommended, for easy identification and understanding of th
     10. Click ok and close the scheduler, bot is scheduled successfully
 
 
+# Process Discovery
+* Process discovery is a set of tools and techniques that helps us understand how business processes are executed. 
+* For processes,a healthy transformation pipeline always starts by having a transparent view of how processes look like today. Using ```Process Discovery```, we can get insights on our as-is processes and use these insights to define and implement the to-be.
+* Ways to do process discovery:
+    1. Manual Process Discovery -> Human led activity in form of shadowing, interviews, and reviewing documentation
+    2. Technology-led approach -> Uses data mining and artificial intelligence technologies to analyze process data
+    3. Hybrid Model -> Integrating both 1 and 2
+* ```UiPath Process Discovery``` provides 4 tools :
+    1. UiPath Process Mining: Leverages back-end data from busniess applications to discover and prioritize automation
+    2. UiPath Task Mining: Records apps while people perform a task and uses AI to identify repetitive tasks
+    3. UiPath Task Capture: Records the steps taken to perform a task and generates documentation
+    4. UiPath Automation Hub: Crowdsources ideas from employees and manages the automation pipeline
+
+
+## Manual Process Discovery
+* In this process, a key business analyst is request to analyze the process, documents and key details
+* Humans perform ```shadowing``` and ```Interviewing``` for the ```Subject Matter Experts``` to define the end-2-end steps of performing the process
+* ```Process Owners``` are interviewed to understand the ```Process Model``` followed by ```Stakeholder``` to figure out the ```Pain Points```
+* Challenges:
+    1. Lack of Transparency
+    2. Low accuracy
+    3. Process Variations -> different ways to perform a single process
+    4. High Cost
+    5. Lack of Monitoring
+
+<img src="Images\Manual_Vs_UiPathProcessMining.png" />
+
 # Automation Hub
 * It ia collaborative tool for automation opportunity identification,pipeline management and process repository
 * Automation Hub is used by :
     1. Employees with automation ideas ~> Business users need transparency on the automation program, on the one hand,and an easy way to contribute their ideas and expertise
     2. The C-suite ~> The C-suite needs a single source of truth on the performance of the automation program, as well as reliable and easy to read information for the decision making process
     3. Center of Excellence Leaders and their teams ~> Center of Excellence members need one place to store all the information, documentation and contribute to the automation ideas to turn them into reality.
+* ```UiPath Automation Hub``` can be used by the ```Automation COE``` to assess, approve, prioritize and implement automaiton projects and track the ```benefits```
 
 # Process Mining
 * UiPath Process Mining is a Process Mining Solution that transforms data from your IT systems into visual interactive dashboards,allowing you to see existing value decreases, bottlenecks and discrepancies, as well as understanding the root-causes and possible risks.
 
 <img src ="Images/ProcessMiningUsers.png" />
+
+* Process mining uses data in IT systems to generate process visualizations that help understand how that process is performing
+* Process Mining can connect to existing data in systems, then transform it, and use it to create process visualizations
+* Benefits of UiPath Process Mining:
+    1. Connect to process data -> Connect to data in out IT systems to analyze the digital footprints left behind by systems and applications
+    2. Visualize -> all bottlenecks, inefficiency, variations and exceptions
+    3. Streamline -> Identify opportunities for streamlining our process
+    4. Monitor -> Monitor the evaluation of the process after enhancement have been implemented
+* Challenges faced by process mining:
+    1. Quality of data analyzed
+
+* Data gathered by the ```Process Mining``` can be used by ```Process Analyst``` for
+    1. Process Discovery
+    2. Process Conformance
+    3. Workforce Intelligence
+    4. Process Standarization
+    5. Process Optimization
+    6. Automation Identification
+    7. Process Monitoring
 
 ## Product Architecture
 <img src="Images/TaskMiningArchitecture.gif" />
@@ -1872,6 +1919,14 @@ Note:It is strongly recommended, for easy identification and understanding of th
 
 4. Processes Tab ~> The admin can view information about the completed processes and import new files provided by the UiPath Representative after the Analyzer stage has been completed
 
+# Task Mining
+* Task Mining is used to record the applications being used in a particular task
+* Uses a ML model to identify the variations in the process steps
+* Process analysts can then analyze the data to:
+    1. Discover tasks and process parts at the team or individual level.
+    2. Create or Update Process documentation using the new insights on how the processes are being performed.
+    3. Identify opportunities for the most repetitive tasks.
+
 
 # Task Capture
 * It is a process discover tool that helps you get detailed insights about automation candidates directly from your employees.
@@ -1886,6 +1941,8 @@ Note:It is strongly recommended, for easy identification and understanding of th
     3. New localizations
     4. Offline activation
 
+* Records the Steps in details with ```Screenshots```, ```Keystrokes```, ```Mouse Click``` and ```Metadata```
+* Post recording it documents everything into end to end task which is send to the ```Automation COE```
 
 # Telegram API Messaging
 * To send any message using telegram bot API, we will require a bot agent to send messages as a user
@@ -3052,3 +3109,6 @@ public class PostAPICall:CodeActivity
     1. Convert the string into Byte Array as ```Convert.FromBase64String("YourResponseString")```
     2. Use Invoke Method as ```TargetType: System.IO.File ; TargetObject: Blank ; MethodName: WriteAllBytes``` and Parameters as ``` FilePath <String> ; ByteArrayFromPoint1 <Byte[]>```
 * This file download the file at the FilePath position.
+
+
+# UiPa
