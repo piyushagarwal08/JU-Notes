@@ -129,11 +129,12 @@
 * To convert ```System.SecureString``` to ```System.String```, we use ```new System.Net.NetworkCredential(String.Empty,SecureString).Password```
 
 ## Array and Lists & Dictionary
-* TO define an array type variable, with variable type``` Array of T``` or ```String[]``` and default array can also be written
+* To define an array type variable, with variable type``` Array of T``` or ```String[]``` and default array can also be written
 * To define an list we set the variable data type as ```List<String>``` and with default value as ```new List(of String) from ['v1','v2']```
 * ```Invoke Method``` is used to append new elements to the ```List```
 * Dictionary has the data type ```Dictionary<String,String>``` and values can be appended to it using simply ```Assign``` function and works like normal ```dictionary``` does
 * Syntax for dictionary is ```new Dictionary(Of String,Int32) From {{"key1",val1},{"key2",val2}}```
+* To Initialize dictionary in c# use ```new Dictionary<string,string>();```
 
 ## String Functions
 * The string functions here works similarly as ```python```
@@ -2270,14 +2271,16 @@ instance.updateOnChange = function(flags,changed){
 * To get all records from a data table in which certain condition is matched, we can use ```WHERE``` keyword as ```(from row in DT1 Where Convert.ToInt32(row("ID")) = 2 Select Convert.toString(row("Position"))).ToList```
 
 
-# AI Fabric
+# AI Fabric/ AI Center
 
 * ML Skill -> activity used to check the input
 * Upload File -> activity used to re-train the model
 * In Enterprise Trial, we get only 2 Robots which is equivalent to using 4 ML Models and we would need to keep one license free for pipeline if we want our ML Model to train as well
 * To retrain any model, go to <a href="https://docs.uipath.com/ai-fabric/v0/docs/object-detection"> Object Detection </a>
 * ML Skills are deployed on an ```Tenant``` and not on ```Orchestrator``` such that ```ML Skill``` created on Tenant1 won't be available on Tenant2
-
+<br>
+<img src="Images\AICenter_Models.png">
+<br>
 ## OOTB Models
 * Also known as Out of the Box Packages
 * Can be found under ML Packages
@@ -2403,6 +2406,14 @@ instance.updateOnChange = function(flags,changed){
 ```
 * Predicted values are not exact but close to the range of expected value
 * Accuracy is directly proportional to the Training Data
+
+
+# Basic Definitions
+* AI -> The theory and development of computer systems that are able to perform tasks that normally require human intelligence and decision making.
+* Machine Learning -> A sub-field of AI that enables systems to learn from data. Systems learn from previous experiences and information to deduce and predict future information.To do this they use algorithms that learn to perform a specific task without being explicitly programmed.
+* Deep Learning -> An area of ML concerned with artificial neural networks.These are a series of algorithms that aim to recognize relationships in a set of data through a process that mimics biological neural networks.
+* Natural Language Processing (NLP) -> A branch of AI that deals with analyzing, understanding and generating human natural languages.For example, NLP enables computers to hear speach, read text, interpret the text/speech or measure the sentiment.
+* Computer Vision -> A field of AI that enables computers to gain high-level understanding from digital images or videos.If AI is the brain, then Computer Vision is the eye that enables the computer to observe and understand. it works the same way as the human eye.
 
 
 # Invoke Method
@@ -3111,4 +3122,5 @@ public class PostAPICall:CodeActivity
 * This file download the file at the FilePath position.
 
 
-# UiPa
+# Clipboard AI
+
