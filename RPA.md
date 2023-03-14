@@ -26,6 +26,7 @@
 * To Create a ```delay``` to be variable, you can use ```Timespan.FromMilliseconds(value in ms)``` which will return ```500``` as ```00:00:00.5000000```
 * To convert a Dates timezone from one country to another, you can use ```TimeZoneInfo.ConvertTime(DateTime.Now,TimeZoneInfo.Local,TimeZoneInfo.FindSystemTimeZoneById("Middle East Standard Time"))```
 * To Install ```Chrome Extension``` during bot execution, use ```Start Process``` activity with ```FileName``` as ```C:\Program File (x86)\UiPath\Studio\UiPath\SetupExtensions.exe``` and ```Arguments``` as ```/chrome```.
+* To delete any particular transition from Re-Framework re-target the transition to different state and then select delete. 
 
 ## Properties
 * Present on right hand side tab
