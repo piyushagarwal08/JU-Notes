@@ -1921,6 +1921,8 @@ Note:It is strongly recommended, for easy identification and understanding of th
 
 4. Processes Tab ~> The admin can view information about the completed processes and import new files provided by the UiPath Representative after the Analyzer stage has been completed
 
+
+
 # Task Mining
 * Task Mining is used to record the applications being used in a particular task
 * Uses a ML model to identify the variations in the process steps
@@ -3123,5 +3125,145 @@ public class PostAPICall:CodeActivity
 * This file download the file at the FilePath position.
 
 
-# Clipboard AI
+# Communications Mining
 
+* UiPath Communications Mining also formerly known as `Reinfer` turns `unstructured electronic data` such as `emails, tickets,surveys, etc` into structured data to drive action and insights in your organization.
+
+## Benefits
+1. No Code
+2. Fully Customisable
+3. Accurate
+4. Fast to train
+5. Hyper-Scalable
+6. Real-time monitoring & alerts
+7. Secure
+8. Easy to integrate
+9. Understand your customers better than ever
+10. Enjoy more interesting work
+11. Focus on the work that matters
+12. Grow the ROI of digital transformation
+
+<img src="Images\Domains_CommunicationMining.png" />
+
+## Different tabs in Communications Mining
+
+1. Train -> The Train page provides a fully guided label training experience to users. It always recommends the next best actions to take, and breaks up the model training into easy to complete batches.
+
+2. Discover -> The Discover page has two key functions:
+    * It helps you to discover interesting clusters of verbatims. Clusters are themes of verbatims, which the platform has identified as sharing similar intents or concepts. 
+    * It allows users to label verbatims in bulk, as well as individually, using either the 'Cluster' function, or the 'Search' function. As the verbatims in each cluster should contain similar intents and concepts, the bulk label functionality is a helpful tool to quickly train the model. 
+
+3. Explore -> The Explore page allows you to filter, search and explore individual verbatims.It also houses a number of training modes for both labels and entities, and is where users can complete the majority of their model training unless they are using the guided Train tab.
+
+4. Validation -> In the 'Labels' tab users can see their overall label Model Rating, including a detailed breakdown of the factors that make up their rating, other metrics on their dataset and the performance of individual labels. 
+
+Note: The platform helps users train models by calculating a holistic Model Rating, which assesses the overall health and performance of their model by considering a number of key contributing factors: Label performance, Coverage, and Balance.
+
+5. Reports -> Users can create fully customizable dynamic dashboards populated with charts from the other pages in Reports
+
+<img src="Images\CommunicationMining_NavigateTabs.png" />
+
+
+
+
+# Building Intelligent Automations using AI Center
+
+## AI and RPA
+* Requires multiple ML models to be able to bring out solutions to a particular problem.
+
+<image src="Images\EmailClassifierWorkflow.jpg" />
+
+<img src="Images\Model Building Process.jpg" />
+
+* Access to API for AI Center is being enabled
+* Register Application -> Authenticate -> Make API Calls
+
+<img src="Images\Fundamentals AI Center.jpg" />
+
+<img src="Images\Domain Use Case - AI Center.jpg" />
+
+* Using Integration Service, we would be able to use AI Models build outside the platform.
+
+Manager Emails:
+shivaraman.shankar@uipath.com
+
+naren.venkateswaran@uipath.com 
+
+
+# Document Understanding 
+Manager: Monica Luca
+
+* Extraction Automation Builder : create a studio web workflow starting from a document
+* Studio web templates are in-build e.g., Invoices.
+
+1. Upload sample document
+2. Choose document type & Create workflow
+
+<img src="Images\Extraction Automation Builder.jpg" />
+
+* Using Integration Services will be enhancing the validation experience using Business Rules and Data Look ups.
+
+* Pre-trained Document Splitter Model - ML Splitter Activity available (Need to ask lahiru)
+
+* Business Rules can be defined for specific fields
+* Mathematical Expression -> Amazing feature that enables you to validate your extracted fields with any math formula check and increase data validation experience.
+
+<img src="Images\DU Future.jpg" />
+
+* RESTAPI option is gonna get many other APIs to work with DU.
+
+<img src="Images\Future Scope DU.jpg" />
+
+
+# Action Center
+Manager: Tushar Pander
+* Externalize Forms during Task Creation -> Multiple forms can be displayed based on business rule.
+* We can inbuild Action Center in Apps
+* The external forms can be made using Forms designer itself.
+
+
+# IT Automation using Studio Web
+* This year we would be able to give download our packages along with queue and assets.
+* We will be able to run automations based on C# and Python code and these files would be a part of Studio
+* Features are available on UiPath Insider
+* Access to Office 365 activities using Integration Service - Connectors will be coming in soon.
+
+# UiPath Apps - MVP Summit
+
+## App Units
+* Suhail Siddiqi - Apps Engineer
+
+* Consumption based pricing
+* Manage access would be available next week
+
+<img src="Images\Apps Licensing.jpg" />
+
+* Post 23.10, unique and common unit will be introduced
+* next rows
+
+* Vb Expressions brings the availability of all vb expressions. Instead of using variables, directly using hierarchy fetch value format
+e.g., `PageName.FieldName.Value`
+
+## Apps In Folders
+* Ravindra Adireddy
+* Centralised runtime roles and permission management
+* Permissions required for publishing app: 
+    Tenant ROle - App Versions 
+      View - View published versions
+      Edit
+
+* Two permissions will be coming - Tenant level - to publish app and upgrade/downgrade version
+* Permission at Folder Level - for running
+
+<img src="Images\App1.jpg" />
+<img src="Images\App2.jpg" />
+<img src="Images\App3.jpg" />
+<img src="Images\App4.jpg" />
+<img src="Images\App5.jpg" />
+
+# Integration Service
+* Ramakrishna Anish Damerla
+* Samrat Dutta - samrat.dutta@uipath.com
+
+
+# UiPath Test Suite
