@@ -814,6 +814,11 @@ e.g., ```datetime.Now.addHours(24)```
 * Multiple robots can be assigned to process the same Queue
 * ```Reference``` property can be set to an item to identify it uniquely in Orchestrator
 * ```ItemInformation``` ~> this property is used to define the values to be added in the Queue present in Orchestrator
+* To Add a queue item in Queue, there are possibly 4 ways:
+    1. Add Queue Item activity
+    2. Bulk Add Queue Item activity
+    3. Clone any available queue item and update the values using json
+    4. Upload the csv file containing the queue item information
 
 
 ## Get Transaction Item
