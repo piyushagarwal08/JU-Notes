@@ -27,6 +27,8 @@
 * To convert a Dates timezone from one country to another, you can use ```TimeZoneInfo.ConvertTime(DateTime.Now,TimeZoneInfo.Local,TimeZoneInfo.FindSystemTimeZoneById("Middle East Standard Time"))```
 * To Install ```Chrome Extension``` during bot execution, use ```Start Process``` activity with ```FileName``` as ```C:\Program File (x86)\UiPath\Studio\UiPath\SetupExtensions.exe``` and ```Arguments``` as ```/chrome```.
 * To delete any particular transition from Re-Framework re-target the transition to different state and then select delete. 
+* Excel saves dates in the form of integers like for example `13/02/2023` would be saved as `44970`, now to convert the number `44970` back to a date in `UiPath` or `c#` we can use the function `DateTime.FromOADate` which takes in argument as `Decimal`.
+* Example `DateTime.FromOADate(44970)` will be given as `DateTime` object and can be used in any format.
 
 ## Properties
 * Present on right hand side tab
